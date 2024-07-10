@@ -5,7 +5,7 @@ import LikeButton from "./Components/LikeButton/LikeButton";
 export default function Home() {
   return (
     <div>
-      <LikeButton/>
+ 
     </div>
   );
 }
