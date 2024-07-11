@@ -1,13 +1,12 @@
-@import '../styles/colors.scss';
+@import '../../styles/colors.scss';
 
 .button {
-    width: 130px;
-    padding: 12px 24px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    border: none;
-  }
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+}
+    
   
   .primary {
     background-color: $primayColor;
@@ -17,7 +16,6 @@
   .primary:hover {
     background-color: $primayHoverColor;
     color: #E2E2E3;
-    width: 100px;
   }
   
   .secondary {
@@ -28,5 +26,4 @@
   .secondary:hover {
     background: rgba(105, 109, 140, 0.44);
     color: #E2E2E3;
-    width: 100px;
   }
