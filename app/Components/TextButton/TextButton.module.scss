@@ -1,0 +1,35 @@
+@import '../../styles/colors.scss';
+
+.fill {
+    display: inline-flex;
+    padding: 14px ;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px;
+    background: #0F0F0F;
+    cursor: pointer;
+    color: $white;
+    border: none;
+}
+
+.fill:hover {
+    background-color: $similarGrayColor;
+}
+
+.text {
+    background-color: white;
+    color: $primayColor;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    border: none;
+    background-color: none;
+    cursor: pointer;
+}
+
+@media screen and (max-width:768px) {
+    .text {
+        font-size: 14px;
+    }
+}
