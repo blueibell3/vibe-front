@@ -9,15 +9,15 @@ type Props = {
 
 export default (props: Props) => {
     const [userIn, setUserIn] = useState(false)
-    const onChange = () => {
+    const onClick = () => {
         setUserIn(!userIn)
     }
     return (
         <>
             <div className={styles.container}>
-                <Image src='/user avatar.svg' onClick={onChange} width={32} height={32} alt='user avatar' className={styles.userAvatar} />
+                <Image src='/user avatar.svg' onClick={onClick} width={32} height={32} alt='user avatar' className={styles.userAvatar} />
                 {userIn &&
-                    <div className={styles.wrapper} onClick={onChange}>
+                    <div className={styles.wrapper} onClick={onClick}>
                         <div className={styles.userWindow} >
                             {props.gmail}
                             <div className={styles.longOut}>
