@@ -57,11 +57,8 @@ const musicData = [
 
 
 type Props = {
-    imageUrl: string;
-    songName: string;
-    artistName: string;
     onPlay: () => void;
-    time: string;
+    header: string;
 }
 
 export default (props: Props) => {
@@ -69,7 +66,7 @@ export default (props: Props) => {
 
     return (
         <div className={styles.MusicListCategory}>
-            <div className={styles.nextPlay}>Next Play</div>
+            <div className={styles.nextPlay}>{props.header}</div>
             {musicData.map(category => (
                 <div className={styles.MusicListId}>
                     <img className={styles.MusicListimageUrl} src={category.imageUrl} alt="imageUrl" />

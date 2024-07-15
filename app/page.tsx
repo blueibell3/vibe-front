@@ -11,13 +11,10 @@ export default function home() {
   };
 
   return (
-    <MusicList 
-    imageUrl={""} 
-    songName={""}
-     artistName={""}
-     time={""} 
-     onPlay={handlePlay}
-     />
+    <MusicList
+      header="Next Play"
+      onPlay={handlePlay}
+    />
   );
 }
 
