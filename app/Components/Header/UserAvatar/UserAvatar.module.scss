@@ -2,17 +2,48 @@
     position: relative;
 }
 
+.userAvatar {
+    cursor: pointer;
+}
+
 .userWindow {
     background-color: #000;
-    width: 295px;
-    height: 95px;
-    padding: 16px, 96px, 16px, 16px;
+    width: 201px;
+    height: 56px;
+    padding-left: 16px;
     border-radius: 8px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     gap: 12px;
     position: absolute;
-    right: 100px;
+    right: 30px;
+    cursor: pointer;
+}
+
+.burgerMenu {
+    display: none;
+}
+
+@media screen and (max-width:1023px) and (min-width:768px) {
+    .userWindow {
+        display: none;
+    }
+
+    .container {
+        display: none;
+    }
+
+    .burgerMenu {
+        display: flex;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .userWindow {
+        display: none;
+    }
+
+    .container {
+        display: none;
+    }
 }
