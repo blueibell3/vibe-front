@@ -11,10 +11,65 @@ export default function home() {
   };
 
   return (
+    <div className={styles.container}>
     <MusicList
-      header="Next Play"
-      onPlay={handlePlay}
-    />
+       imageUrl="https://daprintfactory.com/cdn/shop/files/music-cds-music-covers-print-1.png?v=1690954711"
+       songName="Unwritten"
+       artistName="Natasha Bedingfield"
+       time="4:11"
+       onPlay={handlePlay}
+     />
+     <MusicList
+       imageUrl="https://daprintfactory.com/cdn/shop/files/music-cds-music-covers-print-1.png?v=1690954711"
+       songName="Unwritten"
+       artistName="Natasha Bedingfield"
+       time="4:11"
+       onPlay={handlePlay}
+     />
+     <MusicList
+       imageUrl="https://daprintfactory.com/cdn/shop/files/music-cds-music-covers-print-1.png?v=1690954711"
+       songName="Unwritten"
+       artistName="Natasha Bedingfield"
+       time="4:11"
+       onPlay={handlePlay}
+     />
+     <MusicList
+       imageUrl="https://daprintfactory.com/cdn/shop/files/music-cds-music-covers-print-1.png?v=1690954711"
+       songName="Unwritten"
+       artistName="Natasha Bedingfield"
+       time="4:11"
+       onPlay={handlePlay}
+     />
+     <MusicList
+       imageUrl="https://daprintfactory.com/cdn/shop/files/music-cds-music-covers-print-1.png?v=1690954711"
+       songName="Unwritten"
+       artistName="Natasha Bedingfield"
+       time="4:11"
+       onPlay={handlePlay}
+     />
+     <MusicList
+       imageUrl="https://daprintfactory.com/cdn/shop/files/music-cds-music-covers-print-1.png?v=1690954711"
+       songName="Unwritten"
+       artistName="Natasha Bedingfield"
+       time="4:11"
+       onPlay={handlePlay}
+     />
+     <MusicList
+       imageUrl="https://daprintfactory.com/cdn/shop/files/music-cds-music-covers-print-1.png?v=1690954711"
+       songName="Unwritten"
+       artistName="Natasha Bedingfield"
+       time="4:11"
+       onPlay={handlePlay}
+     />
+     <MusicList
+       imageUrl="https://daprintfactory.com/cdn/shop/files/music-cds-music-covers-print-1.png?v=1690954711"
+       songName="Unwritten"
+       artistName="Natasha Bedingfield"
+       time="4:11"
+       onPlay={handlePlay}
+     />
+     
+    </div>
   );
 }
 
