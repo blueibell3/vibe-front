@@ -1,0 +1,40 @@
+@import '../../styles/colors.scss';
+
+.container {
+    display: flex;
+    background-color: $grayColor;
+    max-width: 184px;
+    flex-direction: column;
+    height: 211px;
+    padding: 20px;
+    border-radius: 16px;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+    color: $white;
+}
+
+.albom {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.describtion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+}
+
+.container:hover {
+    background-color: rgba(138, 138, 138, 0.13);
+}
+
+.year {
+    color:  #FFFFFFA3;
+}
+
+.container img {
+    border-radius: 12px;
+}
