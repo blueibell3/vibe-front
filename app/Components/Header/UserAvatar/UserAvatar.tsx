@@ -4,7 +4,6 @@ import styles from './UserAvatar.module.scss'
 import Image from 'next/image'
 
 type Props = {
-    url?: string;
     gmail: string
 }
 
@@ -22,15 +21,12 @@ export default (props: Props) => {
                         <div className={styles.userWindow} >
                             {props.gmail}
                             <div className={styles.longOut}>
-                                <img src={props.url} alt='longout button' width={24} height={24} />
+                                <img src='/longout icoon.svg' alt='long out button' width={24} height={24} />
                                 <span>Log out</span>
                             </div>
                         </div>
                     </div>
                 }
-            </div>
-            <div className={styles.burgerMenu}>
-                <img src="/menu-burger.svg" alt="burger menu" width={32} height={32} />
             </div>
         </>
     )

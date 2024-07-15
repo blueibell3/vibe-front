@@ -19,7 +19,8 @@ export default () => {
                 </div>
             </div>
             <div>
-                <UserAvatar url={longout} gmail={'G.sanikidze@gmail.com'} />
+                <UserAvatar  gmail={'G.sanikidze@gmail.com'} />
+                
             </div>
         </div>
     )
