@@ -17,7 +17,10 @@ export default (props: Props) => {
         <div className={styles.MusicListCategory}>
 
                 <div className={styles.MusicListId}>
-                    <img className={styles.MusicListimageUrl} src={props.imageUrl} alt="imageUrl" />
+                    <div className={styles.imgCenter}>
+                        <img className={styles.MusicListimageUrl} src={props.imageUrl} alt="imageUrl" />
+                        <img src="Group.svg" alt="ap"  className={styles.audioPlay}/>
+                    </div>
                     <div className={styles.MusicListText}>
                         <div className={styles.MusicListNames}>
                             <div className={styles.songName}>{props.songName}</div>

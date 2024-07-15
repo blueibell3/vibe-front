@@ -15,12 +15,6 @@
 }
 
 
-.nextPlay {
-    color: $white;
-    font-size: 16px;
-    font-weight: 500;
-}
-
 .MusicListId {
     display: flex;
     align-items: flex-start;
@@ -39,6 +33,23 @@
     height: 56px;
     border-radius: 4px 0px 0px 4px;
     background: lightgray 50% / cover no-repeat;
+}
+
+.audioPlay {
+    display: none;
+    width: 40px;
+    height: 40px;
+}
+
+.imgCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.MusicListId:hover .audioPlay {
+    display: flex;
+    position: absolute;
 }
 
 .MusicListText {
