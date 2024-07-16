@@ -1,5 +1,10 @@
-.container{
+.container {
     display: flex;
     flex-direction: column;
     gap: 12px;
+}
+
+.chartCardContainer {
+    display: flex;
+    gap: 20px;
 }

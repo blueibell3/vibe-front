@@ -6,14 +6,12 @@ import Header from "./Components/Header/Header";
 import MusicList from "./Components/MusicList/MusicList";
 import MusicCard from "./Components/MusicCard/MusicCard";
 import ArtistCard from "./Components/ArtistCard/ArtistCard";
+import ChartCard from "./Components/ ChartCard/ ChartCard";
 
 export default function home() {
 
   return (
     <div className= {styles.container}>
-      <Header/>
     </div>
-
-
   );
 }
