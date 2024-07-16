@@ -6,6 +6,7 @@ import Header from "./Components/Header/Header";
 import MusicList from "./Components/MusicList/MusicList";
 import MusicCard from "./Components/MusicCard/MusicCard";
 import ArtistCard from "./Components/ArtistCard/ArtistCard";
+import SectionHeader from "./Components/SectionHeader/SectionHeader";
 
 export default function home() {
 
