@@ -7,11 +7,42 @@ import MusicList from "./Components/MusicList/MusicList";
 import MusicCard from "./Components/MusicCard/MusicCard";
 import ArtistCard from "./Components/ArtistCard/ArtistCard";
 import ChartCard from "./Components/ ChartCard/ ChartCard";
+import AlbumCard from "./Components/AlbumCard/AlbumCard";
 
 export default function home() {
 
   return (
-    <div className= {styles.container}>
-    </div>
+    <>
+      <div className={styles.albumCardContainer}>
+     <AlbumCard
+      id= {1}
+      imageUrl= 'https://media.architecturaldigest.com/photos/5890e88033bd1de9129eab0a/1:1/w_870,h_870,c_limit/Artist-Designed%20Album%20Covers%202.jpg'
+      songName= 'dead magic'
+      artistName= 'Anna von hausswolf'
+      year='1111'
+      />
+       <AlbumCard
+      id= {2}
+      imageUrl= 'https://media.architecturaldigest.com/photos/5890e88033bd1de9129eab0a/1:1/w_870,h_870,c_limit/Artist-Designed%20Album%20Covers%202.jpg'
+      songName= 'dead magic'
+      artistName= 'Anna von hausswolf'
+      year='1111'
+      />
+       <AlbumCard
+      id= {3}
+      imageUrl= 'https://media.architecturaldigest.com/photos/5890e88033bd1de9129eab0a/1:1/w_870,h_870,c_limit/Artist-Designed%20Album%20Covers%202.jpg'
+      songName= 'dead magic'
+      artistName= 'Anna von hausswolf'
+      year='1111'
+      />
+       <AlbumCard
+      id= {4}
+      imageUrl= 'https://media.architecturaldigest.com/photos/5890e88033bd1de9129eab0a/1:1/w_870,h_870,c_limit/Artist-Designed%20Album%20Covers%202.jpg'
+      songName= 'dead magic'
+      artistName= 'Anna von hausswolf'
+      year='1111'
+      />
+     </div>
+    </>
   );
 }
