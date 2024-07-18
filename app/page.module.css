@@ -8,3 +8,8 @@
     display: flex;
     gap: 20px;
 }
+
+.albumCardContainer {
+    display: flex;
+    gap: 12px;
+}
