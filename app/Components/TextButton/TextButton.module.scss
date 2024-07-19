@@ -2,7 +2,7 @@
 
 .fill {
     display: inline-flex;
-    padding: 14px ;
+    padding: 14px;
     justify-content: center;
     align-items: center;
     border-radius: 16px;
@@ -29,7 +29,15 @@
 }
 
 @media screen and (max-width:768px) {
+
     .text {
         font-size: 14px;
+    }
+
+    .fill {
+        display: flex;
+        background-color: #0F0F0F;
+        justify-content: center;
+        align-items: center
     }
 }
