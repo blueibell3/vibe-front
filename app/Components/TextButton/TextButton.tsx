@@ -2,7 +2,7 @@ import styles from './TextButton.module.scss'
 type Props = {
     title: string;
     mode?: 'fill' | 'text';
-    width?: string;
+    // width?: string;
     backgroundColor?:string
 }
 export default (props: Props) => {
@@ -10,6 +10,6 @@ export default (props: Props) => {
     if (props.mode == 'text') classes.push(styles.text)
     else classes.push(styles.fill)
     return (
-        <button  style={{ width: `${props.width}`, backgroundColor:`${props.backgroundColor}`}} className={classes.join('').trim()}>{props.title}</button>
+        <button  style={{  backgroundColor:`${props.backgroundColor}`}} className={classes.join('').trim()}>{props.title}</button>
     )
 }

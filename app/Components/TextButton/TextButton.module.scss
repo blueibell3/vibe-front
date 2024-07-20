@@ -10,6 +10,7 @@
     cursor: pointer;
     color: $white;
     border: none;
+    width: 252px;
 }
 
 .fill:hover {
@@ -34,10 +35,13 @@
         font-size: 14px;
     }
 
+
+}
+
+@media screen and (max-width:599px) {
     .fill {
-        display: flex;
-        background-color: #0F0F0F;
-        justify-content: center;
-        align-items: center
+        width: 107px;
+        padding: 8px 12px;
+
     }
 }
