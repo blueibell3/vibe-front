@@ -1,0 +1,94 @@
+@import '../../styles/colors.scss';
+
+
+.mainDiv {
+    display: flex;
+    justify-content: center;
+    width: 466px;
+    background-color: #161616;
+}
+
+.searchContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    max-width: 434px;
+    width: 100%;
+    // border-bottom: 1px solid red;
+}
+
+.search {
+    max-width: 434px;
+    width: 100%;
+    padding: 8px 16px 8px 40px;
+    border-radius: 8px;
+    background-color: $grayColor;
+    border: none;
+    color: $white;
+    height: 40px;
+}
+
+.search:focus {
+    border-radius: 0;
+    outline: none;
+}
+
+.icon {
+    position: absolute;
+    left: 8px;
+    top: 6px;
+}
+
+.border {
+    width: 466px;
+    width: 100%;
+    position: absolute;
+    top: 40px;
+    right: 15px;
+}
+
+// .test {
+//     width: 466px;
+// }
+
+.options {
+    list-style-type: none;
+    border: 1px solid $grayColor;
+    max-height: 200px;
+    color: $white;
+}
+
+.listOptions {
+    // position: absolute;
+    // right: 1px;
+    width: 466px;
+    background-color: $grayColor;
+    border-top: 1px solid #6363633D;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    cursor: pointer;
+    color: $white;
+}
+
+.optionImage {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+}
+
+.singer {
+    border-radius: 50%;
+}
+
+.album {
+    border-radius: 4px;
+}
+
+// 
+
