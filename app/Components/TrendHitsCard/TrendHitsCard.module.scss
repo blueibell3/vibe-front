@@ -3,12 +3,12 @@
     width: 100%;
     display: flex;
     border-radius: 16px;
-    height: 299px;
+    height: 288px;
 }
 
 .wrapper {
     display: flex;
-    gap: 8px;
+    // gap: 8px;
     width: 50%;
     height: 100%;
     flex-direction: column;
@@ -20,42 +20,26 @@
     width: 50%;
     height: 100%;
     background: no-repeat center center;
-    background-size: cover;
+    background-size: contain;
 }
 
 @media screen and (min-width:711px) and (max-width:1023px) {
     .container {
-        max-width: 720px;
-        width: 100%;
-        height: 299px;
-        border-radius: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        height: 270px;
     }
 }
 
 
 @media screen and (min-width:600px) and (max-width:710px) {
     .container {
-        max-width: 720px;
-        width: 100%;
-        display: flex;
-        border-radius: 16px;
-        height: 299px;
-        justify-content: center;
-        align-items: center;
+        height: 230px;
     }
 
 }
 
 @media screen and (max-width:599px) {
     .container {
-        max-width: 328px;
-        width: 100%;
         height: 138px;
-        justify-content: center;
-        align-items: center;
     }
 
     .title {

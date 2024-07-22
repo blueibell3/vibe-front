@@ -44,7 +44,7 @@ export default () => {
                 <h2 className={styles.title}>Trend Hits</h2>
                 <h1 className={styles.year}>2024</h1>
                 <div className={styles.textButton}>
-                    <Link href={'full list'}>
+                    <Link href={'/full list'}>
                         <TextButton title={'View playlist'} backgroundColor='#00000038' />
                     </Link>
                 </div>
