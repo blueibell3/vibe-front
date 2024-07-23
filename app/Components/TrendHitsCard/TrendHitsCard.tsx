@@ -4,7 +4,7 @@ import TextButton from '../TextButton/TextButton';
 import styles from './TrendHitsCard.module.scss';
 import { useEffect, useState } from 'react';
 
-export default () => {
+const TrendHitsCard = () => {
     const backgrounds = [
         {
             id: 1,
@@ -51,9 +51,10 @@ export default () => {
             </div>
             <div className={styles.test} style={{
                 backgroundImage: backgrounds[currentIndex].backgroundImage,
-
             }}>
             </div>
         </div>
     );
 };
+
+export default TrendHitsCard
