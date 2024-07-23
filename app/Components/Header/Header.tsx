@@ -3,7 +3,7 @@ import styles from './Header.module.scss'
 import UserAvatar from './UserAvatar/UserAvatar'
 import Link from 'next/link'
 
-export default () => {
+const Header = () => {
     return (
         <div className={styles.container} >
             <div className={styles.searchLogoContainer}>
@@ -19,8 +19,9 @@ export default () => {
             </div>
             <div>
                 <UserAvatar gmail={'G.sanikidze@gmail.com'} />
-
             </div>
         </div>
     )
 }
+
+export default Header

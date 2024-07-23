@@ -7,9 +7,9 @@ type Props = {
     id?: number;
 }
 
-export default (props: Props) => {
+const ArtistCard = (props: Props) => {
     return (
-        <Link className={styles.container} href={`${props.id}`}> 
+        <Link className={styles.container} href={`${props.id}`}>
 
             <div className={styles.albom}>
                 <img src={props.url} alt="image" width={144} height={140} />
@@ -23,3 +23,5 @@ export default (props: Props) => {
         </Link>
     )
 }
+
+export default ArtistCard
