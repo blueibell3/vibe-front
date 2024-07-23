@@ -1,14 +1,12 @@
 .container {
-    max-width: 796px;
     width: 100%;
     display: flex;
     border-radius: 16px;
-    height: 288px;
+    height: 299px;
 }
 
 .wrapper {
     display: flex;
-    // gap: 8px;
     width: 50%;
     height: 100%;
     flex-direction: column;
