@@ -2,7 +2,7 @@ import Image from 'next/image'
 import styles from './Header.module.scss'
 import UserAvatar from './UserAvatar/UserAvatar'
 import Link from 'next/link'
-import SearchBar from '../SearchBar/SearchBar'
+import SearchBar from './SearchBar/SearchBar'
 
 export default () => {
     return (

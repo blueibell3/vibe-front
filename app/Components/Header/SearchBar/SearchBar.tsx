@@ -1,8 +1,8 @@
 'use client'
-
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import styles from './SearchBar.module.scss';
+import ListOptions from './ListOptions/ListOptions';
 
 const listOptions = [
     { id: 1, text: 'Harry Styles', img: '/harryStyles.svg', type: 'singer' },
@@ -10,7 +10,7 @@ const listOptions = [
     { id: 3, text: 'Still Sane', img: '/', type: 'album' },
 ];
 
-export default () => {
+const SearchBar = () => {
     const [query, setQuery] = useState('');
     const [filteredOptions, setFilteredOptions] = useState(listOptions);
 
@@ -35,26 +35,12 @@ export default () => {
                 <Image src='/search icon.svg' width={24} height={24} alt='search icon' className={styles.icon} />
                 <div className={styles.border}>
                     {filteredOptions.length > 0 && (
-                        <ul className={styles.listOptions}>
-                            {filteredOptions.map(option => (
-                                <li
-                                    key={option.id}
-                                    className={styles.option}
-                                    onClick={() => setQuery(option.text)}
-                                >
-                                    <img
-                                        src={option.img}
-                                        alt={option.text}
-                                        className={`${styles.optionImage} ${option.type === 'album' ? styles.album : styles.singer}`}
-                                    />
-                                    <span>{option.text}</span>
-                                </li>
-                            ))}
-                        </ul>
+                        <ListOptions options={filteredOptions} onOptionClick={setQuery} />
                     )}
                 </div>
             </div>
-            </div>
+        </div>
     );
 };
 
+export default SearchBar;

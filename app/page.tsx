@@ -8,14 +8,15 @@ import MusicCard from "./Components/MusicCard/MusicCard";
 import ArtistCard from "./Components/ArtistCard/ArtistCard";
 import ChartCard from "./Components/ ChartCard/ ChartCard";
 import AlbumCard from "./Components/AlbumCard/AlbumCard";
-import SearchBar from "./Components/SearchBar/SearchBar";
+import SearchBar from "./Components/Header/SearchBar/SearchBar";
 
 export default function home() {
 
   return (
     <>
       <div className={styles.container}>
-        <Header/>
+        {/* <Header/> */}
+        <SearchBar/>
       </div>
     </>
   );
