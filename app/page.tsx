@@ -12,7 +12,7 @@ export default function home() {
 
   return (
     <div className= {styles.container}>
-      <Header/>
+      <SectionHeader title={"sda"} id={"/see all"}/>
     </div>
 
 

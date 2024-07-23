@@ -3,6 +3,7 @@ type Props = {
     title: string;
     mode?: 'fill' | 'text';
     width?: string;
+    onClick?: () => void;
 }
 export default (props: Props) => {
     const classes = []

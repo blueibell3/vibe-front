@@ -2,7 +2,7 @@ import Link from "next/link"
 import TextButton from "../TextButton/TextButton"
 import styles from './SectionHeader.module.scss'
 type Props = {
-    text: string
+    title: string
     id: string
 }
 
@@ -10,14 +10,14 @@ export default (props: Props) => {
     return (
         <div className={styles.container}>
             <div className={styles.wrapper}>
+                <div className={styles.topCharts}>
+                    {props.title}
+                </div>
                 <Link href={props.id} className={styles.link}>
-                    <div className={styles.topCharts}>
-                        {props.text}
+                    <div >
+                        <TextButton mode="text" title={"See all"} />
                     </div>
                 </Link>
-                <div >
-                    <TextButton mode="text" title={"See all"} />
-                </div>
             </div>
         </div>
     )
