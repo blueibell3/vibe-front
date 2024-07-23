@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import styles from './NavBarMobile.module.scss';
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 
 
@@ -35,21 +36,17 @@ const mobilelinkData = [
 ]
 
 
-export default () => {
-    const [isClicked, setIsClicked] = useState('/')
+const  NavBarMobile = () => {     
 
-    const handleClick = (href: React.SetStateAction<string>) => {         
-        setIsClicked(href)
-    }        
-
+    const pathname = usePathname()
 
     return (
         <>
             <div className={styles.mobileNavBar}>
-            {mobilelinkData.map((category, index) => (
-                <Link key={index} onClick={() => handleClick(category.href)} className={styles.mobileNavLinks} href={category.href}>
-                    <img className={styles.mobileNavImg} src={isClicked === category.href ?  category.srcB : category.src} />
-                    <span className={`${isClicked === category.href  ? styles.activeClasses : styles.mobileNavText}`}>{category.text}</span>
+            {mobilelinkData.map(category => (
+                <Link  onClick={() => pathname === category.href} className={styles.mobileNavLinks} href={category.href}>
+                    <img className={styles.mobileNavImg} src={pathname === category.href ?  category.srcB : category.src} />
+                    <span className={`${pathname === category.href  ? styles.activeClasses : styles.mobileNavText}`}>{category.text}</span>
                 </Link>
             ))}
             </div>
@@ -57,3 +54,5 @@ export default () => {
     )
 
 }    
+
+export default NavBarMobile

@@ -5,7 +5,7 @@ import Link from 'next/link';
 import NavBarMenu from '../NavBarMenu/NavBarMenu';
 
 
-export default () => {
+const BurgerMenu = () =>{
 
     const [menuClicked, setMenuClicked] = useState(false);
 
@@ -16,7 +16,7 @@ export default () => {
 
     return (
         <>
-            <nav  className={styles.menuNav}>
+            <div  className={styles.menuNav}>
               <img onClick={onClick} className={styles.burgerClass} src="burgericon.svg" alt="burger icon"  />
 
                 {
@@ -27,7 +27,9 @@ export default () => {
                         <NavBarMenu />
                     </div>
                 }
-            </nav>
+            </div>
         </>
     )
 }
+
+export default BurgerMenu

@@ -33,7 +33,7 @@ const desktoplinkData = [
     },
 ]
 
-export default () => {
+const NavBarMenu = () => {
 
     const pathname = usePathname()
     
@@ -55,3 +55,5 @@ export default () => {
         </>
     )
 }
+
+export default NavBarMenu
