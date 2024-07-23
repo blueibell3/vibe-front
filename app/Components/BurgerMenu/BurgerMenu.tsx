@@ -17,12 +17,13 @@ export default () => {
     return (
         <>
             <nav  className={styles.menuNav}>
-              <img onClick={onClick} className={styles.burgerClass} src="burgericon.svg" alt="burger icon" />
+              <img onClick={onClick} className={styles.burgerClass} src="burgericon.svg" alt="burger icon"  />
 
                 {
                     menuClicked &&
                     <div className={styles.burgerMenu}>
-                        <img className={styles.burgerMenuImg} onClick={onClick} src="burgericon.svg" alt="icon" />
+                        <img className={styles.burgerMenuImg}  onClick={onClick}  src="burgericon.svg" alt="icon"  />
+                       
                         <NavBarMenu />
                     </div>
                 }

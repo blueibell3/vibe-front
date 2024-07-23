@@ -42,8 +42,6 @@
     .mobileNavBarContainer {
        display: flex;
        flex-direction: column;
-       height: 1529px;
-       justify-content: flex-end;
     }
     .headerContainer{
         display: none;

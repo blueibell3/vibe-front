@@ -4,11 +4,12 @@
     display: flex;
     justify-content: space-around;
     background: $darkColor;
+    height: 64px;
+    align-items: center;
 }
 
 .mobileNavList {
     display: flex;
-    height: 64px;
     padding: 10px 15px;
     align-items: flex-start;
     gap: 10px;
@@ -16,14 +17,19 @@
 
 .mobileNavComponent {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    gap: 40px;
+}
+
+.activeClasses{
+    color: $primayColor;
+    font-size: 12px;
 }
 
 .mobileNavText {
     font-size: 12px;
     color: $white;
     font-weight: 500;
+    text-decoration: none;
 }
 
 .mobileNavLinks {
@@ -33,12 +39,4 @@
     text-decoration: none;
 }
 
-@media screen and (max-width:768px)  {
-    .mobileNavText:hover{
-        color: $primayColor;
-    } 
-    .mobileNavImg:hover {
-        color: $primayColor;
-    }
-    
-}
+@media screen and (max-width:768px) {}

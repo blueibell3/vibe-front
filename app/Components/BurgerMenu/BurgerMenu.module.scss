@@ -2,10 +2,10 @@
 
 .menuNav {
     display: flex;
-    align-content: flex-end;
     justify-content: flex-end;
     position: relative;
     bottom: 55px;
+    align-items: center;
 }
 
 
@@ -14,14 +14,6 @@
     display: none;
     position: relative;
     right: 24px;
-}
-
-
-@media screen and (max-width:1023px) and (min-width:768px) {
-    .burgerClass {
-        display: flex;
-
-    }
 }
 
 .burgerMenu {
@@ -33,7 +25,9 @@
     background: $darkColor;
 }
 
-.burgerMenuImg {
-        position: relative;
-        left: 24px;
+@media screen and (max-width:1023px) and (min-width:768px) {
+    .burgerClass {
+        display: flex;
+    }
+
 }
