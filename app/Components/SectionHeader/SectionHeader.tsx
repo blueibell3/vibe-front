@@ -6,7 +6,7 @@ type Props = {
     id: string
 }
 
-export default (props: Props) => {
+const SectionHeader = (props: Props) => {
     return (
         <div className={styles.container}>
             <div className={styles.wrapper}>
@@ -22,3 +22,5 @@ export default (props: Props) => {
         </div>
     )
 }
+
+export default SectionHeader
