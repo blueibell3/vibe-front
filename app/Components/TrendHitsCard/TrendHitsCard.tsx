@@ -45,7 +45,7 @@ const TrendHitsCard = () => {
                 <h1 className={styles.year}>2024</h1>
                 <div className={styles.textButton}>
                     <Link href={'/full list'}>
-                        <TextButton title={'View playlist'} backgroundColor='#00000038' />
+                        <TextButton title={'View playlist'}  />
                     </Link>
                 </div>
             </div>
