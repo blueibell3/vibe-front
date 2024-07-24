@@ -1,26 +1,14 @@
 @import '../../../styles/colors.scss';
 
-
-.maindiv {
-    display: flex;
-    justify-content: center;
-    max-width: 466px;
-    width: 100%;
-    background-color: #161616;
-    border-radius: 8px;
-}
-
 .searchContainer {
     position: relative;
     display: flex;
-    flex-direction: column;
-    max-width: 434px;
     width: 100%;
-    // border-bottom: 1px solid red;
+    background-color: $grayColor;
+    border-radius: 8px;
 }
 
 .search {
-    max-width: 434px;
     width: 100%;
     padding: 8px 16px 8px 40px;
     border-radius: 8px;
@@ -31,8 +19,9 @@
     outline: none;
 }
 
-.maindiv:focus {
-    border-radius: 0;
+.search:focus {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
 }
 
 .icon {
@@ -42,16 +31,12 @@
 }
 
 .border {
-    width: 466px;
     width: 100%;
     position: absolute;
     top: 40px;
-    right: 15px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
 }
-
-// .test {
-//     width: 466px;
-// }
 
 .options {
     list-style-type: none;
@@ -60,28 +45,10 @@
     color: $white;
 }
 
-.listOptions {
-    // position: absolute;
-    // right: 1px;
-    width: 466px;
-    background-color: $grayColor;
-    border-top: 1px solid #6363633D;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-}
-
-.option {
-    display: flex;
-    align-items: center;
-    padding: 8px 16px;
-    cursor: pointer;
-    color: $white;
-}
 
 .optionImage {
     width: 24px;
     height: 24px;
-    margin-right: 8px;
 }
 
 .singer {
@@ -91,5 +58,3 @@
 .album {
     border-radius: 4px;
 }
-
-// 

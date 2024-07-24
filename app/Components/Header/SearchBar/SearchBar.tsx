@@ -22,21 +22,19 @@ const SearchBar = () => {
     }, [query]);
 
     return (
-        <div className={styles.mainDiv}>
-            <div className={styles.searchContainer}>
-                <input
-                    className={styles.search}
-                    type='search'
-                    placeholder='Search'
-                    value={query}
-                    onChange={(e) => setQuery(e.target.value)}
-                />
-                <Image src='/search icon.svg' width={24} height={24} alt='search icon' className={styles.icon} />
-                <div className={styles.border}>
-                    {filteredOptions.length > 0 && (
-                        <ListOptions options={filteredOptions} onOptionClick={setQuery} />
-                    )}
-                </div>
+        <div className={styles.searchContainer}>
+            <input
+                className={styles.search}
+                type='text'
+                placeholder='Search...'
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+            />
+            <Image src='/search icon.svg' width={24} height={24} alt='search icon' className={styles.icon} />
+            <div className={styles.border}>
+                {filteredOptions.length > 0 && (
+                    <ListOptions options={filteredOptions} onOptionClick={setQuery} />
+                )}
             </div>
         </div>
     );
