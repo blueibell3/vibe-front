@@ -1,11 +1,13 @@
 @import '../../../styles/colors.scss';
 
 
-.mainDiv {
+.maindiv {
     display: flex;
     justify-content: center;
-    width: 466px;
+    max-width: 466px;
+    width: 100%;
     background-color: #161616;
+    border-radius: 8px;
 }
 
 .searchContainer {
@@ -26,11 +28,11 @@
     border: none;
     color: $white;
     height: 40px;
+    outline: none;
 }
 
-.search:focus {
+.maindiv:focus {
     border-radius: 0;
-    outline: none;
 }
 
 .icon {
@@ -91,4 +93,3 @@
 }
 
 // 
-

@@ -11,8 +11,7 @@ interface ListOptionsProps {
     options: Props[];
     onOptionClick: (text: string) => void;
 }
-
-function ListOptions({ options, onOptionClick }: ListOptionsProps) {
+const ListOptions = ({ options, onOptionClick }: ListOptionsProps) => {
     return (
         <ul className={styles.listOptions}>
             {options.map(option => (

@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import styles from './SearchBar.module.scss';
 import ListOptions from './ListOptions/ListOptions';
-
 const listOptions = [
     { id: 1, text: 'Harry Styles', img: '/harryStyles.svg', type: 'singer' },
     { id: 2, text: 'Havana', img: '/havana.svg', type: 'album' },
