@@ -1,4 +1,3 @@
-import Link from "next/link"
 import TextButton from "../TextButton/TextButton"
 import styles from './SectionHeader.module.scss'
 type Props = {
@@ -13,11 +12,9 @@ const SectionHeader = (props: Props) => {
                 <div className={styles.topCharts}>
                     {props.title}
                 </div>
-                <Link href={props.id} className={styles.link}>
                     <div >
                         <TextButton mode="text" title={"See all"} />
                     </div>
-                </Link>
             </div>
         </div>
     )
