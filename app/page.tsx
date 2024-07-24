@@ -8,12 +8,16 @@ import MusicCard from "./Components/MusicCard/MusicCard";
 import ArtistCard from "./Components/ArtistCard/ArtistCard";
 import ChartCard from "./Components/ ChartCard/ ChartCard";
 import AlbumCard from "./Components/AlbumCard/AlbumCard";
+import NavBarMenu from "./Components/NavBarMenu/NavBarMenu";
+import BurgerMenu from "./Components/BurgerMenu/BurgerMenu";
+import MobileNavBar from "./Components/NavBarMobile/NavBarMobile";
+import { useState } from 'react';
+
 
 export default function home() {
 
   return (
     <>
-    
     </>
   );
 }

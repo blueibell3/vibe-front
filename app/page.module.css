@@ -13,3 +13,37 @@
     display: flex;
     gap: 12px;
 }
+
+@media screen and (min-width:1023px) {
+    .mobileNavBarContainer {
+        display: none;
+    }
+}
+
+@media screen and (max-width:1023px) and (min-width:768px) {
+    .navMenuContainer {
+        display: none;
+    }
+
+    .mobileNavBarContainer {
+        display: none;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .navBarContainer {
+        display: none;
+    }
+
+    .navMenuContainer {
+        display: none;
+    }
+
+    .mobileNavBarContainer {
+       display: flex;
+       flex-direction: column;
+    }
+    .headerContainer{
+        display: none;
+    }
+}
