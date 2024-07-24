@@ -4,7 +4,7 @@ type Props = {
     mode?: 'fill' | 'text';
     width?: string;
 }
-export default (props: Props) => {
+const TextButton = (props: Props) => {
     const classes = []
     if (props.mode == 'text') classes.push(styles.text)
     else classes.push(styles.fill)
@@ -12,3 +12,4 @@ export default (props: Props) => {
         <button style={{ width: `${props.width}` }} className={classes.join('').trim()}>{props.title}</button>
     )
 }
+export default TextButton

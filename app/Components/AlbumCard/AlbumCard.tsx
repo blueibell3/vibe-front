@@ -10,7 +10,7 @@ type Props = {
   year: string;
 }
 
-export default (props: Props) => {
+const AlbumCard = (props: Props) => {
   return (
     <Link className={styles.albumCardLink} href={`${props.id}`}>
       <div className={styles.container}>
@@ -28,3 +28,5 @@ export default (props: Props) => {
     </Link>
   )
 }
+
+export default AlbumCard
