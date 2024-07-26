@@ -12,7 +12,7 @@ export default function home() {
 
   return (
     <div className= {styles.container}>
-      <SectionHeader title={"sda"} id={"/see all"}/>
+      <SectionHeader title={"Top hits"} pathName={`/albums/1`}/>
     </div>
 
 

@@ -1,11 +1,18 @@
+'use client'
 import TextButton from "../TextButton/TextButton"
 import styles from './SectionHeader.module.scss'
+import { useRouter } from "next/navigation"
 type Props = {
     title: string
-    id: string
+    pathName: string
 }
 
 const SectionHeader = (props: Props) => {
+    const router = useRouter()
+   
+    const handleClick = () => {
+        router.push(props.pathName)
+    }
     return (
         <div className={styles.container}>
             <div className={styles.wrapper}>
@@ -13,7 +20,7 @@ const SectionHeader = (props: Props) => {
                     {props.title}
                 </div>
                     <div >
-                        <TextButton mode="text" title={"See all"} />
+                        <TextButton onClick={handleClick} mode="text" title={"See all"} />
                     </div>
             </div>
         </div>
