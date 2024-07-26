@@ -12,7 +12,7 @@ export default function home() {
 
   return (
     <div className={styles.container}>
-      <TrendHitsCard  />
+      <TrendHitsCard pathName={"/full playlist"}  />
     </div>
 
 

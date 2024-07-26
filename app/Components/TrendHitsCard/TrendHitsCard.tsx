@@ -1,9 +1,19 @@
 'use client'
+import { useRouter } from 'next/navigation';
 import TextButton from '../TextButton/TextButton';
 import styles from './TrendHitsCard.module.scss';
 import { useEffect, useState } from 'react';
 
-const TrendHitsCard = () => {
+type Props = {
+    pathName: string
+}
+
+const TrendHitsCard = (props: Props) => {
+    const router = useRouter()
+    const handleClick = () => {
+        router.push(props.pathName)
+    }
+
     const backgrounds = [
         {
             id: 1,
@@ -43,7 +53,7 @@ const TrendHitsCard = () => {
                 <h2 className={styles.title}>Trend Hits</h2>
                 <h1 className={styles.year}>2024</h1>
                 <div className={styles.textButton}>
-                    <TextButton title={'View playlist'} mode='fill' onClick={ } />
+                    <TextButton title={'View playlist'} mode='fill' onClick={handleClick} />
                 </div>
             </div>
             <div className={styles.test} style={{
