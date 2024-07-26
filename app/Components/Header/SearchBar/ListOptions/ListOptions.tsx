@@ -30,6 +30,6 @@ const ListOptions = ({ options, onOptionClick }: ListOptionsProps) => {
             ))}
         </ul>
     );
-}
+}   
 
 export default ListOptions;

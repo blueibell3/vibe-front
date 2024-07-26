@@ -12,11 +12,11 @@ export default () => {
                     <Link href='/'>
                         <Image src='/logo.svg' alt='logo' width={91} height={39} />
                     </Link>
-                    {/* <div className={styles.searchContainer}> */}
-                    <SearchBar />
+                    <div className={styles.searchContainer}>
+                        <SearchBar />
+                    </div>
                     {/* <input className={styles.search} type='text' placeholder='Search' /> */}
                     {/* <Image src='/search icon.svg' width={24} height={24} alt='search icon' className={styles.icon} /> */}
-                    {/* </div> */}
                 </div>
             </div>
             <div>

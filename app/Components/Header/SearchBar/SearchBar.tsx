@@ -19,7 +19,7 @@ const SearchBar = () => {
                 option.text.toLowerCase().includes(query.toLowerCase())
             ) : []
         );
-    }, [query]);
+    }, [query])
 
     return (
         <div className={styles.searchContainer}>

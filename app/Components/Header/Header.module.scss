@@ -1,6 +1,5 @@
 @import '../../styles/colors.scss';
 
-
 .container {
     display: flex;
     width: 100%;
@@ -42,6 +41,7 @@
 .searchContainer {
     display: flex;
     position: relative;
+    width: 65%;
 }
 
 .icon {

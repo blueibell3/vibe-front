@@ -1,9 +1,9 @@
-.container {
+/* .container {
     display: flex;
     flex-direction: column;
     /* gap: 12px; */
-    align-items: center;
-}
+    /* align-items: center; */
+/* } */ 
 
 .chartCardContainer {
     display: flex;

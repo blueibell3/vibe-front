@@ -15,8 +15,8 @@ export default function home() {
   return (
     <>
       <div className={styles.container}>
-        {/* <Header/> */}
-        <SearchBar/>
+        <Header/>
+        {/* <SearchBar/> */}
       </div>
     </>
   );
