@@ -1,5 +1,4 @@
 'use client'
-import Link from 'next/link';
 import TextButton from '../TextButton/TextButton';
 import styles from './TrendHitsCard.module.scss';
 import { useEffect, useState } from 'react';
@@ -44,9 +43,7 @@ const TrendHitsCard = () => {
                 <h2 className={styles.title}>Trend Hits</h2>
                 <h1 className={styles.year}>2024</h1>
                 <div className={styles.textButton}>
-                    <Link href={'/full list'}>
-                        <TextButton title={'View playlist'}  />
-                    </Link>
+                    <TextButton title={'View playlist'} mode='fill' onClick={ } />
                 </div>
             </div>
             <div className={styles.test} style={{
