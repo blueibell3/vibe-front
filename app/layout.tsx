@@ -6,8 +6,6 @@ import NavBarMenu from "./Components/NavBarMenu/NavBarMenu";
 import Header from "./Components/Header/Header";
 import BurgerMenu from "./Components/BurgerMenu/BurgerMenu";
 import MobileNavBar from "./Components/NavBarMobile/NavBarMobile";
-import { RecoilRoot } from "recoil";
-import RecoilWrapper from "./Components/RecoilWrapper/RecoilWrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        {/* <div className={styles.headerContainer}>
+        <div className={styles.headerContainer}>
           <Header />
         </div>
         <div className={styles.navMenuContainer}>
@@ -35,8 +33,7 @@ export default function RootLayout({
         </div>
         <div className={styles.mobileNavBarContainer}>
           <MobileNavBar />
-        </div> */}
-        <RecoilWrapper>
+        </div>
         {children}
         </RecoilWrapper>
       </body>
