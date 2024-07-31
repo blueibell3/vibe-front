@@ -12,12 +12,14 @@ import NavBarMenu from "./Components/NavBarMenu/NavBarMenu";
 import BurgerMenu from "./Components/BurgerMenu/BurgerMenu";
 import MobileNavBar from "./Components/NavBarMobile/NavBarMobile";
 import { useState } from 'react';
+import PlayerController from "./Components/PlayerController/PlayerController";
 
 
 export default function home() {
 
   return (
     <>
+      <PlayerController  />
     </>
   );
 }
