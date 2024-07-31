@@ -4,7 +4,7 @@ import UserAvatar from './UserAvatar/UserAvatar'
 import Link from 'next/link'
 import SearchBar from './SearchBar/SearchBar'
 
-export default () => {
+const Header = () => {
     return (
         <div className={styles.container} >
             <div className={styles.searchLogoContainer}>
@@ -25,3 +25,5 @@ export default () => {
         </div>
     )
 }
+
+export default Header

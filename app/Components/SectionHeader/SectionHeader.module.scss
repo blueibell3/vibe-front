@@ -1,0 +1,29 @@
+@import '../../styles/colors.scss';
+
+.container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    background-color: $grayColor;
+}
+
+.wrapper {
+    display: flex;
+    max-width: 795px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topCharts {
+    display: flex;
+    color: $white;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.link {
+    text-decoration: none;
+}
