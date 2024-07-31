@@ -7,7 +7,7 @@ type Props = {
     gmail: string
 }
 
-export default (props: Props) => {
+const UserAvatar = (props: Props) => {
     const [userIn, setUserIn] = useState(false)
     const onClick = () => {
         setUserIn(!userIn)
@@ -31,3 +31,5 @@ export default (props: Props) => {
         </>
     )
 }
+
+export default UserAvatar

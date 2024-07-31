@@ -5,7 +5,7 @@ type Props = {
     width?: string;
     onClick?: () => void;
 }
-export default (props: Props) => {
+const TextButton = (props: Props) => {
     const classes = []
     if (props.mode == 'text') classes.push(styles.text)
     else classes.push(styles.fill)
