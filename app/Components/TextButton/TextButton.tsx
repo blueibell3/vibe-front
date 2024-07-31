@@ -13,3 +13,4 @@ const TextButton = (props: Props) => {
         <button onClick={props.onClick} style={{ width: `${props.width}` }} className={classes.join('').trim()}>{props.title}</button>
     )
 }
+export default TextButton
