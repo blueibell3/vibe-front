@@ -12,18 +12,14 @@ type Props = {
 
 const AlbumCard = (props: Props) => {
   return (
-    <Link className={styles.albumCardLink} href={`${props.id}`}>
-      <div className={styles.container}>
-        <div className={styles.albumCard}>
-          <img className={styles.image} src={props.imageUrl} alt="image" />
-          <div className={styles.albumCardText}>
-            <div className={styles.title}>
-              <span className={styles.songName}>{props.songName}</span>
-              <span className={styles.year}>{props.year}</span>
-            </div>
-            <span className={styles.artistName}>{props.artistName}</span>
-          </div>
+    <Link className={styles.albumCard} href={`/album/${props.id}`}>
+      <img className={styles.image} src={props.imageUrl} alt="image" />
+      <div className={styles.albumCardText}>
+        <div className={styles.title}>
+          <span className={styles.songName}>{props.songName}</span>
+          <span className={styles.year}>{props.year}</span>
         </div>
+        <span className={styles.artistName}>{props.artistName}</span>
       </div>
     </Link>
   )

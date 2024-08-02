@@ -44,6 +44,9 @@ body {
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  background-color: black;
+  background: var(--Color, #121212);
 }
 
+:link{
+  text-decoration: none;
+}

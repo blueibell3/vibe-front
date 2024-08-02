@@ -36,20 +36,20 @@ const desktoplinkData = [
 const NavBarMenu = () => {
 
     const pathname = usePathname()
-    
+
     return (
         <>
             <nav className={styles.navBarContainer}>
                 <ul className={styles.navBarC}>
-                {desktoplinkData.map(category => (
-                <Link className={`${pathname === category.key ? styles.activeClasses : styles.barClass}`} href={category.href}>
-                    <li className={styles.menuList}>
-                        <img className={styles.menuListImg} src={category.src} />
-                        <div className={styles.menuItem}>{category.text}</div>
-                    </li>
-                </Link>
-            ))}
-                  
+                    {desktoplinkData.map(category => (
+                        <Link className={`${pathname === category.key ? styles.activeClasses : styles.barClass}`} href={category.href}>
+                            <li className={styles.menuList}>
+                                <img className={styles.menuListImg} src={category.src} />
+                                <div className={styles.menuItem}>{category.text}</div>
+                            </li>
+                        </Link>
+                    ))}
+
                 </ul>
             </nav>
         </>
