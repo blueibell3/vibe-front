@@ -56,3 +56,7 @@ export const currentTimeState = atom<number>({
   default: 0,
 });
 
+export const isFullscreenState = atom<boolean>({
+  key: 'isFullscreenState',
+  default: false,
+});
