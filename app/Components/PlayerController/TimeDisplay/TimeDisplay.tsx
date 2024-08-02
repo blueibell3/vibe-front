@@ -57,19 +57,24 @@ const TimeDisplay: React.FC<TimeDisplayProps> = ({ currentTime, duration, onTime
     }, [isDragging]);
 
     return (
-        <div className={styles.timeDisplay}>
-            <span>{formatTime(currentTime)}</span>
-            <div className={styles.progressContainer} ref={progressRef} onMouseDown={handleMouseDown}>
-                <div className={styles.progressBar}>
-                    <div className={styles.progress} style={{ width: `${(currentTime / duration) * 100}%` }} />
-                    <div
-                        className={styles.thumb}
-                        style={{ left: `${(currentTime / duration) * 100}%` }}
-                    />
+        <>
+            <div className={styles.timeDisplay}>
+                <div className={styles.progressContainer} ref={progressRef} onMouseDown={handleMouseDown}>
+                    <div className={styles.progressBar}>
+                        <div className={styles.progress} style={{ width: `${(currentTime / duration) * 100}%` }} />
+                        <div
+                            className={styles.thumb}
+                            style={{ left: `${(currentTime / duration) * 100}%` }}
+                            onMouseDown={handleMouseDown} />
+                    </div>
                 </div>
             </div>
-            <span>{formatTime(duration)}</span>
-        </div>
+            <div className={styles.timer}>
+                <span>{formatTime(currentTime)}</span>
+                <span>{formatTime(duration)}</span>
+            </div>
+        </>
+
     );
 };
 

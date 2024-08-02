@@ -13,7 +13,7 @@
     height: 283px;
     display: flex;
     padding: 24px;
-    gap: 12px;
+    gap: 3px;
     border-radius: 0px 0px 12px 12px;
     background: var(--background, #0F0F0F);
     flex-direction: column;
@@ -23,7 +23,7 @@
 
 .functionality {
     display: flex;
-    gap: 6px;
+    gap: 8px;
     align-items: center;
     justify-content: center;
 }

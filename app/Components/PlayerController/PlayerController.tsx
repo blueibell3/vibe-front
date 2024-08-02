@@ -114,6 +114,7 @@ const PlayerController: React.FC = () => {
                         <div className={styles.trackName}>{currentTrack.name}</div>
                     </div>
                 </div>
+                <TimeDisplay currentTime={currentTime} duration={duration} onTimeUpdate={handleTimeUpdate} />
                 <div className={styles.functionality}>
                 <div className={styles.volume}>
                     <VolumeControl />
@@ -125,7 +126,6 @@ const PlayerController: React.FC = () => {
                     <NextButton onClick={handleNext} />
                     <ShuffleButton />
                 </div>
-                <TimeDisplay currentTime={currentTime} duration={duration} onTimeUpdate={handleTimeUpdate} />
             </div>
         </div>
     );
