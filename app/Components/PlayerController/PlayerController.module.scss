@@ -23,8 +23,17 @@
 
 .functionality {
     display: flex;
-    gap: 20px;
+    gap: 6px;
     align-items: center;
     justify-content: center;
 }
 
+.trackDetails {
+    display: flex;
+    font-size: 16px;
+} 
+
+.trackPhoto {
+    width: 230px;
+    height: 136px;
+}

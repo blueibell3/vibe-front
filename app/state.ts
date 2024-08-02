@@ -11,18 +11,24 @@ export const playlistState = atom<Track[]>({
   key: 'playlistState',
   default: [
     {
-      artist: 'Imagine Dragons',
-      name: 'Believer',
-      photo: '/photos/believer.jpg',
+      artist: 'Imagine dragons',
+      name: '- Believer',
+      photo: '/believer.svg',
       url: '/music/ImagineDragonsBeliever.mp3'
     },
     {
-      artist: 'katana',
-      name: 'Song 2',
-      photo: '/photos/song2.jpg',
+      artist: 'katana ',
+      name: '- help me',
+      photo: '/katana.jpg',
       url: '/music/MichaelKatanaHelpMe.mp3'
     },
-  ], 
+    {
+      artist: 'kaxidze',
+      name: '- watermelon',
+      photo: '/jansulKaxize.jpg',
+      url: '/music/WatermelonJansulKaxidze.mp3'
+    },
+  ],
 });
 
 export const currentTrackIndexState = atom<number>({
@@ -43,4 +49,9 @@ export const isPlayingState = atom<boolean>({
 export const isShufflingState = atom<boolean>({
   key: 'isShufflingState',
   default: false,
+});
+
+export const currentTimeState = atom<number>({
+  key: 'currentTimeState',
+  default: 0,
 });
