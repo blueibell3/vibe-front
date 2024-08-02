@@ -9,8 +9,8 @@
 
 
 .wrapper {
-    width: 278px;
-    height: 283px;
+    max-width: 278px;
+    width: 100%;
     display: flex;
     padding: 24px;
     gap: 3px;

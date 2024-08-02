@@ -21,7 +21,7 @@
     border-radius: 4px;
     position: relative;
     cursor: pointer;
-    &:hover .thumb {
+    & .thumb {
         opacity: 1;
     }
 }
