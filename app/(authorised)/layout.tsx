@@ -7,6 +7,7 @@ import styles from "./layout.module.css";
 import { ReactNode } from "react";
 import TopAlbumsPage from "./topalbums/page";
 import TopAlbums from "../Components/TopAlbums/TopAlbums";
+import MusicList from "../Components/MusicList/MusicList";
 
 type Props = {
   children: ReactNode
