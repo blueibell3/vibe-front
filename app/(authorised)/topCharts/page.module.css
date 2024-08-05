@@ -1,0 +1,11 @@
+.TopChartsPageM {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+}
+
+.topChartsText{
+    font-size: 20px;
+    font-weight: 500;
+    padding: 10px;
+}
