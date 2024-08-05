@@ -1,0 +1,69 @@
+.fullscreenContainer {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: url(../../../../public/background/backImageFullScreeen.jpg) ;
+    background-position: center bottom -100px;
+    background-size: cover;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fullscreenWrapper {
+    width: 743px;
+    height: 634.42px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 40px;
+}
+
+.trackInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.trackPhoto {
+    width: 344.42px;
+    height: 344.42px;
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.shuffle {
+    display: flex;
+    justify-content: flex-end;
+    width: 80%;
+}
+
+.timeDisplay {
+    width: 80%;
+}
+
+.trackDetails {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.functionality {
+    // margin-top: 40px;
+    display: flex;
+    gap: 16px;
+}
+
+.volume {
+    margin-bottom: 20px;
+    width: 60%;
+}

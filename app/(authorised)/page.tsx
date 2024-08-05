@@ -1,3 +1,4 @@
+import FullscreenPlayer from '../Components/PlayerController/FullscreenPlayer/FullscreenPlayer';
 import PlayerController from '../Components/PlayerController/PlayerController';
 import styles from './page.module.css';
 
@@ -6,6 +7,7 @@ export default function Home() {
 
     <div>
       <PlayerController/>
+      {/* <FullscreenPlayer/> */}
     </div>
   );
 }

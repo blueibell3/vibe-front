@@ -7,13 +7,13 @@ import styles from "./layout.module.css";
 import { ReactNode } from "react";
 
 type Props = {
-  children:ReactNode
+  children: ReactNode
 }
 
-const AuthLayout = (props:Props) => {
+const AuthLayout = (props: Props) => {
   return (
-      <div>
-        {/* <div className={styles.headerContainer}>
+    <div>
+      {/* <div className={styles.headerContainer}>
           <Header />
         </div>
         <div className={styles.navMenuContainer}>
@@ -25,8 +25,8 @@ const AuthLayout = (props:Props) => {
         <div className={styles.mobileNavBarContainer}>
           <NavBarMobile/>
         </div> */}
-           {props.children}
-        </div>
+      {props.children}
+    </div>
 
   )
 };

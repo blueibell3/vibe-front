@@ -8,7 +8,7 @@
 
 .sliderContainer {
     display: flex;
-    width: 30px;
+    width: 100%;
     flex: 1;
     height: 4px;
     background-color: #292929;
@@ -29,6 +29,7 @@
 }
 
 .slider {
+    width: 100%;
     height: 100%;
     background-color: $primayColor;
     border-radius: 2px;

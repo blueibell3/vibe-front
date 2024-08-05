@@ -31,9 +31,17 @@
 .trackDetails {
     display: flex;
     font-size: 16px;
-} 
+}
 
 .trackPhoto {
     width: 230px;
     height: 136px;
+}
+
+.volume {
+    width: 50px;
+}
+
+.trackPhoto {
+    cursor: pointer;
 }
