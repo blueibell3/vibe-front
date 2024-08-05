@@ -2,7 +2,7 @@ import React from 'react';
 import AlbumCard from "../AlbumCard/AlbumCard";
 import styles from "./TopAlbums.module.scss";
 
-const Albums = () => {
+const TopAlbums = () => {
     const albumData = [
         {
             id: 1,
@@ -81,5 +81,5 @@ const Albums = () => {
     );
 }
 
-export default Albums;
+export default TopAlbums;
 
