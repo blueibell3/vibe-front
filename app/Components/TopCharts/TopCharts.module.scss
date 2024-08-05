@@ -1,0 +1,19 @@
+.chartCardContainer{
+    display: grid;
+    width: 100%;
+    grid-gap: 12px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+@media screen and (max-width:768px) {
+    .chartCardContainer {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+@media screen and (min-width:1920px) {
+    .chartCardContainer {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+}
