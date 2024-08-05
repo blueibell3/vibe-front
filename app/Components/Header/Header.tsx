@@ -15,8 +15,6 @@ const Header = () => {
                     <div className={styles.searchContainer}>
                         <SearchBar />
                     </div>
-                    {/* <input className={styles.search} type='text' placeholder='Search' /> */}
-                    {/* <Image src='/search icon.svg' width={24} height={24} alt='search icon' className={styles.icon} /> */}
                 </div>
             </div>
             <div>
