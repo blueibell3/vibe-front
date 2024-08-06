@@ -1,13 +1,13 @@
 'use client';
 import React from 'react';
 
-interface RewindButtonProps {
+type Props = {
   onClick: () => void;
 }
 
-const RewindButton: React.FC<RewindButtonProps> = ({ onClick }) => {
+const RewindButton = (props: Props) => {
   return (
-    <button onClick={onClick}>
+    <button onClick={props.onClick}>
       <img src="/icons/scrollBack.svg" alt="Rewind" />
     </button>
   );

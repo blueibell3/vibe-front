@@ -13,7 +13,7 @@ export const playlistState = atom<Track[]>({
     {
       artist: 'Imagine dragons',
       name: '- Believer',
-      photo: '/believer.svg',
+      photo: '/background/backImageFullScreeen.jpg',
       url: '/music/ImagineDragonsBeliever.mp3'
     },
     {
@@ -58,5 +58,10 @@ export const currentTimeState = atom<number>({
 
 export const isFullscreenState = atom<boolean>({
   key: 'isFullscreenState',
+  default: false,
+});
+
+export const tabletFullscreenState = atom<boolean>({
+  key: 'tabletFullscreenState',
   default: false,
 });

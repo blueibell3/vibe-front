@@ -4,7 +4,7 @@ import { useRecoilState } from 'recoil';
 import { volumeState } from '@/app/state';
 import styles from './VolumeControl.module.scss';
 
-const VolumeControl: React.FC = () => {
+const VolumeControl = () => {
     const [volume, setVolume] = useRecoilState(volumeState);
     const sliderRef = useRef<HTMLDivElement | null>(null);
 
@@ -23,7 +23,7 @@ const VolumeControl: React.FC = () => {
 
     return (
         <div className={styles.volumeControl}>
-             <button onClick={() => adjustVolume(10)} className={styles.button}>
+            <button onClick={() => adjustVolume(10)} className={styles.button}>
                 <img src="/icons/volumeUp.svg" alt="Increase Volume" className={styles.icon} />
             </button>
             {/* <button onClick={() => adjustVolume(-10)} className={styles.button}>
@@ -33,7 +33,6 @@ const VolumeControl: React.FC = () => {
                 <div className={styles.slider} style={{ width: `${volume}%` }} />
                 <div className={styles.thumb} style={{ left: `${volume}%` }} />
             </div>
-          
         </div>
     );
 };

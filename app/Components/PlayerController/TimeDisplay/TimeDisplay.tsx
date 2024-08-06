@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import styles from './TimeDisplay.module.scss';
 
-interface TimeDisplayProps {
+type Props = {
     currentTime: number;
     duration: number;
     onTimeUpdate: (time: number) => void;
@@ -13,7 +13,7 @@ const formatTime = (time: number) => {
     return `${minutes}:${seconds}`;
 };
 
-const TimeDisplay: React.FC<TimeDisplayProps> = ({ currentTime, duration, onTimeUpdate }) => {
+const TimeDisplay = (props: Props) => {
     const progressRef = useRef<HTMLDivElement | null>(null);
     const [isDragging, setIsDragging] = useState(false);
 
@@ -36,8 +36,8 @@ const TimeDisplay: React.FC<TimeDisplayProps> = ({ currentTime, duration, onTime
         if (progressRef.current) {
             const rect = progressRef.current.getBoundingClientRect();
             const offsetX = clientX - rect.left;
-            const newTime = Math.max(0, Math.min(duration, (offsetX / rect.width) * duration));
-            onTimeUpdate(newTime);
+            const newTime = Math.max(0, Math.min(props.duration, (offsetX / rect.width) * props.duration));
+            props.onTimeUpdate(newTime);
         }
     };
 
@@ -61,17 +61,17 @@ const TimeDisplay: React.FC<TimeDisplayProps> = ({ currentTime, duration, onTime
             <div className={styles.timeDisplay}>
                 <div className={styles.progressContainer} ref={progressRef} onMouseDown={handleMouseDown}>
                     <div className={styles.progressBar}>
-                        <div className={styles.progress} style={{ width: `${(currentTime / duration) * 100}%` }} />
+                        <div className={styles.progress} style={{ width: `${(props.currentTime / props.duration) * 100}%` }} />
                         <div
                             className={styles.thumb}
-                            style={{ left: `${(currentTime / duration) * 100}%` }}
+                            style={{ left: `${(props.currentTime / props.duration) * 100}%` }}
                             onMouseDown={handleMouseDown} />
                     </div>
                 </div>
             </div>
             <div className={styles.timer}>
-                <span>{formatTime(currentTime)}</span>
-                <span>{formatTime(duration)}</span>
+                <span>{formatTime(props.currentTime)}</span>
+                <span>{formatTime(props.duration)}</span>
             </div>
         </>
 

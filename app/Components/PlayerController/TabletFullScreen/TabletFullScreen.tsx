@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import styles from './FullscreenPlayer.module.scss';
+import styles from './TabletFullScreen.module.scss'
 import FastForwardButton from '../FastForwardButton/FastForwardButton';
 import NextButton from '../NextButton/NextButton';
 import PlayPauseButton from '../PlayPauseButton/PlayPauseButton';
@@ -24,12 +24,12 @@ type Props = {
     onExitFullscreen: () => void;
 }
 
-const FullscreenPlayer = (props: Props) => {
+const TabletFullscreen = (props: Props) => {
     return (
         <div className={styles.fullscreenContainer}>
             <div className={styles.fullscreenWrapper}>
                 <div className={styles.zoomOut}>
-                    <img src="./icons/zoomOut.svg" alt="zoomOut" onClick={props.onExitFullscreen} />
+                    <img src="./icons/back.svg" alt="zoomOut" onClick={props.onExitFullscreen} className={styles.back} />
                 </div>
                 <div className={styles.trackInfo}>
                     <img src={props.currentTrack.photo} alt={props.currentTrack.name} className={styles.trackPhoto} />
@@ -59,4 +59,4 @@ const FullscreenPlayer = (props: Props) => {
     );
 };
 
-export default FullscreenPlayer;
+export default TabletFullscreen;

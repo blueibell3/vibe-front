@@ -3,13 +3,13 @@ import React from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { currentTrackIndexState, playlistState } from '@/app/state';
 
-interface PreviousButtonProps {
+type Props = {
   onClick: () => void;
 }
 
-const PreviousButton: React.FC<PreviousButtonProps> = ({ onClick }) => {
+const PreviousButton = (props: Props) => {
   return (
-    <button onClick={onClick}>
+    <button onClick={props.onClick}>
       <img src="/icons/previous.svg" alt="Previous" />
     </button>
   );

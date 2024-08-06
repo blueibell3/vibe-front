@@ -4,17 +4,9 @@ import MusicPlayer from '../Components/PlayerController/MusicPlayer/MusicPlayer'
 import PlayerController from '../Components/PlayerController/PlayerController';
 import styles from './page.module.css';
 
-type Props = {
-  duration: number
-}
-export default function Home(props: Props) {
-  props.duration
-  return (
 
-    <div>
-      <MusicList imageUrl={'/believer.svg'} songName={'beliver'} artistName={'imagineDragon'} 
-        time={props.duration} />
-      <MusicPlayer />
-    </div>
+export default function Home() {
+  return (
+    <MusicPlayer />
   );
 }

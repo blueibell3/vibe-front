@@ -3,13 +3,13 @@ import React from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { currentTrackIndexState, playlistState } from '@/app/state';
 
-interface NextButtonProps {
+type Props = {
   onClick: () => void;
 }
 
-const NextButton: React.FC<NextButtonProps> = ({ onClick }) => {
+const NextButton = (props:Props) => {
   return (
-    <button onClick={onClick}>
+    <button onClick={props.onClick}>
       <img src="/icons/next.svg" alt="Next" />
     </button>
   );

@@ -7,16 +7,21 @@ import {
     volumeState,
     isPlayingState,
     isFullscreenState,
+    tabletFullscreenState
 } from '@/app/state';
-import PlayerController from '../PlayerController'
+import PlayerController from '../PlayerController';
 import FullscreenPlayer from '../FullscreenPlayer/FullscreenPlayer';
+import TabletFullscreen from '../TabletFullScreen/TabletFullScreen';
+import TabletPlayerController from '../TabletPlayerController/TabletPlayerController';
 
-const MusicPlayer: React.FC = () => {
+const MusicPlayer = () => {
     const playlist = useRecoilValue(playlistState);
     const [currentTrackIndex, setCurrentTrackIndex] = useRecoilState(currentTrackIndexState);
     const volume = useRecoilValue(volumeState);
     const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
     const [isFullscreen, setIsFullscreen] = useRecoilState(isFullscreenState);
+    const [tabletFullscreen, setTabletIsFullscreen] = useRecoilState(tabletFullscreenState);
+
     const audioRef = useRef<HTMLAudioElement | null>(null);
     const [duration, setDuration] = useState<number>(0);
     const [currentTime, setCurrentTime] = useState<number>(0);
@@ -111,6 +116,16 @@ const MusicPlayer: React.FC = () => {
         setIsFullscreen(false);
     };
 
+
+    const handleEnterTabletFullscreen = () => {
+        setTabletIsFullscreen(true);
+    };
+
+    const handleExitTabletFullscreen = () => {
+        setTabletIsFullscreen(false);
+    };
+
+
     return (
         <>
             <audio ref={audioRef} src={currentTrackUrl} />
@@ -143,6 +158,36 @@ const MusicPlayer: React.FC = () => {
                     onEnterFullscreen={handleEnterFullscreen}
                 />
             )}
+            {tabletFullscreen ? (
+                <TabletFullscreen
+                    currentTrack={currentTrack}
+                    currentTime={currentTime}
+                    duration={duration}
+                    isPlaying={isPlaying}
+                    onPlayPause={handlePlayPause}
+                    onPrevious={handlePrevious}
+                    onNext={handleNext}
+                    onFastForward={handleFastForward}
+                    onRewind={handleRewind}
+                    onTimeUpdate={handleTimeUpdate}
+                    onExitFullscreen={handleExitTabletFullscreen}
+                />
+            ) : (
+                <TabletPlayerController
+                    currentTrack={currentTrack}
+                    currentTime={currentTime}
+                    duration={duration}
+                    isPlaying={isPlaying}
+                    onPlayPause={handlePlayPause}
+                    onPrevious={handlePrevious}
+                    onNext={handleNext}
+                    onFastForward={handleFastForward}
+                    onRewind={handleRewind}
+                    onTimeUpdate={handleTimeUpdate}
+                    onEnterFullscreen={handleEnterTabletFullscreen}
+                />
+            )
+            }
         </>
     );
 };

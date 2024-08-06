@@ -8,7 +8,8 @@ type Props = {
     songName: string;
     artistName: string;
     onPlayng?: () => void;
-    time: number;
+    time: string;
+
 }
 
 const MusicList = (props: Props) => {
@@ -18,11 +19,11 @@ const MusicList = (props: Props) => {
         setIsPlaying(!isPlaying)
     }
     return (
-        <div className={styles.MusicListCategory}>
+        <div className={styles.MusicListCategory} onClick={hanldeClick}>
             <div className={styles.MusicListId}>
                 <div className={styles.imgCenter}>
                     <img className={styles.MusicListimageUrl} src={props.imageUrl} alt="imageUrl" />
-                    {<img src={isPlaying ? '/group.svg' : '/icons/pause.svg'} alt="ap" className={styles.audioPlay} onClick={hanldeClick} />}
+                    {<img src={isPlaying ? '/group.svg' : '/icons/pause.svg'} alt="ap" className={styles.audioPlay}  />}
                 </div>
                 <div className={styles.MusicListText}>
                     <div className={styles.MusicListNames}>

@@ -10,7 +10,7 @@ import FastForwardButton from './FastForwardButton/FastForwardButton';
 import RewindButton from './RewindButton/RewindButton';
 import TimeDisplay from './TimeDisplay/TimeDisplay';
 
-interface PlayerControllerProps {
+type Props = {
     currentTrack: any;
     currentTime: number;
     duration: number;
@@ -22,41 +22,29 @@ interface PlayerControllerProps {
     onRewind: () => void;
     onTimeUpdate: (time: number) => void;
     onEnterFullscreen: () => void;
-}
+};
 
-const PlayerController: React.FC<PlayerControllerProps> = ({
-    currentTrack,
-    currentTime,
-    duration,
-    isPlaying,
-    onPlayPause,
-    onPrevious,
-    onNext,
-    onFastForward,
-    onRewind,
-    onTimeUpdate,
-    onEnterFullscreen,
-}) => {
+const PlayerController = (props: Props) => {
     return (
         <div className={styles.container}>
             <div className={styles.wrapper}>
-                <div className={styles.trackInfo} onClick={onEnterFullscreen}>
-                    <img src={currentTrack.photo} alt={currentTrack.name} className={styles.trackPhoto} />
+                <div className={styles.trackInfo} onClick={props.onEnterFullscreen}>
+                    <img src={props.currentTrack.photo} alt={props.currentTrack.name} className={styles.trackPhoto} />
                     <div className={styles.trackDetails}>
-                        <div className={styles.artistName}>{currentTrack.artist}</div>
-                        <div className={styles.trackName}>{currentTrack.name}</div>
+                        <div className={styles.artistName}>{props.currentTrack.artist}</div>
+                        <div className={styles.trackName}>{props.currentTrack.name}</div>
                     </div>
                 </div>
-                <TimeDisplay currentTime={currentTime} duration={duration} onTimeUpdate={onTimeUpdate} />
+                <TimeDisplay currentTime={props.currentTime} duration={props.duration} onTimeUpdate={props.onTimeUpdate} />
                 <div className={styles.functionality}>
                     <div className={styles.volume}>
                         <VolumeControl />
                     </div>
-                    <PreviousButton onClick={onPrevious} />
-                    <RewindButton onClick={onRewind} />
-                    <PlayPauseButton onClick={onPlayPause} isPlaying={isPlaying} />
-                    <FastForwardButton onClick={onFastForward} />
-                    <NextButton onClick={onNext} />
+                    <PreviousButton onClick={props.onPrevious} />
+                    <RewindButton onClick={props.onRewind} />
+                    <PlayPauseButton onClick={props.onPlayPause} isPlaying={props.isPlaying} />
+                    <FastForwardButton onClick={props.onFastForward} />
+                    <NextButton onClick={props.onNext} />
                     <ShuffleButton />
                 </div>
             </div>

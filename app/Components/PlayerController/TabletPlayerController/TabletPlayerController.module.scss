@@ -1,0 +1,98 @@
+@import '../../../styles/colors.scss';
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 89px;
+    background-color: #0F0F0F;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.trackInfo {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+}
+
+
+
+.trackPhoto {
+    max-width: 50px;
+    width: 100%;
+    height: 50px;
+}
+
+.volume {
+    max-width: 65px;
+    width: 100%;
+}
+
+
+.functionality {
+    display: flex;
+    justify-content: space-between;
+}
+
+.TimeDisplay {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+.buttons {
+    display: flex;
+    gap: 16px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .volume {
+        display: none;
+    }
+
+    .display {
+        display: none;
+    }
+
+    .shuffle {
+        display: none;
+    }
+
+    .functionality {
+        justify-content: center;
+    }
+
+    .container {
+        height: 48px;
+    }
+
+    .artistName {
+        font-size: 12px;
+        color: #636363;
+        max-width: 120px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .buttons {
+        gap: 12px;
+    }
+
+    .trackInfo {
+        width: 40%;
+        padding-left: 8px;
+    }
+     .trackPhoto {
+        max-width: 24px;
+        width: 100%;
+        border-radius: 50%;
+        height: 24px;
+        z-index: 99;
+    }
+}

@@ -1,0 +1,61 @@
+.fullscreenContainer {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(180deg, #1F485F 0%, #121522 100%);
+    display: flex;
+    justify-content: center;
+}
+
+.back {
+    padding-left: 20px;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    z-index: 22;
+    left: 30px;
+}
+
+.trackInfo {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.trackDetails {
+    display: flex;
+}
+
+.fullscreenWrapper {
+    width: 100%;
+}
+
+.trackPhoto {
+    width: 90%;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+}
+
+.shuffle {
+    display: flex;
+    justify-content: end;
+    width: 90%;
+}
+
+.timeDisplay {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.volume {
+    width: 40%;
+    margin: 0 auto;
+}
+
+.functionality {
+    display: flex;
+    justify-content: center;
+    // justify-content: space-around;
+    gap: 32px;
+}

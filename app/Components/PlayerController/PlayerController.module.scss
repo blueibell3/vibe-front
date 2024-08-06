@@ -1,10 +1,11 @@
 .container {
-    display: flex;
+    // display: flex;
     width: 100%;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    // height: 100vh;
     flex-direction: column;
+    display: none;
 }
 
 
@@ -44,4 +45,10 @@
 
 .trackPhoto {
     cursor: pointer;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .container{
+        display: none;
+    }
 }

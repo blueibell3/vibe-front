@@ -12,7 +12,7 @@ type Props = {
 
 const AuthLayout = (props: Props) => {
   return (
-    <div>
+    <div className={styles.container}>
       {/* <div className={styles.headerContainer}>
           <Header />
         </div>

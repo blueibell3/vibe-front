@@ -1,13 +1,13 @@
 'use client';
 import React from 'react';
 
-interface FastForwardButtonProps {
+type Props = {
   onClick: () => void;
 }
 
-const FastForwardButton: React.FC<FastForwardButtonProps> = ({ onClick }) => {
+const FastForwardButton = (props: Props) => {
   return (
-    <button onClick={onClick}>
+    <button onClick={props.onClick}>
       <img src="/icons/scrollForward.svg" alt="Fast Forward" />
     </button>
   );
