@@ -7,7 +7,7 @@
     justify-content: center;
     align-items: center;
     position: absolute;
-    background: rgba(18, 18, 18, 0.89);
+    background: rgba(18, 18, 18, 0.47);
 }
 
 .button {
@@ -16,17 +16,16 @@
     padding: 12px 16px;
     gap: 10px;
     border-radius: 8px;
-    background: #161616;
-    position: absolute;
-    width: 796px;
+    background: $grayColor;
+    width: 100%;
 }
 
 .buttonStyle {
     display: flex;
-    width: 780px;
+    max-width: 780px;
+    width: 100%;
     align-items: center;
     gap: 12px;
-    flex: 1 0 0;
 }
 
 .addButton {
