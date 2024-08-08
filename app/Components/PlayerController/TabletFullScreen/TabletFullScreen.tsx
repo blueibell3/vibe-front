@@ -1,6 +1,6 @@
 'use client';
-import React from 'react';
-import styles from './TabletFullScreen.module.scss'
+import React, { useState } from 'react';
+import styles from './TabletFullScreen.module.scss';
 import FastForwardButton from '../FastForwardButton/FastForwardButton';
 import NextButton from '../NextButton/NextButton';
 import PlayPauseButton from '../PlayPauseButton/PlayPauseButton';
@@ -9,6 +9,9 @@ import RewindButton from '../RewindButton/RewindButton';
 import ShuffleButton from '../ShuffleButton/ShuffleButton';
 import TimeDisplay from '../TimeDisplay/TimeDisplay';
 import VolumeControl from '../VolumeControl/VolumeControl';
+import Arrows from '../Arrows/Arrows';
+import { useRecoilState } from 'recoil';
+import MusicList from '../../MusicList/MusicList';
 
 type Props = {
     currentTrack: any;
@@ -25,17 +28,23 @@ type Props = {
 }
 
 const TabletFullscreen = (props: Props) => {
+    const [isExpanded, setIsExpanded] = useState(false);
+
+    const handleArrowClick = () => {
+        setIsExpanded(!isExpanded);
+    };
+
     return (
-        <div className={styles.fullscreenContainer}>
+        <><div className={`${styles.fullscreenContainer} ${isExpanded ? styles.expanded : ''}`}>
             <div className={styles.fullscreenWrapper}>
                 <div className={styles.zoomOut}>
                     <img src="./icons/back.svg" alt="zoomOut" onClick={props.onExitFullscreen} className={styles.back} />
-                </div>
-                <div className={styles.trackInfo}>
-                    <img src={props.currentTrack.photo} alt={props.currentTrack.name} className={styles.trackPhoto} />
-                    <div className={styles.trackDetails}>
-                        <div className={styles.artistName}>{props.currentTrack.artist}</div>
-                        <div className={styles.trackName}>{props.currentTrack.name}</div>
+                    <div className={styles.trackInfo}>
+                        <img src={props.currentTrack.photo} alt={props.currentTrack.name} className={styles.trackPhoto} />
+                        <div className={styles.trackDetails}>
+                            <div className={styles.artistName}>{props.currentTrack.artist}</div>
+                            <div className={styles.trackName}>{props.currentTrack.name}</div>
+                        </div>
                     </div>
                 </div>
                 <div className={styles.shuffle}>
@@ -55,7 +64,22 @@ const TabletFullscreen = (props: Props) => {
                     <VolumeControl />
                 </div>
             </div>
-        </div>
+        </div><div className={styles.arrowWrapper}>
+                <Arrows isUp={!isExpanded} onClick={handleArrowClick} />
+                <div className={styles.nextPlay}>
+                    <span>Next Play</span>
+                </div>
+                <div className={styles.MusicList}>
+                    {Array.from({ length: isExpanded ? 6 : 3 }, (_, index) => (
+                        <MusicList
+                            key={index}
+                            imageUrl={'/background/backImageFullScreeen.jpg'}
+                            songName={'believer'}
+                            artistName={'Imagine Dragons'}
+                            time={'3:00'} />
+                    ))}
+                </div>
+            </div></>
     );
 };
 

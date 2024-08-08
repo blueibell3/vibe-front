@@ -46,6 +46,11 @@ export const isPlayingState = atom<boolean>({
   default: false,
 });
 
+export const isUpState = atom<boolean>({
+  key: 'isUpState',
+  default: false
+})
+
 export const isShufflingState = atom<boolean>({
   key: 'isShufflingState',
   default: false,

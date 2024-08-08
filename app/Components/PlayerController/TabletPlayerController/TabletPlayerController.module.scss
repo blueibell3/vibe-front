@@ -1,55 +1,96 @@
 @import '../../../styles/colors.scss';
 
 .container {
-    display: flex;
-    width: 100%;
-    height: 89px;
-    background-color: #0F0F0F;
-    justify-content: space-around;
-    align-items: center;
+    display: none;
 }
 
-.trackInfo {
-    display: flex;
-    align-items: center;
-    gap: 17px;
-}
-
-
-
-.trackPhoto {
-    max-width: 50px;
-    width: 100%;
-    height: 50px;
-}
-
-.volume {
-    max-width: 65px;
-    width: 100%;
-}
-
-
-.functionality {
-    display: flex;
-    justify-content: space-between;
-}
-
-.TimeDisplay {
-    display: flex;
-    flex-direction: column;
-    width: 70%;
-}
-
-.buttons {
-    display: flex;
-    gap: 16px;
-}
-
-@media (max-width: 768px) {
+@media (min-width: 768px) and (max-width: 1024px) {
     .container {
         display: flex;
+        width: 100%;
+        height: 89px;
+        background-color: #0F0F0F;
         justify-content: space-around;
+        align-items: center;
     }
+
+    .trackInfo {
+        display: flex;
+        align-items: center;
+        gap: 17px;
+    }
+
+
+
+    .trackPhoto {
+        max-width: 50px;
+        width: 100%;
+        height: 50px;
+    }
+
+    .volume {
+        max-width: 65px;
+        width: 100%;
+    }
+
+
+    .functionality {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .TimeDisplay {
+        display: flex;
+        flex-direction: column;
+        width: 70%;
+    }
+
+    .buttons {
+        display: flex;
+        gap: 16px;
+    }
+
+}
+
+
+@media screen and (max-width:768px) {
+    .container {
+        display: flex;
+        width: 100%;
+        height: 89px;
+        background-color: #0F0F0F;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .trackInfo {
+        display: flex;
+        align-items: center;
+        gap: 17px;
+    }
+
+    .trackPhoto {
+        max-width: 50px;
+        width: 100%;
+        height: 50px;
+    }
+
+    .functionality {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .TimeDisplay {
+        display: flex;
+        flex-direction: column;
+        width: 70%;
+    }
+
+    .buttons {
+        display: flex;
+        gap: 16px;
+    }
+
 
     .volume {
         display: none;
@@ -88,7 +129,8 @@
         width: 40%;
         padding-left: 8px;
     }
-     .trackPhoto {
+
+    .trackPhoto {
         max-width: 24px;
         width: 100%;
         border-radius: 50%;
