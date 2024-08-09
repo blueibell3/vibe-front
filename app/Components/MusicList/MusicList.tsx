@@ -19,12 +19,10 @@ const MusicList = (props: Props) => {
 
     const handleClick = () => {
         if (currentTrackIndex === props.trackIndex) {
-            // If the track is already playing, toggle the play/pause state
             setIsPlaying(!isPlaying);
         } else {
-            // Otherwise, switch to the clicked track and start playing
             setCurrentTrackIndex(props.trackIndex);
-            setCurrentTime(0); // Reset the time for the new track
+            setCurrentTime(0);
             setIsPlaying(true);
         }
     }

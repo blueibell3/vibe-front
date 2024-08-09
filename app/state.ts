@@ -35,7 +35,6 @@ export const playlistState = atom<Track[]>({
   ],
 });
 
-// Other atoms as before...
 
 
 export const currentTrackIndexState = atom<number>({
