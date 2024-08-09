@@ -23,16 +23,16 @@ const VolumeControl = () => {
 
     return (
         <div className={styles.volumeControl}>
-            <button onClick={() => adjustVolume(10)} className={styles.button}>
-                <img src="/icons/volumeUp.svg" alt="Increase Volume" className={styles.icon} />
-            </button>
-            {/* <button onClick={() => adjustVolume(-10)} className={styles.button}>
+            <button onClick={() => adjustVolume(-10)} className={styles.button}>
                 <img src="/icons/volumeDown.svg" alt="Decrease Volume" className={styles.icon} />
-            </button> */}
+            </button>
             <div className={styles.sliderContainer} ref={sliderRef} onMouseDown={handleSliderClick}>
                 <div className={styles.slider} style={{ width: `${volume}%` }} />
                 <div className={styles.thumb} style={{ left: `${volume}%` }} />
             </div>
+            <button onClick={() => adjustVolume(10)} className={styles.button}>
+                <img src="/icons/volumeUp.svg" alt="Increase Volume" className={styles.icon} />
+            </button>
         </div>
     );
 };

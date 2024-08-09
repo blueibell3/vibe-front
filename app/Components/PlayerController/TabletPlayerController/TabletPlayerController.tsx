@@ -9,6 +9,7 @@ import VolumeControl from '../VolumeControl/VolumeControl';
 import FastForwardButton from '../FastForwardButton/FastForwardButton';
 import RewindButton from '../RewindButton/RewindButton';
 import TimeDisplay from '../TimeDisplay/TimeDisplay';
+import NoNFullVol from '../VolumeControl/NonFullVol';
 
 type Props = {
     currentTrack: any;
@@ -41,7 +42,7 @@ const TabletPlayerController = (props: Props) => {
 
                 <div className={styles.functionality}>
                     <div className={styles.volume}>
-                        <VolumeControl />
+                        <NoNFullVol/>
                     </div>
                     <div className={styles.buttons}>
                     <PreviousButton onClick={props.onPrevious} />

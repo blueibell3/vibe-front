@@ -9,6 +9,7 @@ import VolumeControl from './VolumeControl/VolumeControl';
 import FastForwardButton from './FastForwardButton/FastForwardButton';
 import RewindButton from './RewindButton/RewindButton';
 import TimeDisplay from './TimeDisplay/TimeDisplay';
+import NoNFullVol from './VolumeControl/NonFullVol';
 
 type Props = {
     currentTrack: any;
@@ -38,7 +39,7 @@ const PlayerController = (props: Props) => {
                 <TimeDisplay currentTime={props.currentTime} duration={props.duration} onTimeUpdate={props.onTimeUpdate} />
                 <div className={styles.functionality}>
                     <div className={styles.volume}>
-                        <VolumeControl />
+                        <NoNFullVol/>
                     </div>
                     <PreviousButton onClick={props.onPrevious} />
                     <RewindButton onClick={props.onRewind} />
