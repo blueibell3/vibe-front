@@ -5,6 +5,7 @@ export interface Track {
   name: string;
   photo: string;
   url: string;
+  duration?: number; // Optional duration field
 }
 
 export const playlistState = atom<Track[]>({
@@ -14,22 +15,28 @@ export const playlistState = atom<Track[]>({
       artist: 'Imagine dragons',
       name: '- Believer',
       photo: '/background/backImageFullScreeen.jpg',
-      url: '/music/ImagineDragonsBeliever.mp3'
+      url: '/music/ImagineDragonsBeliever.mp3',
+      duration: 204 // Add duration in seconds if available
     },
     {
-      artist: 'katana ',
-      name: '- help me',
+      artist: 'Katana',
+      name: '- Help Me',
       photo: '/katana.jpg',
-      url: '/music/MichaelKatanaHelpMe.mp3'
+      url: '/music/MichaelKatanaHelpMe.mp3',
+      duration: 182
     },
     {
-      artist: 'kaxidze',
-      name: '- watermelon',
+      artist: 'Kaxidze',
+      name: '- Watermelon',
       photo: '/jansulKaxize.jpg',
-      url: '/music/WatermelonJansulKaxidze.mp3'
+      url: '/music/WatermelonJansulKaxidze.mp3',
+      duration: 198
     },
   ],
 });
+
+// Other atoms as before...
+
 
 export const currentTrackIndexState = atom<number>({
   key: 'currentTrackIndexState',

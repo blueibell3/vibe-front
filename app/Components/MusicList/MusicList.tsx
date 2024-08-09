@@ -1,29 +1,40 @@
-'use client'
-import React, { useState } from 'react';
+'use client';
+import React from 'react';
 import styles from "../MusicList/MusicList.module.scss";
-
+import { useRecoilState } from 'recoil';
+import { currentTrackIndexState, isPlayingState, currentTimeState } from '@/app/state';
 
 type Props = {
     imageUrl: string;
     songName: string;
     artistName: string;
-    onPlayng?: () => void;
+    trackIndex: number;
     time: string;
-
 }
 
 const MusicList = (props: Props) => {
-    const [isPlaying, setIsPlaying] = useState(true)
+    const [currentTrackIndex, setCurrentTrackIndex] = useRecoilState(currentTrackIndexState);
+    const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
+    const [currentTime, setCurrentTime] = useRecoilState(currentTimeState);
 
-    const hanldeClick = () => {
-        setIsPlaying(!isPlaying)
+    const handleClick = () => {
+        if (currentTrackIndex === props.trackIndex) {
+            // If the track is already playing, toggle the play/pause state
+            setIsPlaying(!isPlaying);
+        } else {
+            // Otherwise, switch to the clicked track and start playing
+            setCurrentTrackIndex(props.trackIndex);
+            setCurrentTime(0); // Reset the time for the new track
+            setIsPlaying(true);
+        }
     }
+
     return (
-        <div className={styles.MusicListCategory} onClick={hanldeClick}>
+        <div className={styles.MusicListCategory} onClick={handleClick}>
             <div className={styles.MusicListId}>
                 <div className={styles.imgCenter}>
                     <img className={styles.MusicListimageUrl} src={props.imageUrl} alt="imageUrl" />
-                    {<img src={isPlaying ? '/group.svg' : '/icons/pause.svg'} alt="ap" className={styles.audioPlay}  />}
+                    <img src={isPlaying && currentTrackIndex === props.trackIndex ? '/icons/pause.svg' : '/group.svg'} alt="ap" className={styles.audioPlay} />
                 </div>
                 <div className={styles.MusicListText}>
                     <div className={styles.MusicListNames}>
@@ -33,9 +44,8 @@ const MusicList = (props: Props) => {
                     <span className={styles.MusicListTime}>{props.time}</span>
                 </div>
             </div>
-
         </div>
-    )
+    );
 };
 
-export default MusicList
+export default MusicList;

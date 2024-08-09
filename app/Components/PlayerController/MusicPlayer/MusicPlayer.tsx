@@ -42,9 +42,14 @@ const MusicPlayer = () => {
                 setDuration(audioRef.current!.duration);
                 setCurrentTime(audioRef.current!.currentTime);
             };
+            const handleEnded = () => {
+                setCurrentTrackIndex((prevIndex) => (prevIndex + 1) % playlist.length);
+                setIsPlaying(true);
+            };
 
             audioRef.current.addEventListener('timeupdate', handleTimeUpdate);
             audioRef.current.addEventListener('loadedmetadata', handleLoadedMetadata);
+            audioRef.current.addEventListener('ended', handleEnded);
 
             if (audioRef.current.readyState >= 1) {
                 handleLoadedMetadata();
@@ -56,6 +61,7 @@ const MusicPlayer = () => {
                 audioRef.current!.removeEventListener('timeupdate', handleTimeUpdate);
                 audioRef.current!.removeEventListener('loadedmetadata', handleLoadedMetadata);
                 audioRef.current!.removeEventListener('loadeddata', handleLoadedMetadata);
+                audioRef.current!.removeEventListener('ended', handleEnded);
             };
         }
     }, [currentTrackUrl]);
@@ -77,16 +83,16 @@ const MusicPlayer = () => {
     }, [currentTrackUrl]);
 
     const handlePlayPause = () => {
-        setIsPlaying(prev => !prev);
+        setIsPlaying((prev) => !prev);
     };
 
     const handlePrevious = () => {
-        setCurrentTrackIndex(prevIndex => (prevIndex - 1 + playlist.length) % playlist.length);
+        setCurrentTrackIndex((prevIndex) => (prevIndex - 1 + playlist.length) % playlist.length);
         setIsPlaying(true);
     };
 
     const handleNext = () => {
-        setCurrentTrackIndex(prevIndex => (prevIndex + 1) % playlist.length);
+        setCurrentTrackIndex((prevIndex) => (prevIndex + 1) % playlist.length);
         setIsPlaying(true);
     };
 
@@ -116,7 +122,6 @@ const MusicPlayer = () => {
         setIsFullscreen(false);
     };
 
-
     const handleEnterTabletFullscreen = () => {
         setTabletIsFullscreen(true);
     };
@@ -124,7 +129,6 @@ const MusicPlayer = () => {
     const handleExitTabletFullscreen = () => {
         setTabletIsFullscreen(false);
     };
-
 
     return (
         <>
@@ -186,8 +190,7 @@ const MusicPlayer = () => {
                     onTimeUpdate={handleTimeUpdate}
                     onEnterFullscreen={handleEnterTabletFullscreen}
                 />
-            )
-            }
+            )}
         </>
     );
 };
