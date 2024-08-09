@@ -14,15 +14,19 @@ const AddButton = () => {
     const [playlistTitle, setPlaylistTitle] = useState('');
 
     const handleOpenModal = () => setIsOpen(true);
-    const handleCloseModal = () => setIsOpen(false);
+    const handleCloseModal = () => {
+        setIsOpen(false)
+        setPlaylistTitle('');
+    };
     const handleDone = () => {
         console.log('Playlist Title:', playlistTitle);
         setIsOpen(false);
+        setPlaylistTitle('');
     };
 
     return (
         <>
-           <div className={styles.button}>
+            <div className={styles.button}>
                 <div className={styles.buttonStyle}>
                     <div onClick={handleOpenModal} className={styles.addButton}>
                         <img className={styles.addButtonImg} src="addbuttonimg.svg" alt="add" />
@@ -35,7 +39,10 @@ const AddButton = () => {
             {
                 isOpen &&
                 <div className={styles.reausableModalContainer}>
-                    <ReusableModal isOpen={isOpen} onClose={handleCloseModal} onDone={handleDone}
+                    <ReusableModal
+                        isOpen={isOpen}
+                        onClose={handleCloseModal}
+                        onDone={handleDone}
                         playlistTitle={playlistTitle}
                         setPlaylistTitle={setPlaylistTitle} />
                 </div>
