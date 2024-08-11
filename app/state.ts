@@ -5,7 +5,7 @@ export interface Track {
   name: string;
   photo: string;
   url: string;
-  duration?: number; // Optional duration field
+  duration?: number;
 }
 
 export const playlistState = atom<Track[]>({
@@ -16,7 +16,7 @@ export const playlistState = atom<Track[]>({
       name: '- Believer',
       photo: '/background/backImageFullScreeen.jpg',
       url: '/music/ImagineDragonsBeliever.mp3',
-      duration: 204 // Add duration in seconds if available
+      duration: 204
     },
     {
       artist: 'Katana',

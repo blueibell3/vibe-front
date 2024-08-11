@@ -31,6 +31,7 @@ type Props = {
 const TabletFullscreen = (props: Props) => {
     const [isExpanded, setIsExpanded] = useState(false);
     const playlist = useRecoilValue(playlistState);
+    const currentTime = useRecoilValue(currentTimeState);
     const currentTrackIndex = useRecoilValue(currentTrackIndexState);
 
     const handleArrowClick = () => {

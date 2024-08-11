@@ -27,6 +27,7 @@ type Props = {
 const FullscreenPlayer = (props: Props) => {
     return (
         <div className={styles.fullscreenContainer}>
+            <div className={styles.background} />
             <div className={styles.fullscreenWrapper}>
                 <div className={styles.zoomOut}>
                     <img src="./icons/zoomOut.svg" alt="zoomOut" onClick={props.onExitFullscreen} />
@@ -58,5 +59,6 @@ const FullscreenPlayer = (props: Props) => {
         </div>
     );
 };
+
 
 export default FullscreenPlayer;
