@@ -38,48 +38,45 @@ const TabletFullscreen = (props: Props) => {
     };
 
     return (
-        <>
-            <div className={`${styles.fullscreenContainer} ${isExpanded ? styles.expanded : ''}`}>
-                <div className={styles.fullscreenWrapper}>
-                    <div className={styles.zoomOut}>
-                        <img src="./icons/back.svg" alt="zoomOut" onClick={props.onExitFullscreen} className={styles.back} />
-                    </div>
-                    <div className={styles.trackInfo}>
-                        <img src={playlist[currentTrackIndex].photo} alt={playlist[currentTrackIndex].name} className={styles.trackPhoto} />
-                    </div>
-                    <div className={styles.trackDetails}>
-                        <div className={styles.artistName}>{playlist[currentTrackIndex].artist}</div>
-                        <div className={styles.trackName}>{playlist[currentTrackIndex].name}</div>
-                    </div>
-                    <div className={styles.shuffle}>
-                        <ShuffleButton />
-                    </div>
-                    <div className={styles.timeDisplay}>
-                        <TimeDisplay
-                            currentTime={props.currentTime}
-                            duration={props.duration}
-                            onTimeUpdate={props.onTimeUpdate}
-                        />
-                    </div>
-                    <div className={styles.functionality}>
-                        <PreviousButton onClick={props.onPrevious} />
-                        <RewindButton onClick={props.onRewind} />
-                        <PlayPauseButton onClick={props.onPlayPause} isPlaying={props.isPlaying} />
-                        <FastForwardButton onClick={props.onFastForward} />
-                        <NextButton onClick={props.onNext} />
-                    </div>
-                    <div className={styles.volume}>
-                        <VolumeControl />
-                    </div>
+        <div className={`${styles.fullscreenContainer} ${isExpanded ? styles.expanded : ''}`}>
+            <div className={styles.fullscreenWrapper}>
+                <div className={styles.zoomOut}>
+                    <img src="./icons/back.svg" alt="zoomOut" onClick={props.onExitFullscreen} className={styles.back} />
+                </div>
+                <div className={styles.trackInfo}>
+                    <img src={playlist[currentTrackIndex].photo} alt={playlist[currentTrackIndex].name} className={styles.trackPhoto} />
+                </div>
+                <div className={styles.trackDetails}>
+                    <div className={styles.artistName}>{playlist[currentTrackIndex].artist}</div>
+                    <div className={styles.trackName}>{playlist[currentTrackIndex].name}</div>
+                </div>
+                <div className={styles.shuffle}>
+                    <ShuffleButton />
+                </div>
+                <div className={styles.timeDisplay}>
+                    <TimeDisplay
+                        currentTime={props.currentTime}
+                        duration={props.duration}
+                        onTimeUpdate={props.onTimeUpdate}
+                    />
+                </div>
+                <div className={styles.functionality}>
+                    <PreviousButton onClick={props.onPrevious} />
+                    <RewindButton onClick={props.onRewind} />
+                    <PlayPauseButton onClick={props.onPlayPause} isPlaying={props.isPlaying} />
+                    <FastForwardButton onClick={props.onFastForward} />
+                    <NextButton onClick={props.onNext} />
+                </div>
+                <div className={styles.volume}>
+                    <VolumeControl />
                 </div>
             </div>
-            <div className={styles.arrowWrapper}>
+            <div className={`${styles.arrowWrapper} ${isExpanded ? styles.expanded : ''}`}>
                 <Arrows isUp={!isExpanded} onClick={handleArrowClick} />
-                <div className={styles.nextPlay}>
-                    <span>Next Play</span>
-                </div>
+                {/* <span className={styles.nextP}>Next Play</span> */}
                 <div className={styles.MusicList}>
-                    {playlist.slice(0, isExpanded ? 6 : 3).map((track, index) => (
+                    <span className={styles.nextSpan}>Next Play</span>
+                    {playlist.slice(0, isExpanded ? 6 : 0).map((track, index) => (
                         <MusicList
                             key={index}
                             imageUrl={track.photo}
@@ -91,7 +88,7 @@ const TabletFullscreen = (props: Props) => {
                     ))}
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

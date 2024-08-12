@@ -7,7 +7,7 @@ type Props = {
 const Arrows = (props: Props) => {
     return (
         <div className={styles.container} onClick={props.onClick}>
-            <img src={props.isUp ? '/icons/downArrow.svg' : '/icons/topArrow.svg'}
+            <img src={props.isUp ? '/icons/topArrow.svg' : '/icons/downArrow.svg'}
                 alt={props.isUp ? 'arrow down' : 'arrow up'}
             />
         </div>
