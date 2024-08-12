@@ -3,25 +3,20 @@ import styles from './ListItem.module.scss';
 
 
 type Props = {
-  text: string;      
-  id?: number;                        
-  onClick?: () => void;
-  type: string;
+  text: string;
   href: string;
-  isAlbumImg?: string;
-  isArtistImg?: string;
+  imgSrc: string;
+  isArtist: boolean;
 }
 
 const ListItem = (props: Props) => {
-  const isArtist = props.type === 'artist';
-  const imgSrc = isArtist ? props.isArtistImg : props.isAlbumImg;
 
   return (
     <>
-      <Link href={`/${props.type}/${props.id}`} onClick={props.onClick} className={isArtist ? styles.artistListItem : styles.playListItem}>
-        <div className={isArtist ? styles.artistListGap : styles.playListGap}>
-          <div className={isArtist ? styles.artistListContainer : styles.playListContainer}>
-            <img className={styles.listImg} src={imgSrc} />
+      <Link href={props.href} className={props.isArtist ? styles.artistListItem : styles.playListItem}>
+        <div className={props.isArtist ? styles.artistListGap : styles.playListGap}>
+          <div className={props.isArtist ? styles.artistListContainer : styles.playListContainer}>
+            <img className={styles.listImg} src={props.imgSrc} />
             <span className={styles.listText}>{props.text}</span>
           </div>
           <img src="arrowicon.svg" alt="arrow" className={styles.arrow} />

@@ -6,32 +6,24 @@ import styles from "./PlaylistPage.module.scss";
 const PlayistPage = () => {
     const playlistData = [
         {
-            href: '/musiplaylistsongsclist',
             id: 1,
             text: 'My Everyday',
-            type: 'playlist',
-            playlistImg: 'playlistimg.svg'
+            imgSrc: 'albumimg.svg'
         },
         {
-            href: '/musiplaylistsongsclist',
             id: 1,
             text: 'My Everyday',
-            type: 'playlist',
-            playlistImg: 'playlistimg.svg'
+            imgSrc: 'albumimg.svg'
         },
         {
-            href: '/playlistsongs',
             id: 2,
             text: 'Party Songs',
-            type: 'playlist',
-            playlistImg: 'playlistimg.svg'
+            imgSrc: 'albumimg.svg'
         },
         {
-            href: '/playlistsongs',
             id: 3,
             text: 'Car Songs',
-            type: 'playlist',
-            playlistImg: 'playlistimg.svg'
+            imgSrc: 'albumimg.svg'
         },
 
 
@@ -46,11 +38,10 @@ const PlayistPage = () => {
             {playlistData.map(playlistItem => (
                 <ListItem
                     key={playlistItem.id}
-                    id={playlistItem.id}
                     text={playlistItem.text}
-                    type={playlistItem.type}
-                    href={playlistItem.href}
-                    isAlbumImg={playlistItem.playlistImg}
+                    href={`playlists/${playlistItem.id}`}
+                    imgSrc={playlistItem.imgSrc}
+                    isArtist={false}
                 />
 
             ))}
