@@ -6,8 +6,6 @@ import NavBarMobile from "../Components/NavBarMobile/NavBarMobile";
 import styles from "./layout.module.css";
 import { ReactNode } from "react";
 import TopAlbumsPage from "./topalbums/page";
-import TopAlbums from "../Components/TopAlbums/TopAlbums";
-import MusicList from "../Components/MusicList/MusicList";
 
 type Props = {
   children: ReactNode
@@ -20,20 +18,19 @@ const AuthLayout = (props: Props) => {
         <div className={styles.headerContainer}>
           <Header />
         </div>
-        <div className={styles.menuMain}>
-          <BurgerMenu />
-        </div>
         <div className={styles.pages}>
           <div className={styles.navMenuContainer}>
             <NavBarMenu />
           </div>
           {props.children}
+          <div className={styles.menuMain}>
+            <BurgerMenu />
+          </div>
         </div>
       </div>
       <div className={styles.mobileNavBarContainer}>
         <NavBarMobile />
       </div>
-
     </div>
 
   )

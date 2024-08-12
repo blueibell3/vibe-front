@@ -1,9 +1,7 @@
 'use client'
 import React, { useState } from 'react';
 import styles from './AddButton.module.scss';
-import ReusableModal from '../PlaylistModal/PlaylistModal';
 import PlaylistModal from '../PlaylistModal/PlaylistModal';
-
 
 
 const AddButton = () => {
