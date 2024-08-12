@@ -6,8 +6,10 @@
     height: 100vh;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    background: rgba(18, 18, 18, 0.47);
+    background: rgba(18, 18, 18, 0.79);
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
 .button {
