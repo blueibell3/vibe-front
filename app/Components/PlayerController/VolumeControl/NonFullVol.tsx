@@ -20,14 +20,14 @@ const NoNFullVol = () => {
     };
     return (
         <div className={styles.volumeControl}>
-        <button onClick={() => adjustVolume(10)} className={styles.button}>
-            <img src="/icons/volumeUp.svg" alt="Increase Volume" className={styles.icon} />
-        </button>
-        <div className={styles.sliderContainer} ref={sliderRef} onMouseDown={handleSliderClick}>
-            <div className={styles.slider} style={{ width: `${volume}%` }} />
-            <div className={styles.thumb} style={{ left: `${volume}%` }} />
+            <button onClick={() => adjustVolume(10)} className={styles.button}>
+                <img src="/icons/volumeUp.svg" alt="Increase Volume" className={styles.icon} />
+            </button>
+            <div className={styles.sliderContainer} ref={sliderRef} onMouseDown={handleSliderClick}>
+                <div className={styles.slider} style={{ width: `${volume}%` }} />
+                <div className={styles.thumb} style={{ left: `${volume}%` }} />
+            </div>
         </div>
-    </div>
     )
 }
 

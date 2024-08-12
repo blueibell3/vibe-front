@@ -1,7 +1,5 @@
 'use client';
 import React from 'react';
-import { useRecoilState, useRecoilValue } from 'recoil';
-import { currentTrackIndexState, playlistState } from '@/app/state';
 
 type Props = {
   onClick: () => void;

@@ -16,6 +16,27 @@ export const playlistState = atom<Track[]>({
       name: '- Believer',
       photo: '/background/backImageFullScreeen.jpg',
       url: '/music/ImagineDragonsBeliever.mp3',
+      duration: 216
+    },
+    {
+      artist: 'Katana',
+      name: '- Help Me',
+      photo: '/katana.jpg',
+      url: '/music/MichaelKatanaHelpMe.mp3',
+      duration: 386
+    },
+    {
+      artist: 'Kaxidze',
+      name: '- Watermelon',
+      photo: '/jansulKaxize.jpg',
+      url: '/music/WatermelonJansulKaxidze.mp3',
+      duration: 208
+    },
+    {
+      artist: 'Imagine dragons',
+      name: '- Believer',
+      photo: '/background/backImageFullScreeen.jpg',
+      url: '/music/ImagineDragonsBeliever.mp3',
       duration: 204
     },
     {

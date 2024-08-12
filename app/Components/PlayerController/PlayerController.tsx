@@ -5,7 +5,6 @@ import PreviousButton from './PreviousButton/PreviousButton';
 import PlayPauseButton from './PlayPauseButton/PlayPauseButton';
 import NextButton from './NextButton/NextButton';
 import ShuffleButton from './ShuffleButton/ShuffleButton';
-import VolumeControl from './VolumeControl/VolumeControl';
 import FastForwardButton from './FastForwardButton/FastForwardButton';
 import RewindButton from './RewindButton/RewindButton';
 import TimeDisplay from './TimeDisplay/TimeDisplay';
@@ -39,7 +38,7 @@ const PlayerController = (props: Props) => {
                 <TimeDisplay currentTime={props.currentTime} duration={props.duration} onTimeUpdate={props.onTimeUpdate} />
                 <div className={styles.functionality}>
                     <div className={styles.volume}>
-                        <NoNFullVol/>
+                        <NoNFullVol />
                     </div>
                     <PreviousButton onClick={props.onPrevious} />
                     <RewindButton onClick={props.onRewind} />

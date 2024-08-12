@@ -37,23 +37,23 @@ const TabletPlayerController = (props: Props) => {
             </div>
             <div className={styles.TimeDisplay}>
                 <div className={styles.display}>
-                <TimeDisplay currentTime={props.currentTime} duration={props.duration} onTimeUpdate={props.onTimeUpdate}  />
+                    <TimeDisplay currentTime={props.currentTime} duration={props.duration} onTimeUpdate={props.onTimeUpdate} />
                 </div>
 
                 <div className={styles.functionality}>
                     <div className={styles.volume}>
-                        <NoNFullVol/>
+                        <NoNFullVol />
                     </div>
                     <div className={styles.buttons}>
-                    <PreviousButton onClick={props.onPrevious} />
-                    <RewindButton onClick={props.onRewind} />
-                    <PlayPauseButton onClick={props.onPlayPause} isPlaying={props.isPlaying} />
-                    <FastForwardButton onClick={props.onFastForward} />
-                    <NextButton onClick={props.onNext} />
+                        <PreviousButton onClick={props.onPrevious} />
+                        <RewindButton onClick={props.onRewind} />
+                        <PlayPauseButton onClick={props.onPlayPause} isPlaying={props.isPlaying} />
+                        <FastForwardButton onClick={props.onFastForward} />
+                        <NextButton onClick={props.onNext} />
                     </div>
                     <div className={styles.shuffle}>
 
-                    <ShuffleButton />
+                        <ShuffleButton />
                     </div>
                 </div>
             </div>

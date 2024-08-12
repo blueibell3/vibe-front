@@ -1,7 +1,5 @@
 'use client';
 import React from 'react';
-import { useRecoilState } from 'recoil';
-import { isPlayingState } from '@/app/state';
 import styles from './PlayPauseButton.module.scss';
 
 type Props = {

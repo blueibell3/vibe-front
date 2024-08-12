@@ -10,9 +10,9 @@ import ShuffleButton from '../ShuffleButton/ShuffleButton';
 import TimeDisplay from '../TimeDisplay/TimeDisplay';
 import VolumeControl from '../VolumeControl/VolumeControl';
 import Arrows from '../Arrows/Arrows';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilValue } from 'recoil';
 import MusicList from '../../MusicList/MusicList';
-import { playlistState, currentTimeState, currentTrackIndexState } from '@/app/state';
+import { playlistState, currentTrackIndexState } from '@/app/state';
 
 type Props = {
     currentTrack: any;
@@ -26,12 +26,11 @@ type Props = {
     onRewind: () => void;
     onTimeUpdate: (time: number) => void;
     onExitFullscreen: () => void;
-}
+};
 
 const TabletFullscreen = (props: Props) => {
     const [isExpanded, setIsExpanded] = useState(false);
     const playlist = useRecoilValue(playlistState);
-    const currentTime = useRecoilValue(currentTimeState);
     const currentTrackIndex = useRecoilValue(currentTrackIndexState);
 
     const handleArrowClick = () => {
@@ -80,16 +79,15 @@ const TabletFullscreen = (props: Props) => {
                     <span>Next Play</span>
                 </div>
                 <div className={styles.MusicList}>
-                    
-                    {playlist.map((track, index) => (
+                    {playlist.slice(0, isExpanded ? 6 : 3).map((track, index) => (
                         <MusicList
                             key={index}
                             imageUrl={track.photo}
                             songName={track.name}
                             artistName={track.artist}
                             trackIndex={index}
-                            time={new Date((track.duration ?? 0) * 1000).toISOString().substr(14, 5)} 
-                            />
+                            time={new Date((track.duration ?? 0) * 1000).toISOString().substr(14, 5)}
+                        />
                     ))}
                 </div>
             </div>

@@ -9,9 +9,9 @@ const Playlist = () => {
     return (
         <div>
             {playlist.map((track, index) => {
-                const formattedTime = track.duration 
+                const formattedTime = track.duration
                     ? new Date(track.duration * 1000).toISOString().substr(14, 5)
-                    : "00:00"; 
+                    : "00:00";
 
                 return (
                     <MusicList
