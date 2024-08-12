@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import styles from './AddButton.module.scss';
 import ReusableModal from '../PlaylistModal/PlaylistModal';
+import PlaylistModal from '../PlaylistModal/PlaylistModal';
 
 
 
@@ -36,7 +37,7 @@ const AddButton = () => {
             {
                 isOpen &&
                 <div className={styles.reausableModalContainer}>
-                    <ReusableModal
+                    <PlaylistModal
                         isOpen={isOpen}
                         onClose={handleCloseModal}
                         onDone={handleDone}

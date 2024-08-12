@@ -12,7 +12,7 @@ type Props = {
     setPlaylistTitle: (title: string) => void;
 }
 
-const ReusableModal = (props: Props) => {
+const PlaylistModal = (props: Props) => {
 
     if (!props.isOpen) return null;
 
@@ -44,4 +44,4 @@ const ReusableModal = (props: Props) => {
     )
 }
 
-export default ReusableModal
+export default PlaylistModal 
