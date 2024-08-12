@@ -1,33 +1,15 @@
 'use client';
 import React from 'react';
-import { useRecoilState, useRecoilValue } from 'recoil';
-import { playlistState, isShufflingState, currentTrackIndexState } from '@/app/state';
 import styles from './ShuffleButton.module.scss';
 
-const ShuffleButton = () => {
-    // const [isShuffling, setIsShuffling] = useRecoilState(isShufflingState);
-    // const [playlist, setPlaylist] = useRecoilState(playlistState);
-    // const [currentTrackIndex, setCurrentTrackIndex] = useRecoilState(currentTrackIndexState);
-
-    // const toggleShuffle = () => {
-    //     setIsShuffling(!isShuffling);
-    //     if (!isShuffling) {
-    //         setPlaylist(shuffleArray(playlist));
-    //         setCurrentTrackIndex(0); 
-    //     }
-    // };
-
-    // const shuffleArray = (array: string[]) => {
-    //     let shuffled = [...array];
-    //     for (let i = shuffled.length - 1; i > 0; i--) {
-    //         const j = Math.floor(Math.random() * (i + 1));
-    //         [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    //     }
-    //     return shuffled;
+type Props = {
+    onClick?: () => void;
+}
+const ShuffleButton = (props: Props) => {
 
     return (
         <div>
-            <button className={styles.controlButton} >
+            <button className={styles.controlButton} onClick={props.onClick}>
                 <img
                     src='/icons/shuffle.svg'
                     className={styles.icon}

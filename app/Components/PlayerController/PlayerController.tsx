@@ -1,5 +1,4 @@
 'use client';
-import React from 'react';
 import styles from './PlayerController.module.scss';
 import PreviousButton from './PreviousButton/PreviousButton';
 import PlayPauseButton from './PlayPauseButton/PlayPauseButton';

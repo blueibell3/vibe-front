@@ -1,4 +1,3 @@
-import React from 'react';
 import { useRecoilValue } from 'recoil';
 import { playlistState } from '@/app/state';
 import MusicList from '../../MusicList/MusicList';

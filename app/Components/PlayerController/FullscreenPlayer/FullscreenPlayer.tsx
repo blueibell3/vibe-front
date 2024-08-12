@@ -1,5 +1,4 @@
 'use client';
-import React from 'react';
 import styles from './FullscreenPlayer.module.scss';
 import FastForwardButton from '../FastForwardButton/FastForwardButton';
 import NextButton from '../NextButton/NextButton';

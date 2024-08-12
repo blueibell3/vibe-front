@@ -43,13 +43,13 @@ const TabletFullscreen = (props: Props) => {
                 <div className={styles.fullscreenWrapper}>
                     <div className={styles.zoomOut}>
                         <img src="./icons/back.svg" alt="zoomOut" onClick={props.onExitFullscreen} className={styles.back} />
-                        <div className={styles.trackInfo}>
-                            <img src={playlist[currentTrackIndex].photo} alt={playlist[currentTrackIndex].name} className={styles.trackPhoto} />
-                            <div className={styles.trackDetails}>
-                                <div className={styles.artistName}>{playlist[currentTrackIndex].artist}</div>
-                                <div className={styles.trackName}>{playlist[currentTrackIndex].name}</div>
-                            </div>
-                        </div>
+                    </div>
+                    <div className={styles.trackInfo}>
+                        <img src={playlist[currentTrackIndex].photo} alt={playlist[currentTrackIndex].name} className={styles.trackPhoto} />
+                    </div>
+                    <div className={styles.trackDetails}>
+                        <div className={styles.artistName}>{playlist[currentTrackIndex].artist}</div>
+                        <div className={styles.trackName}>{playlist[currentTrackIndex].name}</div>
                     </div>
                     <div className={styles.shuffle}>
                         <ShuffleButton />

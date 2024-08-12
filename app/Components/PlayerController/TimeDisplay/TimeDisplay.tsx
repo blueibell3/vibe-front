@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import  { useRef, useState, useEffect } from 'react';
 import styles from './TimeDisplay.module.scss';
 
 type Props = {

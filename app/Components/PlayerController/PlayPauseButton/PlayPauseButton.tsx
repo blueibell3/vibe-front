@@ -1,5 +1,4 @@
 'use client';
-import React from 'react';
 import styles from './PlayPauseButton.module.scss';
 
 type Props = {

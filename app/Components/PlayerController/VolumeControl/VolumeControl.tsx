@@ -1,5 +1,5 @@
 'use client';
-import React, { useRef } from 'react';
+import  { useRef } from 'react';
 import { useRecoilState } from 'recoil';
 import { volumeState } from '@/app/state';
 import styles from './VolumeControl.module.scss';
