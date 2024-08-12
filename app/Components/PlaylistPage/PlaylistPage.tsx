@@ -8,31 +8,26 @@ const PlayistPage = () => {
         {
             id: 1,
             text: 'My Everyday',
-            imgSrc: 'albumimg.svg'
+            imgSrc: 'playlistimg.svg'
         },
         {
             id: 1,
             text: 'My Everyday',
-            imgSrc: 'albumimg.svg'
+            imgSrc: 'playlistimg.svg'
         },
         {
             id: 2,
             text: 'Party Songs',
-            imgSrc: 'albumimg.svg'
+            imgSrc: 'playlistimg.svg'
         },
         {
             id: 3,
             text: 'Car Songs',
-            imgSrc: 'albumimg.svg'
+            imgSrc: 'playlistimg.svg'
         },
-
-
-
     ];
 
     return (
-
-
         <div className={styles.playlistContainer}>
             <AddButton />
             {playlistData.map(playlistItem => (
