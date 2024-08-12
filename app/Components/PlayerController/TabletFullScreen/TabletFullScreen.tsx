@@ -13,6 +13,7 @@ import Arrows from '../Arrows/Arrows';
 import { useRecoilValue } from 'recoil';
 import MusicList from '../../MusicList/MusicList';
 import { playlistState, currentTrackIndexState } from '@/app/state';
+import TabletArrow from './TabletArrow/TabletArrow';
 
 type Props = {
     currentTrack: any;
@@ -70,6 +71,9 @@ const TabletFullscreen = (props: Props) => {
                 <div className={styles.volume}>
                     <VolumeControl />
                 </div>
+            </div>
+            <div className={styles.tabletArrow}>
+                <TabletArrow />
             </div>
             <div className={`${styles.arrowWrapper} ${isExpanded ? styles.expanded : ''}`}>
                 <Arrows isUp={!isExpanded} onClick={handleArrowClick} />
