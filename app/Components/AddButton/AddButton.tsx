@@ -1,10 +1,7 @@
 'use client'
-
 import React, { useState } from 'react';
 import styles from './AddButton.module.scss';
-import Link from 'next/link';
-import Button from '../Button/Button';
-import ReusableModal from '../ReusableModal/ReusableModal';
+import ReusableModal from '../PlaylistModal/PlaylistModal';
 
 
 

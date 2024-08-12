@@ -12,6 +12,14 @@
     background: #000;
 }
 
+.cancel {
+    flex: 1;
+}
+
+.done {
+    flex: 1;
+}
+
 .addPlaylist {
     display: flex;
     justify-content: space-between;
