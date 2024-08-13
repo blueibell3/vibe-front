@@ -1,13 +1,14 @@
 'use client';
 import { useRef, useEffect, useState } from 'react';
-import { useRecoilValue, useRecoilState } from 'recoil';
+import { useRecoilValue, useRecoilState, useSetRecoilState } from 'recoil';
 import {
     currentTrackIndexState,
     playlistState,
     volumeState,
     isPlayingState,
     isFullscreenState,
-    tabletFullscreenState
+    tabletFullscreenState,
+    clickSoundState,
 } from '@/app/state';
 import PlayerController from '../PlayerController';
 import FullscreenPlayer from '../FullscreenPlayer/FullscreenPlayer';
@@ -21,10 +22,12 @@ const MusicPlayer = () => {
     const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
     const [isFullscreen, setIsFullscreen] = useRecoilState(isFullscreenState);
     const [tabletFullscreen, setTabletIsFullscreen] = useRecoilState(tabletFullscreenState);
+    const [clickSound, setClickSound] = useRecoilState(clickSoundState);
 
     const audioRef = useRef<HTMLAudioElement | null>(null);
     const [duration, setDuration] = useState<number>(0);
     const [currentTime, setCurrentTime] = useState<number>(0);
+    const [isMuted, setIsMuted] = useState<boolean>(false);  
 
     const currentTrack = playlist[currentTrackIndex];
     const currentTrackUrl = currentTrack.url;
@@ -82,6 +85,12 @@ const MusicPlayer = () => {
         }
     }, [currentTrackUrl]);
 
+    useEffect(() => {
+        const sound = new Audio('/sounds/clickSound.mp3');
+        sound.volume = isMuted ? 0 : 1; // Set initial volume based on mute state
+        setClickSound(sound);
+    }, [setClickSound, isMuted]);
+
     const handlePlayPause = () => {
         setIsPlaying((prev) => !prev);
     };
@@ -128,6 +137,13 @@ const MusicPlayer = () => {
 
     const handleExitTabletFullscreen = () => {
         setTabletIsFullscreen(false);
+    };
+
+    const handleToggleMute = () => {
+        setIsMuted((prev) => !prev);
+        if (clickSound) {
+            clickSound.volume = isMuted ? 1 : 0; // Toggle mute state
+        }
     };
 
     return (

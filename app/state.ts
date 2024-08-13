@@ -119,3 +119,8 @@ export const tabletFullscreenState = atom<boolean>({
   key: 'tabletFullscreenState',
   default: false,
 });
+
+export const clickSoundState = atom<HTMLAudioElement | null>({
+  key: 'clickSoundState',
+  default: null,
+});
