@@ -47,3 +47,6 @@ body {
   background-color: black;
 }
 
+a {
+  all: unset;
+}

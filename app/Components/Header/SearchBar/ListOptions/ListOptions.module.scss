@@ -1,12 +1,14 @@
 @import '../../../../styles/colors.scss';
 
 .listOptions {
-    // max-width: 466px;
     width: 100%;
     background-color: $grayColor;
     border-top: 1px solid #6363633D;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .option {
@@ -29,4 +31,9 @@
 
 .album {
     border-radius: 4px;
+}
+
+.listOptions a {
+    display: flex;
+    align-items: center ;
 }
