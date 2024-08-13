@@ -2,7 +2,6 @@
 
 .categoryS {
     display: flex;
-
 }
 
 .navBarContainer {
@@ -16,11 +15,6 @@
     background: $darkColor;
 }
 
-.noPadding {
-    @media screen and (max-width:1023px) and (min-width:768px) {
-        padding: 0 !important;
-    }
-}
 .navBarC {
     display: flex;
     flex-direction: column;
@@ -61,7 +55,6 @@
     text-decoration: none;
 }
 
-
 .menuListImg {
     display: flex;
     width: 24px;
@@ -74,5 +67,11 @@
 @media screen and (max-width:1023px) and (min-width:768px) {
     .burgerClass {
         display: flex;
+    }
+}
+
+@media screen and (max-width:1023px) and (min-width:768px) {
+    .noPadding {
+        padding: 0;
     }
 }
