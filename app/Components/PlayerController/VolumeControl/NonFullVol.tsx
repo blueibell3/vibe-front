@@ -42,7 +42,7 @@ const NoNFullVol = () => {
             <audio ref={clickSoundRef} src="/sounds/clickSound.mp3" />
             <button
                 onClick={toggleMute}
-                className={styles.button}
+                className={styles.buttons}
             >
                 <img
                     src={isMuted ? "/icons/muted.svg" : "/icons/volumeUp.svg"}

@@ -16,7 +16,6 @@ const TabletArrow = () => {
         
         <div className={`${styles.arrowWrappers} ${isExpanded ? styles.expanded : ''}`}>
             <Arrows isUp={!isExpanded} onClick={handleArrowClick} />
-            {/* <span className={styles.nextPlay}>Next Play</span> */}
             <div className={styles.MusicLists}>
                 <span className={styles.nextSpans}>Next Play</span>
                 {playlist.slice(0, isExpanded ? 6 : 3).map((track, index) => (
