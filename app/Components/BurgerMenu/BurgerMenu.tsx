@@ -4,7 +4,7 @@ import styles from '../BurgerMenu/BurgerMenu.module.scss';
 import NavBarMenu from '../NavBarMenu/NavBarMenu';
 
 
-const BurgerMenu = () =>{
+const BurgerMenu = () => {
 
     const [menuClicked, setMenuClicked] = useState(false);
 
@@ -15,22 +15,22 @@ const BurgerMenu = () =>{
 
     return (
         <>
-            <div  className={styles.menuNav}>
-            {!menuClicked && (
-                <img 
-                    onClick={onClick} 
-                    className={styles.burgerClass} 
-                    src="/burgericon.svg" 
-                    alt="burger icon" 
-                />
-            )}
+            <div className={styles.menuNav}>
+                {!menuClicked && (
+                    <img
+                        onClick={onClick}
+                        className={styles.burgerClass}
+                        src="/burgericon.svg"
+                        alt="burger icon"
+                    />
+                )}
                 {
                     menuClicked &&
                     <div className={styles.burgerMenu}>
-                        <img className={styles.burgerClassInside} 
-                         onClick={onClick} 
-                          src="burgericon.svg"
-                           alt="icon"  />
+                        <img className={styles.burgerClassInside}
+                            onClick={onClick}
+                            src="burgericon.svg"
+                            alt="icon" />
                         <NavBarMenu />
                     </div>
                 }
