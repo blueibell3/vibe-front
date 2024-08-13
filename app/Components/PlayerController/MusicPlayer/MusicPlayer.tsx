@@ -27,7 +27,7 @@ const MusicPlayer = () => {
     const audioRef = useRef<HTMLAudioElement | null>(null);
     const [duration, setDuration] = useState<number>(0);
     const [currentTime, setCurrentTime] = useState<number>(0);
-    const [isMuted, setIsMuted] = useState<boolean>(false);  
+    const [isMuted, setIsMuted] = useState<boolean>(false);
 
     const currentTrack = playlist[currentTrackIndex];
     const currentTrackUrl = currentTrack.url;
@@ -87,7 +87,7 @@ const MusicPlayer = () => {
 
     useEffect(() => {
         const sound = new Audio('/sounds/clickSound.mp3');
-        sound.volume = isMuted ? 0 : 1; // Set initial volume based on mute state
+        sound.volume = isMuted ? 0 : 1; 
         setClickSound(sound);
     }, [setClickSound, isMuted]);
 
@@ -137,13 +137,6 @@ const MusicPlayer = () => {
 
     const handleExitTabletFullscreen = () => {
         setTabletIsFullscreen(false);
-    };
-
-    const handleToggleMute = () => {
-        setIsMuted((prev) => !prev);
-        if (clickSound) {
-            clickSound.volume = isMuted ? 1 : 0; // Toggle mute state
-        }
     };
 
     return (
