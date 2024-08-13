@@ -25,17 +25,19 @@
     right: 0;
     top: 0;
     gap: 30px;
+    padding: 16px 24px 112px 24px;
 }
-.burgerClassInside{
-    position: relative;
-    top: 20px;
-    left: 20px;
-}
+// .burgerClassInside{
+//     position: relative;
+//     top: 20px;
+//     left: 20px;
+// }
 
 @media screen and (max-width:1023px) and (min-width:768px) {
     .burgerClass {
         display: flex;
         position: absolute;
     }
+
 
 }

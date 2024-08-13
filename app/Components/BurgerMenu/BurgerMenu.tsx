@@ -31,7 +31,7 @@ const BurgerMenu = () => {
                             onClick={onClick}
                             src="burgericon.svg"
                             alt="icon" />
-                        <NavBarMenu />
+                        <NavBarMenu isBurgerMenu={true} />
                     </div>
                 }
             </div>
