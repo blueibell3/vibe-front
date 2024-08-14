@@ -77,7 +77,6 @@ const TabletFullscreen = (props: Props) => {
             </div>
             <div className={`${styles.arrowWrapper} ${isExpanded ? styles.expanded : ''}`}>
                 <Arrows isUp={!isExpanded} onClick={handleArrowClick} />
-                {/* <span className={styles.nextP}>Next Play</span> */}
                 <div className={styles.MusicList}>
                     <span className={styles.nextSpan}>Next Play</span>
                     {playlist.slice(0, isExpanded ? 6 : 0).map((track, index) => (
