@@ -1,73 +1,41 @@
-'use client';
-import { useRef, useEffect, useState } from 'react';
-import { useRecoilValue, useRecoilState, useSetRecoilState } from 'recoil';
-import {
-    currentTrackIndexState,
-    playlistState,
-    volumeState,
-    isPlayingState,
-    isFullscreenState,
-    tabletFullscreenState,
-    clickSoundState,
-} from '@/app/state';
+'use client'
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { playlistState, currentTrackIndexState } from '@/app/state';
 import PlayerController from '../PlayerController';
 import FullscreenPlayer from '../FullscreenPlayer/FullscreenPlayer';
 import TabletFullscreen from '../TabletFullScreen/TabletFullScreen';
 import TabletPlayerController from '../TabletPlayerController/TabletPlayerController';
+import { useEffect } from 'react';
+import useAudioPlayer from './useAudioPlayer/useAudioPlayer';
+import useTrackControls from './useTrackControls/useTrackControls';
 
 const MusicPlayer = () => {
     const playlist = useRecoilValue(playlistState);
     const [currentTrackIndex, setCurrentTrackIndex] = useRecoilState(currentTrackIndexState);
-    const volume = useRecoilValue(volumeState);
-    const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
-    const [isFullscreen, setIsFullscreen] = useRecoilState(isFullscreenState);
-    const [tabletFullscreen, setTabletIsFullscreen] = useRecoilState(tabletFullscreenState);
-    const [clickSound, setClickSound] = useRecoilState(clickSoundState);
+    const {
+        isPlaying,
+        isFullscreen,
+        tabletFullscreen,
+        handlePlayPause,
+        handlePrevious,
+        handleNext,
+        handleFastForward,
+        handleRewind,
+        toggleFullscreen,
+        toggleTabletFullscreen,
+        volume,
+        isMuted,
+    } = useTrackControls();
 
-    const audioRef = useRef<HTMLAudioElement | null>(null);
-    const [duration, setDuration] = useState<number>(0);
-    const [currentTime, setCurrentTime] = useState<number>(0);
-    const [isMuted, setIsMuted] = useState<boolean>(false);
+    const { audioRef, duration, currentTime } = useAudioPlayer(playlist[currentTrackIndex]?.url, volume, isMuted);
 
     const currentTrack = playlist[currentTrackIndex];
-    const currentTrackUrl = currentTrack.url;
 
-    useEffect(() => {
+    const handleTimeUpdate = (time: number) => {
         if (audioRef.current) {
-            audioRef.current.volume = volume / 100;
+            audioRef.current.currentTime = time;
         }
-    }, [volume]);
-
-    useEffect(() => {
-        if (audioRef.current) {
-            const handleTimeUpdate = () => setCurrentTime(audioRef.current!.currentTime);
-            const handleLoadedMetadata = () => {
-                setDuration(audioRef.current!.duration);
-                setCurrentTime(audioRef.current!.currentTime);
-            };
-            const handleEnded = () => {
-                setCurrentTrackIndex((prevIndex) => (prevIndex + 1) % playlist.length);
-                setIsPlaying(true);
-            };
-
-            audioRef.current.addEventListener('timeupdate', handleTimeUpdate);
-            audioRef.current.addEventListener('loadedmetadata', handleLoadedMetadata);
-            audioRef.current.addEventListener('ended', handleEnded);
-
-            if (audioRef.current.readyState >= 1) {
-                handleLoadedMetadata();
-            } else {
-                audioRef.current.addEventListener('loadeddata', handleLoadedMetadata);
-            }
-
-            return () => {
-                audioRef.current!.removeEventListener('timeupdate', handleTimeUpdate);
-                audioRef.current!.removeEventListener('loadedmetadata', handleLoadedMetadata);
-                audioRef.current!.removeEventListener('loadeddata', handleLoadedMetadata);
-                audioRef.current!.removeEventListener('ended', handleEnded);
-            };
-        }
-    }, [currentTrackUrl]);
+    };
 
     useEffect(() => {
         if (audioRef.current) {
@@ -77,71 +45,18 @@ const MusicPlayer = () => {
                 audioRef.current.pause();
             }
         }
-    }, [isPlaying]);
+    }, [isPlaying, audioRef]);
 
     useEffect(() => {
-        if (audioRef.current && isPlaying) {
+        if (audioRef.current) {
+            audioRef.current.src = playlist[currentTrackIndex]?.url || '';
             audioRef.current.play();
         }
-    }, [currentTrackUrl]);
-
-    useEffect(() => {
-        const sound = new Audio('/sounds/clickSound.mp3');
-        sound.volume = isMuted ? 0 : 1; 
-        setClickSound(sound);
-    }, [setClickSound, isMuted]);
-
-    const handlePlayPause = () => {
-        setIsPlaying((prev) => !prev);
-    };
-
-    const handlePrevious = () => {
-        setCurrentTrackIndex((prevIndex) => (prevIndex - 1 + playlist.length) % playlist.length);
-        setIsPlaying(true);
-    };
-
-    const handleNext = () => {
-        setCurrentTrackIndex((prevIndex) => (prevIndex + 1) % playlist.length);
-        setIsPlaying(true);
-    };
-
-    const handleFastForward = () => {
-        if (audioRef.current) {
-            audioRef.current.currentTime = Math.min(audioRef.current.duration, audioRef.current.currentTime + 5);
-        }
-    };
-
-    const handleRewind = () => {
-        if (audioRef.current) {
-            audioRef.current.currentTime = Math.max(0, audioRef.current.currentTime - 5);
-        }
-    };
-
-    const handleTimeUpdate = (time: number) => {
-        if (audioRef.current) {
-            audioRef.current.currentTime = time;
-        }
-    };
-
-    const handleEnterFullscreen = () => {
-        setIsFullscreen(true);
-    };
-
-    const handleExitFullscreen = () => {
-        setIsFullscreen(false);
-    };
-
-    const handleEnterTabletFullscreen = () => {
-        setTabletIsFullscreen(true);
-    };
-
-    const handleExitTabletFullscreen = () => {
-        setTabletIsFullscreen(false);
-    };
+    }, [currentTrackIndex, playlist]);
 
     return (
         <>
-            <audio ref={audioRef} src={currentTrackUrl} />
+            <audio ref={audioRef} />
             {isFullscreen ? (
                 <FullscreenPlayer
                     currentTrack={currentTrack}
@@ -151,10 +66,10 @@ const MusicPlayer = () => {
                     onPlayPause={handlePlayPause}
                     onPrevious={handlePrevious}
                     onNext={handleNext}
-                    onFastForward={handleFastForward}
-                    onRewind={handleRewind}
+                    onFastForward={() => handleFastForward(audioRef)}
+                    onRewind={() => handleRewind(audioRef)}
                     onTimeUpdate={handleTimeUpdate}
-                    onExitFullscreen={handleExitFullscreen}
+                    onExitFullscreen={toggleFullscreen}
                 />
             ) : (
                 <PlayerController
@@ -165,10 +80,10 @@ const MusicPlayer = () => {
                     onPlayPause={handlePlayPause}
                     onPrevious={handlePrevious}
                     onNext={handleNext}
-                    onFastForward={handleFastForward}
-                    onRewind={handleRewind}
+                    onFastForward={() => handleFastForward(audioRef)}
+                    onRewind={() => handleRewind(audioRef)}
                     onTimeUpdate={handleTimeUpdate}
-                    onEnterFullscreen={handleEnterFullscreen}
+                    onEnterFullscreen={toggleFullscreen}
                 />
             )}
             {tabletFullscreen ? (
@@ -180,10 +95,10 @@ const MusicPlayer = () => {
                     onPlayPause={handlePlayPause}
                     onPrevious={handlePrevious}
                     onNext={handleNext}
-                    onFastForward={handleFastForward}
-                    onRewind={handleRewind}
+                    onFastForward={() => handleFastForward(audioRef)}
+                    onRewind={() => handleRewind(audioRef)}
                     onTimeUpdate={handleTimeUpdate}
-                    onExitFullscreen={handleExitTabletFullscreen}
+                    onExitFullscreen={toggleTabletFullscreen}
                 />
             ) : (
                 <TabletPlayerController
@@ -194,10 +109,10 @@ const MusicPlayer = () => {
                     onPlayPause={handlePlayPause}
                     onPrevious={handlePrevious}
                     onNext={handleNext}
-                    onFastForward={handleFastForward}
-                    onRewind={handleRewind}
+                    onFastForward={() => handleFastForward(audioRef)}
+                    onRewind={() => handleRewind(audioRef)}
                     onTimeUpdate={handleTimeUpdate}
-                    onEnterFullscreen={handleEnterTabletFullscreen}
+                    onEnterFullscreen={toggleTabletFullscreen}
                 />
             )}
         </>

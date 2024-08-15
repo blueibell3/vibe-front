@@ -120,7 +120,7 @@ export const tabletFullscreenState = atom<boolean>({
   default: false,
 });
 
-export const clickSoundState = atom<HTMLAudioElement | null>({
-  key: 'clickSoundState',
-  default: null,
+export const isMutedState = atom<boolean>({
+  key: 'isMutedState',
+  default: false,
 });
