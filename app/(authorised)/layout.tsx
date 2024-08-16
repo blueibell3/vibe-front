@@ -13,9 +13,8 @@ type Props = {
 
 const AuthLayout = (props: Props) => {
   return (
-    <div>
-      <div>
-        <div className={styles.headerContainer}>
+    <div className={styles.container}>
+      {/* <div className={styles.headerContainer}>
           <Header />
         </div>
         <div className={styles.pages}>
@@ -26,11 +25,11 @@ const AuthLayout = (props: Props) => {
           <div className={styles.menuMain}>
           <BurgerMenu />
         </div>
-        </div>
-      </div>
-      <div className={styles.mobileNavBarContainer}>
-        <NavBarMobile />
-      </div>
+        <div className={styles.mobileNavBarContainer}>
+          <NavBarMobile/>
+        </div> */}
+      {props.children}
+
     </div>
 
   )
