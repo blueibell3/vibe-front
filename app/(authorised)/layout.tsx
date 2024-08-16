@@ -20,12 +20,12 @@ const AuthLayout = (props: Props) => {
         </div>
         <div className={styles.pages}>
           <div className={styles.navMenuContainer}>
-            <NavBarMenu />
+            <NavBarMenu isBurgerMenu={true}  />
           </div>
           {props.children}
           <div className={styles.menuMain}>
-            <BurgerMenu />
-          </div>
+          <BurgerMenu />
+        </div>
         </div>
       </div>
       <div className={styles.mobileNavBarContainer}>
