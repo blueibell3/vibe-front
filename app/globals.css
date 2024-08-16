@@ -55,4 +55,9 @@ button {
   cursor: pointer;
   outline: inherit;
 
+  background: var(--Color, #121212);
+}
+
+:link{
+  text-decoration: none;
 }

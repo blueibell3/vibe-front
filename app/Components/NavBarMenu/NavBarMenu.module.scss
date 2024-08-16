@@ -2,12 +2,11 @@
 
 .categoryS {
     display: flex;
-
 }
 
 .navBarContainer {
     display: inline-flex;
-    height: 1602px;
+    height: 952px;
     padding: 20px 24px 112px 24px;
     flex-direction: column;
     align-items: flex-start;
@@ -56,7 +55,6 @@
     text-decoration: none;
 }
 
-
 .menuListImg {
     display: flex;
     width: 24px;
@@ -69,5 +67,11 @@
 @media screen and (max-width:1023px) and (min-width:768px) {
     .burgerClass {
         display: flex;
+    }
+}
+
+@media screen and (max-width:1023px) and (min-width:768px) {
+    .noPadding {
+        padding: 0;
     }
 }

@@ -9,7 +9,7 @@ const Header = () => {
             <div className={styles.searchLogoContainer}>
                 <div className={styles.searchLogo}>
                     <Link href='/'>
-                        <Image src='/logo.svg' alt='logo' width={91} height={39} />
+                         <Image src='/logo.svg' alt='logo' width={91} height={39} />
                     </Link>
                     <div className={styles.searchContainer}>
                         <input className={styles.search} type='text' placeholder='Search' />

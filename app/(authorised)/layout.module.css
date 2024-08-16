@@ -1,0 +1,44 @@
+@media screen and (min-width:1023px) {
+    .mobileNavBarContainer {
+        display: none;
+    }
+}
+
+@media screen and (max-width:1023px) and (min-width:768px) {
+    .navMenuContainer {
+        display: none;
+    }
+
+    .mobileNavBarContainer {
+        display: none;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .navBarContainer {
+        display: none;
+    }
+
+    .navMenuContainer {
+        display: none;
+    }
+
+    .mobileNavBarContainer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        z-index: 1000; 
+    }
+    
+    .headerContainer{
+        display: none;
+    }
+}
+
+.navMenuContainer{
+    width: 300px;
+}
+
+.pages{
+    display: flex;
+}
