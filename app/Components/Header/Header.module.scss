@@ -1,12 +1,12 @@
 @import '../../styles/colors.scss';
 
-
 .container {
     display: flex;
     width: 100%;
     justify-content: center;
     padding: 16px 24px;
     background-color: $darkColor;
+    align-items: center;
 }
 
 .searchLogoContainer {
@@ -41,6 +41,7 @@
 .searchContainer {
     display: flex;
     position: relative;
+    width:60%;
 }
 
 .icon {

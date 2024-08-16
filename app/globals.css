@@ -46,6 +46,9 @@ body {
   line-height: normal;
 }
 
+a {
+  all: unset;
+
 button {
   background: none;
   color: inherit;
