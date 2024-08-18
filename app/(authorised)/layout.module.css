@@ -1,3 +1,28 @@
+.children {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.musicList {
+    padding: 8px 12px 8px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+}
+
+.test {
+    display: flex;
+    flex-direction: column;
+    padding-left: 15px;
+}
+
+
+.MusicPlayer {
+    display: flex;
+}
+
+
 @media screen and (min-width:1023px) {
     .mobileNavBarContainer {
         display: none;
@@ -27,18 +52,18 @@
         position: fixed;
         bottom: 0;
         width: 100%;
-        z-index: 1000; 
+        z-index: 1000;
     }
-    
-    .headerContainer{
+
+    .headerContainer {
         display: none;
     }
 }
 
-.navMenuContainer{
+.navMenuContainer {
     width: 300px;
 }
 
-.pages{
+.pages {
     display: flex;
 }

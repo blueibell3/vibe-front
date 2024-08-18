@@ -26,7 +26,6 @@ const MusicList = (props: Props) => {
             setIsPlaying(true);
         }
     }
-
     return (
         <div className={styles.MusicListCategory} onClick={handleClick}>
             <div className={styles.MusicListId}>

@@ -53,14 +53,6 @@ export const playlistState = atom<Track[]>({
       url: '/music/WatermelonJansulKaxidze.mp3',
       duration: 208
     },
-
-    {
-      artist: 'Imagine dragons',
-      name: '- Believer',
-      photo: '/background/backImageFullScreeen.jpg',
-      url: '/music/ImagineDragonsBeliever.mp3',
-      duration: 216
-    },
     {
       artist: 'Katana',
       name: '- Help Me',

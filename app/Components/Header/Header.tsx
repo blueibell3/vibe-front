@@ -10,7 +10,7 @@ const Header = () => {
             <div className={styles.searchLogoContainer}>
                 <div className={styles.searchLogo}>
                     <Link href='/'>
-                         <Image src='/logo.svg' alt='logo' width={91} height={39} />
+                         <Image src='/logo.png' alt='logo' width={141} height={39} className={styles.logo} />
                     </Link>
                     <div className={styles.searchContainer}>
                         <SearchBar />

@@ -48,6 +48,7 @@ body {
 
 a {
   all: unset;
+}
 
 button {
   background: none;
@@ -57,10 +58,12 @@ button {
   font: inherit;
   cursor: pointer;
   outline: inherit;
-
-  background: var(--Color, #121212);
 }
 
 :link{
   text-decoration: none;
+}
+
+body {
+  background-color: #121212;
 }

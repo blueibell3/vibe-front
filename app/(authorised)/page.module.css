@@ -5,3 +5,36 @@
     width: 100%;
 }
 
+.container {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    position: relative;
+}
+
+.TrendHitsCard {
+    padding-left: 15px;
+    padding-top: 20px;
+    width: 100%;
+}
+
+.ArtistCard {
+    display: flex;
+    gap: 20px;
+}
+
+.seactionHeader {
+    display: flex;
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding-left: 15px;
+}
+
+.ArtistCard {
+    padding-left: 15px;
+    display: grid;
+    width: 100%;
+    grid-gap: 12px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
