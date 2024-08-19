@@ -44,10 +44,12 @@ body {
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  background: var(--Color, #121212);
 }
 
 a {
   all: unset;
+}
 
 button {
   background: none;

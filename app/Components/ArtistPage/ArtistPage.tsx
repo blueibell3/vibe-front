@@ -43,7 +43,7 @@ const ArtistPage = () => {
                 text={artistItem.text}
                 href={`albums/${artistItem.id}`}
                 imgSrc={artistItem.imgSrc}
-                isArtist={false}
+                isArtist={true}
                      />
 
             ))}
