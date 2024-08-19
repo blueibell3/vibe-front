@@ -24,9 +24,6 @@ const AuthLayout = (props: Props) => {
             <NavBarMenu isBurgerMenu={false} />
           </div>
           {props.children}
-          <div className={styles.menuMain}>
-            <BurgerMenu />
-          </div>
         </div>
       </div>
       <div className={styles.mobileNavBarContainer}>
