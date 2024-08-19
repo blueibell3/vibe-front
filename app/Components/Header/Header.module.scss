@@ -16,12 +16,17 @@
     cursor: pointer;
 }
 
-.searchLogoContainer {
+.wrapper {
     display: flex;
-    // max-width: 1440px;
+    justify-content: space-between;
     width: 100%;
 }
 
+.searchLogoContainer {
+    display: flex;
+    max-width: 270px;
+    width: 100%;
+}
 .searchLogo {
     max-width: 732px;
     width: 100%;
@@ -31,7 +36,8 @@
 
 .search {
     display: flex;
-    width: 434px;
+    max-width: 634px;
+    width: 100%;
     padding: 8px 44px;
     gap: 8px;
     flex-shrink: 0;
@@ -48,7 +54,8 @@
 .searchContainer {
     display: flex;
     position: relative;
-    width:60%;
+    max-width: 400px;
+    width: 100%;
 }
 
 .icon {

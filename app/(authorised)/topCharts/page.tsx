@@ -11,7 +11,7 @@ const TopChartsPage = () => {
         <>
             <div className={styles.TopChartsPageM}>
                 <div className={styles.topChartsText}>Top Charts</div>
-                <TopCharts />
+                <TopCharts  />
             </div>
         </>
     )

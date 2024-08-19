@@ -13,15 +13,15 @@ const Header = () => {
                     <Link href='/'>
                         <Image src='/logo.png' alt='logo' width={141} height={39} className={styles.logo} />
                     </Link>
-                    <div className={styles.searchContainer}>
-                        <SearchBar />
-                    </div>
                     <div className={styles.menuMain}>
                         <BurgerMenu />
                     </div>
                 </div>
             </div>
-            <div>
+            <div className={styles.wrapper}>
+                <div className={styles.searchContainer}>
+                    <SearchBar />
+                </div>
                 <UserAvatar gmail={'G.sanikidze@gmail.com'} />
             </div>
         </div>

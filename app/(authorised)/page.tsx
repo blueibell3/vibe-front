@@ -2,6 +2,7 @@
 import ChartCard from '../Components/ ChartCard/ ChartCard';
 import ArtistCard from '../Components/ArtistCard/ArtistCard';
 import Header from '../Components/Header/Header';
+import MusicCard from '../Components/MusicCard/MusicCard';
 import MusicList from '../Components/MusicList/MusicList';
 import Test from '../Components/MusicList/Tests';
 import FullscreenPlayer from '../Components/PlayerController/FullscreenPlayer/FullscreenPlayer';
@@ -30,10 +31,19 @@ export default function Home() {
         <ArtistCard title={'Coldplay'} year={1990} url='/COldplay.svg' />
       </div>
       <div className={styles.seactionHeader}>
-        <SectionHeader title={'Top Charts'} pathName={'/topCharts'}/>
+        <SectionHeader title={'Top Charts'} pathName={'/topCharts'} />
       </div>
       <div className={styles.topCharts}>
-          <TopCharts />
+        <TopCharts limit={4} />
+      </div>
+      <div className={styles.seactionHeader}>
+        <SectionHeader title={'Top Charts'} pathName={'/topCharts'} />
+      </div>
+      <div className={styles.musicCard}>
+        <MusicCard imageUrl={''} songName={''} artistName={''} />
+        <MusicCard imageUrl={''} songName={''} artistName={''} />
+        <MusicCard imageUrl={''} songName={''} artistName={''} />
+        <MusicCard imageUrl={''} songName={''} artistName={''} />
       </div>
     </div>
   );

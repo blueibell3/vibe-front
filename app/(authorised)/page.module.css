@@ -11,6 +11,7 @@
     flex-direction: column;
     position: relative;
     overflow-y: auto;
+    margin-left: 20px;
 }
 
 .TrendHitsCard {
@@ -38,5 +39,13 @@
     width: 100%;
     grid-gap: 12px;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.musicCard {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
 }
 
