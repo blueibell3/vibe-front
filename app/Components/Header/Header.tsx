@@ -3,6 +3,7 @@ import styles from './Header.module.scss'
 import UserAvatar from './UserAvatar/UserAvatar'
 import Link from 'next/link'
 import SearchBar from './SearchBar/SearchBar'
+import BurgerMenu from '../BurgerMenu/BurgerMenu'
 
 const Header = () => {
     return (
@@ -10,10 +11,13 @@ const Header = () => {
             <div className={styles.searchLogoContainer}>
                 <div className={styles.searchLogo}>
                     <Link href='/'>
-                         <Image src='/logo.png' alt='logo' width={141} height={39} className={styles.logo} />
+                        <Image src='/logo.png' alt='logo' width={141} height={39} className={styles.logo} />
                     </Link>
                     <div className={styles.searchContainer}>
                         <SearchBar />
+                    </div>
+                    <div className={styles.menuMain}>
+                        <BurgerMenu />
                     </div>
                 </div>
             </div>

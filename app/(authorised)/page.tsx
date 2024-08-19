@@ -8,6 +8,7 @@ import FullscreenPlayer from '../Components/PlayerController/FullscreenPlayer/Fu
 import MusicPlayer from '../Components/PlayerController/MusicPlayer/MusicPlayer';
 import PlayerController from '../Components/PlayerController/PlayerController';
 import SectionHeader from '../Components/SectionHeader/SectionHeader';
+import TopCharts from '../Components/TopCharts/TopCharts';
 import TrendHitsCard from '../Components/TrendHitsCard/TrendHitsCard';
 import styles from './page.module.css';
 
@@ -26,8 +27,13 @@ export default function Home() {
         <ArtistCard title={'Coldplay'} year={1990} url='/COldplay.svg' />
         <ArtistCard title={'Coldplay'} year={1990} url='/COldplay.svg' />
         <ArtistCard title={'Coldplay'} year={1990} url='/COldplay.svg' />
-        <ArtistCard title={'Coldplay  '} year={1990} url='/COldplay.svg' />
-
+        <ArtistCard title={'Coldplay'} year={1990} url='/COldplay.svg' />
+      </div>
+      <div className={styles.seactionHeader}>
+        <SectionHeader title={'Top Charts'} pathName={'/topCharts'}/>
+      </div>
+      <div className={styles.topCharts}>
+          <TopCharts />
       </div>
     </div>
   );

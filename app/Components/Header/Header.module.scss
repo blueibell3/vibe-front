@@ -7,6 +7,9 @@
     padding: 16px 24px;
     background-color: $darkColor;
     align-items: center;
+    position: fixed;
+    z-index: 1;
+    top: 0;
 }
 
 .logo {

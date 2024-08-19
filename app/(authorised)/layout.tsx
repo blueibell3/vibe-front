@@ -26,10 +26,6 @@ const AuthLayout = (props: Props) => {
           <div className={styles.navMenuContainer}>
             <NavBarMenu isBurgerMenu={true} />
           </div>
-          {/* {props.children} */}
-          <div className={styles.menuMain}>
-            <BurgerMenu />
-          </div>
           <div className={styles.mobileNavBarContainer}>
             <NavBarMobile />
           </div>
