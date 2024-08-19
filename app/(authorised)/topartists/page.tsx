@@ -1,7 +1,5 @@
 import TopArtists from "@/app/Components/TopArtists/TopArtists"
 import styles from "./page.module.css"
-import ArtistPage from "@/app/Components/ArtistPage/ArtistPage"
-
 
 
 const TopArtistPage = () => {
