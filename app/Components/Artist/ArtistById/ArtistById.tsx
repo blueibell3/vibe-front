@@ -1,6 +1,5 @@
 import Link from "next/link";
-import AlbumsPage from "../../AlbumsPage/AlbumsPage";
-import MusicCard from "../../MusicCard/MusicCard";
+import Albums from "../../Albums/Albums";
 import TrendHitsPage from "../../TrendHits/TrendHits";
 import styles from "./ArtistById.module.scss"
 
@@ -24,7 +23,7 @@ const ArtistById = (props: Props) => {
                 </div>
                 <div className={styles.albumsPage}>
                     <div className={styles.albumsText}>Albums</div>
-                    <AlbumsPage />
+                    <Albums />
                 </div>
         </>
     )

@@ -2,7 +2,7 @@ import Link from "next/link";
 import ListItem from "../ListItem/ListItem";
 import styles from "./Artist.module.scss";
 
-const ArtistPage = () => {
+const Artist = () => {
     const artistData = [
         {
             id: 1,
@@ -51,4 +51,4 @@ const ArtistPage = () => {
     );
 }
 
-export default ArtistPage;
+export default Artist;

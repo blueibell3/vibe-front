@@ -1,9 +1,8 @@
 import React from 'react';
-
-import styles from "./AlbumsPage.module.scss";
+import styles from "./Albums.module.scss";
 import AlbumCard from '../AlbumCard/AlbumCard';
 
-const AlbumsPage = () => {
+const Albums = () => {
     const albumsData = [
         {
             id: 1,
@@ -81,4 +80,4 @@ const AlbumsPage = () => {
     );
 }
 
-export default AlbumsPage;
+export default Albums;
