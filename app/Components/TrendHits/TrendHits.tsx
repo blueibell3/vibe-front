@@ -3,95 +3,101 @@ import styles from "./TrendHits.module.scss"
 import MusicCard from '../MusicCard/MusicCard';
 
 
-const TrendHitsPage = () => {
+type Props  = {
+    limit: number;
+   }
+
+const TrendHitsPage = (props: Props) => {
     const trendHitsData = [
         {
             songName: 'Feel it',
             artistName: 'Selena Gomez',
-            imageUrl: 'trendhitsimg.svg',
+            imageUrl: '/trendhitsimg.svg',
         },
         {
             songName: 'Feel it',
             artistName: 'Selena Gomez',
-            imageUrl: 'trendhitsimg.svg',
+            imageUrl: '/trendhitsimg.svg',
         },
         {
             songName: 'Slow down',
             artistName: 'Selena Gomez',
-            imageUrl: 'trendhitsimg.svg',
+            imageUrl: '/trendhitsimg.svg',
         },
         {
             songName: 'Feel it',
             artistName: 'Selena Gomez',
-            imageUrl: 'trendhitsimg.svg',
+            imageUrl: '/trendhitsimg.svg',
         },
         {
-            songName: '',
+            songName: 'hbbh',
             artistName: 'Selena Gomez',
-            imageUrl: 'trendhitsimg.svg',
-        },
-        {
-            songName: 'Feel it',
-            artistName: 'Selena Gomez',
-            imageUrl: 'trendhitsimg.svg',
+            imageUrl: '/trendhitsimg.svg',
         },
         {
             songName: 'Feel it',
             artistName: 'Selena Gomez',
-            imageUrl: 'trendhitsimg.svg',
+            imageUrl: '/trendhitsimg.svg',
         },
         {
             songName: 'Feel it',
             artistName: 'Selena Gomez',
-            imageUrl: 'trendhitsimg.svg',
+            imageUrl: '/trendhitsimg.svg',
+        },
+        {
+            songName: 'Feel it',
+            artistName: 'Selena Gomez',
+            imageUrl: '/trendhitsimg.svg',
         },
         {
             songName: 'Made for me',
             artistName: 'Muni Long',
-            imageUrl: 'trendhitsimg.svg',
+            imageUrl: '/trendhitsimg.svg',
         },
         {
             songName: 'Feel it',
             artistName: 'Selena Gomez',
-            imageUrl: 'trendhitsimg.svg',
+            imageUrl: '/trendhitsimg.svg',
         },
         {
             songName: 'Slow down',
             artistName: 'Selena Gomez',
-            imageUrl: 'trendhitsimg.svg',
+            imageUrl: '/trendhitsimg.svg',
         },
         {
             songName: 'Lovin on me',
             artistName: 'Selena Gomez',
-            imageUrl: 'trendhitsimg.svg',
+            imageUrl: '/trendhitsimg.svg',
         },
         {
             songName: 'Feel it',
             artistName: 'Selena Gomez',
-            imageUrl: 'trendhitsimg.svg',
+            imageUrl: '/trendhitsimg.svg',
         },
         {
             songName: 'Lovin on me',
             artistName: 'Selena Gomez',
-            imageUrl: 'trendhitsimg.svg',
+            imageUrl: '/trendhitsimg.svg',
         },
         {
             songName: 'Feel it',
             artistName: 'Selena Gomez',
-            imageUrl: 'trendhitsimg.svg',
+            imageUrl: '/trendhitsimg.svg',
         },
         {
             songName: 'Lovin on me',
             artistName: 'Selena Gomez',
-            imageUrl: 'trendhitsimg.svg',
+            imageUrl: '/trendhitsimg.svg',
         },
     
     ];
+
+    const trendHits = props.limit ? trendHitsData.slice(0, props.limit) : trendHitsData;
     return (
         <>
-
+  
             <div className={styles.trendHitsContainer}>
-                {trendHitsData.map(trendHits => (
+                {trendHits.map(trendHits => (
                     <MusicCard
                         imageUrl={trendHits.imageUrl}
                         songName={trendHits.songName}
