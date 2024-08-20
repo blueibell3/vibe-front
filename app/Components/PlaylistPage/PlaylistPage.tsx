@@ -36,7 +36,9 @@ const PlayistPage = () => {
                     key={playlistItem.id}
                     text={playlistItem.text}
                     imgSrc={playlistItem.imgSrc}
-                    isArtist={false} />
+                    isArtist={false}
+                    link={`/playlist/${playlistItem.id}`} 
+                     />
             ))}
 
         </div>

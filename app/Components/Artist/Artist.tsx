@@ -45,7 +45,9 @@ const Artist = () => {
                     text={artistItem.text}
                     imgSrc={artistItem.imgSrc}
                     isArtist={true}
-                    id={artistItem.id} />
+                    id={artistItem.id}
+                    link={`/artist/${artistItem.id}`}
+                />
             ))}
         </div>
     );

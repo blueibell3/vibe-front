@@ -6,14 +6,15 @@ type Props = {
   text: string;
   imgSrc: string;
   isArtist: boolean;
-  id: number
+  id: number;
+  link: string;
 }
 
 const ListItem = (props: Props) => {
 
   return (
     <>
-      <Link href={`artist/${props.id}`} className={props.isArtist ? styles.artistListItem : styles.playListItem}>
+      <Link href={props.link} className={props.isArtist ? styles.artistListItem : styles.playListItem}>
         <div className={props.isArtist ? styles.artistListGap : styles.playListGap}>
           <div className={props.isArtist ? styles.artistListContainer : styles.playListContainer}>
             <img className={styles.listImg} src={props.imgSrc} />
