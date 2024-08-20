@@ -21,8 +21,9 @@
 }
 
 .ArtistCard {
-    display: flex;
-    gap: 20px;
+    width: 100%;
+    display: grid;
+    grid-gap: 42px;
 }
 
 .seactionHeader {
@@ -37,8 +38,6 @@
     padding-left: 15px;
     display: grid;
     width: 100%;
-    grid-gap: 12px;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 .musicCard {

@@ -10,9 +10,8 @@ type Props = {
 const ArtistCard = (props: Props) => {
     return (
         <Link className={styles.container} href={`${props.id}`}>
-
             <div className={styles.albom}>
-                <img src={props.url} alt="image" width={144} height={140} />
+                <img className={styles.artistImage} src={props.url} alt="image" />
                 <div className={styles.describtion}>
                     <div>
                         {props.title}

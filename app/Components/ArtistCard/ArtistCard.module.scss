@@ -3,15 +3,19 @@
 .container {
     display: flex;
     background-color: $grayColor;
-    max-width: 184px;
     flex-direction: column;
-    padding: 10px;
+    padding: 20px;
     border-radius: 16px;
-    align-items: center;
     justify-content: center;
     cursor: pointer;
     text-decoration: none;
     color: $white;
+}
+
+.artistImage {
+    align-self: stretch;
+    border-radius: 12px;
+    width: 100%;
 }
 
 .albom {
