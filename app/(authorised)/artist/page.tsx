@@ -3,7 +3,7 @@ import styles from "./page.module.css"
 import Artist from "@/app/Components/Artist/Artist"
 
 
-const artist = () => {
+const Artists = () => {
 
     return (
         <>
@@ -15,4 +15,4 @@ const artist = () => {
     )
 }
 
-export default artist
+export default Artists

@@ -6,7 +6,7 @@ import styles from "./ArtistById.module.scss"
 
 
 type Props = {
-    id?: number;
+    id: number;
 }
 
 const ArtistById = (props: Props) => {
