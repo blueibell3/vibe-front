@@ -1,6 +1,7 @@
 import React from 'react';
-import AlbumCard from "../AlbumCard/AlbumCard";
+
 import styles from "./TopAlbums.module.scss";
+import AlbumCard from '../AlbumCard/AlbumCard';
 
 const TopAlbums = () => {
     const albumData = [

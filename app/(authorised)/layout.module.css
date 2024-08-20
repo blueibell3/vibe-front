@@ -1,3 +1,16 @@
+.navMenuContainer {
+    width: 300px;
+}
+
+.pages {
+    display: flex;
+}
+
+.childrenContainer {
+    width: 100%;
+    padding: 20px;
+}
+
 @media screen and (min-width:1023px) {
     .mobileNavBarContainer {
         display: none;
@@ -11,6 +24,10 @@
 
     .mobileNavBarContainer {
         display: none;
+    }
+
+    .childrenContainer {
+        padding-left: 0px;
     }
 }
 
@@ -27,18 +44,14 @@
         position: fixed;
         bottom: 0;
         width: 100%;
-        z-index: 1000; 
+        z-index: 1000;
     }
-    
-    .headerContainer{
+
+    .headerContainer {
         display: none;
     }
-}
 
-.navMenuContainer{
-    width: 300px;
-}
-
-.pages{
-    display: flex;
+    .childrenContainer {
+        padding-left: 0px;
+    }
 }

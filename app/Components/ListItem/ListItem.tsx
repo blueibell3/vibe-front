@@ -4,16 +4,16 @@ import styles from './ListItem.module.scss';
 
 type Props = {
   text: string;
-  href: string;
   imgSrc: string;
   isArtist: boolean;
+  id: number
 }
 
 const ListItem = (props: Props) => {
 
   return (
     <>
-      <Link href={props.href} className={props.isArtist ? styles.artistListItem : styles.playListItem}>
+      <Link href={`artist/${props.id}`} className={props.isArtist ? styles.artistListItem : styles.playListItem}>
         <div className={props.isArtist ? styles.artistListGap : styles.playListGap}>
           <div className={props.isArtist ? styles.artistListContainer : styles.playListContainer}>
             <img className={styles.listImg} src={props.imgSrc} />
