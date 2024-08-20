@@ -2,7 +2,11 @@ import React from 'react';
 import styles from "./Albums.module.scss";
 import AlbumCard from '../AlbumCard/AlbumCard';
 
-const Albums = () => {
+type Props  = {
+    limit: number;
+   }
+
+const Albums = (props: Props) => {
     const albumsData = [
         {
             id: 1,
@@ -62,10 +66,12 @@ const Albums = () => {
         },
     ];
 
+    const albumCard = props.limit ? albumsData.slice(0, props.limit) : albumsData;
+
     return (
       <>
         <div className={styles.albumsContainer}>
-            {albumsData.map(albums => (
+            {albumCard.map(albums => (
                 <AlbumCard
                     key={albums.id}
                     imageUrl={albums.imageUrl}
