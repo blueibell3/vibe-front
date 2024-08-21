@@ -55,7 +55,9 @@ const TopCharts = () => {
                     <ChartCard
                         key={chartCard.id}
                         title={chartCard.title}
-                        imageUrl={chartCard.imageUrl} />
+                        imageUrl={chartCard.imageUrl} 
+                        id={chartCard.id}
+                        />
                 ))}
             </div>
         </>
