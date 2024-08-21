@@ -3,7 +3,7 @@ import styles from '../AlbumCard/AlbumCard.module.scss'
 import Link from 'next/link';
 
 type Props = {
-  id?: number;
+  id: number;
   songName: string;
   imageUrl: string;
   artistName: string;

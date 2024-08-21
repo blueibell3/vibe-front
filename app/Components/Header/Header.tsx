@@ -17,6 +17,9 @@ const Header = () => {
                         <BurgerMenu />
                     </div>
                 </div>
+                <div className={styles.menuMain}>
+                    <BurgerMenu />
+                </div>
             </div>
             <div className={styles.wrapper}>
                 <div className={styles.searchContainer}>

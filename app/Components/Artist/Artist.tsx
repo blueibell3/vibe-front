@@ -1,51 +1,51 @@
+import Link from "next/link";
 import ListItem from "../ListItem/ListItem";
-import styles from "./ArtistPage.module.scss";
+import styles from "./Artist.module.scss";
 
 const ArtistPage = () => {
     const artistData = [
         {
             id: 1,
             text: 'Coldplay',
-            imgSrc: 'artistimg.svg',
+            imgSrc: '/artistimg.svg',
         },
         {
             id: 2,
             text: 'Sia',
-            imgSrc: 'artistimg.svg',
+            imgSrc: '/artistimg.svg',
         },
         {
             id: 3,
             text: 'Rihhana',
-            imgSrc: 'artistimg.svg',
+            imgSrc: '/artistimg.svg',
         },
         {
             id: 4,
             text: 'Rihhana',
-            imgSrc: 'artistimg.svg',
+            imgSrc: '/artistimg.svg',
         },
         {
             id: 5,
             text: 'The Beatles',
-            imgSrc: 'artistimg.svg',
+            imgSrc: '/artistimg.svg',
         },
         {
-            id: 5,
+            id: 6,
             text: 'The Beatles',
-            imgSrc: 'artistimg.svg',
+            imgSrc: '/artistimg.svg',
         },
     ];
 
     return (
+
         <div className={styles.artistContainer}>
             {artistData.map(artistItem => (
                 <ListItem
-                key={artistItem.id}
-                text={artistItem.text}
-                href={`albums/${artistItem.id}`}
-                imgSrc={artistItem.imgSrc}
-                isArtist={false}
-                     />
-
+                    key={artistItem.id}
+                    text={artistItem.text}
+                    imgSrc={artistItem.imgSrc}
+                    isArtist={true}
+                    id={artistItem.id} />
             ))}
         </div>
     );

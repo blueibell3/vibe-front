@@ -32,13 +32,11 @@ const PlayistPage = () => {
             <AddButton />
             {playlistData.map(playlistItem => (
                 <ListItem
+                    id={playlistItem.id}
                     key={playlistItem.id}
                     text={playlistItem.text}
-                    href={`playlists/${playlistItem.id}`}
                     imgSrc={playlistItem.imgSrc}
-                    isArtist={false}
-                />
-
+                    isArtist={false} />
             ))}
 
         </div>

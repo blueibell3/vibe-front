@@ -1,0 +1,53 @@
+@import '../../../styles/colors.scss';
+
+.container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.pageTitle {
+    color: $white;
+    font-family: Inter;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.pageDescripton {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.img {
+    width: 200px;
+    height: 200px;
+    flex-shrink: 0;
+    border-radius: 50%;
+}
+
+.descriptonText {
+    color: $darkGrayColor;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.musicCards{
+
+    padding-top: 20px;
+    width: 100%;
+}
+
+.albumsPage {
+    width: 100%;
+}
+
+.albumsText {
+    font-size: 20px;
+    font-weight: 500;
+    padding: 10px;
+    font-family: Inter;
+}
