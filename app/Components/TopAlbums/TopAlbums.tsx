@@ -2,7 +2,10 @@ import React from 'react';
 import AlbumCard from "../AlbumCard/AlbumCard";
 import styles from "./TopAlbums.module.scss";
 
-const TopAlbums = () => {
+type Props = {
+    limit?: number,
+}
+const TopAlbums = (props: Props) => {
     const albumData = [
         {
             id: 1,
@@ -61,23 +64,24 @@ const TopAlbums = () => {
             year: '2018'
         },
     ];
+    const displayedItems = props.limit ? albumData.slice(0, props.limit) : albumData;
 
     return (
-      <>
-      
-        <div className={styles.albumsContainer}>
-            {albumData.map(album => (
-                <AlbumCard
-                    key={album.id}
-                    id={album.id}
-                    imageUrl={album.imageUrl}
-                    songName={album.songName}
-                    artistName={album.artistName}
-                    year={album.year}
-                />
-            ))}
-        </div>
-      </>
+        <>
+
+            <div className={styles.albumsContainer}>
+                {displayedItems.map(album => (
+                    <AlbumCard
+                        key={album.id}
+                        id={album.id}
+                        imageUrl={album.imageUrl}
+                        songName={album.songName}
+                        artistName={album.artistName}
+                        year={album.year}
+                    />
+                ))}
+            </div>
+        </>
     );
 }
 

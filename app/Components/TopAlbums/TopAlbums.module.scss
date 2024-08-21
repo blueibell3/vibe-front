@@ -13,10 +13,3 @@
         grid-template-columns: 1fr 1fr;
     }
 }
-
-
-@media screen and (min-width:1920px) {
-    .albumsContainer {
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    }
-}

@@ -35,8 +35,10 @@ const AuthLayout = (props: Props) => {
               <div className={styles.test}>
                 <Test />
               </div>
-              <div className={styles.MusicPlayer}>
-                <MusicPlayer />
+              <div className={styles.musicContainer}>
+                <div className={styles.MusicPlayer}>
+                  <MusicPlayer />
+                </div>
               </div>
             </div>
           </div>
