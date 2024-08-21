@@ -12,6 +12,7 @@ import PopularArtist from '../Components/PopularArtist/PopularArtist';
 import SectionHeader from '../Components/SectionHeader/SectionHeader';
 import TopAlbums from '../Components/TopAlbums/TopAlbums';
 import TopCharts from '../Components/TopCharts/TopCharts';
+import TrendHits from '../Components/TrendHits/TrendHits';
 import TrendHitsCard from '../Components/TrendHitsCard/TrendHitsCard';
 import styles from './page.module.css';
 
@@ -36,13 +37,10 @@ export default function Home() {
         <TopCharts limit={4} />
       </div>
       <div className={styles.seactionHeader}>
-        <SectionHeader title={'Top Charts'} pathName={'/topCharts'} />
+        <SectionHeader title={'Top Hits'} pathName={'/topHits'} />
       </div>
       <div className={styles.musicCard}>
-        <MusicCard imageUrl={''} songName={''} artistName={''} />
-        <MusicCard imageUrl={''} songName={''} artistName={''} />
-        <MusicCard imageUrl={''} songName={''} artistName={''} />
-        <MusicCard imageUrl={''} songName={''} artistName={''} />
+        <TrendHits limit={4}/>
       </div>
       <div>
         <SectionHeader title={'Top Alboms'} pathName={'/'} />
