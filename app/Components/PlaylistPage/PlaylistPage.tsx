@@ -11,17 +11,17 @@ const PlayistPage = () => {
             imgSrc: 'playlistimg.svg'
         },
         {
-            id: 1,
+            id: 2,
             text: 'My Everyday',
             imgSrc: 'playlistimg.svg'
         },
         {
-            id: 2,
+            id: 3,
             text: 'Party Songs',
             imgSrc: 'playlistimg.svg'
         },
         {
-            id: 3,
+            id: 4,
             text: 'Car Songs',
             imgSrc: 'playlistimg.svg'
         },
