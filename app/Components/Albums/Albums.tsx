@@ -1,9 +1,12 @@
 import React from 'react';
-
-import styles from "./AlbumsPage.module.scss";
+import styles from "./Albums.module.scss";
 import AlbumCard from '../AlbumCard/AlbumCard';
 
-const AlbumsPage = () => {
+type Props  = {
+    limit: number;
+   }
+
+const Albums = (props: Props) => {
     const albumsData = [
         {
             id: 1,
@@ -63,10 +66,12 @@ const AlbumsPage = () => {
         },
     ];
 
+    const albumCard = props.limit ? albumsData.slice(0, props.limit) : albumsData;
+
     return (
       <>
         <div className={styles.albumsContainer}>
-            {albumsData.map(albums => (
+            {albumCard.map(albums => (
                 <AlbumCard
                     key={albums.id}
                     imageUrl={albums.imageUrl}
@@ -81,4 +86,4 @@ const AlbumsPage = () => {
     );
 }
 
-export default AlbumsPage;
+export default Albums;

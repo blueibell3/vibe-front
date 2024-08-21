@@ -1,19 +1,16 @@
-
 import styles from "./page.module.css"
-import AlbumsPage from "@/app/Components/AlbumsPage/AlbumsPage"
+import Albums from "@/app/Components/Albums/Albums"
 
-
-
-const albumsPage = () => {
+const AlbumsPage = () => {
 
     return (
         <>
             <div className={styles.albumsPageM}>
                 <div className={styles.albumsText}>Albums</div>
-                <AlbumsPage />
+                <Albums />
             </div>
         </>
     )
 }
 
-export default albumsPage
+export default AlbumsPage
