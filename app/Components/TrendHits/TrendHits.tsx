@@ -4,7 +4,7 @@ import MusicCard from '../MusicCard/MusicCard';
 
 
 type Props  = {
-    limit: number;
+    limit?: number;
    }
 
 const TrendHitsPage = (props: Props) => {
