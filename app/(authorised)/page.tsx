@@ -42,7 +42,7 @@ export default function Home() {
       <div className={styles.musicCard}>
         <TrendHits limit={4} />
       </div>
-      <div>
+      <div className={styles.seactionHeader}>
         <SectionHeader title={'Top Alboms'} pathName={'/'} />
       </div>
       <div className={styles.topAlbums}>
