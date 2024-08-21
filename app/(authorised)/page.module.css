@@ -12,10 +12,10 @@
     position: relative;
     overflow-y: auto;
     margin-left: 20px;
+    padding-left: 15px;
 }
 
 .TrendHitsCard {
-    padding-left: 15px;
     padding-top: 20px;
     width: 100%;
 }
@@ -26,16 +26,21 @@
     grid-gap: 42px;
 }
 
+.topCharts {
+    width: 100%;
+    display: grid;
+    grid-gap: 42px;
+
+}
+
 .seactionHeader {
     display: flex;
     width: 100%;
     margin-top: 15px;
     margin-bottom: 15px;
-    padding-left: 15px;
 }
 
 .ArtistCard {
-    padding-left: 15px;
     display: grid;
     width: 100%;
 }
@@ -53,3 +58,25 @@
     display: grid;
 }
 
+.topAlbums {
+    padding-top: 20px;
+}
+
+@media screen and (max-width:1023px) and (min-width:768px) {
+    .ArtistCard {
+        display: flex;
+        overflow: auto;
+    }
+
+    .topCharts {
+        display: flex;
+        overflow-x: auto;
+    }
+}
+
+
+@media screen and (max-width:768px) {
+    .container {
+        padding-left: 0px;
+    }
+}

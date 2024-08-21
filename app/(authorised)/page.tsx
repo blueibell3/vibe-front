@@ -40,7 +40,7 @@ export default function Home() {
         <SectionHeader title={'Top Hits'} pathName={'/topHits'} />
       </div>
       <div className={styles.musicCard}>
-        <TrendHits limit={4}/>
+        <TrendHits limit={4} />
       </div>
       <div>
         <SectionHeader title={'Top Alboms'} pathName={'/'} />

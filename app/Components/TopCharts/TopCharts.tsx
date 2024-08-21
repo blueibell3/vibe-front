@@ -10,42 +10,42 @@ const TopCharts = (props: Props) => {
         {
             id: 1,
             title: 'Top hits 2024',
-            imageUrl: 'https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84d22b618a07eda3379e2a4d3c',
+            imageUrl: '/chartss.svg',
         },
         {
             id: 2,
             title: 'Top hits 2024',
-            imageUrl: 'https://c.saavncdn.com/581/Super-Chart-Hits-English-2010-500x500.jpg',
+            imageUrl: '/chartss.svg',
         },
         {
             id: 3,
             title: 'Top hits 2024',
-            imageUrl: 'https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84d22b618a07eda3379e2a4d3c',
+            imageUrl: '/chartss.svg',
         },
         {
             id: 4,
             title: 'Top hits 2024',
-            imageUrl: 'https://c.saavncdn.com/581/Super-Chart-Hits-English-2010-500x500.jpg',
+            imageUrl: '/chartss.svg',
         },
         {
             id: 5,
             title: 'Top hits 2024',
-            imageUrl: 'https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84d22b618a07eda3379e2a4d3c',
+            imageUrl: '/chartss.svg',
         },
         {
             id: 6,
             title: 'Top hits 2024',
-            imageUrl: 'https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84d22b618a07eda3379e2a4d3c',
+            imageUrl: '/chartss.svg',
         },
         {
             id: 7,
             title: 'Top hits 2024',
-            imageUrl: 'https://c.saavncdn.com/581/Super-Chart-Hits-English-2010-500x500.jpg',
+            imageUrl: '/chartss.svg',
         },
         {
             id: 8,
             title: 'Top hits 2024',
-            imageUrl: 'https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84d22b618a07eda3379e2a4d3c',
+            imageUrl: '/chartss.svg',
         },
     ];
 

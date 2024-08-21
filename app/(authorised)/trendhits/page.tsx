@@ -10,7 +10,7 @@ const trendHits = () => {
         <>
             <div className={styles.trendHits}>
                 <div className={styles.trendHitsText}>Trend Hits</div>
-                <TrendHits limit={16}  />
+                <TrendHits />
             </div>
         </>
     )

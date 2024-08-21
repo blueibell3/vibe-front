@@ -9,7 +9,10 @@
 }
 
 @media screen and (max-width:768px) {
+    
     .albumsContainer {
-        grid-template-columns: 1fr 1fr;
+        display: flex;
+        width: 100%;
+        overflow-x: auto;
     }
 }

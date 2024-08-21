@@ -16,7 +16,7 @@ const mobilelinkData = [
     },
     {
 
-        href: '/search',
+        href: '/searchbarMobile',
         text: 'Search',
         src: 'search.svg',
         srcB: 'bluesearch.svg',

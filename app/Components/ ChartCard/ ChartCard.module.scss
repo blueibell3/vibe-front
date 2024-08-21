@@ -3,19 +3,12 @@
 .link{
     text-decoration: none;
 }
-.chartCardBanner{
-    display: flex;
-    height: 236px;
-    align-items: center;
-    gap: 10px;
-    justify-content: center; 
-    cursor: pointer;
-}
 
 .chartCard {
     display: flex;
     padding: 20px;
     flex-direction: column;
+    width: 100%;
     gap: 12px;
     border-radius: 16px;
     background: $darkColor;
@@ -28,16 +21,14 @@
 .chartCardImage {
     align-self: stretch;
     border-radius: 12px;
-    background: lightgray 50% / cover no-repeat;
+    // background: lightgray 50% / cover no-repeat;
     width: 100%;
 }
 
 .chartCardtext {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     gap: 4px;
-    align-self: stretch;
 }
 
 .chartCardT {
@@ -51,4 +42,10 @@
     color: $white;
     font-size: 16px;
     font-weight: 500;
+}
+
+@media screen and (max-width:768px) {
+    .chartCardImage  {
+        width: fit-content;
+    }
 }

@@ -7,7 +7,7 @@ import { useRecoilValue } from "recoil";
 
 
 type Props = {
-    limit: number;
+    limit?: number;
 }
 
 const TrendHits = (props: Props) => {

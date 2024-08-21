@@ -42,3 +42,9 @@
 .container img {
     border-radius: 12px;
 }
+
+@media screen and (max-width:768px) {
+    .artistImage  {
+        width: fit-content;
+    }
+}
