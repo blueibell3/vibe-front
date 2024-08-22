@@ -3,6 +3,12 @@
     display: flex;
     justify-content: center;
     padding-right: 295px;
+    overflow: auto;
+    height: 100vh;
+}
+
+.children::-webkit-scrollbar {
+    display: none;
 }
 
 .musicContainer {

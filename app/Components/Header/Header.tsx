@@ -1,13 +1,19 @@
+'use client'
 import Image from 'next/image'
 import styles from './Header.module.scss'
 import UserAvatar from './UserAvatar/UserAvatar'
 import Link from 'next/link'
 import SearchBar from './SearchBar/SearchBar'
 import BurgerMenu from '../BurgerMenu/BurgerMenu'
+import { useRecoilState } from 'recoil'
+import { isFullscreenState, tabletFullscreenState } from '@/app/state'
+import TabletFullscreen from '../PlayerController/TabletFullScreen/TabletFullScreen'
 
 const Header = () => {
+    const [FullscreenState] = useRecoilState(isFullscreenState)
+    const [tabletscreenState] = useRecoilState(tabletFullscreenState)
     return (
-        <div className={styles.container} >
+        <div className={FullscreenState || tabletscreenState ? styles.nones : styles.container} >
             <div className={styles.searchLogoContainer}>
                 <div className={styles.searchLogo}>
                     <Link href='/'>
