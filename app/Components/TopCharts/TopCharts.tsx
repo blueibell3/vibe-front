@@ -58,6 +58,7 @@ const TopCharts = (props: Props) => {
                     key={chartCard.id}
                     title={chartCard.title}
                     imageUrl={chartCard.imageUrl}
+                    id={chartCard.id}
                 />
             ))}
         </div>
