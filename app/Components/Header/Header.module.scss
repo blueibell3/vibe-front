@@ -27,6 +27,7 @@
     max-width: 285px;
     width: 100%;
 }
+
 .searchLogo {
     max-width: 732px;
     width: 100%;
@@ -68,7 +69,7 @@
     gap: 8px;
 }
 
-@media screen and (max-width:1023px) and (min-width:768px) {
+@media screen and (min-width:768px) and (max-width:1023px) {
     .searchLogo {
         display: flex;
         justify-content: space-between;
