@@ -11,17 +11,17 @@ const PlayistPage = () => {
             imgSrc: 'playlistimg.svg'
         },
         {
-            id: 1,
+            id: 2,
             text: 'My Everyday',
             imgSrc: 'playlistimg.svg'
         },
         {
-            id: 2,
+            id: 3,
             text: 'Party Songs',
             imgSrc: 'playlistimg.svg'
         },
         {
-            id: 3,
+            id: 4,
             text: 'Car Songs',
             imgSrc: 'playlistimg.svg'
         },
@@ -36,7 +36,9 @@ const PlayistPage = () => {
                     key={playlistItem.id}
                     text={playlistItem.text}
                     imgSrc={playlistItem.imgSrc}
-                    isArtist={false} />
+                    isArtist={false}
+                    link={`/playlist/${playlistItem.id}`} 
+                     />
             ))}
 
         </div>
