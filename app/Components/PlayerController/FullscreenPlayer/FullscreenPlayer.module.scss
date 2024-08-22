@@ -8,6 +8,10 @@
     justify-content: center;
     align-items: center;
     z-index: 999;
+    background: url(../../../../public/background/backImageFullScreeen.jpg);
+    background-position: center bottom -100px;
+    background-size: cover;
+    background-repeat: no-repeat;
     overflow-y: hidden;
 }
 
