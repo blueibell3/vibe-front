@@ -3,7 +3,7 @@ import styles from "./Albums.module.scss";
 import AlbumCard from '../AlbumCard/AlbumCard';
 
 type Props  = {
-    limit: number;
+    limit?: number;
    }
 
 const Albums = (props: Props) => {
