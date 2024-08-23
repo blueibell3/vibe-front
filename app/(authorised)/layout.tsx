@@ -31,7 +31,8 @@ const AuthLayout = (props: Props) => {
           </div>
           <div className={styles.children}>
             {props.children}
-            <div className={styles.musicList}>
+          </div>
+          <div className={styles.musicList}>
               <div className={styles.test}>
                 <Test />
               </div>
@@ -41,7 +42,6 @@ const AuthLayout = (props: Props) => {
                 </div>
               </div>
             </div>
-          </div>
         </div>
       </div>
     </RecoilWrapper>

@@ -1,14 +1,17 @@
 .children {
-    width: 90%;
     display: flex;
     justify-content: center;
-    padding-right: 295px;
     overflow: auto;
-    height: 100vh;
+    height: calc(100vh - 72px);
+    width: 100%;
 }
 
 .children::-webkit-scrollbar {
     display: none;
+}
+
+.container {
+    overflow-y: hidden;
 }
 
 .musicContainer {
@@ -21,24 +24,19 @@
     display: flex;
     flex-direction: column;
     gap: 26px;
-    position: fixed;
-    right: 0;
+    height: calc(100vh - 372px);
 }
 
 .test {
     display: flex;
     flex-direction: column;
     padding-left: 15px;
-    padding-top: 40px;
 }
 
-.navMenuContainer {
-    padding-right: 60px;
-}
 
-.MusicPlayer {
+/* .MusicPlayer {
     display: flex;
-}
+} */
 
 
 @media screen and (min-width:1023px) {
@@ -68,9 +66,7 @@
     }
 
     .children {
-        padding-right: 20px;
         width: 100%;
-        padding-bottom: 100px;
     }
 
 
@@ -103,22 +99,20 @@
 
     .MusicPlayer {
         width: 100%;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        padding-bottom: 60px;
     }
 
     .children {
-        padding-right: 20px;
+        padding-right: 9px;
         width: 100%;
         padding-left: 0px;
     }
+
+    .musicList {
+        padding-right: 0px;
+    }
 }
 
-.navMenuContainer {
-    width: 300px;
-}
+
 
 .pages {
     display: flex;

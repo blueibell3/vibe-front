@@ -11,7 +11,9 @@ const ArtistCard = (props: Props) => {
     return (
         <Link className={styles.container} href={`${props.id}`}>
             <div className={styles.albom}>
+                {/* <div className={styles.imgWrap}> */}
                 <img className={styles.artistImage} src={props.url} alt="image" />
+                {/* </div> */}
                 <div className={styles.describtion}>
                     <div>
                         {props.title}
