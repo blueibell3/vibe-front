@@ -1,0 +1,64 @@
+.topAlbumsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 796px;
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    position: relative;
+    padding-left: 15px;
+    height: 400px;
+}
+
+.TrendHitsCard {
+    padding-top: 20px;
+    width: 100%;
+}
+
+.ArtistCard {
+    width: 100%;
+    display: grid;
+    grid-gap: 42px;
+}
+
+.topCharts {
+    width: 100%;
+    display: grid;
+    grid-gap: 42px;
+}
+
+.seactionHeader {
+    display: flex;
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+
+.musicCard {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+}
+
+.topAlbums {
+    width: 100%;
+    display: grid;
+}
+
+.topAlbums {
+    padding-top: 20px;
+}
+
+
+@media screen and (max-width:768px) {
+    .container {
+        margin-bottom: 200px;
+    }
+}

@@ -23,10 +23,10 @@ export default function RootLayout({
   return (
     <html>
       <body >
-      <RecoilWrapper>
-        {children}
-      </RecoilWrapper>
-    </body>
+        <RecoilWrapper>
+          {children}
+        </RecoilWrapper>
+      </body>
     </html >
   )
 };

@@ -1,4 +1,4 @@
-.chartCardContainer{
+.container {
     display: grid;
     width: 100%;
     grid-gap: 12px;
@@ -6,9 +6,9 @@
 }
 
 @media screen and (max-width:768px) {
-    .chartCardContainer {
+    .container {
         display: flex;
-        width: 100%;
-        overflow-x: auto;
+        overflow-x: scroll;
+        
     }
 }

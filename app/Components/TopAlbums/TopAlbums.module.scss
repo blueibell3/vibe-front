@@ -9,14 +9,9 @@
 }
 
 @media screen and (max-width:768px) {
+    
     .albumsContainer {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
-
-@media screen and (min-width:1920px) {
-    .albumsContainer {
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        width: 100%;
+        overflow-x: auto;
     }
 }

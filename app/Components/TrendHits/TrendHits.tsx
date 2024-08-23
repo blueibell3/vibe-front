@@ -1,13 +1,19 @@
 import React from 'react';
 import styles from "./TrendHits.module.scss"
 import MusicCard from '../MusicCard/MusicCard';
+import { playlistState, currentTrackIndexState } from '@/app/state';
+import { useRecoilValue } from "recoil";
 
 
-type Props  = {
+
+
+type Props = {
     limit?: number;
-   }
+}
 
-const TrendHitsPage = (props: Props) => {
+const TrendHits = (props: Props) => {
+
+
     const trendHitsData = [
         {
             songName: 'Feel it',
@@ -89,24 +95,28 @@ const TrendHitsPage = (props: Props) => {
             artistName: 'Selena Gomez',
             imageUrl: '/trendhitsimg.svg',
         },
-    
+
     ];
+    const playlist = useRecoilValue(playlistState);
+    const currentTrackIndex = useRecoilValue(currentTrackIndexState);
+
 
     const trendHits = props.limit ? trendHitsData.slice(0, props.limit) : trendHitsData;
     return (
         <>
-  
+
             <div className={styles.trendHitsContainer}>
                 {trendHits.map(trendHits => (
                     <MusicCard
                         imageUrl={trendHits.imageUrl}
                         songName={trendHits.songName}
                         artistName={trendHits.artistName}
-                    />
+                        trackIndex={0}
+                         />
                 ))}
             </div>
         </>
     );
 }
 
-export default TrendHitsPage;
+export default TrendHits;

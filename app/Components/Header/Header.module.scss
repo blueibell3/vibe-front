@@ -7,11 +7,22 @@
     padding: 16px 24px;
     background-color: $darkColor;
     align-items: center;
+    height: 72px;
+}
+
+.logo {
+    cursor: pointer;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .searchLogoContainer {
     display: flex;
-    max-width: 1440px;
+    max-width: 285px;
     width: 100%;
 }
 
@@ -24,7 +35,8 @@
 
 .search {
     display: flex;
-    width: 434px;
+    max-width: 634px;
+    width: 100%;
     padding: 8px 44px;
     gap: 8px;
     flex-shrink: 0;
@@ -41,7 +53,8 @@
 .searchContainer {
     display: flex;
     position: relative;
-    width:60%;
+    max-width: 400px;
+    width: 100%;
 }
 
 .icon {
@@ -54,12 +67,20 @@
     gap: 8px;
 }
 
-@media screen and (max-width:1023px) and (min-width:768px) {
+.nones{
+    display: none;
+}
+
+@media screen and (min-width:768px) and (max-width:1023px) {
     .searchLogo {
         display: flex;
         justify-content: space-between;
         max-width: 650px;
         width: 100%;
+    }
+
+    .nones{
+        display: none;
     }
 }
 

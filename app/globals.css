@@ -59,10 +59,14 @@ button {
   font: inherit;
   cursor: pointer;
   outline: inherit;
-
-  background: var(--Color, #121212);
 }
 
 :link{
   text-decoration: none;
+}
+
+body {
+  background-color: #121212;
+  height: 100vh;
+  overflow-x: hidden;
 }

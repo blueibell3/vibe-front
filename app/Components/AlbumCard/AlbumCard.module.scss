@@ -6,7 +6,6 @@
 
 .albumCard {
     display: flex;
-    padding: 20px;
     border-radius: 16px;
     background: $grayColor;
     flex-direction: column;
@@ -55,4 +54,11 @@
     color: rgba(255, 255, 255, 0.64);
     font-size: 14px;
     font-weight: 500;
+}
+
+
+@media screen and (max-width:768px) {
+    .image {
+        width: 144px;
+    }
 }
