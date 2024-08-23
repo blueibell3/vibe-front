@@ -11,6 +11,7 @@
     flex-direction: column;
     position: relative;
     padding-left: 15px;
+    height: 400px;
 }
 
 .TrendHitsCard {
@@ -55,3 +56,11 @@
     padding-top: 20px;
 }
 
+@media screen and (max-width:1023px) and (min-width:768px) {}
+
+
+@media screen and (max-width:768px) {
+    .container {
+        margin-bottom: 200px;
+    }
+}
