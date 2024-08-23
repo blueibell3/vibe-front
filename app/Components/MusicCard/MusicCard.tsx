@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react';
 import styles from '../MusicCard/MusicCard.module.scss'
 import LikeButton from '../LikeButton/LikeButton';

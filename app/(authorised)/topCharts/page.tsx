@@ -1,3 +1,5 @@
+'use client'
+
 import TopAlbums from "@/app/Components/TopAlbums/TopAlbums"
 import AuthLayout from "../layout"
 import styles from "./page.module.css"
