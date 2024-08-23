@@ -1,0 +1,21 @@
+@import '../../../styles/colors.scss';
+
+.chartByIdContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 10px;
+}
+
+.hitsTitle {
+    color: $white;
+    font-family: Inter;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.trendHits{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

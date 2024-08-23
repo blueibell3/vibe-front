@@ -62,6 +62,7 @@ const TopCharts = (props: Props) => {
                 />
             ))}
         </div>
+
     );
 }
 
