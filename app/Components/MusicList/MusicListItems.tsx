@@ -5,7 +5,7 @@ import MusicList from "./MusicList"
 import { playlistState, currentTrackIndexState } from '@/app/state';
 
 
-const Tests = () => {
+const MusicListItems = () => {
     const playlist = useRecoilValue(playlistState);
     const currentTrackIndex = useRecoilValue(currentTrackIndexState);
 
@@ -19,8 +19,8 @@ const Tests = () => {
                 <div className={styles.artistName}>{playlist[currentTrackIndex].artist}</div>
                 <div className={styles.trackName}>{playlist[currentTrackIndex].name}</div>
             </div>
-            <div className={styles.listWrap}> 
-                <span > Next Play</span>
+            <span > Next Play</span>
+            <div className={styles.listWrap}>
                 {playlist.map((track, index) => (
                     <MusicList
                         key={index}
@@ -37,4 +37,4 @@ const Tests = () => {
     )
 }
 
-export default Tests
+export default MusicListItems

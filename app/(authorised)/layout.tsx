@@ -5,10 +5,9 @@ import NavBarMenu from "../Components/NavBarMenu/NavBarMenu";
 import NavBarMobile from "../Components/NavBarMobile/NavBarMobile";
 import styles from "./layout.module.css";
 import { ReactNode } from "react";
-import TopAlbumsPage from "./topalbums/page";
 import RecoilWrapper from "../Components/RecoilWrapper/RecoilWrapper";
 import MusicPlayer from "../Components/PlayerController/MusicPlayer/MusicPlayer";
-import Test from "../Components/MusicList/Tests";
+import MusicListItems from "../Components/MusicList/MusicListItems";
 
 
 type Props = {
@@ -34,7 +33,7 @@ const AuthLayout = (props: Props) => {
           </div>
           <div className={styles.musicList}>
               <div className={styles.test}>
-                <Test />
+                <MusicListItems />
               </div>
               <div className={styles.musicContainer}>
                 <div className={styles.MusicPlayer}>
