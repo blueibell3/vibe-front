@@ -32,7 +32,7 @@ const MusicCard = (props: Props) => {
             <div className={styles.musicCardComp}>
                 <div className={styles.musiccardList}>
                     <img className={styles.musicCardImage} src={props.imageUrl} alt='image' />
-                    <img src="Group.svg" alt="ap" className={styles.audioPlay} />
+                    <img src="/Group.svg" alt="ap" className={styles.audioPlay} />
                     <div className={styles.musicCardInfo}>
                         <h3 className={styles.songName}>{props.songName}</h3>
                         <p className={styles.artistName}>{props.artistName}</p>

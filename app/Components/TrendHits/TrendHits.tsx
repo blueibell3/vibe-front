@@ -11,6 +11,7 @@ import { useRecoilValue } from "recoil";
 
 type Props = {
     limit?: number;
+    isHomePage:boolean
 }
 
 const TrendHits = (props: Props) => {
@@ -101,13 +102,14 @@ const TrendHits = (props: Props) => {
     ];
     const playlist = useRecoilValue(playlistState);
     const currentTrackIndex = useRecoilValue(currentTrackIndexState);
+    const playList = props.isHomePage ? styles.trendHitsContainer : styles.playList;
 
 
     const trendHits = props.limit ? trendHitsData.slice(0, props.limit) : trendHitsData;
     return (
         <>
 
-            <div className={styles.trendHitsContainer}>
+            <div className={`${styles.trendHitsContainer} ${playList}`}>
                 {trendHits.map(trendHits => (
                     <MusicCard
                         imageUrl={trendHits.imageUrl}
