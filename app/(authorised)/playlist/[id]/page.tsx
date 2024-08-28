@@ -9,7 +9,7 @@ const id = () => {
                 <div className={styles.myEveryday}>
                     <h3>My Everyday</h3>
                 </div>
-                <PlayLIstById />
+                <PlayLIstById url={"/playListId.svg"} />
             </div>
         </>
     )
