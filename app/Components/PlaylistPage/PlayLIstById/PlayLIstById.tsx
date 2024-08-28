@@ -13,7 +13,7 @@ const PlayLIstById = (props: Props) => {
                 <span>my Everyday</span>
             </div>
             <div className={styles.container}>
-                <TrendHits limit={6} isHomePage={false} showLikeButton={false} />
+                <TrendHits limit={8} isHomePage={false} showLikeButton={false} />
             </div>
         </div>
     )
