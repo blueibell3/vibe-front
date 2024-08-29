@@ -2,7 +2,7 @@ import PlayLIstById from "@/app/Components/PlaylistPage/PlayLIstById/PlayLIstByI
 import styles from './page.module.css'
 
 
-const id = () => {
+const Id = () => {
     return (
         <>
             <div className={styles.container}>
@@ -15,4 +15,4 @@ const id = () => {
     )
 }
 
-export default id
+export default Id
