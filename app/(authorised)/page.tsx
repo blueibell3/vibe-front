@@ -31,7 +31,7 @@ export default function Home() {
         <SectionHeader title={'Top Hits'} pathName={'/topHits'} />
       </div>
       <div className={styles.musicCard}>
-        <TrendHits limit={4} />
+        <TrendHits limit={4} isHomePage={true} showLikeButton={true} />
       </div>
       <div className={styles.seactionHeader}>
         <SectionHeader title={'Top Alboms'} pathName={'/'} />

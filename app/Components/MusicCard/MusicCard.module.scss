@@ -1,11 +1,9 @@
 .musicCard {
     display: flex;
     width: 100%;
-    //  max-width: 388px;
     height: 72px;
     padding: 14px 10px 15px 16px;
     align-items: center;
-    cursor: pointer;
     border-radius: 8px;
     background: var(--background, #0F0F0F);
 }
@@ -26,11 +24,13 @@
     height: 43px;
     align-items: flex-start;
     gap: 14px;
+    position: relative;
 }
 
 .musicCardImage {
     width: 43px;
     height: 43px;
+    cursor: pointer;
 }
 
 .musicCardHeart {
@@ -39,6 +39,7 @@
     height: 24px;
     justify-content: center;
     align-items: center;
+
 }
 
 .musicCardInfo {
@@ -68,4 +69,5 @@
 .musicCard:hover .audioPlay {
     display: flex;
     position: absolute;
+    cursor: pointer;
 }
