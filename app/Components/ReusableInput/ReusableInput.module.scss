@@ -2,7 +2,8 @@
 
 .input {
     display: flex;
-    width: 487px;
+    max-width: 487px;
+    width: 100%;
     padding: 12px 16px;
     align-items: center;
     gap: 10px;
