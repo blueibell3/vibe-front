@@ -25,15 +25,19 @@ const ReusableInput = (props: Props) => {
         }
         : { required: true, minLength: 8 };
 
-    const onSubmit = () => {
 
-    };
-
-    const mode = errors[props.type] ? 'error' : isValid ? 'success' : isSubmitting ? 'active' : 'standard';
+    let mode = 'standard';
+    if (errors[props.type]) {
+        mode = 'error';
+    } else if (isValid) {
+        mode = 'success';
+    } else if (isSubmitting) {
+        mode = 'active';
+    }
 
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form  onSubmit={handleSubmit(() => {})}>
             <input
                 className={`${styles.input} ${styles[mode]}`}
                 type={props.type === 'email' ? 'email' : 'password'}
