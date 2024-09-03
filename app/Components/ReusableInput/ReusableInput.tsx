@@ -12,7 +12,7 @@ const ReusableInput = (props: Props) => {
     const {
         register,
         handleSubmit,
-        formState: { errors, isValid, isSubmitting },
+        formState: { errors, isValid},
     } = useForm();
 
     const inputData = props.type === 'email'
@@ -31,13 +31,12 @@ const ReusableInput = (props: Props) => {
         mode = 'error';
     } else if (isValid) {
         mode = 'success';
-    } else if (isSubmitting) {
-        mode = 'active';
     }
 
 
     return (
-        <form  onSubmit={handleSubmit(() => {})}>
+        <form className={styles.inputMain} onSubmit={handleSubmit(() => {})}>
+              <span className={styles.inputText}>{props.placeholder}</span>
             <input
                 className={`${styles.input} ${styles[mode]}`}
                 type={props.type === 'email' ? 'email' : 'password'}
