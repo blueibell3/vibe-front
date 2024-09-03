@@ -44,6 +44,19 @@
 }
 
 
+@media screen and (min-width:1550px) and (max-width:2000px) {
+    .container {
+        height: 400px;
+    }
+
+}
+
+@media screen and (min-width:2000px) {
+    .container {
+        height: 600px;
+    }
+}
+
 @media screen and (min-width: 1023px) and (max-width: 1405px) {
     .container {
         height: 270px;
@@ -61,6 +74,7 @@
         height: 230px;
         margin-top: 0;
     }
+
     .title {
         padding-left: 40px;
     }
