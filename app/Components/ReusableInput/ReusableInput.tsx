@@ -38,7 +38,7 @@ const ReusableInput = (props: Props) => {
     }
 
     return (
-        <form className={styles.inputMain} onSubmit={handleSubmit(onSubmit)}>
+        <div className={styles.inputMain} onSubmit={handleSubmit(onSubmit)}>
               <span className={styles.inputText}>{props.placeholder}</span>
             <input
                 className={`${styles.input} ${styles[mode]}`}
@@ -51,7 +51,7 @@ const ReusableInput = (props: Props) => {
                     }
                 }}
             />
-        </form>
+        </div>
     );
 };
 
