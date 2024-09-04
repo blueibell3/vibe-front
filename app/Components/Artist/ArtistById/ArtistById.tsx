@@ -4,11 +4,8 @@ import TrendHitsPage from "../../TrendHits/TrendHits";
 import styles from "./ArtistById.module.scss"
 
 
-type Props = {
-    id: number;
-}
 
-const ArtistById = (props: Props) => {
+const ArtistById = () => {
 
     return (
         <>

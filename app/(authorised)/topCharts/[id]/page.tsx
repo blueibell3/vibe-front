@@ -5,7 +5,7 @@ const Id = () => {
 
     return (
         <>
-            <TopChartsById id={1} />
+            <TopChartsById />
         </>
     )
 }
