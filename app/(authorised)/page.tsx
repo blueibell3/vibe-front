@@ -1,5 +1,6 @@
 'use client'
 import PopularArtist from '../Components/PopularArtist/PopularArtist';
+import ReusableInput from '../Components/ReusableInput/ReusableInput';
 import SectionHeader from '../Components/SectionHeader/SectionHeader';
 import TopAlbums from '../Components/TopAlbums/TopAlbums';
 import TopCharts from '../Components/TopCharts/TopCharts';
@@ -39,6 +40,7 @@ export default function Home() {
         <TopAlbums limit={4} />
       </div>
     </div>
-  );
+
+);
 }
 

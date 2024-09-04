@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from "./TopCharts.module.scss";
-import ChartCard from '../ ChartCard/ ChartCard';
+import ChartCard from '../ChartCard/ ChartCard';
 
 type Props = {
     limit?: number

@@ -1,6 +1,5 @@
 import React from 'react';
-import styles from '../ ChartCard/ ChartCard.module.scss';
-import TextButton from '../TextButton/TextButton';
+import styles from './ ChartCard.module.scss';
 import Link from 'next/link';
 
 type Props = {

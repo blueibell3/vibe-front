@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from "./Albums.module.scss";
 import AlbumCard from '../AlbumCard/AlbumCard';
+import ReusableInput from '../ReusableInput/ReusableInput';
 
 type Props  = {
     limit?: number;
