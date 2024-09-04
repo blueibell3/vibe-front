@@ -13,7 +13,7 @@ export default function Home() {
 
     <div className={styles.container}>
       <div className={styles.TrendHitsCard}>
-        <TrendHitsCard pathName={'sasd'} />
+        <TrendHitsCard pathName={'playlist'} />
       </div>
       <div className={styles.seactionHeader}>
         <SectionHeader title={'Popular Artists'} pathName={'/'} />
@@ -28,13 +28,13 @@ export default function Home() {
         <TopCharts limit={4} />
       </div>
       <div className={styles.seactionHeader}>
-        <SectionHeader title={'Top Hits'} pathName={'/topHits'} />
+        <SectionHeader title={'Top Hits'} pathName={'/topartists'} />
       </div>
       <div className={styles.musicCard}>
         <TrendHits limit={4} isHomePage={true} showLikeButton={true} />
       </div>
       <div className={styles.seactionHeader}>
-        <SectionHeader title={'Top Alboms'} pathName={'/'} />
+        <SectionHeader title={'Top Alboms'} pathName={'/topalbums'} />
       </div>
       <div className={styles.topAlbums}>
         <TopAlbums limit={4} />
