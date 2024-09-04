@@ -41,7 +41,7 @@ const MusicCard = (props: Props) => {
                         onClick={handleClick}
                     />
                     <img
-                        src="/Group.svg"
+                        src={isPlaying && currentTrackIndex === props.trackIndex ? '/icons/pause.svg' : '/group.svg'}
                         alt="ap"
                         className={styles.audioPlay}
                         onClick={handleClick}

@@ -1,13 +1,7 @@
-
 import TrendHitsPage from "../../TrendHits/TrendHits";
 import styles from './AlbumsById.module.scss'
 
-
-type Props = {
-    id: number;
-}
-
-const AlbumsById = (props: Props) => {
+const AlbumsById = () => {
 
     return (
         <>
@@ -19,7 +13,7 @@ const AlbumsById = (props: Props) => {
                     <span className={styles.artistName}>Taylor Swift</span>
                 </div>
                 <div className={styles.musicCards}>
-                   <TrendHitsPage  limit={8}/>
+                   <TrendHitsPage  limit={8} isHomePage={true} showLikeButton={true}/>
                 </div>
             </div>
         </>

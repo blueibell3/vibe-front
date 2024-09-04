@@ -49,10 +49,14 @@ const MusicPlayer = () => {
 
     useEffect(() => {
         if (audioRef.current) {
-            audioRef.current.src = playlist[currentTrackIndex]?.url || '';
-            audioRef.current.play();
+            // Avoid resetting the current time when changing tracks, only pause/play based on isPlaying
+            if (isPlaying) {
+                audioRef.current.play();
+            } else {
+                audioRef.current.pause();
+            }
         }
-    }, [currentTrackIndex, playlist]);
+    }, [currentTrackIndex, playlist, isPlaying]);
 
     return (
         <>

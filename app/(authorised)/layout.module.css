@@ -1,11 +1,10 @@
-
-
 .children {
     display: flex;
     justify-content: center;
     overflow: auto;
     height: calc(100vh - 72px);
     width: 100%;
+    padding-bottom: 20px;
 }
 
 .navMenuContainer{

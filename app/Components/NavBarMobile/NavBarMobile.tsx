@@ -1,7 +1,6 @@
 'use client'
 import Link from 'next/link';
 import styles from './NavBarMobile.module.scss';
-import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { useRecoilState } from 'recoil';
 import { tabletFullscreenState } from '@/app/state';

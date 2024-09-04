@@ -9,6 +9,7 @@
     border-radius: 16px;
     background: $grayColor;
     flex-direction: column;
+    // padding: 20px;
     gap: 12px;
 
 }
@@ -29,6 +30,7 @@
     flex-direction: column;
     gap: 4px;
     align-self: stretch;
+    flex-wrap: wrap;
 }
 
 .artistName {
@@ -54,11 +56,4 @@
     color: rgba(255, 255, 255, 0.64);
     font-size: 14px;
     font-weight: 500;
-}
-
-
-@media screen and (max-width:768px) {
-    .image {
-        width: 144px;
-    }
 }
