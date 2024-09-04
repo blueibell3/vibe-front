@@ -17,18 +17,19 @@ const TrendHitsCard = (props: Props) => {
     const backgrounds = [
         {
             id: 1,
-            backgroundImage: `url(/background/harrystyles.svg)`,
-            color: 'linear-gradient(270deg, #E2934B 7.1%, #D3620F 94.73%)',
+            backgroundImage: `url(/background/sabrina.svg)`,
+            title: 'TREND HITS',
         },
         {
             id: 2,
-            backgroundImage: `url(/background/imagesecond.svg)`,
-            color: 'linear-gradient(270deg, #5E4BE2 36.76%, #34297C 94.73%)',
+            backgroundImage: `url(/background/second.svg)`,
+            title: ' MOST LIKED',
+
         },
         {
             id: 3,
-            backgroundImage: `url(/background/imagethird.svg)`,
-            color: 'linear-gradient(270deg, #E24BD3 25.06%, #4E0FD3 94.73%)',
+            backgroundImage: `url(/background/third.svg)`,
+            title: 'NEW ARRIVALS'
         },
     ];
 
@@ -44,24 +45,20 @@ const TrendHitsCard = (props: Props) => {
     return (
         <div
             className={styles.container}
-            style={{
-                background: backgrounds[currentIndex].color,
-
-            }}
+            style={{ backgroundImage: backgrounds[currentIndex].backgroundImage }}
         >
             <div className={styles.wrapper}>
-                <h2 className={styles.title}>Trend Hits</h2>
-                <h1 className={styles.year}>2024</h1>
-                <div className={styles.textButton}>
-                    <TextButton title={'View playlist'} mode='fill' onClick={handleClick} />
+                <div className={styles.solution}>
+                    <div className={styles.title}>
+                        {backgrounds[currentIndex].title}
+                    </div>
+                    <div className={styles.textButton}>
+                        <TextButton title="View playlist" mode="fill" onClick={handleClick} />
+                    </div>
                 </div>
-            </div>
-            <div className={styles.test} style={{
-                backgroundImage: backgrounds[currentIndex].backgroundImage,
-            }}>
             </div>
         </div>
     );
 };
 
-export default TrendHitsCard
+export default TrendHitsCard;

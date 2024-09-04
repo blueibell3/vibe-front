@@ -13,7 +13,7 @@ const Header = () => {
             <div className={styles.searchLogoContainer}>
                 <div className={styles.searchLogo}>
                     <Link href='/'>
-                        <Image src='/logo.png' alt='logo' width={141} height={39} className={styles.logo} />
+                        <Image src='/logo.png' alt='logo' width={150} height={60} className={styles.logo} />
                     </Link>
                     <div className={styles.menuMain}>
                         <BurgerMenu />
