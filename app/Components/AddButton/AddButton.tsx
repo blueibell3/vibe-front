@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import styles from './AddButton.module.scss';
 import PlaylistModal from '../PlaylistModal/PlaylistModal';
 
-
 const AddButton = () => {
 
     const [isOpen, setIsOpen] = useState(false)

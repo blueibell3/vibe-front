@@ -1,9 +1,6 @@
 import TrendHits from "@/app/Components/TrendHits/TrendHits"
 import styles from "./page.module.css"
 
-
-
-
 const trendHits = () => {
 
     return (

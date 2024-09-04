@@ -1,5 +1,4 @@
 'use client'
-
 import styles from "./page.module.css"
 import Albums from "@/app/Components/Albums/Albums"
 

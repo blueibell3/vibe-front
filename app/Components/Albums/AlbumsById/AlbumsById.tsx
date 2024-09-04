@@ -1,9 +1,5 @@
-
 import TrendHitsPage from "../../TrendHits/TrendHits";
 import styles from './AlbumsById.module.scss'
-
-
-
 
 const AlbumsById = () => {
 

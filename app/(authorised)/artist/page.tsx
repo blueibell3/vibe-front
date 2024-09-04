@@ -1,7 +1,5 @@
-
 import styles from "./page.module.css"
 import Artist from "@/app/Components/Artist/Artist"
-
 
 const Artists = () => {
 

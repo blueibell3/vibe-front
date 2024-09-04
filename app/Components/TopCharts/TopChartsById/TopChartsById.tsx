@@ -1,9 +1,5 @@
-
 import TrendHits from "../../TrendHits/TrendHits";
 import styles from "./TopChartsById.module.scss"
-
-
-
 
 const TopChartsById = () => {
 

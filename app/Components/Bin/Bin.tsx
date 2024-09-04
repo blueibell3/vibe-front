@@ -2,15 +2,12 @@ import { useState } from 'react';
 import styles from './Bin.module.scss';
 import Button from '../Button/Button';
 
-
 const Bin = () => {
     const [isActive, setIsActive] = useState(false);
 
     const onClick = () => {
         setIsActive(!isActive);
     };
-
-
 
     return (
         <div className={styles.conteiner}>

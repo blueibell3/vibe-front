@@ -7,7 +7,6 @@ import TrendHits from '../Components/TrendHits/TrendHits';
 import TrendHitsCard from '../Components/TrendHitsCard/TrendHitsCard';
 import styles from './page.module.css';
 
-
 export default function Home() {
   return (
 

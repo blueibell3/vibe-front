@@ -3,8 +3,6 @@ import Albums from "../../Albums/Albums";
 import TrendHitsPage from "../../TrendHits/TrendHits";
 import styles from "./ArtistById.module.scss"
 
-
-
 const ArtistById = () => {
 
     return (
