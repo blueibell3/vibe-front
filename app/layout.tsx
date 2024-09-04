@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html>
-      <body >
+      <body>
         <RecoilWrapper>
           {children}
         </RecoilWrapper>

@@ -33,9 +33,12 @@ const ReusableInput = (props: Props) => {
         mode = 'success';
     }
 
+    const onSubmit = () => {
+            
+    }
 
     return (
-        <form className={styles.inputMain} onSubmit={handleSubmit(() => {})}>
+        <form className={styles.inputMain} onSubmit={handleSubmit(onSubmit)}>
               <span className={styles.inputText}>{props.placeholder}</span>
             <input
                 className={`${styles.input} ${styles[mode]}`}
