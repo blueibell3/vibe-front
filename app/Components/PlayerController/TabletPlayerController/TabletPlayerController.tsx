@@ -4,7 +4,6 @@ import PreviousButton from '../PreviousButton/PreviousButton';
 import PlayPauseButton from '../PlayPauseButton/PlayPauseButton';
 import NextButton from '../NextButton/NextButton';
 import ShuffleButton from '../ShuffleButton/ShuffleButton';
-import VolumeControl from '../VolumeControl/VolumeControl';
 import FastForwardButton from '../FastForwardButton/FastForwardButton';
 import RewindButton from '../RewindButton/RewindButton';
 import TimeDisplay from '../TimeDisplay/TimeDisplay';

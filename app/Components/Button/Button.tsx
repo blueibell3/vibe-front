@@ -1,6 +1,5 @@
 import styles from './Button.module.scss'
 
-
 type Props = {
     title: string;
     type: "primary" | "secondary";

@@ -10,38 +10,36 @@ const useAudioPlayer = (url: string | undefined, volume: number, isMuted: boolea
     const [playlist] = useRecoilState(playlistState);
 
     useEffect(() => {
-        if (audioRef.current) {
-            const handleTimeUpdate = () => setCurrentTime(audioRef.current!.currentTime);
-            const handleLoadedMetadata = () => {
-                if (audioRef.current) {
-                    setDuration(audioRef.current.duration);
-                    setCurrentTime(audioRef.current.currentTime);
-                }
-            };
+        const audioElement = audioRef.current;
 
-            const handleEnded = () => {
-                setCurrentTrackIndex((prevIndex) => {
-                    const nextIndex = (prevIndex + 1) % playlist.length;
-                    return nextIndex;
-                });
-            };
+        if (!audioElement) return;
 
-            audioRef.current.addEventListener('timeupdate', handleTimeUpdate);
-            audioRef.current.addEventListener('loadedmetadata', handleLoadedMetadata);
-            audioRef.current.addEventListener('ended', handleEnded);
+        const handleTimeUpdate = () => setCurrentTime(audioElement.currentTime);
+        const handleLoadedMetadata = () => {
+            setDuration(audioElement.duration);
+            setCurrentTime(audioElement.currentTime);
+        };
 
-            return () => {
-                audioRef.current!.removeEventListener('timeupdate', handleTimeUpdate);
-                audioRef.current!.removeEventListener('loadedmetadata', handleLoadedMetadata);
-                audioRef.current!.removeEventListener('ended', handleEnded);
-            };
-        }
+        const handleEnded = () => {
+            setCurrentTrackIndex((prevIndex) => (prevIndex + 1) % playlist.length);
+        };
+
+        audioElement.addEventListener('timeupdate', handleTimeUpdate);
+        audioElement.addEventListener('loadedmetadata', handleLoadedMetadata);
+        audioElement.addEventListener('ended', handleEnded);
+
+        return () => {
+            audioElement.removeEventListener('timeupdate', handleTimeUpdate);
+            audioElement.removeEventListener('loadedmetadata', handleLoadedMetadata);
+            audioElement.removeEventListener('ended', handleEnded);
+        };
     }, [playlist, setCurrentTrackIndex]);
 
     useEffect(() => {
         if (audioRef.current) {
             audioRef.current.src = url ?? '';
             audioRef.current.load();
+            audioRef.current.pause();  
         }
     }, [url]);
 

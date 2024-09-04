@@ -3,12 +3,7 @@ import Albums from "../../Albums/Albums";
 import TrendHitsPage from "../../TrendHits/TrendHits";
 import styles from "./ArtistById.module.scss"
 
-
-type Props = {
-    id: number;
-}
-
-const ArtistById = (props: Props) => {
+const ArtistById = () => {
 
     return (
         <>
@@ -21,7 +16,7 @@ const ArtistById = (props: Props) => {
                     <span className={styles.descriptonText}>The members of the band initially met at University College London, calling themselves Big Fat Noises and changing to Starfish, before settling on the current name. After releasing Safety (1998) independently, Coldplay signed with Parlophone in 1999 and wrote their debut album, Parachutes (2000). It featured breakthrough single "Yellow" and received a Brit Award for British Album of the Year and a Grammy Award for Best Alternative Music Album. The group's follow-up, A Rush of Blood to the Head (2002), won the same accolades.</span>
                 </div>
                 <div className={styles.musicCards}>
-                    <TrendHitsPage limit={8} />
+                    <TrendHitsPage limit={8} isHomePage={true} showLikeButton={true} />
                 </div>
                 <div className={styles.albumsPage}>
                     <div className={styles.albumsText}>Albums</div>

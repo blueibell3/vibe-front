@@ -1,7 +1,6 @@
 import styles from "./page.module.css"
 import PlaylistPage from "@/app/Components/PlaylistPage/PlaylistPage"
 
-
 const playlistPage = () => {
 
     return (

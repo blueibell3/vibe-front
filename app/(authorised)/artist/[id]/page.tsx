@@ -5,7 +5,7 @@ const Id = () => {
 
     return (
         <>
-                <ArtistById id={1} />
+            <ArtistById  />
         </>
     )
 }

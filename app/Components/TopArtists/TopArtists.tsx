@@ -37,10 +37,9 @@ const TopArtists = () => {
                 <ListItem
                     key={TopArtistsItem.id}
                     text={TopArtistsItem.text}
-                    href={`topartists/${TopArtistsItem.id}`}
+                    link={`topartists/${TopArtistsItem.id}`}
                     imgSrc={TopArtistsItem.imgSrc}
-                    isArtist={true}
-                />
+                    isArtist={true} id={0} />
 
             ))}
         </div>
