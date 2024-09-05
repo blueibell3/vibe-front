@@ -1,11 +1,8 @@
 import MusicCard from '../../MusicCard/MusicCard'
 import styles from './PlayLIstById.module.scss'
 
-type Props = {
-    url: string
-}
 
-const PlayLIstById = (props: Props) => {
+const PlayLIstById = () => {
     const musicData = [
         {
             id: 1,
@@ -36,15 +33,15 @@ const PlayLIstById = (props: Props) => {
 
     return (
         <div className={styles.wrap}>
-             <div className={styles.myEveryday}>
-                    <h3>My Everyday</h3>
-                </div>
+            <div className={styles.myEveryday}>
+                <h3>My Everyday</h3>
+            </div>
             <div className={styles.everyDay}>
-                <img src={props.url} alt="my every day" />
+                <img src={"/playListId.svg"} alt="my every day" />
                 <span>my Everyday</span>
             </div>
             <div className={styles.musicData}>
-                {musicData.map((music, ) => (
+                {musicData.map((music,) => (
                     <MusicCard
                         imageUrl={music.imgUrl}
                         songName={music.songName}

@@ -5,7 +5,7 @@ const Id = () => {
     return (
         <>
             <div className={styles.container}>
-                <PlayLIstById url={"/playListId.svg"} />
+                <PlayLIstById  />
             </div>
         </>
     )

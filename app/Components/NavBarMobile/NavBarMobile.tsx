@@ -7,24 +7,28 @@ import { tabletFullscreenState } from '@/app/state';
 
 const mobilelinkData = [
     {
+        id: 1,
         href: '/',
         text: 'home',
         src: 'home.svg',
         srcB: 'bluehome.svg',
     },
     {
+        id: 2,
         href: '/searchbarMobile',
         text: 'Search',
         src: 'search.svg',
         srcB: 'bluesearch.svg',
     },
     {
+        id: 3,
         href: '/library',
         text: 'Library',
         src: 'library.svg',
         srcB: 'bluelibrary.svg',
     },
     {
+        id: 4,
         href: '/profile',
         text: 'Profile',
         src: 'profile.svg',
@@ -41,7 +45,7 @@ const NavBarMobile = () => {
             <div className={tabletscreenState ? styles.nones : styles.mobileNavBar}>
                 {mobilelinkData.map((category) => (
                     <Link
-                        key={category.href}
+                        key={category.id}
                         onClick={() => pathname === category.href}
                         className={styles.mobileNavLinks}
                         href={category.href}
