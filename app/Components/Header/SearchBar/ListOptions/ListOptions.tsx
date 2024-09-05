@@ -11,15 +11,15 @@ type Props = {
 
 interface ListOptionsProps {
     options: Props[];
-    onOptionClick?: (text: string) => void
+    onOptionClick?: (text: string) => void;
 }
 
 const ListOptions = ({ options, onOptionClick }: ListOptionsProps) => {
     return (
         <ul className={styles.listOptions}>
             {options.map(option => (
-                <Link href={option.link}>
-                    <li key={option.id} className={styles.option}>
+                <Link href={option.link} key={option.id}>
+                    <li className={styles.option}>
                         <a
                             onClick={() => {
                                 if (onOptionClick) {

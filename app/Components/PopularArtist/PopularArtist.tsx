@@ -24,7 +24,7 @@ const PopularArtist = () => {
             url: 'COldplay.svg',
         },
         {
-            id: 2,
+            id: 4,
             title: 'Rihhana',
             year: 1988,
             url: 'rihhana.svg',

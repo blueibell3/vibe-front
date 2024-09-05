@@ -5,10 +5,7 @@ const Id = () => {
     return (
         <>
             <div className={styles.container}>
-                <div className={styles.myEveryday}>
-                    <h3>My Everyday</h3>
-                </div>
-                <PlayLIstById url={"/playListId.svg"} />
+                <PlayLIstById  />
             </div>
         </>
     )

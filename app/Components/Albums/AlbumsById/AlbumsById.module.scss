@@ -46,5 +46,7 @@
 .musicCards {
     padding-top: 20px;
     width: 100%;
-
+    display: grid;
+    grid-template-columns: repeat(1, 1fr 1fr );
+    gap: 5px;
 }

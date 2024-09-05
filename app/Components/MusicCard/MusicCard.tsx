@@ -12,7 +12,7 @@ type Props = {
     songName: string;
     artistName: string;
     trackIndex: number;
-    showLikeButton: boolean;  
+    showLikeButton: boolean;
 }
 
 const MusicCard = (props: Props) => {

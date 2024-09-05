@@ -1,7 +1,48 @@
+import MusicCard from "../../MusicCard/MusicCard";
 import TrendHitsPage from "../../TrendHits/TrendHits";
 import styles from './AlbumsById.module.scss'
 
 const AlbumsById = () => {
+    const albomsmusic = [
+        {
+            id: 1,
+            songName: 'Watermelon',
+            artistName: 'kaxidze',
+            imgUrl: '/jansulKaxize.jpg'
+        },
+        {
+            id: 2,
+            songName: 'Watermelon',
+            artistName: 'kaxidze',
+            imgUrl: '/jansulKaxize.jpg'
+        },
+        {
+            id: 3,
+            songName: 'Watermelon',
+            artistName: 'kaxidze',
+            imgUrl: '/jansulKaxize.jpg'
+        },
+
+        {
+            id: 4,
+            songName: 'Watermelon',
+            artistName: 'kaxidze',
+            imgUrl: '/jansulKaxize.jpg'
+        },
+        {
+            id: 5,
+            songName: 'Watermelon',
+            artistName: 'kaxidze',
+            imgUrl: '/jansulKaxize.jpg'
+        },
+
+        {
+            id: 6,
+            songName: 'Watermelon',
+            artistName: 'kaxidze',
+            imgUrl: '/jansulKaxize.jpg'
+        },
+    ]
 
     return (
         <>
@@ -13,7 +54,16 @@ const AlbumsById = () => {
                     <span className={styles.artistName}>Taylor Swift</span>
                 </div>
                 <div className={styles.musicCards}>
-                   <TrendHitsPage  limit={8} isHomePage={true} showLikeButton={true}/>
+                    {albomsmusic.map((music) => (
+                        <MusicCard
+                            imageUrl={music.imgUrl}
+                            songName={music.songName}
+                            artistName={music.artistName}
+                            trackIndex={2}
+                            showLikeButton={true}
+                            key={music.id}
+                        />
+                    ))}
                 </div>
             </div>
         </>

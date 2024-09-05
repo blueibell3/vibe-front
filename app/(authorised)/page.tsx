@@ -16,7 +16,7 @@ export default function Home() {
         <TrendHitsCard pathName={'playlist'} />
       </div>
       <div className={styles.seactionHeader}>
-        <SectionHeader title={'Popular Artists'} pathName={'/'} />
+        <SectionHeader title={'Popular Artists'} pathName={'/topartists'} />
       </div>
       <div className={styles.ArtistCard}>
         <PopularArtist />
@@ -31,7 +31,7 @@ export default function Home() {
         <SectionHeader title={'Top Hits'} pathName={'/topartists'} />
       </div>
       <div className={styles.musicCard}>
-        <TrendHits limit={4} isHomePage={true} showLikeButton={true} />
+        <TrendHits limit={4} showLikeButton={true} />
       </div>
       <div className={styles.seactionHeader}>
         <SectionHeader title={'Top Alboms'} pathName={'/topalbums'} />

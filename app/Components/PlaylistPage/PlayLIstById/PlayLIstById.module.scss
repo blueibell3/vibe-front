@@ -13,6 +13,12 @@
     padding-bottom: 20px;
 }
 
+.myEveryday {
+    padding: 20px 12px;
+    display: flex;
+    align-items: center;
+}
+
 .everyDay img {
     max-width: 200px;
     width: 100%;
@@ -26,4 +32,10 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+}
+
+.musicData {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
