@@ -13,7 +13,7 @@ const AlbumsById = () => {
                     <span className={styles.artistName}>Taylor Swift</span>
                 </div>
                 <div className={styles.musicCards}>
-                   <TrendHitsPage  limit={8} isHomePage={true} showLikeButton={true}/>
+                   <TrendHitsPage  limit={8}  showLikeButton={true}/>
                 </div>
             </div>
         </>

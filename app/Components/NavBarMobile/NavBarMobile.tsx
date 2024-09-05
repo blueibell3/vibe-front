@@ -5,18 +5,14 @@ import { usePathname } from 'next/navigation';
 import { useRecoilState } from 'recoil';
 import { tabletFullscreenState } from '@/app/state';
 
-
-
 const mobilelinkData = [
     {
         href: '/',
         text: 'home',
         src: 'home.svg',
         srcB: 'bluehome.svg',
-
     },
     {
-
         href: '/searchbarMobile',
         text: 'Search',
         src: 'search.svg',
@@ -34,28 +30,31 @@ const mobilelinkData = [
         src: 'profile.svg',
         srcB: 'profile.svg',
     },
-]
-
+];
 
 const NavBarMobile = () => {
-
-    const pathname = usePathname()
-    const [tabletscreenState] = useRecoilState(tabletFullscreenState)
-
+    const pathname = usePathname();
+    const [tabletscreenState] = useRecoilState(tabletFullscreenState);
 
     return (
         <>
             <div className={tabletscreenState ? styles.nones : styles.mobileNavBar}>
-                {mobilelinkData.map(category => (
-                    <Link onClick={() => pathname === category.href} className={styles.mobileNavLinks} href={category.href}>
+                {mobilelinkData.map((category) => (
+                    <Link
+                        key={category.href}
+                        onClick={() => pathname === category.href}
+                        className={styles.mobileNavLinks}
+                        href={category.href}
+                    >
                         <img className={styles.mobileNavImg} src={pathname === category.href ? category.srcB : category.src} />
-                        <span className={`${pathname === category.href ? styles.activeClasses : styles.mobileNavText}`}>{category.text}</span>
+                        <span className={`${pathname === category.href ? styles.activeClasses : styles.mobileNavText}`}>
+                            {category.text}
+                        </span>
                     </Link>
                 ))}
             </div>
         </>
-    )
+    );
+};
 
-}
-
-export default NavBarMobile
+export default NavBarMobile;

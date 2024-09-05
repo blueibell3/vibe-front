@@ -7,7 +7,7 @@ const trendHits = () => {
         <>
             <div className={styles.trendHits}>
                 <div className={styles.trendHitsText}>Trend Hits</div>
-                <TrendHits isHomePage={false} showLikeButton={true}/>
+                <TrendHits  showLikeButton={true}/>
             </div>
         </>
     )

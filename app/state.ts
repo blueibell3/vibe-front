@@ -40,12 +40,13 @@ export const playlistState = atom<Track[]>({
       duration: 216
     },
     {
-      artist: 'Katana',
-      name: '- Help Me',
-      photo: '/katana.jpg',
-      url: '/music/MichaelKatanaHelpMe.mp3',
-      duration: 386
+      artist: 'Eminem',
+      name: '- lose yourself',
+      photo: '/Eminem.jpg',
+      url: '/music/eminem.mp3',
+      duration: 323
     },
+   
     {
       artist: 'Kaxidze',
       name: '- Watermelon',
