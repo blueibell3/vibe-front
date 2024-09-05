@@ -43,7 +43,7 @@ const PlayLIstById = (props: Props) => {
                 <img src={props.url} alt="my every day" />
                 <span>my Everyday</span>
             </div>
-            <div>
+            <div className={styles.musicData}>
                 {musicData.map((music, ) => (
                     <MusicCard
                         imageUrl={music.imgUrl}

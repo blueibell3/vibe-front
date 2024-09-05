@@ -1,9 +1,49 @@
 import Albums from "../../Albums/Albums";
+import MusicCard from "../../MusicCard/MusicCard";
 import TrendHitsPage from "../../TrendHits/TrendHits";
 import styles from "./ArtistById.module.scss";
 
 const ArtistById = () => {
+    const artistMusic = [
+        {
+            id: 1,
+            songName: 'Help me',
+            artistName: 'Katana',
+            imgUrl: '/katana.jpg'
+        },
+        {
+            id: 2,
+            songName: 'Help me',
+            artistName: 'Katana',
+            imgUrl: '/katana.jpg'
+        },
+        {
+            id: 3,
+            songName: 'Help me',
+            artistName: 'Katana',
+            imgUrl: '/katana.jpg'
+        },
 
+        {
+            id: 4,
+            songName: 'Help me',
+            artistName: 'Katana',
+            imgUrl: '/katana.jpg'
+        },
+        {
+            id: 5,
+            songName: 'Help me',
+            artistName: 'Katana',
+            imgUrl: '/katana.jpg'
+        },
+
+        {
+            id: 6,
+            songName: 'Help me',
+            artistName: 'Katana',
+            imgUrl: '/katana.jpg'
+        },
+    ]
     return (
         <>
             <div className={styles.container}>
@@ -26,7 +66,16 @@ const ArtistById = () => {
                     </span>
                 </div>
                 <div className={styles.musicCards}>
-                    <TrendHitsPage limit={8} showLikeButton={true} />
+                    {artistMusic.map((music) => (
+                        <MusicCard
+                            imageUrl={music.imgUrl}
+                            songName={music.songName}
+                            artistName={music.artistName}
+                            trackIndex={1}
+                            showLikeButton={true}
+                            key={music.id}
+                        />
+                    ))}
                 </div>
                 <div className={styles.albumsPage}>
                     <div className={styles.albumsText}>Albums</div>
