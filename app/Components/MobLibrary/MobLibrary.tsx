@@ -1,21 +1,42 @@
 import styles from './MobLibrary.module.scss'
 
+const libraryList = [
+    {
+        id: 1,
+        text: 'Artist',
+        href: "/artist",
+        src: "/artist.svg"
+    },
+    {
+        id: 2,
+        text: 'Playlist',
+        href: '/playlist',
+        src: "/playlist.svg"
+
+    },
+
+    {
+        id: 3,
+        text: 'Albums',
+        href: '/albums',
+        src: './albums.svg'
+    }
+]
+
 const MobLibrary = () => {
+
     return (
         <div className={styles.container}>
             <h3>Library</h3>
-            <a href="/artist" className={styles.libraryList}>
-                <img src="/artist.svg" alt="artisicon" />
-                <span>Artist</span>
-            </a>
-            <a href='/playlist' className={styles.libraryList}>
-                <img src="/playlist.svg" alt="artisicon" />
-                <span>Playlist</span>
-            </a>
-            <a href='/albums' className={styles.libraryList}>
-                <img src="/albums.svg" alt="artisicon" />
-                <span>Albums</span>
-            </a>
+            {libraryList.map((library) => (
+                <a className={styles.libraryList}
+                    key={library.id}
+                    href={library.href}
+                >
+                    <img src={library.src} alt="/" />
+                    <span>{library.text}</span>
+                </a>
+            ))}
         </div>
     )
 }
