@@ -1,5 +1,5 @@
 import SearchBar from '@/app/Components/Header/SearchBar/SearchBar'
-import styles from './searchbarMobile.module.scss'
+import styles from './page.module.scss'
 
 const searchbarMobile = () => {
     return (
