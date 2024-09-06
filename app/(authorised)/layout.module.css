@@ -51,6 +51,12 @@
         display: none;
     }
 
+
+    .musicList {
+        padding: 0;
+    }
+
+    
     .mobileNavBarContainer {
         display: none;
     }
