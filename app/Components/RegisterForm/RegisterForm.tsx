@@ -14,21 +14,22 @@ const RegisterForm = () => {
         console.log(data);
     };
     return (
-        <div>
-            <ReusableInput
-                type='email'
-                placeholder='Enter email'
-                register={register('email', {
-                    required: 'Email is required',
-                    pattern: {
-                        value: /\S+@\S+\.\S+/,
-                        message: 'Entered value does not match email format',
-                    },
-                })}
-                mode={errors.email ? 'error' : isValid ? 'success' : 'standard'}
+        <div className={styles.conteiner}>
+            <div className={styles.regist}>
+                <ReusableInput
+                    type='email'
+                    placeholder='Enter email'
+                    register={register('email', {
+                        required: 'Email is required',
+                        pattern: {
+                            value: /\S+@\S+\.\S+/,
+                            message: 'Entered value does not match email format',
+                        },
+                    })}
+                    mode={errors.email ? 'error' : isValid ? 'success' : 'standard'}
 
-            />
-
+                />
+            </div>
         </div>
     )
 }
