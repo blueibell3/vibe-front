@@ -48,7 +48,7 @@ const AuthForm = () => {
                         mode={errors.password ? 'error' : isValid ? 'success' : 'standard'}
                     />
                     </div>
-                    <div className={styles.davighale}>
+                    <div className={styles.buttonWrapper}>
                         <div className={styles.button}>
                             <Button title={"Sign in"} type={"primary"} />
                         </div>

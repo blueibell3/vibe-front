@@ -2,6 +2,8 @@
 import { useForm } from 'react-hook-form';
 import ReusableInput from '../ReusableInput/ReusableInput'
 import styles from './RegisterForm.module.scss'
+import Button from '../Button/Button';
+import Image from 'next/image'
 
 const RegisterForm = () => {
     const {
@@ -14,8 +16,9 @@ const RegisterForm = () => {
         console.log(data);
     };
     return (
-        <div className={styles.conteiner}>
+        <form onSubmit={handleSubmit(onSubmit)} className={styles.conteiner}>
             <div className={styles.regist}>
+            <Image className={styles.logo} src='/logo.png' width={170} height={70} alt={"logo"} />
                 <ReusableInput
                     type='email'
                     placeholder='Enter email'
@@ -27,11 +30,41 @@ const RegisterForm = () => {
                         },
                     })}
                     mode={errors.email ? 'error' : isValid ? 'success' : 'standard'}
-
                 />
+                <ReusableInput
+                    type="password"
+                    placeholder="Enter Password"
+                    register={register('password', {
+                        required: 'Password is required',
+                        minLength: {
+                            value: 8,
+                            message: 'Password must be at least 8 characters long',
+                        },
+                    })}
+                    mode={errors.password ? 'error' : isValid ? 'success' : 'standard'}
+                />
+                <ReusableInput
+                    type="password"
+                    placeholder="Confirm password"
+                    register={register('password', {
+                        required: 'Password is required',
+                        minLength: {
+                            value: 8,
+                            message: 'Password must be at least 8 characters long',
+                        },
+                    })}
+                    mode={errors.password ? 'error' : isValid ? 'success' : 'standard'}
+                />
+                <div className={styles.buttonWrapper}>
+                    <div className={styles.button}>
+                        <Button title={"Sign in"} type={"primary"} />
+                    </div>
+                </div>
+                <div className={styles.clicklSignUp}>
+                    <a className={styles.signUpText} href="/authorisation">Don&apos;t have an account? Sign up</a>
+                </div>
             </div>
-        </div>
+        </form>
     )
 }
-
 export default RegisterForm
