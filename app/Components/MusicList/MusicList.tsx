@@ -30,7 +30,7 @@ const MusicList = (props: Props) => {
         <div className={styles.MusicListCategory} onClick={handleClick}>
             <div className={styles.MusicListId}>
                 <div className={styles.imgCenter}>
-                    <img src={isPlaying && currentTrackIndex === props.trackIndex ? '/icons/pause.svg' : '/icons/group.svg'} alt="ap" className={styles.audioPlay} />
+                    <img src={isPlaying && currentTrackIndex === props.trackIndex ? '/icons/pause.svg' : 'icons/pauselist.svg'} alt="ap" className={styles.audioPlay} />
                     <img className={styles.MusicListimageUrl} src={props.imageUrl} alt="imageUrl" />
                 </div>
                 <div className={styles.MusicListText}>
