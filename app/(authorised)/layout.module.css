@@ -54,6 +54,8 @@
 
     .musicList {
         padding: 0;
+        margin-right: 7px;
+
     }
 
     
@@ -122,6 +124,7 @@
 
     .musicList {
         padding-right: 0px;
+        margin: 0;
     }
 }
 
