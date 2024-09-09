@@ -18,7 +18,7 @@ const RegisterForm = () => {
     return (
         <form onSubmit={handleSubmit(onSubmit)} className={styles.conteiner}>
             <div className={styles.regist}>
-            <Image className={styles.logo} src='/logo.png' width={170} height={70} alt={"logo"} />
+                <Image className={styles.logo} src='/logo.png' width={170} height={70} alt={"logo"} />
                 <ReusableInput
                     type='email'
                     placeholder='Enter email'
@@ -61,7 +61,7 @@ const RegisterForm = () => {
                     </div>
                 </div>
                 <div className={styles.clicklSignUp}>
-                    <a className={styles.signUpText} href="/authorisation">Don&apos;t have an account? Sign up</a>
+                    <a className={styles.signUpText} href="/authorisation">already have an account? Sign in</a>
                 </div>
             </div>
         </form>
