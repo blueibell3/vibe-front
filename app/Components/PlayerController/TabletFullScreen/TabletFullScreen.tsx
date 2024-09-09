@@ -42,7 +42,7 @@ const TabletFullscreen = (props: Props) => {
         <div className={`${styles.fullscreenContainer} ${isExpanded ? styles.expanded : ''}`}>
             <div className={styles.fullscreenWrapper}>
                 <div className={styles.zoomOut}>
-                    <img src="./icons/back.svg" alt="zoomOut" onClick={props.onExitFullscreen} className={styles.back} />
+                    <img src="/icons/back.svg" alt="zoomOut" onClick={props.onExitFullscreen} className={styles.back} />
                 </div>
                 <div className={styles.trackInfo}>
                     <img src={playlist[currentTrackIndex].photo} alt={playlist[currentTrackIndex].name} className={styles.trackPhoto} />
