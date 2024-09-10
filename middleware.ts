@@ -16,7 +16,9 @@ export default async function middleware(req: NextRequest) {
     if (!token && !pathIsPublic) {
         return NextResponse.redirect(new URL('/authorisation', req.url))
     }
-    
+    if (!token && !pathIsPublic) {
+        return NextResponse.redirect(new URL('/register', req.url))
+    }
     return NextResponse.next();
 }
 
