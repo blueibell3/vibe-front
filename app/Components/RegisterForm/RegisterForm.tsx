@@ -22,7 +22,7 @@ const RegisterForm = () => {
     const onSubmit = (values: any) => {
         axios.post('https://vibe-backend-prrr.onrender.com/users', values)
             .then(r => {
-                router.push('/authorization')
+                router.push('/authorisation')
             })
     };
 
