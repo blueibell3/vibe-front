@@ -4,10 +4,9 @@
     overflow: auto;
     height: calc(100vh - 72px);
     width: 100%;
-    padding-bottom: 20px;
 }
 
-.navMenuContainer{
+.navMenuContainer {
     background: #0F0F0F;
 }
 
@@ -30,13 +29,13 @@
     flex-direction: column;
     gap: 26px;
     background: var(--background, #0F0F0F);
-    margin: 20px;
+    margin: 0xp 20px;
 }
 
 .test {
     display: flex;
     flex-direction: column;
-    padding: 10px;
+    padding:0px  10px;
 }
 
 
@@ -58,7 +57,7 @@
 
     }
 
-    
+
     .mobileNavBarContainer {
         display: none;
     }
