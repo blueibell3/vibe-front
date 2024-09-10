@@ -4,6 +4,9 @@ import styles from "./AuthForm.module.scss"
 import Image from 'next/image'
 import ReusableInput from "../ReusableInput/ReusableInput";
 import Button from "../Button/Button";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import { setCookie } from "@/app/helpers/cookies";
 
 const AuthForm = () => {
 
@@ -13,8 +16,14 @@ const AuthForm = () => {
         formState: { errors, isValid },
     } = useForm();
 
-    const onSubmit = (data: any) => {
-        console.log(data);
+    const router = useRouter()
+
+    const onSubmit = (values: any) => {
+        axios.post('https://vibe-backend-prrr.onrender.com/auth/signIn', values)
+        .then(r => {
+            setCookie('token', r.data.accessToken, 60);
+            router.push('/')
+        })
     };
 
     return (
@@ -63,3 +72,7 @@ const AuthForm = () => {
 }
 
 export default AuthForm;
+
+function setCoockie(arg0: string, accessToken: any, p0: number) {
+    throw new Error("Function not implemented.");
+}
