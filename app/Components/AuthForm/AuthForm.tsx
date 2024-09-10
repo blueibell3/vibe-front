@@ -16,8 +16,8 @@ const AuthForm = () => {
         formState: { errors, isValid },
     } = useForm();
 
-    const onSubmit = (data: any) => {
-        console.log(data);
+    const router = useRouter()
+
     const onSubmit = (values: any) => {
         axios.post('https://vibe-backend-prrr.onrender.com/auth/signIn', values)
         .then(r => {
