@@ -4,6 +4,10 @@ import ReusableInput from '../ReusableInput/ReusableInput'
 import styles from './RegisterForm.module.scss'
 import Button from '../Button/Button';
 import Image from 'next/image'
+import axios from 'axios';
+import { setCookie } from '@/app/helpers/cookies';
+import { useRouter } from 'next/navigation';
+
 
 const RegisterForm = () => {
     const {
@@ -13,8 +17,14 @@ const RegisterForm = () => {
         watch,
     } = useForm();
 
-    const onSubmit = (data: any) => {
-        console.log(data);
+    const router = useRouter()
+
+    const onSubmit = (values: any) => {
+        axios.post('https://vibe-backend-prrr.onrender.com/users', values)
+            .then(r => {
+                setCookie('token', r.data.accessToken, 60);
+                router.push('/')
+            })
     };
 
     const password = watch('password');
@@ -23,7 +33,7 @@ const RegisterForm = () => {
         <form onSubmit={handleSubmit(onSubmit)} className={styles.conteiner}>
             <div className={styles.regist}>
                 <Image className={styles.logo} src='/logo.png' width={170} height={70} alt={"logo"} />
-                
+
                 <ReusableInput
                     type='email'
                     placeholder='Enter email'
@@ -36,7 +46,7 @@ const RegisterForm = () => {
                     })}
                     mode={errors.email ? 'error' : isValid ? 'success' : 'standard'}
                 />
-                
+
                 <ReusableInput
                     type="password"
                     placeholder="Enter Password"
@@ -49,7 +59,7 @@ const RegisterForm = () => {
                     })}
                     mode={errors.password ? 'error' : isValid ? 'success' : 'standard'}
                 />
-                
+
                 <ReusableInput
                     type="password"
                     placeholder="Confirm Password"
@@ -60,13 +70,13 @@ const RegisterForm = () => {
                     })}
                     mode={errors.confirmPassword ? 'error' : isValid ? 'success' : 'standard'}
                 />
-                
+
                 {errors.confirmPassword && (
                     <p className={styles.errorMessage}>
                         {typeof errors.confirmPassword.message === 'string' && errors.confirmPassword.message}
                     </p>
                 )}
-                
+
                 <div className={styles.buttonWrapper}>
                     <div className={styles.button}>
                         <Button title={"Sign up"} type={"primary"} />
