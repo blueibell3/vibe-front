@@ -15,13 +15,20 @@
     border: 2px solid;
     color: white;
     width: 100%;
-}
 
+    &:-webkit-autofill {
+        background: #151515;
+        color: white;
+        border-color: #151515;
+        -webkit-box-shadow: 0 0 0px 1000px #151515 inset;
+        -webkit-text-fill-color: white;
+    }
+}
 
 .input:focus {
     background: #0C0C0C;
     border-color: #0C0C0C;
-    outline: none; 
+    outline: none;
 }
 
 .inputText {
@@ -50,10 +57,10 @@
     border-color: #961E18;
 }
 
-.success:focus{
+.success:focus {
     border-color: #75B040;
 }
 
-.error:focus{
+.error:focus {
     border-color: #961E18;
 }
