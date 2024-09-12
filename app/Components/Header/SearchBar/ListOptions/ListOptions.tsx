@@ -4,7 +4,7 @@ type Props = {
     id: number;
     text: string;
     img?: string;
-    type: 'singer' | 'album';
+    type: 'album' | 'author' | 'music';
     link?: string;
 };
 

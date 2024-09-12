@@ -9,7 +9,7 @@ type Option = {
     id: number;
     text: string;
     img?: string;
-    type: 'singer' | 'album';
+    type: 'album' | 'author' | 'music';
     link?: string;
 };
 
@@ -23,20 +23,42 @@ const SearchBar = () => {
                 const response = await axios.get(
                     `https://vibe-backend-prrr.onrender.com/search/?searchField=${query}`
                 );
-
-                // Assuming backend returns an object with an `album` array
-                const albumData = response.data.album;
-
-                // Map the album data to match the Option type
-                const optionsArray = albumData.map((album: any) => ({
+        
+                const { album: albumData, author: authorData, music: musicData } = response.data;
+    
+                if (!albumData || !authorData || !musicData) {
+                    console.error('Data missing in response:', response.data);
+                    setFilteredOptions([]);
+                    return;
+                }
+    
+                const albumOptions = albumData.map((album: any) => ({
                     id: album.id,
-                    text: album.title || 'Untitled',  // Handle empty title
-                    img: album.musics[0] || '/default.jpg',  // Handle missing music image, provide a fallback image
+                    text: album.title || 'Untitled',
+                    img: album.musics[0] || '/default.jpg',
                     type: 'album',
-                    link: `/album/${album.id}`  // Generate a link based on album ID
+                    link: `/album/${album.id}`,
                 }));
-
-                setFilteredOptions(optionsArray);
+    
+                const authorOptions = authorData.map((author: any) => ({
+                    id: author.id,
+                    text: author.firstName + ' ' + author.lastName || 'Unknown Author',
+                    img: author.profilePic || '/default-author.jpg',
+                    type: 'author',
+                    link: `/author/${author.id}`,
+                }));
+    
+                const musicOptions = musicData.map((music: any) => ({
+                    id: music.id,
+                    text: music.name || 'Untitled Music',
+                    img: music.albumCover || '/default-music.jpg',
+                    type: 'music',
+                    link: `/music/${music.id}`,
+                }));
+    
+                const allOptions = [...albumOptions, ...authorOptions, ...musicOptions];
+    
+                setFilteredOptions(allOptions);
             } catch (error) {
                 console.error('Error fetching search options:', error);
                 setFilteredOptions([]);
@@ -45,13 +67,13 @@ const SearchBar = () => {
             setFilteredOptions([]);
         }
     }, [query]);
-
+    
     useEffect(() => {
         fetchOptions();
     }, [query, fetchOptions]);
 
     const handleOptionClick = (text: string) => {
-        setQuery(text); // Updates the search input with the selected option text
+        setQuery(text);
     };
 
     return (
@@ -61,7 +83,7 @@ const SearchBar = () => {
                 type="text"
                 placeholder="Search..."
                 value={query}
-                onChange={(e) => setQuery(e.target.value)} // Updates the query state while typing
+                onChange={(e) => setQuery(e.target.value)}
             />
             <Image
                 src="/search icon.svg"
