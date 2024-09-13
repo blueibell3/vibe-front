@@ -1,90 +1,75 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from "./Albums.module.scss";
 import AlbumCard from '../AlbumCard/AlbumCard';
-import ReusableInput from '../ReusableInput/ReusableInput';
+import axios from 'axios';
+import { cookies } from 'next/headers';
 
-type Props  = {
+type Album = {
+    id: number;
+    // imageUrl: string;
+    songName: string;
+    // artistName: string;
+    // year: string;
+};
+
+type Props = {
     limit?: number;
-   }
+};
 
 const Albums = (props: Props) => {
-    const albumsData = [
-        {
-            id: 1,
-            imageUrl: '/albumsimg.svg',
-            songName: 'One of wun ',
-            artistName: 'Gunna',
-            year: '2000'
-        },
-        {
-            id: 2,
-            imageUrl: '/albumsimg.svg',
-            songName: 'Dangerous',
-            artistName: 'Billie Eillish',
-            year: '2000'
-        },
-        {
-            id: 3,
-            imageUrl: '/albumsimg.svg',
-            songName: 'Dangerous',
-            artistName: 'Billie Eillish',
-            year: '2000'
-        },
-        {
-            id: 4,
-            imageUrl: '/albumsimg.svg',
-            songName: 'Dangerous',
-            artistName: 'Billie Eillish',
-            year: '2000'
-        },
-        {
-            id: 5,
-            imageUrl: '/albumsimg.svg',
-            songName: 'Dangerous',
-            artistName: 'Billie Eillish',
-            year: '2000'
-        },
-        {
-            id: 6,
-            imageUrl: '/albumsimg.svg',
-            songName: 'Dangerous',
-            artistName: 'Billie Eillish',
-            year: '2000'
-        },
-        {
-            id: 7,
-            imageUrl: '/albumsimg.svg',
-            songName: 'Dangerous',
-            artistName: 'Billie Eillish',
-            year: '2000'
-        },
-        {
-            id: 8,
-            imageUrl: '/albumsimg.svg',
-            songName: 'Dangerous',
-            artistName: 'Billie Eillish',
-            year: '2000'
-        },
-    ];
+    const [albumsData, setAlbumsData] = useState<Album[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+    const token = document.cookie
+        .split('; ')
+        .find((row) => row.startsWith('token='))
+        ?.split('=')[1];
+
+    useEffect(() => {
+        const fetchAlbums = async () => {
+            try {
+                const response = await axios.get(`https://vibe-backend-prrr.onrender.com/album`, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+                setAlbumsData(response.data); setLoading(false);
+            } catch (err) {
+                setError('Failed');
+                setLoading(false);
+            }
+        };
+
+        fetchAlbums();
+    }, []);
 
     const albumCard = props.limit ? albumsData.slice(0, props.limit) : albumsData;
 
+    if (loading) {
+        return <p>Loading...</p>;
+    }
+
+    if (error) {
+        return <p>{error}</p>;
+    }
+
     return (
-      <>
         <div className={styles.albumsContainer}>
-            {albumCard.map(albums => (
+            {albumCard.map(album => (
                 <AlbumCard
-                    key={albums.id}
-                    imageUrl={albums.imageUrl}
-                    songName={albums.songName}
-                    artistName={albums.artistName}
-                    year={albums.year}
-                    id={albums.id}
+                    id={album.id}
+                    songName={album.songName}
+                // key={album.id}
+                // imageUrl={album.imageUrl}
+                // songName={album.songName}
+                // artistName={album.artistName}
+                // year={album.year}
+                // id={album.id}
                 />
             ))}
         </div>
-      </>
     );
-}
+};
 
 export default Albums;
