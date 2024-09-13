@@ -22,7 +22,7 @@ const UserAvatar = (props: Props) => {
                             {props.gmail}
                             <div className={styles.longOut}>
                                 <img src='/longout icoon.svg' alt='long out button' width={24} height={24} />
-                                <span>Log out</span>
+                                <a href='/authorisation'> <span>Log out</span> </a>
                             </div>
                         </div>
                     </div>

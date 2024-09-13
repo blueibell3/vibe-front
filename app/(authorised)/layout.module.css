@@ -1,3 +1,44 @@
+.children {
+    display: flex;
+    justify-content: center;
+    overflow: auto;
+    height: calc(100vh - 72px);
+    width: 100%;
+}
+
+.navMenuContainer {
+    background: #0F0F0F;
+}
+
+.children::-webkit-scrollbar {
+    display: none;
+}
+
+.container {
+    overflow-x: hidden;
+}
+
+.musicContainer {
+    display: flex;
+    position: relative;
+}
+
+.musicList {
+    padding: 8px 12px 8px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    background: var(--background, #0F0F0F);
+    margin: 0xp 20px;
+}
+
+.test {
+    display: flex;
+    flex-direction: column;
+    padding:0px  10px;
+}
+
+
 @media screen and (min-width:1023px) {
     .mobileNavBarContainer {
         display: none;
@@ -9,12 +50,38 @@
         display: none;
     }
 
+
+    .musicList {
+        padding: 0;
+        margin-right: 7px;
+
+    }
+
+
     .mobileNavBarContainer {
         display: none;
     }
+
+    .test {
+        display: none;
+    }
+
+    .MusicPlayer {
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+    }
+
+    .children {
+        width: 100%;
+        height: calc(100vh - 161px);
+    }
+
 }
 
 @media screen and (max-width:768px) {
+
     .navBarContainer {
         display: none;
     }
@@ -24,19 +91,42 @@
     }
 
     .mobileNavBarContainer {
-       display: flex;
-       flex-direction: column;
-       justify-content: flex-end;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        z-index: 1000;
     }
-    .headerContainer{
+
+    .headerContainer {
         display: none;
     }
+
+    .test {
+        display: none;
+    }
+
+    .MusicPlayer {
+        width: 100%;
+    }
+
+    .pages {
+        height: calc(100vh - 114px);
+    }
+
+    .children {
+        padding-right: 9px;
+        width: 100%;
+        padding-left: 0px;
+        height: calc(100vh - 114px);
+
+    }
+
+    .musicList {
+        padding-right: 0px;
+        margin: 0;
+    }
 }
 
-.navMenuContainer{
-    width: 300px;
-}
-
-.pages{
+.pages {
     display: flex;
 }

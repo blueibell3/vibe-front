@@ -1,0 +1,12 @@
+.topArtistsContainer {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+}
+
+.topArtistText {
+    font-size: 20px;
+    font-weight: 500;
+    padding: 10px;
+    font-family: Inter;
+}

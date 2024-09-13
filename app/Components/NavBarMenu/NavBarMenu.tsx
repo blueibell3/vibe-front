@@ -5,45 +5,47 @@ import styles from '../NavBarMenu/NavBarMenu.module.scss';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 
+type Props = {
+    isBurgerMenu: boolean;
+  }
 
 const desktoplinkData = [
     {
         id: 1,
         href: '/',
         text: 'home',
-        src: 'home.svg',
+        src: '/home.svg',
         key: '/'
     },
     {
         id: 2,
         href: '/artist',
         text: 'Artist',
-        src: 'artist.svg',
+        src: '/artist.svg',
         key: '/artist'
     },
     {
         id: 3,
         href: '/playlist',
         text: 'Playlist',
-        src: 'playlist.svg',
+        src: '/playlist.svg',
         key: '/playlist'
     },
     {
         id: 4,
         href: '/albums',
         text: 'Albums',
-        src: 'albums.svg',
+        src: '/albums.svg',
         key: '/albums'
     },
 ]
 
-const NavBarMenu = () => {
-
+const NavBarMenu = (props: Props) => {
     const pathname = usePathname()
 
     return (
         <>
-            <nav className={styles.navBarContainer}>
+            <nav  className={`${styles.navBarContainer} ${props.isBurgerMenu ? styles.noPadding : ''}`}>
                 <ul className={styles.navBarC}>
                     {desktoplinkData.map(category => (
                         <Link key={category.id} className={`${pathname === category.key ? styles.activeClasses : styles.barClass}`} href={category.href}>

@@ -1,0 +1,41 @@
+.conteiner {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+
+.everyDay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding-bottom: 20px;
+}
+
+.myEveryday {
+    padding: 20px 12px;
+    display: flex;
+    align-items: center;
+}
+
+.everyDay img {
+    max-width: 200px;
+    width: 100%;
+}
+
+.everyDay span {
+    font-size: 20px;
+}
+
+.wrap {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.musicData {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}

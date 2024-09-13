@@ -3,21 +3,25 @@
 .container {
     display: flex;
     background-color: $grayColor;
-    max-width: 184px;
     flex-direction: column;
-    height: 211px;
-    padding: 20px;
     border-radius: 16px;
-    align-items: center;
+    justify-content: center;
     cursor: pointer;
     text-decoration: none;
     color: $white;
 }
 
+.artistImage {
+    border-radius: 12px;
+    width: 100%;
+}
+
+
+
 .albom {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    align-items: center;
 }
 
 .describtion {
@@ -25,6 +29,8 @@
     justify-content: space-between;
     align-items: center;
     align-self: stretch;
+    padding:0px 10px 10px 20px;
+    flex-wrap: wrap;
 }
 
 .container:hover {
@@ -37,4 +43,11 @@
 
 .container img {
     border-radius: 12px;
+    padding: 20px 20px 10px 20px;
+}
+
+@media screen and (max-width:768px) {
+    .artistImage  {
+        width: fit-content;
+    }
 }

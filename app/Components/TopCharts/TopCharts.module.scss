@@ -2,18 +2,14 @@
     display: grid;
     width: 100%;
     grid-gap: 12px;
+    cursor: pointer;
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 @media screen and (max-width:768px) {
     .chartCardContainer {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
-
-@media screen and (min-width:1920px) {
-    .chartCardContainer {
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        display: flex;
+        width: 100%;
+        overflow-x: auto;
     }
 }

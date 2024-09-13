@@ -3,7 +3,7 @@ import styles from '../AlbumCard/AlbumCard.module.scss'
 import Link from 'next/link';
 
 type Props = {
-  id?: number;
+  id: number;
   songName: string;
   imageUrl: string;
   artistName: string;
@@ -12,7 +12,7 @@ type Props = {
 
 const AlbumCard = (props: Props) => {
   return (
-    <Link className={styles.albumCard} href={`/album/${props.id}`}>
+    <Link className={styles.albumCard} href={`/albums/${props.id}`}>
       <img className={styles.image} src={props.imageUrl} alt="image" />
       <div className={styles.albumCardText}>
         <div className={styles.title}>

@@ -1,10 +1,9 @@
 import React from 'react';
-import styles from '../ ChartCard/ ChartCard.module.scss';
-import TextButton from '../TextButton/TextButton';
+import styles from './ ChartCard.module.scss';
 import Link from 'next/link';
 
 type Props = {
-    id?: number;
+    id: number;
     title: string;
     imageUrl: string;
 }
@@ -13,7 +12,7 @@ const ChartCard = (props: Props) => {
 
     return (
         <>
-             <Link className={styles.link} href={`${props.id}`}>
+             <Link className={styles.link} href={`topCharts/${props.id}`}>
                <div className={styles.chartCard}>
                     <img className={styles.chartCardImage} src={props.imageUrl} alt={props.imageUrl} />
                     <div className={styles.chartCardtext}>

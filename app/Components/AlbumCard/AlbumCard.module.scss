@@ -6,12 +6,10 @@
 
 .albumCard {
     display: flex;
-    padding: 20px;
     border-radius: 16px;
     background: $grayColor;
     flex-direction: column;
     gap: 12px;
-
 }
 
 .albumCard:hover {
@@ -20,7 +18,6 @@
 
 .image {
     border-radius: 12px;
-    background: lightgray 0px -2.042px / 100% 102.118% no-repeat;
     width: 100%;
     align-self: stretch;
 
@@ -31,6 +28,7 @@
     flex-direction: column;
     gap: 4px;
     align-self: stretch;
+    flex-wrap: wrap;
 }
 
 .artistName {
@@ -43,7 +41,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    align-self: stretch;
+    flex-wrap: wrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .songName {

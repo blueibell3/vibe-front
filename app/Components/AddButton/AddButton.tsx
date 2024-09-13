@@ -11,6 +11,7 @@ type FormValues = {
     playlistTitle: string;
 };
 
+
 const AddButton = () => {
     const [isOpen, setIsOpen] = useState(false);
     const { register, handleSubmit, reset, getValues } = useForm<FormValues>();
