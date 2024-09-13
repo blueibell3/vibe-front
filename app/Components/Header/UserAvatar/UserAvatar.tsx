@@ -15,7 +15,6 @@ const UserAvatar = (props: Props) => {
         setUserIn(!userIn);
     };
 
-    const router = useRouter();
     const handleLogOut = () => {
         document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
         window.location.reload();
