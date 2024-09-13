@@ -53,6 +53,10 @@
     text-decoration: none;
 }
 
+.emailText {
+    display: none;
+}
+
 .menuListImg {
     display: flex;
     width: 24px;
@@ -62,9 +66,36 @@
     flex-shrink: 0;
 }
 
+.longOut {
+    display: none;
+}
+
 @media screen and (max-width:1023px) and (min-width:768px) {
     .burgerClass {
         display: flex;
+    }
+
+    .longOut {
+        display: flex;
+        align-items: center;
+        padding-left: 14px;
+        margin-top: 10px;
+    }
+
+    .longOut img {
+        margin-right: 4px;
+    }
+
+    .longOut span {
+        font-size: 16px;
+    }
+
+    .emailText {
+        display: flex;
+        border-bottom: 1px solid #ABABAB8C;
+        padding-bottom: 8px;
+        padding-left: 14px;
+        padding-right: 50px;
     }
 }
 
