@@ -1,3 +1,8 @@
+.conteiner {
+    display: flex;
+    position: relative;
+}
+
 .button {
     background: none;
     color: inherit;
@@ -7,4 +12,33 @@
     cursor: pointer;
     outline: inherit;
 
+}
+
+.menu {
+    position: absolute;
+    top: 20;
+    z-index: 12;
+    display: flex;
+    width: 254px;
+    height: 120px;
+    flex-direction: column;
+    background-color: #000000;
+    border-radius: 8px;
+}
+
+// .close {
+//     position: absolute;
+//     top: 20;
+//     z-index: 12;
+//     display: flex;
+//     width: 254px;
+//     height: 120px;
+//     flex-direction: column;
+//     background-color: #000000;
+//     border-radius: 8px;
+// }
+
+.wrap span {
+    padding-left: 20px;
+    padding-top: 10px;
 }

@@ -1,22 +1,29 @@
-'use client'
-import Image from "next/image"
-import { useState } from "react";
-import styles from './LikeButton.module.scss'
+'use client';
+import Image from 'next/image';
+import { useState } from 'react';
+import styles from './LikeButton.module.scss';
 
 const LikeButton = () => {
-    const [isLiked, setIsLiked] = useState(true)
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-    const hanldeClick = () => {
-        setIsLiked(!isLiked)
-    }
+    const handleClick = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
 
     return (
-        <div>
-            <button onClick={hanldeClick} className={styles.button}>
-                {<Image src={isLiked ? '/likeOff.svg' : '/likeOn.svg'} alt="like" width={24} height={24} />}
+        <div className={styles.container}>
+            <button onClick={handleClick} className={styles.button}>
+                <Image src="/icons/three dots.svg" alt="menu" width={24} height={24} />
             </button>
+            {isMenuOpen && (
+                <div className={styles.menu} onClick={handleClick}>
+                    <div className={styles.menuItem}>
+                        <span>+ Create playlist</span>
+                    </div>
+                </div>
+            )}
         </div>
-    )
-}
+    );
+};
 
-export default LikeButton
+export default LikeButton;
