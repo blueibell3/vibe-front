@@ -6,10 +6,10 @@ import { cookies } from 'next/headers';
 
 type Album = {
     id: number;
-    // imageUrl: string;
+    imageUrl: string;
     songName: string;
-    // artistName: string;
-    // year: string;
+    title: string;
+    releaseDate: string;
 };
 
 type Props = {
@@ -57,16 +57,7 @@ const Albums = (props: Props) => {
     return (
         <div className={styles.albumsContainer}>
             {albumCard.map(album => (
-                <AlbumCard
-                    id={album.id}
-                    songName={album.songName}
-                // key={album.id}
-                // imageUrl={album.imageUrl}
-                // songName={album.songName}
-                // artistName={album.artistName}
-                // year={album.year}
-                // id={album.id}
-                />
+                <AlbumCard id={0} songName={album.title} imageUrl={''} artistName={''} year={album.releaseDate} />
             ))}
         </div>
     );
