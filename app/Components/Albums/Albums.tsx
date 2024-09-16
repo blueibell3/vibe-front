@@ -57,7 +57,7 @@ const Albums = (props: Props) => {
     return (
         <div className={styles.albumsContainer}>
             {albumCard.map(album => (
-                <AlbumCard id={0} songName={album.title} imageUrl={''} artistName={''} year={album.releaseDate} />
+                <AlbumCard id={album.id} songName={album.songName} imageUrl={album.imageUrl} artistName={album.title} year={album.releaseDate} />
             ))}
         </div>
     );
