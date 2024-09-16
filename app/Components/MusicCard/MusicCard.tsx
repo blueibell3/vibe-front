@@ -13,6 +13,8 @@ type Props = {
     artistName: string;
     trackIndex: number;
     showLikeButton: boolean;
+    id: number
+    onClick: () => void
 }
 
 const MusicCard = (props: Props) => {
@@ -33,7 +35,7 @@ const MusicCard = (props: Props) => {
     return (
         <div className={styles.musicCard}>
             <div className={styles.musicCardComp}>
-                <div className={styles.musiccardList}>
+                <div className={styles.musiccardList}  >
                     <img
                         className={styles.musicCardImage}
                         src={props.imageUrl}
@@ -51,8 +53,8 @@ const MusicCard = (props: Props) => {
                         <p className={styles.artistName}>{props.artistName}</p>
                     </div>
                 </div>
-                <div className={styles.musicCardHeart}>
-                    {props.showLikeButton ? <LikeButton /> : <Bin />}
+                <div className={styles.musicCardHeart} onClick={props.onClick}>
+                    {props.showLikeButton ? <LikeButton id={props.id} trackIndex={props.trackIndex} /> : <Bin />}
                 </div>
             </div>
         </div>

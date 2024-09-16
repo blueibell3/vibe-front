@@ -2,7 +2,8 @@
 import React from 'react';
 import styles from "./TrendHits.module.scss";
 import MusicCard from '../MusicCard/MusicCard';
-import Id from '@/app/(authorised)/albums/[id]/page';
+import { useRecoilState } from 'recoil';
+import { globalMusicState } from '@/app/state';
 
 type Props = {
     limit?: number;
@@ -10,6 +11,7 @@ type Props = {
 }
 
 const TrendHits = (props: Props) => {
+    const [globalId, setGlobalId] = useRecoilState(globalMusicState);
     const trendHitsData = [
         {
             id: 1,
@@ -59,72 +61,31 @@ const TrendHits = (props: Props) => {
             artistName: 'Imagine Dragons',
             imageUrl: '/background/backImageFullScreeen.jpg',
         },
-        {
-            id: 9,
-            songName: 'Believer',
-            artistName: 'Imagine Dragons',
-            imageUrl: '/background/backImageFullScreeen.jpg',
-        },
-        {
-            id: 10,
-            songName: 'Believer',
-            artistName: 'Imagine Dragons',
-            imageUrl: '/background/backImageFullScreeen.jpg',
-        },
-        {
-            id: 11,
-            songName: 'Believer',
-            artistName: 'Imagine Dragons',
-            imageUrl: '/background/backImageFullScreeen.jpg',
-        },
-        {
-            id: 12,
-            songName: 'Believer',
-            artistName: 'Imagine Dragons',
-            imageUrl: '/background/backImageFullScreeen.jpg',
-        },
-        {
-            id: 13,
-            songName: 'Believer',
-            artistName: 'Imagine Dragons',
-            imageUrl: '/background/backImageFullScreeen.jpg',
-        },
-        {
-            id: 14,
-            songName: 'Believer',
-            artistName: 'Imagine Dragons',
-            imageUrl: '/background/backImageFullScreeen.jpg',
-        },
-        {
-            id: 15,
-            songName: 'Believer',
-            artistName: 'Imagine Dragons',
-            imageUrl: '/background/backImageFullScreeen.jpg',
-        },
-        {
-            id: 16,
-            songName: 'Believer',
-            artistName: 'Imagine Dragons',
-            imageUrl: '/background/backImageFullScreeen.jpg',
-        },
     ];
+
+
 
     const trendHits = props.limit ? trendHitsData.slice(0, props.limit) : trendHitsData;
 
+    const handleCardClick = (id: number) => {
+        setGlobalId(id);
+    };
+
     return (
         <div className={styles.trendHitsContainer}>
-            {trendHits.map((trendHit, index) => (
+            {trendHits.map((trendHit) => (
                 <MusicCard
                     key={trendHit.id}
                     imageUrl={trendHit.imageUrl}
                     songName={trendHit.songName}
                     artistName={trendHit.artistName}
-                    trackIndex={0}
+                    trackIndex={trendHit.id}
                     showLikeButton={props.showLikeButton}
-                />
+                    onClick={() => handleCardClick(trendHit.id)}
+                    id={trendHit.id} />
             ))}
         </div>
     );
-}
+};
 
 export default TrendHits;
