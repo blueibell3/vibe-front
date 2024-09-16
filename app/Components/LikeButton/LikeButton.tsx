@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import styles from './LikeButton.module.scss';
+import Link from 'next/link';
 
 const LikeButton = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,7 +19,9 @@ const LikeButton = () => {
             {isMenuOpen && (
                 <div className={styles.menu} onClick={handleClick}>
                     <div className={styles.menuItem}>
-                        <span>+ Create playlist</span>
+                        <Link href='/playlist'>
+                            <div>+ Create playlist</div>
+                        </Link>
                     </div>
                 </div>
             )}
