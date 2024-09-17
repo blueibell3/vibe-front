@@ -30,12 +30,14 @@ const AddButton = () => {
         reset();
     };
 
-    const token = document.cookie
-        .split('; ')
-        .find((row) => row.startsWith('token='))
-        ?.split('=')[1];
     const onSubmit: SubmitHandler<FormValues> = async (data) => {
         try {
+
+            const token = document.cookie
+            .split('; ')
+            .find((row) => row.startsWith('token='))
+            ?.split('=')[1];
+
             const response = await axios.post('https://vibe-backend-prrr.onrender.com/playlists', {
                 playlistTitle: data.playlistTitle,
             }, {
