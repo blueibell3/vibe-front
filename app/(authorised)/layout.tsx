@@ -15,33 +15,32 @@ type Props = {
 
 const AuthLayout = (props: Props) => {
   return (
-
-    <div className={styles.container}>
-      <div className={styles.headerContainer}>
-        <Header />
-      </div>
-      <div className={styles.pages}>
-        <div className={styles.navMenuContainer}>
+      <div className={styles.container}>
+        <div className={styles.headerContainer}>
+          <Header />
         </div>
-        <div className={styles.mobileNavBarContainer}>
-          <NavBarMobile />
-        </div>
-        <div className={styles.children}>
-          {props.children}
-        </div>
-        <div className={styles.musicList}>
-          <div className={styles.test}>
-            <MusicListItems />
+        <div className={styles.pages}>
+          <div className={styles.navMenuContainer}>
+            <NavBarMenu isBurgerMenu={true} />
           </div>
-          <div className={styles.musicContainer}>
-            <div className={styles.MusicPlayer}>
-              <MusicPlayer />
+          <div className={styles.mobileNavBarContainer}>
+            <NavBarMobile />
+          </div>
+          <div className={styles.children}>
+            {props.children}
+          </div>
+          <div className={styles.musicList}>
+              <div className={styles.test}>
+                <MusicListItems />
+              </div>
+              <div className={styles.musicContainer}>
+                <div className={styles.MusicPlayer}>
+                  <MusicPlayer />
+                </div>
+              </div>
             </div>
-          </div>
         </div>
       </div>
-    </div>
-
   )
 };
 
