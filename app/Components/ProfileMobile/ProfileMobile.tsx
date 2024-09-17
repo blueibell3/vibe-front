@@ -3,8 +3,6 @@
 import Image from 'next/image'
 import styles from './ProfileMobile.module.scss'
 import Button from '../Button/Button';
-import { useRouter } from 'next/navigation';
-
 
 const ProfileMobile = () => {
     const handleLogOut = () => {

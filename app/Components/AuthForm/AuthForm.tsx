@@ -27,7 +27,6 @@ const AuthForm = () => {
             router.push('/')
         })
         .catch(err => {
-            // Set error message for invalid email or password
             setError('Invalid email or password. Please try again.');
         });
     };

@@ -1,9 +1,9 @@
-'use cient'
+'use client'; 
 import AddButton from "../AddButton/AddButton";
 import ListItem from "../ListItem/ListItem";
 import styles from "./PlaylistPage.module.scss";
 
-const PlayistPage = () => {
+const PlaylistPage = () => {
     const playlistData = [
         {
             id: 1,
@@ -40,9 +40,8 @@ const PlayistPage = () => {
                     link={`/playlist/${playlistItem.id}`}
                 />
             ))}
-
         </div>
     );
 }
 
-export default PlayistPage;
+export default PlaylistPage;

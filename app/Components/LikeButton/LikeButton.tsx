@@ -15,8 +15,6 @@ const LikeButton = (props: Props) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [globalId] = useRecoilState(globalMusicState)
     const [index] = useRecoilState(currentTrackIndexState)
-    console.log(globalId, "id")
-    console.log(index, 'inex')
 
     const handleClick = () => {
         setIsMenuOpen(!isMenuOpen);
