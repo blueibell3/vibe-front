@@ -20,10 +20,14 @@ const RegisterForm = () => {
     const router = useRouter()
 
     const onSubmit = (values: any) => {
+        console.log(values); // Add this to see if the form data is correct
         axios.post('https://vibe-backend-prrr.onrender.com/users', values)
             .then(r => {
-                router.push('/authorisation')
+                router.push('/authorisation');
             })
+            .catch(error => {
+                console.error(error); // Log the error if the request fails
+            });
     };
 
     const password = watch('password');
@@ -31,7 +35,14 @@ const RegisterForm = () => {
     return (
         <form onSubmit={handleSubmit(onSubmit)} className={styles.conteiner}>
             <div className={styles.regist}>
-                <Image className={styles.logo} src='/logo.png' width={170} height={70} alt={"logo"} />
+                <Image
+                    className={styles.logo}
+                    src='/logo.png'
+                    width={170}
+                    height={70}
+                    alt="logo"
+                    priority
+                />
 
                 <ReusableInput
                     type='email'

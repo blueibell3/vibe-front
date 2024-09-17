@@ -7,8 +7,10 @@ import Button from "../Button/Button";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { setCookie } from "@/app/helpers/cookies";
+import { useState } from "react";
 
 const AuthForm = () => {
+    const [error, setError] = useState<string | null>(null);
 
     const {
         register,
@@ -24,39 +26,46 @@ const AuthForm = () => {
             setCookie('token', r.data.accessToken, 60);
             router.push('/')
         })
+        .catch(err => {
+            // Set error message for invalid email or password
+            setError('Invalid email or password. Please try again.');
+        });
     };
 
     return (
         <>
             <form onSubmit={handleSubmit(onSubmit)} className={styles.mainContainer}>
                 <div className={styles.authContainer}>
+
                     <Image className={styles.logo} src='/logo.png' width={170} height={70} alt={"logo"} />
+
                     <div className={styles.forms}>
-                    <ReusableInput
-                        type="email"
-                        placeholder="Enter Email"
-                        register={register('email', {
-                            required: 'Email is required',
-                            pattern: {
-                                value: /\S+@\S+\.\S+/,
-                                message: 'Entered value does not match email format',
-                            },
-                        })}
-                        mode={errors.email ? 'error' : isValid ? 'success' : 'standard'}
-                    />
-                      <ReusableInput
-                        type="password"
-                        placeholder="Enter Password"
-                        register={register('password', {
-                            required: 'Password is required',
-                            minLength: {
-                                value: 8,
-                                message: 'Password must be at least 8 characters long',
-                            },
-                        })}
-                        mode={errors.password ? 'error' : isValid ? 'success' : 'standard'}
-                    />
+                        <ReusableInput
+                            type="email"
+                            placeholder="Enter Email"
+                            register={register('email', {
+                                required: 'Email is required',
+                                pattern: {
+                                    value: /\S+@\S+\.\S+/,
+                                    message: 'Entered value does not match email format',
+                                },
+                            })}
+                            mode={errors.email ? 'error' : isValid ? 'success' : 'standard'}
+                        />
+                        <ReusableInput
+                            type="password"
+                            placeholder="Enter Password"
+                            register={register('password', {
+                                required: 'Password is required',
+                                minLength: {
+                                    value: 8,
+                                    message: 'Password must be at least 8 characters long',
+                                },
+                            })}
+                            mode={errors.password ? 'error' : isValid ? 'success' : 'standard'}
+                        />
                     </div>
+                    {error && <div className={styles.error}>{error}</div>}
                     <div className={styles.buttonWrapper}>
                         <div className={styles.button}>
                             <Button title={"Sign in"} type={"primary"} />
@@ -72,7 +81,3 @@ const AuthForm = () => {
 }
 
 export default AuthForm;
-
-function setCoockie(arg0: string, accessToken: any, p0: number) {
-    throw new Error("Function not implemented.");
-}
