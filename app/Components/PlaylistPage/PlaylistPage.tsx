@@ -1,3 +1,4 @@
+'use cient'
 import AddButton from "../AddButton/AddButton";
 import ListItem from "../ListItem/ListItem";
 import styles from "./PlaylistPage.module.scss";
@@ -36,8 +37,8 @@ const PlayistPage = () => {
                     text={playlistItem.text}
                     imgSrc={playlistItem.imgSrc}
                     isArtist={false}
-                    link={`/playlist/${playlistItem.id}`} 
-                     />
+                    link={`/playlist/${playlistItem.id}`}
+                />
             ))}
 
         </div>

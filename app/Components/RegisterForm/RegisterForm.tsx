@@ -5,7 +5,6 @@ import styles from './RegisterForm.module.scss'
 import Button from '../Button/Button';
 import Image from 'next/image'
 import axios from 'axios';
-import { setCookie } from '@/app/helpers/cookies';
 import { useRouter } from 'next/navigation';
 
 
@@ -20,13 +19,12 @@ const RegisterForm = () => {
     const router = useRouter()
 
     const onSubmit = (values: any) => {
-        console.log(values); // Add this to see if the form data is correct
         axios.post('https://vibe-backend-prrr.onrender.com/users', values)
             .then(r => {
                 router.push('/authorisation');
             })
             .catch(error => {
-                console.error(error); // Log the error if the request fails
+                console.error(error);
             });
     };
 

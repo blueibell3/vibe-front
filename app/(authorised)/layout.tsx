@@ -15,34 +15,32 @@ type Props = {
 
 const AuthLayout = (props: Props) => {
   return (
-    <RecoilWrapper>
-      <div className={styles.container}>
-        <div className={styles.headerContainer}>
-          <Header />
+
+    <div className={styles.container}>
+      <div className={styles.headerContainer}>
+        <Header />
+      </div>
+      <div className={styles.pages}>
+        <div className={styles.navMenuContainer}>
         </div>
-        <div className={styles.pages}>
-          <div className={styles.navMenuContainer}>
-            <NavBarMenu isBurgerMenu={true} />
+        <div className={styles.mobileNavBarContainer}>
+          <NavBarMobile />
+        </div>
+        <div className={styles.children}>
+          {props.children}
+        </div>
+        <div className={styles.musicList}>
+          <div className={styles.test}>
+            <MusicListItems />
           </div>
-          <div className={styles.mobileNavBarContainer}>
-            <NavBarMobile />
-          </div>
-          <div className={styles.children}>
-            {props.children}
-          </div>
-          <div className={styles.musicList}>
-              <div className={styles.test}>
-                <MusicListItems />
-              </div>
-              <div className={styles.musicContainer}>
-                <div className={styles.MusicPlayer}>
-                  <MusicPlayer />
-                </div>
-              </div>
+          <div className={styles.musicContainer}>
+            <div className={styles.MusicPlayer}>
+              <MusicPlayer />
             </div>
+          </div>
         </div>
       </div>
-    </RecoilWrapper>
+    </div>
 
   )
 };

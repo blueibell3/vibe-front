@@ -6,7 +6,7 @@ import styles from './PlayLIstById.module.scss'
 
 
 const PlayLIstById = () => {
-        const [globalId, setGlobalId] = useRecoilState(globalMusicState);
+    const [, setGlobalId] = useRecoilState(globalMusicState);
 
     const musicData = [
         {
@@ -56,7 +56,7 @@ const PlayLIstById = () => {
                         trackIndex={4}
                         showLikeButton={false}
                         key={music.id}
-                        onClick={()=> handleCardClick (music.id)}
+                        onClick={() => handleCardClick(music.id)}
                         id={music.id}
                     />
                 ))}
