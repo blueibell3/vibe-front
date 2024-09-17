@@ -33,22 +33,22 @@ const ReusableInput = ({ type, placeholder, error, mode = 'standard', register }
 
                 {type === 'password' && (
 
-                <button
-                    type="button"
-                    className={styles.toggleButton}
-                    onClick={handleToggleVisibility}
-                    aria-label={isPasswordVisible ? 'Hide password' : 'Show password'}
-                >
-                    <Image
-                        src='./icons/eyeclose.svg' 
-                        alt={isPasswordVisible ? 'Hide password' : 'Show password'}
-                        width={30}
-                        height={30}
-                        className={styles.eyeIcon}
-                     
-                    />
-                </button>
-         
+                    <button
+                        type="button"
+                        className={styles.toggleButton}
+                        onClick={handleToggleVisibility}
+                        aria-label={isPasswordVisible ? 'Hide password' : 'Show password'}
+                    >
+                        <Image
+                            src={isPasswordVisible ? '/icons/eyeopen.svg': '/icons/eyeclose.svg'}
+                            alt={isPasswordVisible ? 'Hide password' : 'Show password'}
+                            width={30}
+                            height={30}
+                            className={styles.eyeIcon}
+
+                        />
+                    </button>
+
                 )}
             </div>
         </div>
