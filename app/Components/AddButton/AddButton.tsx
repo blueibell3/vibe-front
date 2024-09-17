@@ -32,6 +32,7 @@ const AddButton = () => {
 
     const onSubmit: SubmitHandler<FormValues> = async (data) => {
         try {
+            
             const token = document.cookie
                 .split('; ')
                 .find((row) => row.startsWith('token='))
