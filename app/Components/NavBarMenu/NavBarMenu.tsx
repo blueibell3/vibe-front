@@ -1,8 +1,9 @@
 'use client'
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from '../NavBarMenu/NavBarMenu.module.scss';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+import axios from 'axios';
 
 
 type Props = {
@@ -40,8 +41,31 @@ const desktoplinkData = [
     },
 ]
 
-
 const NavBarMenu = (props: Props) => {
+    const [email, setEmail] = useState<string>('');
+    useEffect(() => {
+        const fetchUserData = async () => {
+            try {
+                const token = getToken();
+
+                const response = await axios.get('https://vibe-backend-prrr.onrender.com/users/me', {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    }
+                });
+                setEmail(response.data.email);
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+            }
+        };
+
+        fetchUserData();
+    }, []);
+
+    const getToken = () => {
+        const match = document.cookie.match(new RegExp('(^| )token=([^;]+)'));
+        return match ? match[2] : '';
+    };
     const pathname = usePathname()
     const handleLogOut = () => {
         document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
@@ -49,7 +73,7 @@ const NavBarMenu = (props: Props) => {
     };
     return (
         <>
-            <span className={styles.emailText}>G.sanikidze@gmail.com</span>
+            <span className={styles.emailText}>{email ? email : 'Loading...'} </span>
             <nav className={`${styles.navBarContainer} ${props.isBurgerMenu ? styles.noPadding : ''}`}>
                 <ul className={styles.navBarC}>
                     {desktoplinkData.map(category => (
