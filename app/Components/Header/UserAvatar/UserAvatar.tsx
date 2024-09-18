@@ -15,10 +15,10 @@ const UserAvatar = () => {
 
                 const response = await axios.get('https://vibe-backend-prrr.onrender.com/users/me', {
                     headers: {
-                        // 'Content-Type': 'application/json',
-                        Authorization: `Bearer ${token}`                    }
+                        Authorization: `Bearer ${token}`, 
+                    }
                 });
-                setEmail(response.data.user.email);
+                setEmail(response.data.email);  
             } catch (error) {
                 console.error('Error fetching user data:', error);
             }
