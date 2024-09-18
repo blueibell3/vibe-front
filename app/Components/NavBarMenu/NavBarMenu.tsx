@@ -3,7 +3,6 @@ import React from 'react';
 import styles from '../NavBarMenu/NavBarMenu.module.scss';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 
 
 type Props = {

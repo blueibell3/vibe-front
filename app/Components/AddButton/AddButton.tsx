@@ -22,22 +22,20 @@ const AddButton = () => {
     const handleDone = () => {
         const data = getValues();
         if (!data.playlistTitle) {
-            console.error('Playlist title is required');
             return;
         }
-        console.log('Playlist Title:', data.playlistTitle);
         setIsOpen(false);
         reset();
     };
 
+   
     const onSubmit: SubmitHandler<FormValues> = async (data) => {
         try {
-
             const token = document.cookie
             .split('; ')
             .find((row) => row.startsWith('token='))
             ?.split('=')[1];
-
+            
             const response = await axios.post('https://vibe-backend-prrr.onrender.com/playlists', {
                 playlistTitle: data.playlistTitle,
             }, {
@@ -50,14 +48,10 @@ const AddButton = () => {
             if (response.status !== 200) {
                 throw new Error('Network response was not ok');
             }
-
-            console.log('Playlist successfully created');
             handleDone();
         } catch (error) {
             console.error('There was a problem with the axios operation:', error);
         }
-
-        console.log(data);
     };
 
 
