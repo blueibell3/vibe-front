@@ -58,3 +58,9 @@
     font-size: 14px;
     font-weight: 500;
 }
+
+@media screen and (max-width:1023px) and (min-width:0px) {
+    .albumCard:hover {
+        background-color: initial;
+    }
+}

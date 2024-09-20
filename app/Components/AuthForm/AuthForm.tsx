@@ -11,6 +11,7 @@ import { useState } from "react";
 
 const AuthForm = () => {
     const [error, setError] = useState<string | null>(null);
+    const [rememberMe, setRememberMe] = useState(false); // Added state for remember me
 
     const {
         register,
@@ -18,17 +19,18 @@ const AuthForm = () => {
         formState: { errors, isValid },
     } = useForm();
 
-    const router = useRouter()
+    const router = useRouter();
 
     const onSubmit = (values: any) => {
         axios.post('https://vibe-backend-prrr.onrender.com/auth/signIn', values)
-        .then(r => {
-            setCookie('token', r.data.accessToken, 60);
-            router.push('/')
-        })
-        .catch(err => {
-            setError('Invalid email or password. Please try again.');
-        });
+            .then(r => {
+                const tokenExpiry = rememberMe ? 7 * 24 * 60 : 60; // 7 days if Remember Me is checked, else 1 hour
+                setCookie('token', r.data.accessToken, tokenExpiry); // Save token based on Remember Me
+                router.push('/');
+            })
+            .catch(err => {
+                setError('Invalid email or password. Please try again.');
+            });
     };
 
     return (
@@ -64,13 +66,28 @@ const AuthForm = () => {
                             mode={errors.password ? 'error' : isValid ? 'success' : 'standard'}
                         />
                     </div>
+
                     {error && <div className={styles.error}>{error}</div>}
+
+                    {/* "Remember Me" Checkbox */}
+                    <div className={styles.rememberMe}>
+                        <input
+                            className={styles.checkbox}
+                            type="checkbox"
+                            id="rememberMe"
+                            checked={rememberMe}
+                            onChange={() => setRememberMe(!rememberMe)}
+                        />
+                        <label htmlFor="rememberMe"> Remember password</label>
+                    </div>
+
                     <div className={styles.buttonWrapper}>
                         <div className={styles.button}>
                             <Button title={"Sign in"} type={"primary"} />
                         </div>
                     </div>
-                    <div className={styles.clicklSignUp}>
+
+                    <div className={styles.clickSignUp}>
                         <a className={styles.signUpText} href="/register">Don&apos;t have an account? Sign up</a>
                     </div>
                 </div>
