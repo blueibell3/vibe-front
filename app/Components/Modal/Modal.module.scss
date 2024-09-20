@@ -1,63 +1,23 @@
 @import '../../styles/colors.scss';
 
-
-.button {
+.reusableModal {
     display: flex;
-    padding: 12px 16px;
-    gap: 10px;
-    border-radius: 8px;
-    background: $grayColor;
-    width: 100%;
-}
-
-.buttonStyle {
-    display: flex;
-    max-width: 780px;
-    width: 100%;
+    width: 364px;
+    padding: 24px;
+    flex-direction: column;
     align-items: center;
     gap: 12px;
-}
-
-.addButton {
-    width: 48px;
-    height: 48px;
     flex-shrink: 0;
-    background: rgba(147, 147, 147, 0.2);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+    border-radius: 12px;
+    background: #000;
 }
 
-.addButtonImg {
-    width: 40px;
-    height: 40px;
+.cancel {
+    flex: 1;
 }
 
-.createPlaylist {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.createPlaylistText {
-    color: $white;
-    font-size: 16px;
-    font-weight: 500;
-}
-
-
-.reausableModalContainer {
-    display: flex;
-    width: 100%;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
-    background: rgba(18, 18, 18, 0.79);
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 99;
+.done {
+    flex: 1;
 }
 
 .addPlaylist {
@@ -110,15 +70,7 @@
     border: 1px solid #232934;
     background: #000;
     width: 316px;
-    outline: none;
 
-    &:-webkit-autofill {
-        color: $white;
-        -webkit-box-shadow: 0 0 0px 1000px #000 inset;
-        -webkit-text-fill-color: $white;
-        border: 1px solid #232934;
-        background: #000;
-    }
 }
 
 .inputPlaylist::placeholder {
@@ -130,4 +82,11 @@
 
 .inputPlaylist:focus {
     color: $white;
+}
+
+.modalButton {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    width: 316px;
 }

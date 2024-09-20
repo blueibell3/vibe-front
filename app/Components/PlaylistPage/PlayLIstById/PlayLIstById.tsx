@@ -1,8 +1,13 @@
+'use client'
+import { globalMusicState } from '@/app/state';
+import { useRecoilState } from 'recoil';
 import MusicCard from '../../MusicCard/MusicCard'
 import styles from './PlayLIstById.module.scss'
 
 
 const PlayLIstById = () => {
+    const [, setGlobalId] = useRecoilState(globalMusicState);
+
     const musicData = [
         {
             id: 1,
@@ -30,7 +35,9 @@ const PlayLIstById = () => {
             imgUrl: '/Eminem.jpg'
         },
     ]
-
+    const handleCardClick = (id: number) => {
+        setGlobalId(id);
+    };
     return (
         <div className={styles.wrap}>
             <div className={styles.myEveryday}>
@@ -49,6 +56,8 @@ const PlayLIstById = () => {
                         trackIndex={4}
                         showLikeButton={false}
                         key={music.id}
+                        onClick={() => handleCardClick(music.id)}
+                        id={music.id}
                     />
                 ))}
             </div>

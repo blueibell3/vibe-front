@@ -24,7 +24,7 @@ const Header = () => {
                 <div className={styles.searchContainer}>
                     <SearchBar />
                 </div>
-                <UserAvatar gmail={'G.sanikidze@gmail.com'} />
+                <UserAvatar />
             </div>
         </div>
     )
