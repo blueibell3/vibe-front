@@ -2,12 +2,11 @@ import React, { useEffect, useState } from 'react';
 import styles from "./Albums.module.scss";
 import AlbumCard from '../AlbumCard/AlbumCard';
 import axios from 'axios';
-import { cookies } from 'next/headers';
 
 type Album = {
     id: number;
-    imageUrl: string;
-    songName: string;
+    url: string;
+    songName?: string;
     title: string;
     releaseDate: string;
 };
@@ -28,7 +27,7 @@ const Albums = (props: Props) => {
     useEffect(() => {
         const fetchAlbums = async () => {
             try {
-                const response = await axios.get(`https://vibe-backend-prrr.onrender.com/album`, {
+                const response = await axios.get(`https://vibetunes-backend.onrender.com/album`, {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: `Bearer ${token}`
@@ -57,7 +56,11 @@ const Albums = (props: Props) => {
     return (
         <div className={styles.albumsContainer}>
             {albumCard.map(album => (
-                <AlbumCard id={album.id} songName={album.songName} imageUrl={album.imageUrl} artistName={album.title} year={album.releaseDate} />
+                <AlbumCard
+                    id={album.id}
+                    imageUrl={album.url}
+                    artistName={album.title}
+                    releaseDate={album.releaseDate} />
             ))}
         </div>
     );

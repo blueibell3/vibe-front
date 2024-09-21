@@ -4,10 +4,10 @@ import Link from 'next/link';
 
 type Props = {
   id: number;
-  songName: string;
+  songName?: string;
   imageUrl: string;
   artistName: string;
-  year: string;
+  releaseDate: string;
 }
 
 const AlbumCard = (props: Props) => {
@@ -17,7 +17,7 @@ const AlbumCard = (props: Props) => {
       <div className={styles.albumCardText}>
         <div className={styles.title}>
           <span className={styles.songName}>{props.songName}</span>
-          <span className={styles.year}>{props.year}</span>
+          <span className={styles.year}>{props.releaseDate}</span>
         </div>
         <span className={styles.artistName}>{props.artistName}</span>
       </div>
