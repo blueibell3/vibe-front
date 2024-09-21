@@ -22,15 +22,14 @@ const AuthForm = () => {
     const router = useRouter();
 
     const onSubmit = (values: any) => {
-        axios.post('https://vibe-backend-prrr.onrender.com/auth/signIn', values)
-            .then(r => {
-                const tokenExpiry = rememberMe ? 7 * 24 * 60 : 60; // 7 days if Remember Me is checked, else 1 hour
-                setCookie('token', r.data.accessToken, tokenExpiry); // Save token based on Remember Me
-                router.push('/');
-            })
-            .catch(err => {
-                setError('Invalid email or password. Please try again.');
-            });
+        axios.post('https://vibetunes-backend.onrender.com/auth/signIn', values)
+        .then(r => {
+            setCookie('token', r.data.accessToken, 60);
+            router.push('/')
+        })
+        .catch(err => {
+            setError('Invalid email or password. Please try again.');
+        });
     };
 
     return (

@@ -19,7 +19,7 @@ const RegisterForm = () => {
     const router = useRouter()
 
     const onSubmit = (values: any) => {
-        axios.post('https://vibe-backend-prrr.onrender.com/users', values)
+        axios.post('https://vibetunes-backend.onrender.com/users', values)
             .then(r => {
                 router.push('/authorisation');
             })

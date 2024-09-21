@@ -14,7 +14,7 @@ const ProfileMobile = () => {
             try {
                 const token = getToken();
 
-                const response = await axios.get('https://vibe-backend-prrr.onrender.com/users/me', {
+                const response = await axios.get('https://vibetunes-backend.onrender.com/users/me', {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     }
