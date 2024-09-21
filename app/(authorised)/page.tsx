@@ -28,7 +28,7 @@ export default function Home() {
         <TopCharts limit={4} />
       </div>
       <div className={styles.seactionHeader}>
-        <SectionHeader title={'Top Hits'} pathName={'/topartists'} />
+        <SectionHeader title={'Top Hits'} pathName={'/tophits'} />
       </div>
       <div className={styles.musicCard}>
         <TrendHits limit={4} showLikeButton={true} />
