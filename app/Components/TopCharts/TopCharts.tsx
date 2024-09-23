@@ -4,6 +4,8 @@ import ChartCard from '../ChartCard/ ChartCard';
 
 type Props = {
     limit?: number
+    isHomePage: boolean;
+
 }
 const TopCharts = (props: Props) => {
     const chartsData = [
@@ -52,7 +54,9 @@ const TopCharts = (props: Props) => {
     const displayedItems = props.limit ? chartsData.slice(0, props.limit) : chartsData;
 
     return (
-        <div className={styles.chartCardContainer}>
+        <div
+            className={`${styles.chartCardContainer} ${!props.isHomePage ? styles.otherPageContainer : ''}`}
+        >
             {displayedItems.map(chartCard => (
                 <ChartCard
                     key={chartCard.id}

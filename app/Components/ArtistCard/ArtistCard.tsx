@@ -4,12 +4,12 @@ type Props = {
     title: string
     year: number
     url?: string;
-    id?: number;
+    id: number;
 }
 
 const ArtistCard = (props: Props) => {
     return (
-        <Link className={styles.container} href={`${props.id}`}>
+        <Link className={styles.container} href={`artist/${props.id}`}>
             <div className={styles.albom}>
                 <img className={styles.artistImage} src={props.url} alt="image" />
                 <div className={styles.describtion}>

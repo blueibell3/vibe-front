@@ -25,10 +25,10 @@ export default function Home() {
         <SectionHeader title={'Top Charts'} pathName={'/topCharts'} />
       </div>
       <div className={styles.topCharts}>
-        <TopCharts limit={4} />
+        <TopCharts limit={4} isHomePage={true} />
       </div>
       <div className={styles.seactionHeader}>
-        <SectionHeader title={'Top Hits'} pathName={'/topartists'} />
+        <SectionHeader title={'Top Hits'} pathName={'/tophits'} />
       </div>
       <div className={styles.musicCard}>
         <TrendHits limit={4} showLikeButton={true} />

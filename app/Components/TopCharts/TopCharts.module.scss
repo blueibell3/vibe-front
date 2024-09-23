@@ -1,4 +1,4 @@
-.chartCardContainer{
+.chartCardContainer {
     display: grid;
     width: 100%;
     grid-gap: 12px;
@@ -11,5 +11,11 @@
         display: flex;
         width: 100%;
         overflow-x: auto;
+    }
+
+    .otherPageContainer {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+
     }
 }

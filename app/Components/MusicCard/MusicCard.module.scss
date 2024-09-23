@@ -74,3 +74,19 @@
     width: 40px;
     height: 40px;
 }
+
+
+@media screen and (max-width:1023px) and (min-width:0px) {
+    .musicCard:hover {
+        background-color: initial;
+    }
+
+    .musicCard .audioPlay {
+        display: flex;
+        position: absolute;
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+    }
+
+}
