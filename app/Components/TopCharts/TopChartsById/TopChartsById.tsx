@@ -6,7 +6,7 @@ const TopChartsById = () => {
     return (
         <>
             <div className={styles.chartByIdContainer}>
-                <div className={styles.hitsTitle}>Top hits in 2024</div>
+                <div className={styles.hitsTitle}>Top charts</div>
                 <div className={styles.trendHits}>
                     <TrendHits limit={16}  showLikeButton={true} />
                 </div>

@@ -29,7 +29,7 @@
     justify-content: space-between;
     align-items: center;
     align-self: stretch;
-    padding:0px 10px 10px 20px;
+    padding: 0px 10px 10px 20px;
     flex-wrap: wrap;
 }
 
@@ -38,7 +38,7 @@
 }
 
 .year {
-    color:  #FFFFFFA3;
+    color: #FFFFFFA3;
 }
 
 .container img {
@@ -47,7 +47,13 @@
 }
 
 @media screen and (max-width:768px) {
-    .artistImage  {
+    .artistImage {
         width: fit-content;
+    }
+}
+
+@media screen and (max-width:1023px) and (min-width:0px) {
+    .container:hover {
+        background-color: initial;
     }
 }
