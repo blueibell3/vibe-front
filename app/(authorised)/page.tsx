@@ -34,7 +34,7 @@ export default function Home() {
         <TrendHits limit={4} showLikeButton={true} />
       </div>
       <div className={styles.seactionHeader}>
-        <SectionHeader title={'Top Alboms'} pathName={'/albums'} />
+        <SectionHeader title={'Top Alboms'} pathName={'/topalbums'} />
       </div>
       <div className={styles.topAlbums}>
         <TopAlbums limit={4} />
