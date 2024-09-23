@@ -36,7 +36,7 @@ const AddButton = () => {
             .find((row) => row.startsWith('token='))
             ?.split('=')[1];
             
-            const response = await axios.post('https://vibe-backend-prrr.onrender.com/playlists', {
+            const response = await axios.post('https://vibetunes-backend-prrr.onrender.com/playlists', {
                 playlistTitle: data.playlistTitle,
             }, {
                 headers: {
