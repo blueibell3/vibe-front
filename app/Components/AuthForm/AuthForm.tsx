@@ -21,7 +21,7 @@ const AuthForm = () => {
     const router = useRouter()
 
     const onSubmit = (values: any) => {
-        axios.post('https://vibe-backend-prrr.onrender.com/auth/signIn', values)
+        axios.post('https://vibetunes-backend.onrender.com/auth/signIn', values)
         .then(r => {
             setCookie('token', r.data.accessToken, 60);
             router.push('/')
