@@ -15,7 +15,6 @@ type Props = {
 
 const AuthLayout = (props: Props) => {
   return (
-    <RecoilWrapper>
       <div className={styles.container}>
         <div className={styles.headerContainer}>
           <Header />
@@ -42,8 +41,6 @@ const AuthLayout = (props: Props) => {
             </div>
         </div>
       </div>
-    </RecoilWrapper>
-
   )
 };
 

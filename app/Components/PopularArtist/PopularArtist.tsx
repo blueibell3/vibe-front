@@ -35,10 +35,11 @@ const PopularArtist = () => {
         <div className={styles.container}>
             {artistsData.map(artistCard=>(
                 <ArtistCard
-                key={artistCard.id}
-                title={artistCard.title}
-                url={artistCard.url}
-                year={artistCard.year}/>
+                    key={artistCard.id}
+                    title={artistCard.title}
+                    url={artistCard.url}
+                    year={artistCard.year} 
+                    id={artistCard.id}/>
             ))}
         </div>
     )

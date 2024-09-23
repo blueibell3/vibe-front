@@ -1,18 +1,18 @@
 'use client'
-import React from 'react';
-import styles from "./TrendHits.module.scss";
-import MusicCard from '../MusicCard/MusicCard';
 import { useRecoilState } from 'recoil';
 import { globalMusicState } from '@/app/state';
+import styles from './TopHits.module.scss'
+import MusicCard from '../MusicCard/MusicCard';
 
 type Props = {
     limit?: number;
     showLikeButton: boolean;
+
 }
 
-const TrendHits = (props: Props) => {
+const TopHits = (props: Props) => {
     const [globalId, setGlobalId] = useRecoilState(globalMusicState);
-    const trendHitsData = [
+    const topHItsData = [
         {
             id: 1,
             songName: 'Believer',
@@ -63,17 +63,15 @@ const TrendHits = (props: Props) => {
         },
     ];
 
-
-
-    const trendHits = props.limit ? trendHitsData.slice(0, props.limit) : trendHitsData;
+    const topdHits = props.limit ? topHItsData.slice(0, props.limit) : topHItsData;
 
     const handleCardClick = (id: number) => {
         setGlobalId(id);
     };
 
     return (
-        <div className={styles.trendHitsContainer}>
-            {trendHits.map((trendHit) => (
+        <div className={styles.conteiner}>
+            {topdHits.map((trendHit) => (
                 <MusicCard
                     key={trendHit.id}
                     imageUrl={trendHit.imageUrl}
@@ -85,7 +83,7 @@ const TrendHits = (props: Props) => {
                     id={trendHit.id} />
             ))}
         </div>
-    );
-};
+    )
+}
 
-export default TrendHits;
+export default TopHits

@@ -46,7 +46,7 @@ export const playlistState = atom<Track[]>({
       url: '/music/eminem.mp3',
       duration: 323
     },
-   
+
     {
       artist: 'Kaxidze',
       name: '- Watermelon',
@@ -103,3 +103,8 @@ export const isMutedState = atom<boolean>({
   key: 'isMutedState',
   default: false,
 });
+
+export const globalMusicState = atom<number>({
+  key: 'globalmusic',
+  default: 0
+})

@@ -1,8 +1,13 @@
+'use client'
+import { globalMusicState } from "@/app/state";
+import { useRecoilState } from "recoil";
 import MusicCard from "../../MusicCard/MusicCard";
 import TrendHitsPage from "../../TrendHits/TrendHits";
 import styles from './AlbumsById.module.scss'
 
 const AlbumsById = () => {
+    const [globalId, setGlobalId] = useRecoilState(globalMusicState);
+
     const albomsmusic = [
         {
             id: 1,
@@ -43,7 +48,9 @@ const AlbumsById = () => {
             imgUrl: '/jansulKaxize.jpg'
         },
     ]
-
+    const handleCardClick = (id: number) => {
+        setGlobalId(id);
+    };
     return (
         <>
             <div className={styles.container}>
@@ -62,6 +69,8 @@ const AlbumsById = () => {
                             trackIndex={2}
                             showLikeButton={true}
                             key={music.id}
+                            onClick={() => handleCardClick(music.id)}
+                            id={music.id}
                         />
                     ))}
                 </div>
