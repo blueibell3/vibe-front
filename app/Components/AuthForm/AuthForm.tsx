@@ -8,7 +8,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { setCookie } from "@/app/helpers/cookies";
 import { useState, useEffect } from "react";
-import CryptoJS from 'crypto-js'; 
+import CryptoJS from 'crypto-js';
 
 const secretKey = 'yourSecretKey123';
 
@@ -90,7 +90,7 @@ const AuthForm = () => {
 
                 <div className={styles.rememberMe}>
                     <input
-                        className={styles.checkbox} 
+                        className={styles.checkbox}
                         type="checkbox"
                         id="rememberMe"
                         checked={rememberMe}
@@ -103,7 +103,7 @@ const AuthForm = () => {
                     <Button title="Sign in" type="primary" />
                 </div>
 
-                <a className={styles.signUpText} href="/register">Don't have an account? Sign up</a>
+                <a className={styles.signUpText} href="/register">Don&apos;t have an account? Sign up</a>
             </div>
         </form>
     );
