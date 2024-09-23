@@ -5,10 +5,11 @@ import axios from 'axios';
 
 type Album = {
     id: number;
-    url: string;
-    songName?: string;
     title: string;
     releaseDate: string;
+    file: {
+        url: string;
+    };
 };
 
 type Props = {
@@ -19,6 +20,7 @@ const Albums = (props: Props) => {
     const [albumsData, setAlbumsData] = useState<Album[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+
     const token = document.cookie
         .split('; ')
         .find((row) => row.startsWith('token='))
@@ -33,15 +35,17 @@ const Albums = (props: Props) => {
                         Authorization: `Bearer ${token}`
                     }
                 });
-                setAlbumsData(response.data); setLoading(false);
+                setAlbumsData(Array.isArray(response.data) ? response.data : [response.data]);
+                setLoading(false);
             } catch (err) {
-                setError('Failed');
+                console.error(err);
+                setError('Failed to fetch albums');
                 setLoading(false);
             }
         };
 
         fetchAlbums();
-    }, []);
+    }, [token]);
 
     const albumCard = props.limit ? albumsData.slice(0, props.limit) : albumsData;
 
@@ -55,13 +59,19 @@ const Albums = (props: Props) => {
 
     return (
         <div className={styles.albumsContainer}>
-            {albumCard.map(album => (
-                <AlbumCard
-                    id={album.id}
-                    imageUrl={album.url}
-                    artistName={album.title}
-                    releaseDate={album.releaseDate} />
-            ))}
+            {albumCard.map(album => {
+                const imageUrl = album.file?.url;
+
+                return (
+                    <AlbumCard
+                        key={album.id}
+                        id={album.id}
+                        imageUrl={imageUrl}
+                        artistName={album.title}
+                        releaseDate={album.releaseDate}
+                    />
+                );
+            })}
         </div>
     );
 };
