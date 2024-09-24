@@ -6,7 +6,7 @@ import Modal from '../Modal/Modal';
 import axios from 'axios';
 
 type FormValues = {
-    playlistTitle: FileList;
+    name: string;
 };
 
 const AddButton = () => {
@@ -21,28 +21,27 @@ const AddButton = () => {
 
     const handleDone = () => {
         const data = getValues();
-        if (!data.playlistTitle) {
+        if (!data.name) {
             return;
         }
         setIsOpen(false);
         reset();
     };
 
-   
+
     const onSubmit: SubmitHandler<FormValues> = async (values: FormValues) => {
         console.log(values);
 
         const data = new FormData();
-        data.append('playlistTitle', values.playlistTitle[0]);
+        data.append('playlistTitle', values.name[0]);
 
         try {
             const token = document.cookie
-            .split('; ')
-            .find((row) => row.startsWith('token='))
-            ?.split('=')[1];
-            
-            const response = await axios.post('https://vibetunes-backend-prrr.onrender.com/playlist', {
-                // playlistTitle: values.playlistTitle,
+                .split('; ')
+                .find((row) => row.startsWith('token='))
+                ?.split('=')[1];
+
+            const response = await axios.post('https://vibetunes-backend.onrender.com/playlist', {
             }, {
                 headers: {
                     'Content-Type': 'application/json',
@@ -75,23 +74,25 @@ const AddButton = () => {
             {
                 isOpen &&
                 <div className={styles.reausableModalContainer}>
-                    <Modal
-                        isOpen={isOpen}
-                        onClose={handleCloseModal}
-                        onDone={handleDone}
-                        title='Add Playlist'
-                    >
-                        <form onSubmit={handleSubmit(onSubmit)} className={styles.addPlaylistTitle}>
-                            <span className={styles.playlistText}>Add Playlist Title</span>
+                    <form onSubmit={handleSubmit(onSubmit)} className={styles.addPlaylistTitle}>
+                        <Modal
+                            isOpen={isOpen}
+                            onClose={handleCloseModal}
+                            // onDone={handleDone}
+                            title='Add Playlist'
+                        >
+                            <div className={styles.addPlaylistTitleText}>
+                                <span className={styles.playlistText}>Add Playlist Title</span>
+                            </div>
                             <input
                                 className={styles.inputPlaylist}
                                 type="text"
                                 placeholder='Add title'
-                                {...register('playlistTitle', { required: true })}
+                                {...register('name', { required: true })}
                             />
 
-                        </form>
-                    </Modal>
+                        </Modal>
+                    </form>
                 </div>
             }
         </>

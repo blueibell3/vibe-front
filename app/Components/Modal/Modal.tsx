@@ -8,7 +8,7 @@ type Props = {
     title: string;
     isOpen: boolean;
     onClose: () => void;
-    onDone: () => void;
+    onDone?: () => void;
     children: React.ReactNode;
 }
 
