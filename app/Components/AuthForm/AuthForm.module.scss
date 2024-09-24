@@ -56,9 +56,11 @@
    font-size: 14px;
    font-weight: 500;
    cursor: pointer;
+   display: flex;
+   justify-content: center;
 }
 
-.clickSignUp{
+.clickSignUp {
    display: flex;
    justify-content: center;
    align-items: center;
@@ -77,22 +79,22 @@
 
 .checkbox {
    appearance: none;
-   -webkit-appearance: none; 
+   -webkit-appearance: none;
    width: 20px;
    height: 20px;
-   background-color: #000000BA; 
-   background-color:#000000BA; 
+   background-color: #000000BA;
+   background-color: #000000BA;
    border-radius: 3px;
    cursor: pointer;
    position: relative;
- }
- 
- .checkbox:checked {
-   background-color:#000000BA; 
-   border-color: #000000BA; 
- }
- 
- .checkbox:checked::before {
+}
+
+.checkbox:checked {
+   background-color: #000000BA;
+   border-color: #000000BA;
+}
+
+.checkbox:checked::before {
    content: '✔';
    color: white;
    font-size: 14px;
@@ -100,5 +102,4 @@
    top: 50%;
    left: 50%;
    transform: translate(-50%, -50%);
- }
- 
+}
