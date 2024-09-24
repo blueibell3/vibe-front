@@ -6,7 +6,7 @@ import Modal from '../Modal/Modal';
 import axios from 'axios';
 
 type FormValues = {
-    playlistTitle: string;
+    playlistTitle: FileList;
 };
 
 const AddButton = () => {
@@ -29,15 +29,20 @@ const AddButton = () => {
     };
 
    
-    const onSubmit: SubmitHandler<FormValues> = async (data) => {
+    const onSubmit: SubmitHandler<FormValues> = async (values: FormValues) => {
+        console.log(values);
+
+        const data = new FormData();
+        data.append('playlistTitle', values.playlistTitle[0]);
+
         try {
             const token = document.cookie
             .split('; ')
             .find((row) => row.startsWith('token='))
             ?.split('=')[1];
             
-            const response = await axios.post('https://vibetunes-backend-prrr.onrender.com/playlists', {
-                playlistTitle: data.playlistTitle,
+            const response = await axios.post('https://vibetunes-backend-prrr.onrender.com/playlist', {
+                // playlistTitle: values.playlistTitle,
             }, {
                 headers: {
                     'Content-Type': 'application/json',
