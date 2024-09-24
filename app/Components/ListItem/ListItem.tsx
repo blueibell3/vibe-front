@@ -14,7 +14,7 @@ const ListItem = (props: Props) => {
 
   return (
     <>
-      <Link href={props.link} className={ styles.artistListItem}>
+      <Link href={props.link} className={styles.artistListItem}>
         <div className={styles.artistListGap}>
           <div className={styles.artistListContainer}>
             <img className={styles.listImg} src={props.imgSrc} />

@@ -42,12 +42,11 @@ const Artist = () => {
             {artistData.map(artistItem => (
                 <ListItem
                     key={artistItem.id}
-                    text={artistItem.text}
+                    name={artistItem.text}
                     imgSrc={artistItem.imgSrc}
                     isArtist={true}
                     id={artistItem.id}
-                    link={`/artist/${artistItem.id}`}
-                />
+                    link={`/artist/${artistItem.id}`} />
             ))}
         </div>
     );
