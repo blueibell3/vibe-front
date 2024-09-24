@@ -3,8 +3,8 @@ import styles from './ListItem.module.scss';
 
 
 type Props = {
-  text: string;
-  imgSrc: string;
+  name: string;
+  imgSrc?: string;
   isArtist: boolean;
   id: number;
   link: string;
@@ -18,7 +18,7 @@ const ListItem = (props: Props) => {
         <div className={styles.artistListGap}>
           <div className={styles.artistListContainer}>
             <img className={styles.listImg} src={props.imgSrc} />
-            <span className={styles.listText}>{props.text}</span>
+            <span className={styles.listText}>{props.name}</span>
           </div>
           <img src="arrowicon.svg" alt="arrow" className={styles.arrow} />
         </div>

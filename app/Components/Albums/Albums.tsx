@@ -21,20 +21,25 @@ const Albums = (props: Props) => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
-    const token = document.cookie
-        .split('; ')
-        .find((row) => row.startsWith('token='))
-        ?.split('=')[1];
-
     useEffect(() => {
         const fetchAlbums = async () => {
             try {
+                const token = document.cookie
+                    .split('; ')
+                    .find((row) => row.startsWith('token='))
+                    ?.split('=')[1];
+
+                if (!token) {
+                    throw new Error('No token found');
+                }
+
                 const response = await axios.get(`https://vibetunes-backend.onrender.com/album`, {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: `Bearer ${token}`
                     }
                 });
+
                 setAlbumsData(Array.isArray(response.data) ? response.data : [response.data]);
                 setLoading(false);
             } catch (err) {
@@ -45,7 +50,7 @@ const Albums = (props: Props) => {
         };
 
         fetchAlbums();
-    }, [token]);
+    }, []); 
 
     const albumCard = props.limit ? albumsData.slice(0, props.limit) : albumsData;
 
