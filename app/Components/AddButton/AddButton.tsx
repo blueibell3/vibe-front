@@ -4,12 +4,16 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import styles from './AddButton.module.scss';
 import Modal from '../Modal/Modal';
 import axios from 'axios';
+import Button from '../Button/Button';
 
 type FormValues = {
     name: string;
+    isOpen: boolean;
+    onClose: () => void;
+    onDone: () => void;
 };
 
-const AddButton = () => {
+const AddButton = (props: FormValues) => {
     const [isOpen, setIsOpen] = useState(false);
     const { register, handleSubmit, reset, getValues } = useForm<FormValues>();
 
@@ -33,7 +37,7 @@ const AddButton = () => {
         console.log(values);
 
         const data = new FormData();
-        data.append('playlistTitle', values.name[0]);
+        data.append('name', values.name);
 
         try {
             const token = document.cookie
@@ -41,20 +45,20 @@ const AddButton = () => {
                 .find((row) => row.startsWith('token='))
                 ?.split('=')[1];
 
-            const response = await axios.post('https://vibetunes-backend.onrender.com/playlist', {
-            }, {
+            const response = await axios.post('https://vibetunes-backend.onrender.com/playlist', data, {
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${token}`
                 }
             });
 
-            if (response.status !== 200) {
-                throw new Error('Network response was not ok');
-            }
+            // if (response.status !== 200) {
+            //     throw new Error('Network response was not ok');
+            // }
             handleDone();
-        } catch (error) {
-            console.error('There was a problem with the axios operation:', error);
+        } finally {
+            // handleDone() ;
+            setIsOpen(false);
         }
     };
 
@@ -74,14 +78,15 @@ const AddButton = () => {
             {
                 isOpen &&
                 <div className={styles.reausableModalContainer}>
-                    <form onSubmit={handleSubmit(onSubmit)} className={styles.addPlaylistTitle}>
-                        <Modal
-                            isOpen={isOpen}
-                            onClose={handleCloseModal}
-                            // onDone={handleDone}
-                            title='Add Playlist'
-                        >
-                            <div className={styles.addPlaylistTitleText}>
+                    <div className={styles.reusableModal}>
+                        <div className={styles.addPlaylist}>
+                            <span className={styles.addPlaylistText}>Add Playlist</span>
+                            <button onClick={props.onClose} className={styles.addPlaylistIcon}>
+                                <img src="xicon.svg" alt="x" />
+                            </button>
+                        </div>
+                        <form onSubmit={handleSubmit(onSubmit)} className={styles.addPlaylistTitle}>
+                        <div className={styles.addPlaylistTitleText}>
                                 <span className={styles.playlistText}>Add Playlist Title</span>
                             </div>
                             <input
@@ -89,10 +94,18 @@ const AddButton = () => {
                                 type="text"
                                 placeholder='Add title'
                                 {...register('name', { required: true })}
-                            />
-
-                        </Modal>
-                    </form>
+                                 title='Add Playlist'
+                                 />
+                            <div className={styles.modalButton}>
+                                <div className={styles.cancel} onClick={props.onClose}>
+                                    <Button title={'cancel'} type={'secondary'} />
+                                </div>
+                                <div className={styles.done} onClick={props.onDone}>
+                                    <Button title={'done'} type={'primary'} />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             }
         </>
