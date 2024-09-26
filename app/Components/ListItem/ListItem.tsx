@@ -5,7 +5,7 @@ import styles from './ListItem.module.scss';
 type Props = {
   name: string;
   imgSrc?: string;
-  lastName:string
+  lastName?:string
   isArtist: boolean;
   id: number;
   link: string;

@@ -1,67 +1,86 @@
 'use client';
-import { useEffect, useState } from "react";
-import AddButton from "../AddButton/AddButton";
-import ListItem from "../ListItem/ListItem";
-import styles from "./PlaylistPage.module.scss";
-import axios from "axios";
+import { useEffect, useState } from 'react';
+import AddButton from '../AddButton/AddButton';
+import ListItem from '../ListItem/ListItem';
+import styles from './PlaylistPage.module.scss';
+import axios from 'axios';
 
-type playlist = {
-    id: number
-    name: string
-    describtion?: string
-}
+type Playlist = {
+    id: number;
+    name: string;
+    description?: string;
+    lastName: string;
+};
 
 const PlaylistPage = () => {
-    const [playlistMusics, setPlaylistMusics] = useState<playlist[]>([])
+    const [playlist, setPlaylist] = useState<Playlist[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
-    useEffect(() => {
-        const fetchAlbums = async () => {
-            try {
-                const token = document.cookie
-                    .split('; ')
-                    .find((row) => row.startsWith('token='))
-                    ?.split('=')[1];
+    const fetchPlaylists = async () => {
+        try {
+            const token = document.cookie
+                .split('; ')
+                .find((row) => row.startsWith('token='))
+                ?.split('=')[1];
 
-                if (!token) {
-                    throw new Error('No token found');
-                }
-
-                const response = await axios.get(`https://vibetunes-backend.onrender.com/playlist`, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${token}`
-                    }
-                });
-
-                setPlaylistMusics(Array.isArray(response.data) ? response.data : [response.data]);
-                setLoading(false);
-            } catch (err) {
-                console.error(err);
-                setError('Failed to fetch albums');
-                setLoading(false);
+            if (!token) {
+                throw new Error('No token found');
             }
-        };
 
-        fetchAlbums();
+            const response = await axios.get('https://vibetunes-backend.onrender.com/playlist', {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+
+            const playlists = Array.isArray(response.data) ? response.data : [response.data];
+            setPlaylist(playlists);
+            
+            localStorage.setItem('playlists', JSON.stringify(playlists));
+
+            setLoading(false);
+        } catch (err) {
+            console.error(err);
+            setError('Failed to fetch playlists');
+            setLoading(false);
+        }
+    };
+
+    const addNewPlaylist = (newPlaylist: Playlist) => {
+        setPlaylist((prevPlaylists) => [...prevPlaylists, newPlaylist]);
+
+        const updatedPlaylists = [...playlist, newPlaylist];
+        localStorage.setItem('playlists', JSON.stringify(updatedPlaylists));
+    };
+
+    useEffect(() => {
+        const savedPlaylists = localStorage.getItem('playlists');
+        if (savedPlaylists) {
+            setPlaylist(JSON.parse(savedPlaylists));
+            setLoading(false);
+        } else {
+            fetchPlaylists(); 
+        }
     }, []);
 
     return (
         <div className={styles.playlistContainer}>
-            <AddButton />
-            {playlistMusics.map(playlistItem => (
+            <AddButton onPlaylistCreated={addNewPlaylist} />
+            {loading && <div>Loading...</div>}
+            {error && <div>{error}</div>}
+            {!loading && !error && playlist.map((item) => (
                 <ListItem
-                    id={playlistItem.id}
-                    key={playlistItem.id}
-                    name={playlistItem.name}
-                    // imgSrc={playlistItem.imgSrc}
+                    id={item.id}
+                    key={item.id}
+                    name={item.name}
                     isArtist={false}
-                    link={`/playlist/${playlistItem.id}`}
+                    link={`/playlist/${item.id}`}
                 />
             ))}
         </div>
     );
-}
+};
 
 export default PlaylistPage;
