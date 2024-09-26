@@ -5,6 +5,7 @@ import ListItem from '../ListItem/ListItem';
 import styles from './PlaylistPage.module.scss';
 import axios from 'axios';
 
+// Define the playlist type here or import it from a shared location
 type Playlist = {
     id: number;
     name: string;
@@ -35,11 +36,7 @@ const PlaylistPage = () => {
                 },
             });
 
-            const playlists = Array.isArray(response.data) ? response.data : [response.data];
-            setPlaylist(playlists);
-            
-            localStorage.setItem('playlists', JSON.stringify(playlists));
-
+            setPlaylist(Array.isArray(response.data) ? response.data : [response.data]);
             setLoading(false);
         } catch (err) {
             console.error(err);
@@ -50,20 +47,11 @@ const PlaylistPage = () => {
 
     const addNewPlaylist = (newPlaylist: Playlist) => {
         setPlaylist((prevPlaylists) => [...prevPlaylists, newPlaylist]);
-
-        const updatedPlaylists = [...playlist, newPlaylist];
-        localStorage.setItem('playlists', JSON.stringify(updatedPlaylists));
     };
 
     useEffect(() => {
-        const savedPlaylists = localStorage.getItem('playlists');
-        if (savedPlaylists) {
-            setPlaylist(JSON.parse(savedPlaylists));
-            setLoading(false);
-        } else {
-            fetchPlaylists(); 
-        }
-    }, []);
+        fetchPlaylists();
+    }, []); 
 
     return (
         <div className={styles.playlistContainer}>
