@@ -6,6 +6,8 @@ import Link from 'next/link';
 import { useRecoilState } from 'recoil';
 import { currentTrackIndexState, globalMusicState } from '@/app/state';
 import axios from 'axios';
+import Id from '@/app/(authorised)/albums/[id]/page';
+import { spawn } from 'child_process';
 
 type Playlist = {
     id: number;
@@ -54,9 +56,12 @@ const LikeButton = (props: Props) => {
         }
     };
 
+
     useEffect(() => {
         fetchPlaylists();
     }, []);
+
+
 
     const handleClick = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -71,11 +76,17 @@ const LikeButton = (props: Props) => {
                 <div className={styles.menu} >
                     <div className={styles.menuItem}>
                         <Link href='/playlist'>
-                            <div> + Create playlist</div>
+                            <div className={styles.create}> + Create playlist</div>
                         </Link>
-                        <div  onClick={handleClick}>
-
-                        </div>
+                        {loading && <div>Loading...</div>}
+                        {error && <div>{error}</div>}
+                        {!loading && !error && playlist.map((item) => (
+                            <div className={styles.playlist}>
+                                <span className={styles.playlistItem}>
+                                    {item.name}
+                                </span>
+                            </div>
+                        ))}
                     </div>
                 </div>
             )}
