@@ -5,7 +5,6 @@ import ListItem from '../ListItem/ListItem';
 import styles from './PlaylistPage.module.scss';
 import axios from 'axios';
 
-// Define the playlist type here or import it from a shared location
 type Playlist = {
     id: number;
     name: string;

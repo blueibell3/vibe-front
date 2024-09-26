@@ -31,15 +31,16 @@
     overflow: auto;
 }
 
-.menuItem div {
-    padding: 10px;
-
+.playlistCont {
+    overflow: auto;
+    padding: 15px;
 }
 
-.menuItem div:hover {
-    background-color: rgb(13, 12, 12);
-    width: 100%;
-    display: flex;
-    align-items: center;
-    border-radius: 10px;
+.menuItem::-webkit-scrollbar {
+    display: none;
 }
+
+// .menuItem div {
+//     padding: 10px;
+
+// }
