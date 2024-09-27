@@ -8,7 +8,7 @@ type Props = {
     title: string;
     isOpen: boolean;
     onClose: () => void;
-    onDone: () => void;
+    onDone?: () => void;
     children: React.ReactNode;
 }
 
@@ -39,3 +39,25 @@ const Modal = (props: Props) => {
 }
 
 export default Modal;
+
+
+
+
+{/* <form onSubmit={handleSubmit(onSubmit)} className={styles.addPlaylistTitle}>
+<Modal
+    isOpen={isOpen}
+    onClose={handleCloseModal}
+    onDone={handleDone}
+    title='Add Playlist'
+>
+    <div className={styles.addPlaylistTitleText}>
+        <span className={styles.playlistText}>Add Playlist Title</span>
+    </div>
+    <input
+        className={styles.inputPlaylist}
+        type="text"
+        placeholder='Add title'
+        {...register('name', { required: true })}
+    />
+</Modal>
+</form> */}

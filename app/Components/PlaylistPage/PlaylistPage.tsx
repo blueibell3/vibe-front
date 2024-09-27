@@ -1,47 +1,74 @@
-'use client'; 
-import AddButton from "../AddButton/AddButton";
-import ListItem from "../ListItem/ListItem";
-import styles from "./PlaylistPage.module.scss";
+'use client';
+import { useEffect, useState } from 'react';
+import AddButton from '../AddButton/AddButton';
+import ListItem from '../ListItem/ListItem';
+import styles from './PlaylistPage.module.scss';
+import axios from 'axios';
+
+// Define the playlist type here or import it from a shared location
+type Playlist = {
+    id: number;
+    name: string;
+    description?: string;
+    lastName: string;
+};
 
 const PlaylistPage = () => {
-    const playlistData = [
-        {
-            id: 1,
-            text: 'My Everyday',
-            imgSrc: 'playlistimg.svg'
-        },
-        {
-            id: 2,
-            text: 'My Everyday',
-            imgSrc: 'playlistimg.svg'
-        },
-        {
-            id: 3,
-            text: 'Party Songs',
-            imgSrc: 'playlistimg.svg'
-        },
-        {
-            id: 4,
-            text: 'Car Songs',
-            imgSrc: 'playlistimg.svg'
-        },
-    ];
+    const [playlist, setPlaylist] = useState<Playlist[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+
+    const fetchPlaylists = async () => {
+        try {
+            const token = document.cookie
+                .split('; ')
+                .find((row) => row.startsWith('token='))
+                ?.split('=')[1];
+
+            if (!token) {
+                throw new Error('No token found');
+            }
+
+            const response = await axios.get('https://vibetunes-backend.onrender.com/playlist', {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+
+            setPlaylist(Array.isArray(response.data) ? response.data : [response.data]);
+            setLoading(false);
+        } catch (err) {
+            console.error(err);
+            setError('Failed to fetch playlists');
+            setLoading(false);
+        }
+    };
+
+    const addNewPlaylist = (newPlaylist: Playlist) => {
+        setPlaylist((prevPlaylists) => [...prevPlaylists, newPlaylist]);
+    };
+
+    useEffect(() => {
+        fetchPlaylists();
+    }, []); 
 
     return (
         <div className={styles.playlistContainer}>
-            <AddButton />
-            {playlistData.map(playlistItem => (
+            <AddButton onPlaylistCreated={addNewPlaylist} />
+            {loading && <div>Loading...</div>}
+            {error && <div>{error}</div>}
+            {!loading && !error && playlist.map((item) => (
                 <ListItem
-                    id={playlistItem.id}
-                    key={playlistItem.id}
-                    text={playlistItem.text}
-                    imgSrc={playlistItem.imgSrc}
+                    id={item.id}
+                    key={item.id}
+                    name={item.name}
                     isArtist={false}
-                    link={`/playlist/${playlistItem.id}`}
+                    link={`/playlist/${item.id}`}
                 />
             ))}
         </div>
     );
-}
+};
 
 export default PlaylistPage;

@@ -1,53 +1,69 @@
-import Link from "next/link";
+'use client'
 import ListItem from "../ListItem/ListItem";
 import styles from "./Artist.module.scss";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
+type Author = {
+    id: number,
+    coverImgUrl: string,
+    firstName: string
+    lastName:string
+}
 
 const Artist = () => {
-    const artistData = [
-        {
-            id: 1,
-            text: 'Coldplay',
-            imgSrc: '/artistimg.svg',
-        },
-        {
-            id: 2,
-            text: 'Sia',
-            imgSrc: '/artistimg.svg',
-        },
-        {
-            id: 3,
-            text: 'Rihhana',
-            imgSrc: '/artistimg.svg',
-        },
-        {
-            id: 4,
-            text: 'Rihhana',
-            imgSrc: '/artistimg.svg',
-        },
-        {
-            id: 5,
-            text: 'The Beatles',
-            imgSrc: '/artistimg.svg',
-        },
-        {
-            id: 6,
-            text: 'The Beatles',
-            imgSrc: '/artistimg.svg',
-        },
-    ];
+    const [authorData, setAuthorData] = useState<Author[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+    useEffect(() => {
+        const fetchAlbums = async () => {
+            try {
+                const token = document.cookie
+                    .split('; ')
+                    .find((row) => row.startsWith('token='))
+                    ?.split('=')[1];
+
+                if (!token) {
+                    throw new Error('No token found');
+                }
+
+                const response = await axios.get(`https://vibetunes-backend.onrender.com/author`, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+
+                setAuthorData(Array.isArray(response.data) ? response.data : [response.data]);
+                setLoading(false);
+            } catch (err) {
+                console.error(err);
+                setError('Failed to fetch albums');
+                setLoading(false);
+            }
+        };
+
+        fetchAlbums();
+    }, []);
+    if (loading) {
+        return <p>Loading...</p>;
+    }
+
+    if (error) {
+        return <p>{error}</p>;
+    }
 
     return (
 
         <div className={styles.artistContainer}>
-            {artistData.map(artistItem => (
+            {authorData.map(artistItem => (
                 <ListItem
                     key={artistItem.id}
-                    text={artistItem.text}
-                    imgSrc={artistItem.imgSrc}
+                    name={artistItem.firstName}
                     isArtist={true}
                     id={artistItem.id}
                     link={`/artist/${artistItem.id}`}
-                />
+                    lastName={artistItem.lastName} />
             ))}
         </div>
     );

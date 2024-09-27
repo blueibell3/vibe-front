@@ -36,10 +36,12 @@ const TopArtists = () => {
             {TopArtistsData.map(TopArtistsItem => (
                 <ListItem
                     key={TopArtistsItem.id}
-                    text={TopArtistsItem.text}
+                    name={TopArtistsItem.text}
                     link={`artist/${TopArtistsItem.id}`}
                     imgSrc={TopArtistsItem.imgSrc}
-                    isArtist={true} id={0} />
+                    isArtist={true} 
+                    id={TopArtistsItem.id} 
+                    />
 
             ))}
         </div>

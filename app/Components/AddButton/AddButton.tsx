@@ -1,17 +1,28 @@
-'use client'
+'use client';
 import React, { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import styles from './AddButton.module.scss';
-import Modal from '../Modal/Modal';
 import axios from 'axios';
+import Button from '../Button/Button';
+import styles from './AddButton.module.scss';
 
-type FormValues = {
-    playlistTitle: string;
+type Playlist = {
+    id: number;
+    name: string;
+    description?: string;
+    lastName: string;
 };
 
-const AddButton = () => {
+type PlaylistFormData = {
+    name: string;
+};
+
+type AddButtonProps = {
+    onPlaylistCreated: (newPlaylist: Playlist) => void; // Use the correct type for Playlist
+};
+
+const AddButton: React.FC<AddButtonProps> = ({ onPlaylistCreated }) => {
     const [isOpen, setIsOpen] = useState(false);
-    const { register, handleSubmit, reset, getValues } = useForm<FormValues>();
+    const { register, handleSubmit, reset, getValues } = useForm<PlaylistFormData>();
 
     const handleOpenModal = () => setIsOpen(true);
     const handleCloseModal = () => {
@@ -19,41 +30,41 @@ const AddButton = () => {
         reset();
     };
 
-    const handleDone = () => {
+    const handleDone = (newPlaylist: Playlist) => {
         const data = getValues();
-        if (!data.playlistTitle) {
+        if (!data.name) {
             return;
         }
+        onPlaylistCreated(newPlaylist); // Pass new playlist to parent
         setIsOpen(false);
         reset();
     };
 
-   
-    const onSubmit: SubmitHandler<FormValues> = async (data) => {
+    const onSubmit: SubmitHandler<PlaylistFormData> = async (values) => {
+        const data = new FormData();
+        data.append('name', values.name);
+
         try {
             const token = document.cookie
-            .split('; ')
-            .find((row) => row.startsWith('token='))
-            ?.split('=')[1];
-            
-            const response = await axios.post('https://vibetunes-backend-prrr.onrender.com/playlists', {
-                playlistTitle: data.playlistTitle,
-            }, {
+                .split('; ')
+                .find((row) => row.startsWith('token='))
+                ?.split('=')[1];
+
+            const response = await axios.post('https://vibetunes-backend.onrender.com/playlist', data, {
                 headers: {
                     'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`
-                }
+                    Authorization: `Bearer ${token}`,
+                },
             });
 
-            if (response.status !== 200) {
-                throw new Error('Network response was not ok');
+            if (response.status === 201) {
+                const newPlaylist: Playlist = response.data;
+                handleDone(newPlaylist);
             }
-            handleDone();
-        } catch (error) {
-            console.error('There was a problem with the axios operation:', error);
+        } finally {
+            setIsOpen(false);
         }
     };
-
 
     return (
         <>
@@ -67,30 +78,40 @@ const AddButton = () => {
                     </div>
                 </div>
             </div>
-            {
-                isOpen &&
+            {isOpen && (
                 <div className={styles.reausableModalContainer}>
-                    <Modal
-                        isOpen={isOpen}
-                        onClose={handleCloseModal}
-                        onDone={handleDone}
-                        title='Add Playlist'
-                    >
+                    <div className={styles.reusableModal}>
+                        <div className={styles.addPlaylist}>
+                            <span className={styles.addPlaylistText}>Add Playlist</span>
+                            <button onClick={handleCloseModal} className={styles.addPlaylistIcon}>
+                                <img src="xicon.svg" alt="x" />
+                            </button>
+                        </div>
                         <form onSubmit={handleSubmit(onSubmit)} className={styles.addPlaylistTitle}>
-                            <span className={styles.playlistText}>Add Playlist Title</span>
+                            <div className={styles.addPlaylistTitleText}>
+                                <span className={styles.playlistText}>Add Playlist Title</span>
+                            </div>
                             <input
                                 className={styles.inputPlaylist}
                                 type="text"
-                                placeholder='Add title'
-                                {...register('playlistTitle', { required: true })}
+                                placeholder="Add title"
+                                {...register('name', { required: true })}
+                                title="Add Playlist"
                             />
-
+                            <div className={styles.modalButton}>
+                                <div className={styles.cancel} onClick={handleCloseModal}>
+                                    <Button title={'cancel'} type={'secondary'} />
+                                </div>
+                                <div className={styles.done}>
+                                    <Button title={'done'} type={'primary'} />
+                                </div>
+                            </div>
                         </form>
-                    </Modal>
+                    </div>
                 </div>
-            }
+            )}
         </>
     );
-}
+};
 
 export default AddButton;

@@ -78,7 +78,7 @@ const TopAlbums = (props: Props) => {
                         imageUrl={album.imageUrl}
                         songName={album.songName}
                         artistName={album.artistName}
-                        year={album.year}
+                        releaseDate={album.year}
                     />
                 ))}
             </div>
