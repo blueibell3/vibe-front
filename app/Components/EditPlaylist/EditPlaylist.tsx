@@ -5,6 +5,8 @@ import styles from './EditPlaylist.module.scss';
 import axios from 'axios';
 import EditPen from '../EditPen/EditPen';
 import Button from '../Button/Button';
+import { useRecoilState } from 'recoil';
+import { clickState } from '@/app/state';
 
 type EditListFormData = {
     name: string;
@@ -18,6 +20,8 @@ type Props = {
 const EditPlaylist = (props: Props) => {
     const [isOpen, setIsOpen] = useState(false);
     const { register, handleSubmit, reset, formState: { errors } } = useForm<EditListFormData>();
+    const [click, setClick] = useRecoilState(clickState)
+
 
     const handleOpenModal = () => setIsOpen(true);
     const handleCloseModal = () => {
@@ -27,12 +31,10 @@ const EditPlaylist = (props: Props) => {
 
     const handleDone = () => {
         setIsOpen(false);
+        setClick(!click)
         reset();
     };
-    const handleLogOut = () => {
-    
-        window.location.reload(); 
-    };
+
 
 
     const onSubmit: SubmitHandler<EditListFormData> = async (values: EditListFormData) => {
@@ -54,10 +56,8 @@ const EditPlaylist = (props: Props) => {
                 }
             });
 
-           
             handleDone();
         } finally {
-          
             setIsOpen(false);
         }
     };
@@ -90,7 +90,7 @@ const EditPlaylist = (props: Props) => {
                                 <div className={styles.cancel} onClick={handleCloseModal}>
                                     <Button title={'cancel'} type={'secondary'} />
                                 </div>
-                                <div className={styles.done} onClick={handleLogOut}>
+                                <div className={styles.done} >
                                     <Button title={'done'} type={'primary'}/>
                                 </div>
                             </div>
