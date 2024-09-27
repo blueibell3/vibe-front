@@ -13,8 +13,9 @@ type Props = {
     artistName: string;
     trackIndex: number;
     showLikeButton: boolean;
-    id: number
-    onClick: () => void
+    id: number;
+    onClick: () => void;
+
 }
 
 const MusicCard = (props: Props) => {
