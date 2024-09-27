@@ -21,7 +21,7 @@ const SearchBar = () => {
         if (query) {
             try {
                 const response = await axios.get(
-                    `https://vibe-backend-prrr.onrender.com/search/?searchField=${query}`
+                    `https://vibetunes-backend.onrender.com/search/?searchField=${query}`
                 );
         
                 const { album: albumData, author: authorData, music: musicData } = response.data;
