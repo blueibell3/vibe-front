@@ -3,6 +3,7 @@ import styles from './ListItem.module.scss';
 import EditPlaylist from '../EditPlaylist/EditPlaylist';
 
 
+
 type Props = {
   name: string;
   imgSrc?: string;
@@ -13,6 +14,8 @@ type Props = {
 }
 
 const ListItem = (props: Props) => {
+
+
 
   return (
     <>
@@ -35,4 +38,4 @@ const ListItem = (props: Props) => {
     </>
   )
 }
-export default ListItem
+export default ListItem;
