@@ -4,6 +4,9 @@ import AddButton from '../AddButton/AddButton';
 import ListItem from '../ListItem/ListItem';
 import styles from './PlaylistPage.module.scss';
 import axios from 'axios';
+import { useRecoilState } from 'recoil';
+import { clickState } from '@/app/state';
+
 
 type Playlist = {
     id: number;
@@ -16,6 +19,7 @@ const PlaylistPage = () => {
     const [playlist, setPlaylist] = useState<Playlist[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const [click] = useRecoilState(clickState)
 
     const fetchPlaylists = async () => {
         try {
@@ -46,11 +50,12 @@ const PlaylistPage = () => {
 
     const addNewPlaylist = (newPlaylist: Playlist) => {
         setPlaylist((prevPlaylists) => [...prevPlaylists, newPlaylist]);
+      
     };
 
     useEffect(() => {
         fetchPlaylists();
-    }, []); 
+    }, [click]); 
 
     return (
         <div className={styles.playlistContainer}>

@@ -115,3 +115,8 @@ export const globalMusicState = atom<number>({
   key: 'globalmusic',
   default: 0
 })
+
+export const clickState = atom<boolean>({
+  key: 'click',
+  default: false
+})
