@@ -6,7 +6,7 @@ import axios from "axios";
 
 type Author = {
     id: number,
-    coverImgUrl: string,
+    file: string,
     firstName: string
     lastName:string
 }
@@ -60,6 +60,7 @@ const Artist = () => {
                 <ListItem
                     key={artistItem.id}
                     name={artistItem.firstName}
+                    imgSrc={artistItem.file}
                     isArtist={true}
                     id={artistItem.id}
                     link={`/artist/${artistItem.id}`}
