@@ -28,7 +28,6 @@ const MusicListItems = () => {
                         songName={track.name}
                         artistName={track.artist}
                         trackIndex={index}
-                        time={new Date((track.duration ?? 0) * 1000).toISOString().substr(14, 5)}
                     />
                 ))}
             </div>
