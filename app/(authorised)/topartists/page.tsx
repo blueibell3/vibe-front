@@ -7,7 +7,7 @@ const TopArtistPage = () => {
         <>
             <div className={styles.topArtistsContainer}>
                 <div className={styles.topArtistText}> Top Artist</div>
-                <TopArtists />
+                <TopArtists limit={8} />
             </div>
         </>
     )
