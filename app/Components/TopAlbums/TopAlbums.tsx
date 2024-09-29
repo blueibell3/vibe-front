@@ -1,90 +1,69 @@
-import React from 'react';
-
+'use client'
+import React, { useEffect, useState } from 'react';
 import styles from "./TopAlbums.module.scss";
 import AlbumCard from '../AlbumCard/AlbumCard';
+import axios from 'axios';
+
+type Album = {
+    id: number;
+    title: string;
+    releaseDate: string;
+    file: {
+        url: string;
+    };
+};
 
 type Props = {
-    limit?: number,
-}
+    limit?: number;
+};
+
 const TopAlbums = (props: Props) => {
-    const albumData = [
-        {
-            id: 1,
-            imageUrl: 'https://media.architecturaldigest.com/photos/5890e88033bd1de9129eab0a/1:1/w_870,h_870,c_limit/Artist-Designed%20Album%20Covers%202.jpg',
-            songName: 'Dead Magic',
-            artistName: 'Anna von Hausswolf',
-            year: '2018'
-        },
-        {
-            id: 2,
-            imageUrl: 'https://media.architecturaldigest.com/photos/5890e88033bd1de9129eab0a/1:1/w_870,h_870,c_limit/Artist-Designed%20Album%20Covers%202.jpg',
-            songName: 'Dead Magic',
-            artistName: 'Anna von Hausswolf',
-            year: '2018'
-        },
-        {
-            id: 3,
-            imageUrl: 'https://media.architecturaldigest.com/photos/5890e88033bd1de9129eab0a/1:1/w_870,h_870,c_limit/Artist-Designed%20Album%20Covers%202.jpg',
-            songName: 'Dead Magic',
-            artistName: 'Anna von Hausswolf',
-            year: '2018'
-        },
-        {
-            id: 4,
-            imageUrl: 'https://media.architecturaldigest.com/photos/5890e88033bd1de9129eab0a/1:1/w_870,h_870,c_limit/Artist-Designed%20Album%20Covers%202.jpg',
-            songName: 'Dead Magic',
-            artistName: 'Anna von Hausswolf',
-            year: '2018'
-        },
-        {
-            id: 5,
-            imageUrl: 'https://media.architecturaldigest.com/photos/5890e88033bd1de9129eab0a/1:1/w_870,h_870,c_limit/Artist-Designed%20Album%20Covers%202.jpg',
-            songName: 'Dead Magic',
-            artistName: 'Anna von Hausswolf',
-            year: '2018'
-        },
-        {
-            id: 6,
-            imageUrl: 'https://media.architecturaldigest.com/photos/5890e88033bd1de9129eab0a/1:1/w_870,h_870,c_limit/Artist-Designed%20Album%20Covers%202.jpg',
-            songName: 'Dead Magic',
-            artistName: 'Anna von Hausswolf',
-            year: '2018'
-        },
-        {
-            id: 7,
-            imageUrl: 'https://media.architecturaldigest.com/photos/5890e88033bd1de9129eab0a/1:1/w_870,h_870,c_limit/Artist-Designed%20Album%20Covers%202.jpg',
-            songName: 'Dead Magic',
-            artistName: 'Anna von Hausswolf',
-            year: '2018'
-        },
-        {
-            id: 8,
-            imageUrl: 'https://media.architecturaldigest.com/photos/5890e88033bd1de9129eab0a/1:1/w_870,h_870,c_limit/Artist-Designed%20Album%20Covers%202.jpg',
-            songName: 'Dead Magic',
-            artistName: 'Anna von Hausswolf',
-            year: '2018'
-        },
-    ];
-    const displayedItems = props.limit ? albumData.slice(0, props.limit) : albumData;
+    const [albumsData, setAlbumsData] = useState<Album[]>([]);
+
+    useEffect(() => {
+        const fetchAlbums = async () => {
+            try {
+                const token = document.cookie
+                    .split('; ')
+                    .find((row) => row.startsWith('token='))
+                    ?.split('=')[1];
+
+                if (!token) {
+                    throw new Error('No token found');
+                }
+
+                const response = await axios.get('https://vibetunes-backend.onrender.com/album', {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+
+                setAlbumsData(Array.isArray(response.data) ? response.data : [response.data]);
+            } catch (error) {
+                console.error('Error fetching album data:', error);
+            }
+        };
+
+        fetchAlbums();
+    }, []);
+
+    const displayedItems = props.limit ? albumsData.slice(0, props.limit) : albumsData;
 
     return (
-        <>
-
-            <div className={styles.albumsContainer}>
-                {displayedItems.map(album => (
-                    <AlbumCard
-                        key={album.id}
-                        id={album.id}
-                        imageUrl={album.imageUrl}
-                        songName={album.songName}
-                        artistName={album.artistName}
-                        releaseDate={album.year}
-                    />
-                ))}
-            </div>
-        </>
+        <div className={styles.albumsContainer}>
+            {displayedItems.map((album) => (
+                <AlbumCard
+                    key={album.id}
+                    id={album.id}
+                    imageUrl={album.file.url}
+                    songName={album.title}
+                    artistName={album.title}  
+                    releaseDate={album.releaseDate}
+                />
+            ))}
+        </div>
     );
-}
+};
 
 export default TopAlbums;
-
