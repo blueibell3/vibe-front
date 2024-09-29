@@ -39,9 +39,9 @@ const TopArtists = () => {
                     name={TopArtistsItem.text}
                     link={`artist/${TopArtistsItem.id}`}
                     imgSrc={TopArtistsItem.imgSrc}
-                    isArtist={true} 
+                    isArtist={true}
                     id={TopArtistsItem.id} 
-                    />
+                    showIcon={false}                    />
 
             ))}
         </div>
