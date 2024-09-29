@@ -24,6 +24,7 @@ const ListOptions = ({ options, onOptionClick }: ListOptionsProps) => {
         audio.play();
     };
 
+    
     return (
         <ul className={styles.listOptions}>
             {options.map(option => (
@@ -34,11 +35,10 @@ const ListOptions = ({ options, onOptionClick }: ListOptionsProps) => {
                                 src={option.photo}
                                 alt={'img'}
                                 className={`${styles.optionImage} ${styles[option.type]}`}
-                                width={200} 
-                                height={200} 
+                                
                             />
                             <span className={styles.optionText}>{option.text}</span>
-                            {option.firstName && option.lastName && (
+                            {option.firstName && (
                                 <span className={styles.names}>{option.firstName} {option.lastName}</span>
                             )}
                         </div>
@@ -54,7 +54,7 @@ const ListOptions = ({ options, onOptionClick }: ListOptionsProps) => {
                                     <div>
                                         <span className={styles.optionText}>{option.text}</span>
                                     </div>
-                                    {option.firstName && option.lastName && (
+                                    {option.firstName && (
                                         <span className={styles.names}>{option.firstName} {option.lastName}</span>
                                     )}
                                 </div>

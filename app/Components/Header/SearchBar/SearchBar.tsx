@@ -77,8 +77,8 @@ const SearchBar = () => {
 
                 const albumOptions = albumData.map((album: Album) => ({
                     id: album.id,
-                    text:  album.title || 'Untitled',
-                    file: album.file || '/default-album.jpg',
+                    text:  album.title,
+                    file: album.file,
                     type: 'album' as const,
                     link: `/album/${album.id}`,
                     firstName: album.firstName, 
@@ -87,8 +87,8 @@ const SearchBar = () => {
 
                 const authorOptions = authorData.map((author: Author) => ({
                     id: author.id,
-                    text: `${author.firstName} ${author.lastName}` || 'Unknown Author',
-                    file: author.file || '/default-author.jpg',
+                    text: `${author.firstName} ${author.lastName}`,
+                    file: author.file,
                     type: 'author' as const,
                     link: `/author/${author.id}`,
                     firstName: author.firstName,
@@ -97,10 +97,10 @@ const SearchBar = () => {
 
                 const musicOptions = musicData.map((music: Music) => ({
                     id: music.id,
-                    text: music.name || 'Untitled Music',
-                    photo: music.photo || '/default-music.jpg',
+                    text: music.name,
+                    photo: music.photo,
                     type: 'music' as const,
-                    musicSrc: music.audioSrc || '',
+                    musicSrc: music.audioSrc,
                     firstName: music.firstName,
                     lastName: music.lastName,
                 }));
