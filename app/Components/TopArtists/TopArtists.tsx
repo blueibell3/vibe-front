@@ -28,7 +28,7 @@ const TopArtists = ({ limit }: Props) => {
                     .find((row) => row.startsWith('token='))
                     ?.split('=')[1];
 
-                const response = await axios.get('https://vibetunes-backend.onrender.com/author/topArtists', {
+                const response = await axios.get('https://vibetunes-backend.onrender.com/author/top', {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: `Bearer ${token}`,
