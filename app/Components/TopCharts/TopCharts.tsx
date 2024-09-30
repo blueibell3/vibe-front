@@ -1,27 +1,53 @@
-'use client'
+'use client';
 import styles from "./TopCharts.module.scss";
-import ChartCard from '../ChartCard/ ChartCard';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import ChartCard from "../ChartCard/ ChartCard";
 
-
-
-type Charts = {
+type ChartListenCounter = {
     id: number;
-    title: string;
-    file: {
-        url: string;
-    };
-}
+    musicId: number;
+    counter: number;
+    userId: number;
+    createdAt: string;
+    updatedAt: string;
+    deleteAt: string | null;
+};
 
+type ChartPhoto = {
+    id: number;
+    url: string;
+    key: string;
+    bucket: string;
+    fileName: string;
+};
+
+type Chart = {
+    id: number;
+    name: string;
+    artistName: string;
+    createdAt: string;
+    updatedAt: string;
+    deletedAt: string | null;
+    listenCounter: ChartListenCounter[];
+    photo: ChartPhoto;
+    url: {
+        id: number;
+        url: string;
+        key: string;
+        bucket: string;
+        fileName: string;
+    };
+};
 
 type Props = {
-    limit?: number
+    limit?: number;
     isHomePage: boolean;
+};
 
-}
-const TopCharts = (props: Props) => {
-    const [chartData, setChartData] = useState<Charts[]>([]);
+const TopCharts: React.FC<Props> = (props) => {
+    const [chartData, setChartData] = useState<Chart[]>([]);
+
     useEffect(() => {
         const fetchCharts = async () => {
             try {
@@ -43,7 +69,7 @@ const TopCharts = (props: Props) => {
 
                 setChartData(Array.isArray(response.data) ? response.data : [response.data]);
             } catch (error) {
-                console.error('Error fetching album data:', error);
+                console.error('Error fetching chart data:', error);
             }
         };
 
@@ -56,16 +82,15 @@ const TopCharts = (props: Props) => {
         <div
             className={`${styles.chartCardContainer} ${!props.isHomePage ? styles.otherPageContainer : ''}`}
         >
-            {displayedItems.map((chartCard) => (
+            {displayedItems.map((chart) => (
                 <ChartCard
-                    key={chartCard.id}
-                    title={chartCard.title}
-                    imageUrl={chartCard.file.url}
-                    id={chartCard.id}
+                    key={chart.id}
+                    title={chart.name} 
+                    imageUrl={chart.photo.url} 
+                    id={chart.id}
                 />
             ))}
         </div>
-
     );
 }
 
