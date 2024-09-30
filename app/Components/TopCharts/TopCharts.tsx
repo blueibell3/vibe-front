@@ -60,7 +60,7 @@ const TopCharts = (props: Props) => {
                 <ChartCard
                     key={chartCard.id}
                     title={chartCard.title}
-                    imageUrl={chartCard.file.url}
+                    imageUrl={chartCard.file?.url}
                     id={chartCard.id}
                 />
             ))}
