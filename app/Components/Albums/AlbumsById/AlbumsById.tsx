@@ -1,53 +1,110 @@
-'use client'
-import { globalMusicState } from "@/app/state";
-import { useRecoilState } from "recoil";
+'use client';
+import React, { SetStateAction, useEffect, useState } from 'react';
+import axios from 'axios';
 import MusicCard from "../../MusicCard/MusicCard";
-import TrendHitsPage from "../../TrendHits/TrendHits";
-import styles from './AlbumsById.module.scss'
+import styles from './AlbumsById.module.scss';
+import { useRecoilState } from 'recoil';
+import { clickState, globalMusicState } from '@/app/state';
+import { useParams } from 'next/navigation';
+
+
+type MusicResponse = {
+    title: string;
+    artistName: string;
+    musics: {
+        id: number;
+        name: string;
+        artistName: string;
+        photo: {
+            id: number;
+            url: string;
+        };
+        duration: string | null;
+        title: string;
+    }[];
+    file: {
+        id: number;
+        url: string;
+    };
+    id: number;
+   
+};
+
+type MusicData = {
+    id: number;
+    name: string;
+    artistName: string;
+    photo: string;
+    mp3: string;
+    coverUrl: string;
+    title: string;
+};
 
 const AlbumsById = () => {
     const [globalId, setGlobalId] = useRecoilState(globalMusicState);
+    const [albomsmusic, setAlbomsmusic] = useState<MusicData[]>([]);
+    const [error, setError] = useState<string | null>(null);
+    const [click] = useRecoilState(clickState);
+    const params = useParams();
+    const [artistName, setArtistName] = useState<string | undefined>()
+    const [title, setTitle] = useState<string | undefined>();
 
-    const albomsmusic = [
-        {
-            id: 1,
-            songName: 'Watermelon',
-            artistName: 'kaxidze',
-            imgUrl: '/jansulKaxize.jpg'
-        },
-        {
-            id: 2,
-            songName: 'Watermelon',
-            artistName: 'kaxidze',
-            imgUrl: '/jansulKaxize.jpg'
-        },
-        {
-            id: 3,
-            songName: 'Watermelon',
-            artistName: 'kaxidze',
-            imgUrl: '/jansulKaxize.jpg'
-        },
+    const [albumCoverUrl, setAlbumCoverUrl] = useState<string | null>(null);
 
-        {
-            id: 4,
-            songName: 'Watermelon',
-            artistName: 'kaxidze',
-            imgUrl: '/jansulKaxize.jpg'
-        },
-        {
-            id: 5,
-            songName: 'Watermelon',
-            artistName: 'kaxidze',
-            imgUrl: '/jansulKaxize.jpg'
-        },
+    useEffect(() => {
+        const fetchAlbumMusic = async () => {
+            try {
+                const token = document.cookie
+                    .split('; ')
+                    .find((row) => row.startsWith('token='))?.split('=')[1];
 
-        {
-            id: 6,
-            songName: 'Watermelon',
-            artistName: 'kaxidze',
-            imgUrl: '/jansulKaxize.jpg'
-        },
-    ]
+                if (!token) {
+                    throw new Error('No token found');
+                }
+
+                const response = await axios.get<MusicResponse>(`https://vibetunes-backend.onrender.com/album/music/${params.id}`, {
+                        
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`,
+                    },
+                })
+
+                console.log(response.data, 'asdfasfdsa====') 
+
+                setArtistName(response.data.artistName)
+                setTitle(response.data.title)
+
+
+
+                const albumData = response.data;
+
+
+                const musicData = albumData.musics.map((music) => ({
+                    id: music.id,
+                    name: music.name,
+                    artistName: music.artistName,
+                    photo: music.photo?.url || '/default_music_image.svg',
+                    mp3: albumData.file.url,
+                    coverUrl: albumData.file.url,
+                    title: albumData.title,
+                }));
+
+                setAlbomsmusic(musicData);
+
+
+                if (musicData.length > 0) {
+                    setAlbumCoverUrl(albumData.file.url);
+                }
+            } catch (error) {
+                console.error('Error fetching album music data:', error);
+                setError('Failed to fetch album music');
+            }
+        };
+
+        fetchAlbumMusic();
+    }, [click, params.id]);
+
     const handleCardClick = (id: number) => {
         setGlobalId(id);
     };
@@ -56,15 +113,15 @@ const AlbumsById = () => {
             <div className={styles.container}>
                 <div className={styles.pageTitle}>All songs</div>
                 <div className={styles.pageDescripton}>
-                    <img className={styles.img} src='/albumsidimg.svg' />
-                    <span className={styles.pageTitle}>Lovers</span>
-                    <span className={styles.artistName}>Taylor Swift</span>
+                    <img className={styles.img} src={albumCoverUrl || '/default_album_image.svg'} />
+                    <span className={styles.pageTitle}>{title}</span>
+                    <span className={styles.artistName}>{artistName}</span>
                 </div>
                 <div className={styles.musicCards}>
                     {albomsmusic.map((music) => (
                         <MusicCard
-                            imageUrl={music.imgUrl}
-                            songName={music.songName}
+                            imageUrl={music.coverUrl}
+                            songName={music.name}
                             artistName={music.artistName}
                             trackIndex={2}
                             showLikeButton={true}
