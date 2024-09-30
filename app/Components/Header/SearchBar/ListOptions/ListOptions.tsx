@@ -49,7 +49,7 @@ const ListOptions = ({ options, onOptionClick }: ListOptionsProps) => {
                             </div>
                         </div>
                     ) : option.type === 'albums' ? (
-                        <Link href={`albums/${option.id}`}>
+                        <Link href={`/albums/${option.id}`}  onClick={() => onOptionClick && onOptionClick(option.text)}>
                             <div className={styles.artistAlbums}>
                                 {option.file && (
                                     <img
@@ -71,7 +71,7 @@ const ListOptions = ({ options, onOptionClick }: ListOptionsProps) => {
                             </div>
                         </Link>
                     ) : (
-                        <Link href={`artist/${option.id}`}>
+                        <Link href={`/artist/${option.id}`}  onClick={() => onOptionClick && onOptionClick(option.text)}>
                             <div className={styles.artistAlbums}>
                                 {option.file && (
                                     <img
