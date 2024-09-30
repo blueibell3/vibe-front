@@ -27,7 +27,7 @@ type MusicResponse = {
         url: string;
     };
     id: number;
-   
+
 };
 
 type MusicData = {
@@ -63,14 +63,14 @@ const AlbumsById = () => {
                 }
 
                 const response = await axios.get<MusicResponse>(`https://vibetunes-backend.onrender.com/album/music/${params.id}`, {
-                        
+
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: `Bearer ${token}`,
                     },
                 })
 
-                console.log(response.data, 'asdfasfdsa====') 
+                console.log(response.data, 'asdfasfdsa====')
 
                 setArtistName(response.data.artistName)
                 setTitle(response.data.title)
@@ -118,16 +118,16 @@ const AlbumsById = () => {
                     <span className={styles.artistName}>{artistName}</span>
                 </div>
                 <div className={styles.musicCards}>
-                    {albomsmusic.map((music) => (
+                    {albomsmusic.map((music, index) => (
                         <MusicCard
+                            key={index}
+                            id={music.id}
                             imageUrl={music.coverUrl}
                             songName={music.name}
                             artistName={music.artistName}
-                            trackIndex={2}
+                            trackIndex={index}
                             showLikeButton={true}
-                            key={music.id}
                             onClick={() => handleCardClick(music.id)}
-                            id={music.id}
                         />
                     ))}
                 </div>

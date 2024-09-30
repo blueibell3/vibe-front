@@ -2,7 +2,7 @@
 import styles from './MusicList.module.scss'
 import { useRecoilState, useRecoilValue } from "recoil";
 import MusicList from "./MusicList"
-import { playlistState, Track } from '@/app/state';
+import { globalMusicState, playlistState, Track } from '@/app/state';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
@@ -10,6 +10,8 @@ import { useEffect, useState } from 'react';
 const MusicListItems = () => {
     const [playlist, setPlaylist] = useRecoilState<Track[]>(playlistState);
     const [error, setError] = useState<string | null>(null);
+    const [globalId, setGlobalId] = useRecoilState(globalMusicState);
+
     
     useEffect(() => {
         const fetchMusicList = async () => {
@@ -50,6 +52,10 @@ const MusicListItems = () => {
 
         fetchMusicList();
     }, [setPlaylist]);
+
+    const handleCardClick = (id: number) => {
+        setGlobalId(id);
+    };
     return (
         <div className={styles.container}>
             <span > Next Play</span>
@@ -62,7 +68,7 @@ const MusicListItems = () => {
                         songName={track.name}
                         artistName={track.artistName}
                         trackIndex={index}
-                       
+                        onClick={() => handleCardClick(track.id)}
                     />
                 ))}
             </div>

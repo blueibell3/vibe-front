@@ -10,6 +10,7 @@ type Props = {
     songName: string;
     artistName: string;
     trackIndex: number;
+    onClick?: () => void
 }
 
 const MusicList = (props: Props) => {
