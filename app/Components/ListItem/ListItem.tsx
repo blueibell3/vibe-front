@@ -11,6 +11,7 @@ type Props = {
   isArtist: boolean;
   id: number;
   link: string;
+  showIcon: boolean;
 }
 
 const ListItem = (props: Props) => {
@@ -24,16 +25,18 @@ const ListItem = (props: Props) => {
           <Link href={props.link}>
             <div className={styles.artistListContainer}>
               <img className={styles.listImg} src={props.imgSrc} />
-              <span className={styles.listText}>{props.name}</span>
-              <span className={styles.listText}>{props.lastName}</span>
+              <div className={styles.namesGap} >
+                <span className={styles.listText}>{props.name}</span>
+                <span className={styles.listText}>{props.lastName}</span>
+              </div>
             </div>
           </Link>
-           
+
         </div>
         <div className={styles.listItemEdit}>
-            <EditPlaylist playlistId={props.id} />
-            <img src="arrowicon.svg" alt="arrow" className={styles.arrow} />
-          </div>
+        {props.showIcon &&   <EditPlaylist playlistId={props.id} />}
+          <img src="arrowicon.svg" alt="arrow" className={styles.arrow} />
+        </div>
       </div>
     </>
   )

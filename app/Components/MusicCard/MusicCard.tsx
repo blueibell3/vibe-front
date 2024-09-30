@@ -8,14 +8,13 @@ import { currentTrackIndexState, isPlayingState, currentTimeState } from '@/app/
 import Bin from '../Bin/Bin';
 
 type Props = {
+    id: number;
     imageUrl: string;
     songName: string;
     artistName: string;
     trackIndex: number;
     showLikeButton: boolean;
-    id: number;
-    onClick: () => void;
-
+    onClick: () => void
 }
 
 const MusicCard = (props: Props) => {
@@ -44,12 +43,12 @@ const MusicCard = (props: Props) => {
                         onClick={handleClick}
                     />
                     <img
-                        src={isPlaying && currentTrackIndex === props.trackIndex ? '/icons/pause.svg' : '/icons/pauselist.svg'}
-                        alt="ap"
-                        className={styles.audioPlay}
                         onClick={handleClick}
+                        src={isPlaying && currentTrackIndex === props.trackIndex ? '/icons/pause.svg' : 'icons/pauselist.svg'} alt="ap"
+                        className={styles.audioPlay}
+
                     />
-                    <div className={styles.musicCardInfo} onClick={handleClick}>
+                    <div className={styles.musicCardInfo} >
                         <h3 className={styles.songName}>{props.songName}</h3>
                         <p className={styles.artistName}>{props.artistName}</p>
                     </div>

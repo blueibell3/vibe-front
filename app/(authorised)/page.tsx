@@ -19,7 +19,7 @@ export default function Home() {
         <SectionHeader title={'Popular Artists'} pathName={'/topartists'} />
       </div>
       <div className={styles.ArtistCard}>
-        <PopularArtist />
+        <PopularArtist limit={4} />
       </div>
       <div className={styles.seactionHeader}>
         <SectionHeader title={'Top Charts'} pathName={'/topCharts'} />

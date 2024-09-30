@@ -13,7 +13,7 @@ const TabletArrow = () => {
         setIsExpanded(!isExpanded);
     };
     return (
-        
+
         <div className={`${styles.arrowWrappers} ${isExpanded ? styles.expanded : ''}`}>
             <Arrows isUp={!isExpanded} onClick={handleArrowClick} />
             <div className={styles.MusicLists}>
@@ -21,11 +21,11 @@ const TabletArrow = () => {
                 {playlist.slice(0, isExpanded ? 6 : 3).map((track, index) => (
                     <MusicList
                         key={index}
-                        imageUrl={track.photo}
+                        imageUrl={track.photo.url}
                         songName={track.name}
                         artistName={track.artist}
                         trackIndex={index}
-                        time={new Date((track.duration ?? 0) * 1000).toISOString().substr(14, 5)}
+                        id={track.id}
                     />
                 ))}
             </div>

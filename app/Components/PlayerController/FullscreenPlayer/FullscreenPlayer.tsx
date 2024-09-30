@@ -24,15 +24,18 @@ type Props = {
 }
 
 const FullscreenPlayer = (props: Props) => {
+    const backgroundImg ={
+        backgroundImage: `url(${props.currentTrack.photo.url})`
+    }
     return (
-        <div className={styles.fullscreenContainer}>
-            <div className={styles.background} />
+        <div className={styles.fullscreenContainer} style={backgroundImg}>
+            <div className={styles.background} style={backgroundImg} />
             <div className={styles.fullscreenWrapper}>
                 <div className={styles.zoomOut}>
                     <img src="./icons/zoomOut.svg" alt="zoomOut" onClick={props.onExitFullscreen} />
                 </div>
                 <div className={styles.trackInfo}>
-                    <img src={props.currentTrack.photo} alt={props.currentTrack.name} className={styles.trackPhoto} />
+                    <img src={props.currentTrack.photo.url} alt={props.currentTrack.name} className={styles.trackPhoto} />
                     <div className={styles.trackDetails}>
                         <div className={styles.artistName}>{props.currentTrack.artist}</div>
                         <div className={styles.trackName}>{props.currentTrack.name}</div>

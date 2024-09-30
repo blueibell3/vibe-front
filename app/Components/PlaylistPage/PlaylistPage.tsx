@@ -69,7 +69,7 @@ const PlaylistPage = () => {
                     name={item.name}
                     isArtist={false}
                     link={`/playlist/${item.id}`}
-                />
+                     showIcon={true}                />
             ))}
         </div>
     );

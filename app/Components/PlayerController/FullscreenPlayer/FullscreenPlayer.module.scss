@@ -1,6 +1,8 @@
 .fullscreenContainer {
     top: 0;
-    left: 0;    
+    left: 0;
+    right: 0;
+    bottom: 0;    
     position: fixed;
     width: 100%;
     height: 100vh;
@@ -8,8 +10,7 @@
     justify-content: center;
     align-items: center;
     z-index: 999;
-    background: url(../../../../public/background/backImageFullScreeen.jpg);
-    background-position: center bottom -100px;
+    
     background-size: cover;
     background-repeat: no-repeat;
     overflow-y: hidden;
@@ -19,8 +20,7 @@
     position: fixed;
     width: 100%;
     height: 100%;
-    background: url(../../../../public/background/backImageFullScreeen.jpg);
-    background-position: center bottom -100px;
+    
     background-size: cover;
     background-repeat: no-repeat;
     filter: blur(10px);

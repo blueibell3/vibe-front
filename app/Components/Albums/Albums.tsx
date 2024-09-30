@@ -20,7 +20,8 @@ const Albums = (props: Props) => {
     const [albumsData, setAlbumsData] = useState<Album[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
-
+    console.log(albumsData,'album');
+    
     useEffect(() => {
         const fetchAlbums = async () => {
             try {
@@ -61,7 +62,6 @@ const Albums = (props: Props) => {
     if (error) {
         return <p>{error}</p>;
     }
-
     return (
         <div className={styles.albumsContainer}>
             {albumCard.map(album => {

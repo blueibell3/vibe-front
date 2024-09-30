@@ -35,7 +35,7 @@ const RegisterForm = () => {
             <div className={styles.regist}>
                 <Image
                     className={styles.logo}
-                    src='/logo.png'
+                    src='/whiteLogo.png'
                     width={170}
                     height={70}
                     alt="logo"
