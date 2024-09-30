@@ -1,3 +1,4 @@
+
 'use client'
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { playlistState, currentTrackIndexState } from '@/app/state';
@@ -11,7 +12,7 @@ import useTrackControls from './useTrackControls/useTrackControls';
 
 const MusicPlayer = () => {
     const playlist = useRecoilValue(playlistState);
-    const [currentTrackIndex, setCurrentTrackIndex] = useRecoilState(currentTrackIndexState);
+    const [currentTrackIndex] = useRecoilState(currentTrackIndexState);
     const {
         isPlaying,
         isFullscreen,
@@ -49,7 +50,6 @@ const MusicPlayer = () => {
 
     useEffect(() => {
         if (audioRef.current) {
-            // Avoid resetting the current time when changing tracks, only pause/play based on isPlaying
             if (isPlaying) {
                 audioRef.current.play();
             } else {

@@ -3,67 +3,39 @@ import { useRecoilState } from 'recoil';
 import { globalMusicState } from '@/app/state';
 import styles from './TopHits.module.scss'
 import MusicCard from '../MusicCard/MusicCard';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 type Props = {
     limit?: number;
     showLikeButton: boolean;
+}
 
+interface tophits {
+    music_artistName: string,
+    music_id: number,
+    music_name: string,
+    photo_url: string
 }
 
 const TopHits = (props: Props) => {
     const [globalId, setGlobalId] = useRecoilState(globalMusicState);
-    const topHItsData = [
-        {
-            id: 1,
-            songName: 'Believer',
-            artistName: 'Imagine Dragons',
-            imageUrl: '/background/backImageFullScreeen.jpg',
-        },
-        {
-            id: 2,
-            songName: 'Believer',
-            artistName: 'Imagine Dragons',
-            imageUrl: '/background/backImageFullScreeen.jpg',
-        },
-        {
-            id: 3,
-            songName: 'Believer',
-            artistName: 'Imagine Dragons',
-            imageUrl: '/background/backImageFullScreeen.jpg',
-        },
-        {
-            id: 4,
-            songName: 'Believer',
-            artistName: 'Imagine Dragons',
-            imageUrl: '/background/backImageFullScreeen.jpg',
-        },
-        {
-            id: 5,
-            songName: 'Believer',
-            artistName: 'Imagine Dragons',
-            imageUrl: '/background/backImageFullScreeen.jpg',
-        },
-        {
-            id: 6,
-            songName: 'Believer',
-            artistName: 'Imagine Dragons',
-            imageUrl: '/background/backImageFullScreeen.jpg',
-        },
-        {
-            id: 7,
-            songName: 'Believer',
-            artistName: 'Imagine Dragons',
-            imageUrl: '/background/backImageFullScreeen.jpg',
-        },
-        {
-            id: 8,
-            songName: 'Believer',
-            artistName: 'Imagine Dragons',
-            imageUrl: '/background/backImageFullScreeen.jpg',
-        },
-    ];
+    const [topHits,setTopHits] = useState<tophits[]>([])
+    console.log(topHits);
+        
+    
+    useEffect(() => {
+        const token = document.cookie.split('; ').find(row => row.startsWith('token='))?.split('=')[1];
+        axios.get('https://vibetunes-backend.onrender.com/music/top',{
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
+        }).then((res) =>{
+            setTopHits(res.data)
+        })
+    },[])
 
-    const topdHits = props.limit ? topHItsData.slice(0, props.limit) : topHItsData;
 
     const handleCardClick = (id: number) => {
         setGlobalId(id);
@@ -71,16 +43,16 @@ const TopHits = (props: Props) => {
 
     return (
         <div className={styles.conteiner}>
-            {topdHits.map((trendHit) => (
+            {topHits.map((trendHit) => (
                 <MusicCard
-                    key={trendHit.id}
-                    imageUrl={trendHit.imageUrl}
-                    songName={trendHit.songName}
-                    artistName={trendHit.artistName}
-                    trackIndex={trendHit.id}
+                    key={trendHit.music_id}
+                    imageUrl={trendHit.photo_url}
+                    songName={trendHit.music_name}
+                    artistName={trendHit.music_artistName}
+                    trackIndex={trendHit.music_id}
                     showLikeButton={props.showLikeButton}
-                    onClick={() => handleCardClick(trendHit.id)}
-                    id={trendHit.id} />
+                    onClick={() => handleCardClick(trendHit.music_id)}
+                    id={trendHit.music_id} />
             ))}
         </div>
     )

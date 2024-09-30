@@ -1,4 +1,6 @@
+import exp from 'constants';
 import { atom } from 'recoil';
+import { musicSrc } from './interfaces/test';
 
 export type Track = {
   artist: string;
@@ -38,6 +40,10 @@ export const isUpState = atom<boolean>({
   default: false
 })
 
+export const globalMusicSrc = atom<musicSrc[]>({
+  key: 'globalSrc',
+  default: []
+})
 export const isShufflingState = atom<boolean>({
   key: 'isShufflingState',
   default: false,
@@ -66,6 +72,11 @@ export const isMutedState = atom<boolean>({
 export const globalMusicState = atom<number>({
   key: 'globalmusic',
   default: 0
+});
+
+export const shuffleState = atom<boolean>({
+  key: 'shuffle',
+  default: false
 })
 
 export const clickState = atom<boolean>({
