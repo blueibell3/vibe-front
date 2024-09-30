@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react';
 const MusicListItems = () => {
     const [playlist, setPlaylist] = useRecoilState<Track[]>(playlistState);
     const [error, setError] = useState<string | null>(null);
+    console.log(playlist);
     
     useEffect(() => {
         const fetchMusicList = async () => {
