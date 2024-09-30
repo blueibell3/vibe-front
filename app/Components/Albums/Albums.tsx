@@ -20,7 +20,6 @@ const Albums = (props: Props) => {
     const [albumsData, setAlbumsData] = useState<Album[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
-
     
     useEffect(() => {
         const fetchAlbums = async () => {
