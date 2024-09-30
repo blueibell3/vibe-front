@@ -5,11 +5,11 @@ import { useRecoilState } from 'recoil';
 import { currentTrackIndexState, isPlayingState, currentTimeState } from '@/app/state';
 
 type Props = {
+    id: number;
     imageUrl: string;
     songName: string;
     artistName: string;
     trackIndex: number;
-    time: string;
 }
 
 const MusicList = (props: Props) => {
@@ -38,7 +38,6 @@ const MusicList = (props: Props) => {
                         <div className={styles.songName}>{props.songName}</div>
                         <div className={styles.artistName}>{props.artistName}</div>
                     </div>
-                    <span className={styles.MusicListTime}>{props.time}</span>
                 </div>
             </div>
         </div>

@@ -28,10 +28,10 @@ const PlayerController = (props: Props) => {
         <div className={styles.container}>
             <div className={styles.wrapper}>
                 <div className={styles.trackInfo} onClick={props.onEnterFullscreen}>
-                    <img src={props.currentTrack.photo} alt={props.currentTrack.name} className={styles.trackPhoto} />
+                    <img src={props.currentTrack?.photo} alt={props.currentTrack?.name} className={styles.trackPhoto} />
                     <div className={styles.trackDetails}>
-                        <div className={styles.artistName}>{props.currentTrack.artist}</div>
-                        <div className={styles.trackName}>{props.currentTrack.name}</div>
+                        <div className={styles.artistName}>{props.currentTrack?.artist}</div>
+                        <div className={styles.trackName}>{props.currentTrack?.name}</div>
                     </div>
                 </div>
                 <TimeDisplay currentTime={props.currentTime} duration={props.duration} onTimeUpdate={props.onTimeUpdate} />
