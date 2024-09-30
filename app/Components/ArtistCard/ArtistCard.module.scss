@@ -13,10 +13,10 @@
 
 .artistImage {
     border-radius: 12px;
+    max-width: 300px;
     width: 100%;
+    height: 200px;
 }
-
-
 
 .albom {
     display: flex;
@@ -48,7 +48,7 @@
 
 @media screen and (max-width:768px) {
     .artistImage {
-        width: fit-content;
+        width: 220px;
     }
 }
 
