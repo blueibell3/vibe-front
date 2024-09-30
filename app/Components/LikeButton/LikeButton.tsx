@@ -20,7 +20,6 @@ type Props = {
 };
 
 const LikeButton = (props: Props) => {
-    console.log(props.id, 'sdw')
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [globalId] = useRecoilState(globalMusicState);
     const [index] = useRecoilState(currentTrackIndexState);
