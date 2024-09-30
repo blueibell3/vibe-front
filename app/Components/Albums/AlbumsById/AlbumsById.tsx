@@ -1,5 +1,5 @@
 'use client';
-import React, { SetStateAction, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import MusicCard from "../../MusicCard/MusicCard";
 import styles from './AlbumsById.module.scss';
@@ -51,6 +51,7 @@ const AlbumsById = () => {
 
     const [albumCoverUrl, setAlbumCoverUrl] = useState<string | null>(null);
 
+
     useEffect(() => {
         const fetchAlbumMusic = async () => {
             try {
@@ -70,12 +71,9 @@ const AlbumsById = () => {
                     },
                 })
 
-                console.log(response.data, 'asdfasfdsa====')
 
                 setArtistName(response.data.artistName)
                 setTitle(response.data.title)
-
-
 
                 const albumData = response.data;
 

@@ -1,92 +1,142 @@
-'use client'
-import Albums from "../../Albums/Albums";
+'use client';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import MusicCard from "../../MusicCard/MusicCard";
-import styles from "./ArtistById.module.scss";
-import { globalMusicState } from '@/app/state';
+import styles from './ArtistById.module.scss';
 import { useRecoilState } from 'recoil';
+import { clickState, globalMusicState } from '@/app/state';
+import { useParams } from 'next/navigation';
+import Albums from '../../Albums/Albums';
+
+type MusicResponse = {
+    artistName: string;
+    biography: string;
+    musics: {
+        id: number;
+        name: string;
+        artistName: string;
+        photo: {
+            url: string;
+        };
+        duration: string | null;
+        title: string;
+    }[];
+    file: {
+        url: string;
+    };
+    albums: {
+        id: number;
+        title: string;
+        releaseDate: string;
+        artistName: string;
+    }[];
+};
+
+type MusicData = {
+    id: number;
+    name: string;
+    artistName: string;
+    photo: string;
+    mp3: string;
+    coverUrl: string;
+    title: string;
+};
 
 const ArtistById = () => {
     const [globalId, setGlobalId] = useRecoilState(globalMusicState);
+    const [artistMusic, setArtistMusic] = useState<MusicData[]>([]);
+    const [error, setError] = useState<string | null>(null);
+    const [click] = useRecoilState(clickState);
+    const params = useParams();
+    const [artistName, setArtistName] = useState<string | undefined>();
+    const [albumCoverUrl, setAlbumCoverUrl] = useState<string | null>(null);
+    const [biography, setBiography] = useState<string | undefined>();
 
-    const artistMusic = [
-        {
-            id: 1,
-            songName: 'Help me',
-            artistName: 'Katana',
-            imgUrl: '/katana.jpg'
-        },
-        {
-            id: 2,
-            songName: 'Help me',
-            artistName: 'Katana',
-            imgUrl: '/katana.jpg'
-        },
-        {
-            id: 3,
-            songName: 'Help me',
-            artistName: 'Katana',
-            imgUrl: '/katana.jpg'
-        },
+    useEffect(() => {
+        const fetchAlbumMusic = async () => {
+            try {
+                const token = document.cookie
+                    .split('; ')
+                    .find((row) => row.startsWith('token='))?.split('=')[1];
 
-        {
-            id: 4,
-            songName: 'Help me',
-            artistName: 'Katana',
-            imgUrl: '/katana.jpg'
-        },
-        {
-            id: 5,
-            songName: 'Help me',
-            artistName: 'Katana',
-            imgUrl: '/katana.jpg'
-        },
+                if (!token) {
+                    throw new Error('No token found');
+                }
 
-        {
-            id: 6,
-            songName: 'Help me',
-            artistName: 'Katana',
-            imgUrl: '/katana.jpg'
-        },
-    ]
+                const response = await axios.get<MusicResponse>(`https://vibetunes-backend.onrender.com/author/${params.id}`, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+
+                setArtistName(response.data.artistName);
+                setBiography(response.data.biography);
+
+                const artistData = response.data;
+
+                const musicData = artistData.musics.map((music) => ({
+                    id: music.id,
+                    name: music.name,
+                    artistName: music.artistName,
+                    photo: music.photo?.url || '/default_music_image.svg',
+                    mp3: artistData.file.url,
+                    coverUrl: artistData.file.url,
+                    title: music.title,
+                }));
+
+                setArtistMusic(musicData);
+
+                // Dynamically set album cover URL
+                if (artistData.file.url) {
+                    setAlbumCoverUrl(artistData.file.url); // Use the dynamic URL from the response
+                }
+            } catch (error) {
+                console.error('Error fetching album music data:', error);
+                setError('Failed to fetch album music');
+            }
+        };
+
+        fetchAlbumMusic();
+    }, [click, params.id]);
+
     const handleCardClick = (id: number) => {
         setGlobalId(id);
     };
+
     return (
-        <>
-            <div className={styles.container}>
-                <div className={styles.pageTitle}>Coldplay</div>
-                <div className={styles.pageDescripton}>
-                    <img className={styles.img} src='/artistidimg.svg' alt="Artist Coldplay" />
-                    <span className={styles.pageTitle}>Coldplay</span>
-                    <span className={styles.descriptonText}>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste porro delectus totam rem unde ipsam nihil explicabo quidem facilis provident ducimus temporibus deleniti mollitia beatae pariatur adipisci placeat, atque animi?
-                    </span>
-                    <span className={styles.descriptonText}>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non reiciendis recusandae harum dicta voluptas possimus laboriosam nesciunt ut nam, iste vero fuga voluptates pariatur! Minima animi excepturi dolorem nisi aperiam!
-                    </span>
-                </div>
-                <div className={styles.musicCards}>
-                    {artistMusic.map((music) => (
-                        <MusicCard
-                            imageUrl={music.imgUrl}
-                            songName={music.songName}
-                            artistName={music.artistName}
-                            trackIndex={1}
-                            showLikeButton={true}
-                            key={music.id}
-                            onClick={() => handleCardClick(music.id)}
-                            id={music.id} />
-                    ))}
-                </div>
-                <div className={styles.albumsPage}>
-                    <div className={styles.albumsText}>Albums</div>
-                    <Albums limit={4} />
-                </div>
+        <div className={styles.container}>
+            <div className={styles.pageTitle}>{artistName}</div>
+            <div className={styles.pageDescripton}>
+                {/* Dynamically set the image source */}
+                <img
+                    className={styles.img}
+                    src={albumCoverUrl || '/default_album_image.svg'}
+                    alt={`${artistName} cover`}
+                />
+                <span className={styles.pageTitle}>{artistName}</span>
+                <span className={styles.descriptonText}>{biography}</span>
             </div>
-        </>
+            <div className={styles.musicCards}>
+                {artistMusic.map((music) => (
+                    <MusicCard
+                        imageUrl={music.coverUrl}
+                        songName={music.name}
+                        artistName={music.artistName}
+                        trackIndex={2}
+                        showLikeButton={true}
+                        key={music.id}
+                        onClick={() => handleCardClick(music.id)}
+                        id={music.id}
+                    />
+                ))}
+            </div>
+            <div className={styles.albumsPage}>
+                <div className={styles.albumsText}>Albums</div>
+                <Albums limit={4} />
+            </div>
+        </div>
     );
 };
 
-export default ArtistById
-
-
+export default ArtistById;

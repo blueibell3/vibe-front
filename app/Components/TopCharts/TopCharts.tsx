@@ -85,8 +85,8 @@ const TopCharts: React.FC<Props> = (props) => {
             {displayedItems.map((chart) => (
                 <ChartCard
                     key={chart.id}
-                    title={chart.name} 
-                    imageUrl={chart.photo.url} 
+                    title={chart.name}
+                    imageUrl={chart.photo.url}
                     id={chart.id}
                 />
             ))}
