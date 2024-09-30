@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react';
 const MusicListItems = () => {
     const [playlist, setPlaylist] = useRecoilState<Track[]>(playlistState);
     const [error, setError] = useState<string | null>(null);
-
+    
     useEffect(() => {
         const fetchMusicList = async () => {
             try {
@@ -32,7 +32,6 @@ const MusicListItems = () => {
                         url: track.photo.url,
                     },
                     url: track.url.url,
-
                 }));
 
                 setPlaylist(formattedPlaylist);
@@ -51,17 +50,8 @@ const MusicListItems = () => {
 
         fetchMusicList();
     }, [setPlaylist]);
-
-
     return (
         <div className={styles.container}>
-            {/* <div className={styles.trackInfo}>
-                <img src={playlist[currentTrackIndex].photo} alt={playlist[currentTrackIndex].name} className={styles.trackPhoto} />
-            </div>
-            <div className={styles.trackDetails}>
-                <div className={styles.artistName}>{playlist[currentTrackIndex].artist}</div>
-                <div className={styles.trackName}>{playlist[currentTrackIndex].name}</div>
-            </div> */}
             <span > Next Play</span>
             <div className={styles.listWrap}>
                 {playlist.map((track, index) => (
@@ -70,7 +60,7 @@ const MusicListItems = () => {
                         key={index}
                         imageUrl={track.photo.url}
                         songName={track.name}
-                        artistName={track.artist}
+                        artistName={track.artistName}
                         trackIndex={index}
                        
                     />

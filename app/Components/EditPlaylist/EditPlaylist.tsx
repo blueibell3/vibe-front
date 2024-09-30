@@ -38,7 +38,7 @@ const EditPlaylist = (props: Props) => {
 
 
     const onSubmit: SubmitHandler<EditListFormData> = async (values: EditListFormData) => {
-        console.log(values);
+
 
         const data = new FormData();
         data.append('name', values.name);
@@ -61,7 +61,6 @@ const EditPlaylist = (props: Props) => {
             setIsOpen(false);
         }
     };
-
     return (
         <>
             <div onClick={handleOpenModal}>
@@ -71,7 +70,7 @@ const EditPlaylist = (props: Props) => {
                 isOpen &&
                 <div className={styles.reausableModalContainer}>
                     <div className={styles.reusableModal}>
-                    <div className={styles.addPlaylist}>
+                        <div className={styles.addPlaylist}>
                             <span className={styles.addPlaylistText}>EditPlaylist</span>
                             <button onClick={handleCloseModal} className={styles.addPlaylistIcon}>
                                 <img src="/xicon.svg" alt="x" />
@@ -91,7 +90,7 @@ const EditPlaylist = (props: Props) => {
                                     <Button title={'cancel'} type={'secondary'} />
                                 </div>
                                 <div className={styles.done} >
-                                    <Button title={'done'} type={'primary'}/>
+                                    <Button title={'done'} type={'primary'} />
                                 </div>
                             </div>
                         </form>

@@ -45,7 +45,7 @@ const TabletFullscreen = (props: Props) => {
                     <img src="/icons/back.svg" alt="zoomOut" onClick={props.onExitFullscreen} className={styles.back} />
                 </div>
                 <div className={styles.trackInfo}>
-                    <img src={playlist[currentTrackIndex].photo} alt={playlist[currentTrackIndex].name} className={styles.trackPhoto} />
+                    <img src={playlist[currentTrackIndex].photo.url} alt={playlist[currentTrackIndex].name} className={styles.trackPhoto} />
                 </div>
                 <div className={styles.trackDetails}>
                     <div className={styles.artistName}>{playlist[currentTrackIndex].artist}</div>
@@ -82,12 +82,10 @@ const TabletFullscreen = (props: Props) => {
                     {playlist.slice(0, isExpanded ? 6 : 0).map((track, index) => (
                         <MusicList
                             key={index}
-                            imageUrl={track.photo}
+                            imageUrl={track.photo.url}
                             songName={track.name}
                             artistName={track.artist}
-                            trackIndex={index}
-                            time={new Date((track.duration ?? 0) * 1000).toISOString().substr(14, 5)}
-                        />
+                            trackIndex={index} id={track.id} />
                     ))}
                 </div>
             </div>

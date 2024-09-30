@@ -22,12 +22,11 @@ type Props = {
     onTimeUpdate: (time: number) => void;
     onEnterFullscreen: () => void;
 }
-
 const TabletPlayerController = (props: Props) => {
     return (
         <div className={styles.container}>
             <div className={styles.trackInfo}>
-                <img src={props.currentTrack?.photo} alt={props.currentTrack?.name} className={styles.trackPhoto} onClick={props.onEnterFullscreen} />
+                <img src={props.currentTrack?.photo.url} alt={props.currentTrack?.name} className={styles.trackPhoto} onClick={props.onEnterFullscreen} />
                 <div className={styles.trackDetails}>
                     <div className={styles.trackName}>{props.currentTrack?.name}</div>
                     <div className={styles.artistName}>{props.currentTrack?.artist}</div>
