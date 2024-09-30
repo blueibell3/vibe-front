@@ -1,60 +1,19 @@
 import { atom } from 'recoil';
 
-export interface Track {
+export type Track = {
   artist: string;
+  id: number;
   name: string;
-  photo: string;
+  artistName: string;
+  photo: {
+    url: string;
+  };
   url: string;
-  duration?: number;
 }
 
 export const playlistState = atom<Track[]>({
   key: 'playlistState',
-  default: [
-    {
-      artist: 'Imagine dragons',
-      name: '- Believer',
-      photo: '/background/backImageFullScreeen.jpg',
-      url: '/music/ImagineDragonsBeliever.mp3',
-      duration: 216
-    },
-    {
-      artist: 'Katana',
-      name: '- Help Me',
-      photo: '/katana.jpg',
-      url: '/music/MichaelKatanaHelpMe.mp3',
-      duration: 386
-    },
-    {
-      artist: 'Kaxidze',
-      name: '- Watermelon',
-      photo: '/jansulKaxize.jpg',
-      url: '/music/WatermelonJansulKaxidze.mp3',
-      duration: 208
-    },
-    {
-      artist: 'Imagine dragons',
-      name: '- Believer',
-      photo: '/background/backImageFullScreeen.jpg',
-      url: '/music/ImagineDragonsBeliever.mp3',
-      duration: 216
-    },
-    {
-      artist: 'Eminem',
-      name: '- lose yourself',
-      photo: '/Eminem.jpg',
-      url: '/music/eminem.mp3',
-      duration: 323
-    },
-
-    {
-      artist: 'Kaxidze',
-      name: '- Watermelon',
-      photo: '/jansulKaxize.jpg',
-      url: '/music/WatermelonJansulKaxidze.mp3',
-      duration: 208
-    },
-  ],
+  default: [],
 });
 
 

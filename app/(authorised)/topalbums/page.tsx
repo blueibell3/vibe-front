@@ -8,7 +8,7 @@ const TopAlbumsPage = () => {
         <>
             <div className={styles.TopAlbumsPageM}>
                 <div className={styles.topAlbumsText}>Top Albums</div>
-                <TopAlbums />
+                <TopAlbums limit={10} />
             </div>
         </>
     )
