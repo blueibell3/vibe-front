@@ -1,23 +1,32 @@
 import { useEffect, useRef, useState } from 'react';
 import { playlistState, currentTrackIndexState } from '@/app/state';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 
 const useAudioPlayer = (url: string | undefined, volume: number, isMuted: boolean) => {
     const audioRef = useRef<HTMLAudioElement | null>(null);
     const [duration, setDuration] = useState<number>(0);
     const [currentTime, setCurrentTime] = useState<number>(0);
     const [currentTrackIndex, setCurrentTrackIndex] = useRecoilState(currentTrackIndexState);
-    const [playlist] = useRecoilState(playlistState);
+    const playlist = useRecoilValue(playlistState);
 
     useEffect(() => {
         const audioElement = audioRef.current;
 
         if (!audioElement) return;
 
-        const handleTimeUpdate = () => setCurrentTime(audioElement.currentTime);
+        const handleTimeUpdate = () => {
+            const time = audioElement.currentTime;
+            if (isFinite(time)) {
+                setCurrentTime(time);
+            }
+        };
+
         const handleLoadedMetadata = () => {
-            setDuration(audioElement.duration);
-            setCurrentTime(audioElement.currentTime);
+            const durationValue = audioElement.duration;
+            if (isFinite(durationValue)) {
+                setDuration(durationValue);
+                setCurrentTime(audioElement.currentTime); // Also check if this value is finite
+            }
         };
 
         const handleEnded = () => {
@@ -39,7 +48,7 @@ const useAudioPlayer = (url: string | undefined, volume: number, isMuted: boolea
         if (audioRef.current) {
             audioRef.current.src = url ?? '';
             audioRef.current.load();
-            audioRef.current.pause();  
+            audioRef.current.pause();
         }
     }, [url]);
 

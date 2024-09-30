@@ -1,54 +1,59 @@
+import axios from 'axios';
+import { Key } from 'react';
 import { atom } from 'recoil';
+import { Track } from './types/type';
 
-export interface Track {
-  artist: string;
-  name: string;
-  photo: string;
-  url: string;
-}
+
 
 export const playlistState = atom<Track[]>({
-  key: 'playlistState',
+  key: 'playlistState', 
   default: [
-    {
-      artist: 'Imagine dragons',
-      name: '- Believer',
-      photo: '/background/backImageFullScreeen.jpg',
-      url: '/music/ImagineDragonsBeliever.mp3',
-    },
-    {
-      artist: 'Katana',
-      name: '- Help Me',
-      photo: '/katana.jpg',
-      url: '/music/MichaelKatanaHelpMe.mp3',
-    },
-    {
-      artist: 'Kaxidze',
-      name: '- Watermelon',
-      photo: '/jansulKaxize.jpg',
-      url: '/music/WatermelonJansulKaxidze.mp3',
-    },
-    {
-      artist: 'Imagine dragons',
-      name: '- Believer',
-      photo: '/background/backImageFullScreeen.jpg',
-      url: '/music/ImagineDragonsBeliever.mp3',
-    },
-    {
-      artist: 'Eminem',
-      name: '- lose yourself',
-      photo: '/Eminem.jpg',
-      url: '/music/eminem.mp3',
-    },
-
-    {
-      artist: 'Kaxidze',
-      name: '- Watermelon',
-      photo: '/jansulKaxize.jpg',
-      url: '/music/WatermelonJansulKaxidze.mp3',
-    },
-  ],
+  ], 
 });
+
+
+// export const playlistState = atom<Track[]>({
+//   key: 'playlistState',
+//   default: [
+//     {
+//       artist: 'Imagine dragons',
+//       name: '- Believer',
+//       photo: '/background/backImageFullScreeen.jpg',
+//       url: '/music/ImagineDragonsBeliever.mp3',
+//     },
+//     {
+//       artist: 'Katana',
+//       name: '- Help Me',
+//       photo: '/katana.jpg',
+//       url: '/music/MichaelKatanaHelpMe.mp3',
+//     },
+//     {
+//       artist: 'Kaxidze',
+//       name: '- Watermelon',
+//       photo: '/jansulKaxize.jpg',
+//       url: '/music/WatermelonJansulKaxidze.mp3',
+//     },
+//     {
+//       artist: 'Imagine dragons',
+//       name: '- Believer',
+//       photo: '/background/backImageFullScreeen.jpg',
+//       url: '/music/ImagineDragonsBeliever.mp3',
+//     },
+//     {
+//       artist: 'Eminem',
+//       name: '- lose yourself',
+//       photo: '/Eminem.jpg',
+//       url: '/music/eminem.mp3',
+//     },
+
+//     {
+//       artist: 'Kaxidze',
+//       name: '- Watermelon',
+//       photo: '/jansulKaxize.jpg',
+//       url: '/music/WatermelonJansulKaxidze.mp3',
+//     },
+//   ],
+// });
 
 
 

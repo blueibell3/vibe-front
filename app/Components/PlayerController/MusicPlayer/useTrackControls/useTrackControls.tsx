@@ -34,13 +34,24 @@ const useTrackControls = () => {
 
     const handleFastForward = (audioRef: React.RefObject<HTMLAudioElement>) => {
         if (audioRef.current) {
-            audioRef.current.currentTime = Math.min(audioRef.current.duration, audioRef.current.currentTime + 5);
+            const currentTime = audioRef.current.currentTime;
+            const duration = audioRef.current.duration;
+
+            // Ensure both currentTime and duration are finite numbers
+            if (isFinite(currentTime) && isFinite(duration)) {
+                audioRef.current.currentTime = Math.min(duration, currentTime + 5);
+            }
         }
     };
 
     const handleRewind = (audioRef: React.RefObject<HTMLAudioElement>) => {
         if (audioRef.current) {
-            audioRef.current.currentTime = Math.max(0, audioRef.current.currentTime - 5);
+            const currentTime = audioRef.current.currentTime;
+
+            // Ensure currentTime is finite
+            if (isFinite(currentTime)) {
+                audioRef.current.currentTime = Math.max(0, currentTime - 5);
+            }
         }
     };
 

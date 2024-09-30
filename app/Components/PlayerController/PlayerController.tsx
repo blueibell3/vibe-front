@@ -1,4 +1,5 @@
 'use client';
+import React from 'react';
 import styles from './PlayerController.module.scss';
 import PreviousButton from './PreviousButton/PreviousButton';
 import PlayPauseButton from './PlayPauseButton/PlayPauseButton';
@@ -10,7 +11,11 @@ import TimeDisplay from './TimeDisplay/TimeDisplay';
 import NoNFullVol from './VolumeControl/NonFullVol';
 
 type Props = {
-    currentTrack: any;
+    currentTrack: {
+        photo: { url: string };
+        name: string;
+        artistName: string;
+    } | null; // Allow null if track is not loaded
     currentTime: number;
     duration: number;
     isPlaying: boolean;
@@ -23,27 +28,48 @@ type Props = {
     onEnterFullscreen: () => void;
 };
 
-const PlayerController = (props: Props) => {
+const PlayerController: React.FC<Props> = ({
+    currentTrack,
+    currentTime,
+    duration,
+    isPlaying,
+    onPlayPause,
+    onPrevious,
+    onNext,
+    onFastForward,
+    onRewind,
+    onTimeUpdate,
+    onEnterFullscreen
+}) => {
+    // Fallback values
+    const trackPhotoUrl = currentTrack?.photo?.url || '/path/to/default/image.png'; // Default image if undefined
+    const trackName = currentTrack?.name || 'Unknown Track';
+    const artistName = currentTrack?.artistName || 'Unknown Artist';
+
     return (
         <div className={styles.container}>
             <div className={styles.wrapper}>
-                <div className={styles.trackInfo} onClick={props.onEnterFullscreen}>
-                    <img src={props.currentTrack.photo} alt={props.currentTrack.name} className={styles.trackPhoto} />
+                <div className={styles.trackInfo} onClick={onEnterFullscreen}>
+                    <img 
+                        src={trackPhotoUrl} 
+                        alt={trackName} 
+                        className={styles.trackPhoto} 
+                    />
                     <div className={styles.trackDetails}>
-                        <div className={styles.artistName}>{props.currentTrack.artist}</div>
-                        <div className={styles.trackName}>{props.currentTrack.name}</div>
+                        <div className={styles.artistName}>{artistName}</div>
+                        <div className={styles.trackName}>{trackName}</div>
                     </div>
                 </div>
-                <TimeDisplay currentTime={props.currentTime} duration={props.duration} onTimeUpdate={props.onTimeUpdate} />
+                <TimeDisplay currentTime={currentTime} duration={duration} onTimeUpdate={onTimeUpdate} />
                 <div className={styles.functionality}>
                     <div className={styles.volume}>
                         <NoNFullVol />
                     </div>
-                    <PreviousButton onClick={props.onPrevious} />
-                    <RewindButton onClick={props.onRewind} />
-                    <PlayPauseButton onClick={props.onPlayPause} isPlaying={props.isPlaying} />
-                    <FastForwardButton onClick={props.onFastForward} />
-                    <NextButton onClick={props.onNext} />
+                    <PreviousButton onClick={onPrevious} />
+                    <RewindButton onClick={onRewind} />
+                    <PlayPauseButton onClick={onPlayPause} isPlaying={isPlaying} />
+                    <FastForwardButton onClick={onFastForward} />
+                    <NextButton onClick={onNext} />
                     <ShuffleButton />
                 </div>
             </div>

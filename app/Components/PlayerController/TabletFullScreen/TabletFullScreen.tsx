@@ -1,3 +1,4 @@
+// TabletFullScreen.tsx
 'use client';
 import React, { useState } from 'react';
 import styles from './TabletFullScreen.module.scss';
@@ -10,13 +11,21 @@ import ShuffleButton from '../ShuffleButton/ShuffleButton';
 import TimeDisplay from '../TimeDisplay/TimeDisplay';
 import VolumeControl from '../VolumeControl/VolumeControl';
 import Arrows from '../Arrows/Arrows';
-import { useRecoilValue } from 'recoil';
 import MusicList from '../../MusicList/MusicList';
+import { useRecoilValue } from 'recoil';
 import { playlistState, currentTrackIndexState } from '@/app/state';
 import TabletArrow from './TabletArrow/TabletArrow';
 
+type Track = {
+    name: string;
+    artist: string;
+    url: string;
+    photo?: { url: string }; // Optional property for photo
+};
+
 type Props = {
-    currentTrack: any;
+    audioRef: React.RefObject<HTMLAudioElement>;
+    currentTrack: Track; // Define currentTrack here
     currentTime: number;
     duration: number;
     isPlaying: boolean;
@@ -29,7 +38,20 @@ type Props = {
     onExitFullscreen: () => void;
 };
 
-const TabletFullscreen = (props: Props) => {
+const TabletFullscreen = ({
+    audioRef,
+    currentTrack,
+    currentTime,
+    duration,
+    isPlaying,
+    onPlayPause,
+    onPrevious,
+    onNext,
+    onFastForward,
+    onRewind,
+    onTimeUpdate,
+    onExitFullscreen,
+}: Props) => {
     const [isExpanded, setIsExpanded] = useState(false);
     const playlist = useRecoilValue(playlistState);
     const currentTrackIndex = useRecoilValue(currentTrackIndexState);
@@ -38,35 +60,37 @@ const TabletFullscreen = (props: Props) => {
         setIsExpanded(!isExpanded);
     };
 
+    const trackPhotoUrl = currentTrack.photo?.url || '';
+
     return (
         <div className={`${styles.fullscreenContainer} ${isExpanded ? styles.expanded : ''}`}>
             <div className={styles.fullscreenWrapper}>
                 <div className={styles.zoomOut}>
-                    <img src="/icons/back.svg" alt="zoomOut" onClick={props.onExitFullscreen} className={styles.back} />
+                    <img src="/icons/back.svg" alt="zoomOut" onClick={onExitFullscreen} className={styles.back} />
                 </div>
                 <div className={styles.trackInfo}>
-                    <img src={playlist[currentTrackIndex].photo} alt={playlist[currentTrackIndex].name} className={styles.trackPhoto} />
+                    <img src={trackPhotoUrl} alt={currentTrack.name} className={styles.trackPhoto} />
                 </div>
                 <div className={styles.trackDetails}>
-                    <div className={styles.artistName}>{playlist[currentTrackIndex].artist}</div>
-                    <div className={styles.trackName}>{playlist[currentTrackIndex].name}</div>
+                    <div className={styles.artistName}>{currentTrack.artist}</div>
+                    <div className={styles.trackName}>{currentTrack.name}</div>
                 </div>
                 <div className={styles.shuffle}>
                     <ShuffleButton />
                 </div>
                 <div className={styles.timeDisplay}>
                     <TimeDisplay
-                        currentTime={props.currentTime}
-                        duration={props.duration}
-                        onTimeUpdate={props.onTimeUpdate}
+                        currentTime={currentTime}
+                        duration={duration}
+                        onTimeUpdate={onTimeUpdate}
                     />
                 </div>
                 <div className={styles.functionality}>
-                    <PreviousButton onClick={props.onPrevious} />
-                    <RewindButton onClick={props.onRewind} />
-                    <PlayPauseButton onClick={props.onPlayPause} isPlaying={props.isPlaying} />
-                    <FastForwardButton onClick={props.onFastForward} />
-                    <NextButton onClick={props.onNext} />
+                    <PreviousButton onClick={onPrevious} />
+                    <RewindButton onClick={onRewind} />
+                    <PlayPauseButton onClick={onPlayPause} isPlaying={isPlaying} />
+                    <FastForwardButton onClick={onFastForward} />
+                    <NextButton onClick={onNext} />
                 </div>
                 <div className={styles.volume}>
                     <VolumeControl />
@@ -82,11 +106,11 @@ const TabletFullscreen = (props: Props) => {
                     {playlist.slice(0, isExpanded ? 6 : 0).map((track, index) => (
                         <MusicList
                             key={index}
-                            imageUrl={track.photo}
+                            imageUrl={track.photo?.url} 
                             songName={track.name}
                             artistName={track.artist}
                             trackIndex={index}
-                            time={new Date((track.duration ?? 0) * 1000).toISOString().substr(14, 5)}
+                            trackUrl={track.url} 
                         />
                     ))}
                 </div>

@@ -1,17 +1,20 @@
 'use client'
+
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { playlistState, currentTrackIndexState } from '@/app/state';
 import PlayerController from '../PlayerController';
 import FullscreenPlayer from '../FullscreenPlayer/FullscreenPlayer';
 import TabletFullscreen from '../TabletFullScreen/TabletFullScreen';
 import TabletPlayerController from '../TabletPlayerController/TabletPlayerController';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import useAudioPlayer from './useAudioPlayer/useAudioPlayer';
 import useTrackControls from './useTrackControls/useTrackControls';
 
 const MusicPlayer = () => {
     const playlist = useRecoilValue(playlistState);
     const [currentTrackIndex, setCurrentTrackIndex] = useRecoilState(currentTrackIndexState);
+    const audioRef = useRef<HTMLAudioElement | null>(null);
+
     const {
         isPlaying,
         isFullscreen,
@@ -27,15 +30,9 @@ const MusicPlayer = () => {
         isMuted,
     } = useTrackControls();
 
-    const { audioRef, duration, currentTime } = useAudioPlayer(playlist[currentTrackIndex]?.url, volume, isMuted);
+    const { duration, currentTime } = useAudioPlayer(playlist[currentTrackIndex]?.url, volume, isMuted);
 
-    const currentTrack = playlist[currentTrackIndex];
-
-    const handleTimeUpdate = (time: number) => {
-        if (audioRef.current) {
-            audioRef.current.currentTime = time;
-        }
-    };
+    const currentTrack = playlist[currentTrackIndex] || {};
 
     useEffect(() => {
         if (audioRef.current) {
@@ -49,14 +46,9 @@ const MusicPlayer = () => {
 
     useEffect(() => {
         if (audioRef.current) {
-            // Avoid resetting the current time when changing tracks, only pause/play based on isPlaying
-            if (isPlaying) {
-                audioRef.current.play();
-            } else {
-                audioRef.current.pause();
-            }
+            audioRef.current.play();
         }
-    }, [currentTrackIndex, playlist, isPlaying]);
+    }, [currentTrackIndex, playlist]);
 
     return (
         <>
@@ -72,7 +64,7 @@ const MusicPlayer = () => {
                     onNext={handleNext}
                     onFastForward={() => handleFastForward(audioRef)}
                     onRewind={() => handleRewind(audioRef)}
-                    onTimeUpdate={handleTimeUpdate}
+                    onTimeUpdate={(time) => { if (audioRef.current) audioRef.current.currentTime = time; }}
                     onExitFullscreen={toggleFullscreen}
                 />
             ) : (
@@ -86,13 +78,14 @@ const MusicPlayer = () => {
                     onNext={handleNext}
                     onFastForward={() => handleFastForward(audioRef)}
                     onRewind={() => handleRewind(audioRef)}
-                    onTimeUpdate={handleTimeUpdate}
+                    onTimeUpdate={(time) => { if (audioRef.current) audioRef.current.currentTime = time; }}
                     onEnterFullscreen={toggleFullscreen}
                 />
             )}
             {tabletFullscreen ? (
                 <TabletFullscreen
-                    currentTrack={currentTrack}
+                    audioRef={audioRef}
+                    currentTrack={currentTrack} 
                     currentTime={currentTime}
                     duration={duration}
                     isPlaying={isPlaying}
@@ -101,7 +94,7 @@ const MusicPlayer = () => {
                     onNext={handleNext}
                     onFastForward={() => handleFastForward(audioRef)}
                     onRewind={() => handleRewind(audioRef)}
-                    onTimeUpdate={handleTimeUpdate}
+                    onTimeUpdate={(time) => { if (audioRef.current) audioRef.current.currentTime = time; }}
                     onExitFullscreen={toggleTabletFullscreen}
                 />
             ) : (
@@ -115,7 +108,7 @@ const MusicPlayer = () => {
                     onNext={handleNext}
                     onFastForward={() => handleFastForward(audioRef)}
                     onRewind={() => handleRewind(audioRef)}
-                    onTimeUpdate={handleTimeUpdate}
+                    onTimeUpdate={(time) => { if (audioRef.current) audioRef.current.currentTime = time; }}
                     onEnterFullscreen={toggleTabletFullscreen}
                 />
             )}
