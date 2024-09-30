@@ -6,11 +6,10 @@ type Props = {
     text: string;
     photo?: string;
     file?: string;
-    type: 'album' | 'author' | 'music';
+    type: 'albums' | 'author' | 'music';
     link?: string;
     musicSrc?: string;
-    firstName?: string; 
-    lastName?: string;
+    artistName?: string;
 };
 
 interface ListOptionsProps {
@@ -24,51 +23,68 @@ const ListOptions = ({ options, onOptionClick }: ListOptionsProps) => {
         audio.play();
     };
 
-    
+
     return (
         <ul className={styles.listOptions}>
             {options.map(option => (
                 <li className={styles.option} key={option.id}>
                     {option.type === 'music' ? (
-                        <div onClick={() => playMusic(option.musicSrc!)}>
-                            <img
-                                src={option.photo}
-                                alt={'img'}
-                                className={`${styles.optionImage} ${styles[option.type]}`}
-                                
-                            />
-                            <span className={styles.optionText}>{option.text}</span>
-                            {option.firstName && (
-                                <span className={styles.names}>{option.firstName} {option.lastName}</span>
-                            )}
-                        </div>
-                    ) : option.type === 'album' ? (
-                        <Link href={option.link!}>
-                            <div className={styles.artistAlbums}>
+                        <div className={styles.songStyle} onClick={() => playMusic(option.musicSrc!)}>
+                            {option.photo && (
                                 <img
-                                    src={option.file}
-                                    alt={'img'}
+                                    src={option.photo}
+                                    width={50}
+                                    height={50}
                                     className={`${styles.optionImage} ${styles[option.type]}`}
                                 />
+                            )}
+                            <div>
+                                <div>
+                                    <span className={styles.optionText}>{option.text}</span>
+                                </div>
+                                <div className={styles.artistName}>
+                                    <span className={styles.names}>{option.artistName}</span>
+                                    <span className={styles.alm}>~song</span>
+                                </div>
+                            </div>
+                        </div>
+                    ) : option.type === 'albums' ? (
+                        <Link href={`albums/${option.id}`}>
+                            <div className={styles.artistAlbums}>
+                                {option.file && (
+                                    <img
+                                        src={option.file}
+                                        width={50}
+                                        height={50}
+                                        className={`${styles.optionImage} ${styles[option.type]}`}
+                                    />
+                                )}
                                 <div>
                                     <div>
                                         <span className={styles.optionText}>{option.text}</span>
                                     </div>
-                                    {option.firstName && (
-                                        <span className={styles.names}>{option.firstName} {option.lastName}</span>
-                                    )}
+                                    <div>
+                                        <span className={styles.names}>{option.artistName}</span>
+                                        <span className={styles.alm}>~album</span>
+                                    </div>
                                 </div>
                             </div>
                         </Link>
                     ) : (
-                        <Link href={option.link!}>
+                        <Link href={`artist/${option.id}`}>
                             <div className={styles.artistAlbums}>
-                                <img
-                                    src={option.file}
-                                    alt={'img'}
-                                    className={`${styles.optionImage} ${styles[option.type]}`}
-                                />
-                                <span className={styles.optionText}>{option.text}</span>
+                                {option.file && (
+                                    <img
+                                        src={option.file}
+                                        width={50}
+                                        height={50}
+                                        className={`${styles.optionImage} ${styles[option.type]}`}
+                                    />
+                                )}
+                                <div>
+                                    <span className={styles.optionText}>{option.text}</span>
+                                    <span className={styles.alm}>~artist</span>
+                                </div>
                             </div>
                         </Link>
                     )}

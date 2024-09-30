@@ -32,12 +32,13 @@
 .album {
     border-radius: 4px;
 }
+
 .listOptions a {
     display: flex;
-    align-items: center ;
+    align-items: center;
 }
 
-.names{
+.names {
     color: #fff;
     font-size: 12px;
     font-style: normal;
@@ -45,6 +46,16 @@
     line-height: normal;
 }
 
-.artistAlbums{
+.artistAlbums {
     display: flex;
+}
+
+.alm {
+    color: gray;
+    font-size: 12px;
+}
+
+.songStyle {
+    display: flex;
+    align-items: center;
 }

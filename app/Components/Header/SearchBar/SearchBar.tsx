@@ -9,21 +9,23 @@ type Option = {
     id: number;
     text: string;
     img?: string;
-    type: 'album' | 'author' | 'music';
+    type: 'albums' | 'author' | 'music';
     link?: string;
     musicSrc?: string;
 };
 
 interface Album {
-    firstName: string;
-    lastName: string;
+    // firstName: string;
+    // lastName: string;
     id: number;
     title: string;
     file?: string;
+    artistName: string;
 }
 
 interface Author {
     id: number;
+    artistName: string;
     firstName: string;
     lastName: string;
     file?: string;
@@ -32,10 +34,11 @@ interface Author {
 interface Music {
     id: number;
     name: string;
-    firstName: string;
-    lastName: string;
+    // firstName: string;
+    // lastName: string;
     photo?: string;
     audioSrc?: string;
+    artistName: string;
 }
 
 interface ApiResponse {
@@ -60,7 +63,7 @@ const SearchBar = () => {
                     throw new Error('No token found');
                 }
 
-                const response = await axios.get<ApiResponse>(`https://vibetunes-backend.onrender.com/search/?searchField=${query}`, {
+                const response = await axios.get<ApiResponse>(`https://vibetunes-backend.onrender.com/search?searchField=${query}`, {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: `Bearer ${token}`,
@@ -79,10 +82,9 @@ const SearchBar = () => {
                     id: album.id,
                     text:  album.title,
                     file: album.file,
-                    type: 'album' as const,
-                    link: `/album/${album.id}`,
-                    firstName: album.firstName, 
-                    lastName: album.lastName,
+                    type: 'albums' as const,
+                    link: `/albums/${album.id}`,
+                    artistName: album.artistName,
                 }));
 
                 const authorOptions = authorData.map((author: Author) => ({
@@ -90,9 +92,7 @@ const SearchBar = () => {
                     text: `${author.firstName} ${author.lastName}`,
                     file: author.file,
                     type: 'author' as const,
-                    link: `/author/${author.id}`,
-                    firstName: author.firstName,
-                    lastName: author.lastName,
+                    link: `/artist/${author.id}`,
                 }));
 
                 const musicOptions = musicData.map((music: Music) => ({
@@ -101,8 +101,7 @@ const SearchBar = () => {
                     photo: music.photo,
                     type: 'music' as const,
                     musicSrc: music.audioSrc,
-                    firstName: music.firstName,
-                    lastName: music.lastName,
+                    artistName: music.artistName,
                 }));
 
                 const allOptions = [...albumOptions, ...authorOptions, ...musicOptions];
