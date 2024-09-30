@@ -11,6 +11,7 @@ type Props = {
   isArtist: boolean;
   id: number;
   link: string;
+  showIcon: boolean;
 }
 
 const ListItem = (props: Props) => {
@@ -33,7 +34,7 @@ const ListItem = (props: Props) => {
 
         </div>
         <div className={styles.listItemEdit}>
-          <EditPlaylist playlistId={props.id} />
+        {props.showIcon &&   <EditPlaylist playlistId={props.id} />}
           <img src="arrowicon.svg" alt="arrow" className={styles.arrow} />
         </div>
       </div>

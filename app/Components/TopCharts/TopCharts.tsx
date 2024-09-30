@@ -1,6 +1,19 @@
-import React from 'react';
+'use client'
 import styles from "./TopCharts.module.scss";
 import ChartCard from '../ChartCard/ ChartCard';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+
+
+
+type Charts = {
+    id: number;
+    title: string;
+    file: {
+        url: string;
+    };
+}
+
 
 type Props = {
     limit?: number
@@ -8,60 +21,46 @@ type Props = {
 
 }
 const TopCharts = (props: Props) => {
-    const chartsData = [
-        {
-            id: 1,
-            title: 'Top hits 2024',
-            imageUrl: '/chartss.svg',
-        },
-        {
-            id: 2,
-            title: 'Top hits 2024',
-            imageUrl: '/chartss.svg',
-        },
-        {
-            id: 3,
-            title: 'Top hits 2024',
-            imageUrl: '/chartss.svg',
-        },
-        {
-            id: 4,
-            title: 'Top hits 2024',
-            imageUrl: '/chartss.svg',
-        },
-        {
-            id: 5,
-            title: 'Top hits 2024',
-            imageUrl: '/chartss.svg',
-        },
-        {
-            id: 6,
-            title: 'Top hits 2024',
-            imageUrl: '/chartss.svg',
-        },
-        {
-            id: 7,
-            title: 'Top hits 2024',
-            imageUrl: '/chartss.svg',
-        },
-        {
-            id: 8,
-            title: 'Top hits 2024',
-            imageUrl: '/chartss.svg',
-        },
-    ];
+    const [chartData, setChartData] = useState<Charts[]>([]);
+    useEffect(() => {
+        const fetchCharts = async () => {
+            try {
+                const token = document.cookie
+                    .split('; ')
+                    .find((row) => row.startsWith('token='))
+                    ?.split('=')[1];
 
-    const displayedItems = props.limit ? chartsData.slice(0, props.limit) : chartsData;
+                if (!token) {
+                    throw new Error('No token found');
+                }
+
+                const response = await axios.get('https://vibetunes-backend.onrender.com/music/weekCharts', {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+
+                setChartData(Array.isArray(response.data) ? response.data : [response.data]);
+            } catch (error) {
+                console.error('Error fetching album data:', error);
+            }
+        };
+
+        fetchCharts();
+    }, []);
+
+    const displayedItems = props.limit ? chartData.slice(0, props.limit) : chartData;
 
     return (
         <div
             className={`${styles.chartCardContainer} ${!props.isHomePage ? styles.otherPageContainer : ''}`}
         >
-            {displayedItems.map(chartCard => (
+            {displayedItems.map((chartCard) => (
                 <ChartCard
                     key={chartCard.id}
                     title={chartCard.title}
-                    imageUrl={chartCard.imageUrl}
+                    imageUrl={chartCard.file.url}
                     id={chartCard.id}
                 />
             ))}

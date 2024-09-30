@@ -69,12 +69,12 @@ const Artist = () => {
                 <ListItem
                     key={artistItem.id}
                     name={artistItem.firstName}
-                    imgSrc={artistItem.file?.url || '/default-image.png'} 
+                    imgSrc={artistItem.file?.url || '/default-image.png'}
                     isArtist={true}
                     id={artistItem.id}
                     link={`/artist/${artistItem.id}`}
-                    lastName={artistItem.lastName}
-                />
+                    lastName={artistItem.lastName} 
+                    showIcon={false}                />
             ))}
         </div>
     );
