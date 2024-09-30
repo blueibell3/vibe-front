@@ -1,24 +1,24 @@
 'use client';
 import React from 'react';
-import styles from "../MusicList/MusicList.module.scss";
 import { useRecoilState } from 'recoil';
 import { currentTrackIndexState, isPlayingState, currentTimeState } from '@/app/state';
+import styles from '../MusicList/MusicList.module.scss';
 
 type Props = {
     imageUrl: string;
     songName: string;
     artistName: string;
+    trackUrl: string; // Make sure to use this prop
     trackIndex: number;
-    // time: string;
 }
 
-const MusicList = (props: Props) => {
+const MusicList: React.FC<Props> = ({ imageUrl, songName, artistName, trackUrl, trackIndex }) => {
     const [currentTrackIndex, setCurrentTrackIndex] = useRecoilState(currentTrackIndexState);
     const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
     const [currentTime, setCurrentTime] = useRecoilState(currentTimeState);
 
     const handleClick = () => {
-        if (currentTrackIndex === props.trackIndex) {
+        if (currentTrackIndex === trackIndex) {
             // Toggle play/pause if the same track is clicked
             setIsPlaying(!isPlaying);
         } else {
