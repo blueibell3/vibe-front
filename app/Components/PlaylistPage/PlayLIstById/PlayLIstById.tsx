@@ -9,14 +9,18 @@ import { useParams } from 'next/navigation';
 
 const PlayLIstById = () => {
     const [, setGlobalId] = useRecoilState(globalMusicState);
-    const [musicData, setMusicData] = useState<any[]>([]); // Initialize as an array
+    const [musicData, setMusicData] = useState<any[]>([]);
+    const [playlistName, setPlaylistName] = useState<string>('');
     const [error, setError] = useState<string | null>(null);
-    const params = useParams()
+    const params = useParams();
 
     useEffect(() => {
         const fetchPlaylist = async () => {
             try {
-                const token = document.cookie.split('; ').find(row => row.startsWith('token='))?.split('=')[1];
+                const token = document.cookie
+                    .split('; ')
+                    .find(row => row.startsWith('token='))
+                    ?.split('=')[1];
                 if (!token) throw new Error('No token found');
 
                 const response = await axios.get(`https://vibetunes-backend.onrender.com/playlist/${params.id}`, {
@@ -26,19 +30,20 @@ const PlayLIstById = () => {
                     },
                 });
 
-                if (response.data && response.data.musics) {
+                if (response.data) {
                     setMusicData(response.data.musics);
+                    setPlaylistName(response.data.name); 
                 } else {
                     setError('No music found in the playlist.');
                 }
-            } catch (error: any) {
+            } catch (error) {
                 console.error('Error fetching playlist data:', error);
-                setError(error.response?.data?.message || 'Error fetching playlist.');
+                setError('Error fetching playlist.');
             }
         };
 
         fetchPlaylist();
-    }, []);
+    }, [params.id]);
 
     const handleCardClick = (id: number) => {
         setGlobalId(id);
@@ -47,11 +52,13 @@ const PlayLIstById = () => {
     return (
         <div className={styles.wrap}>
             <div className={styles.myEveryday}>
-                <h3>My Everyday</h3>
+                <h3>{playlistName}</h3>
             </div>
             <div className={styles.everyDay}>
-                <img src={"/playListId.svg"} alt="my every day" />
-                <span>My Everyday</span>
+                {musicData.length > 0 && (
+                    <img src={musicData[0]?.photo?.url || '/defaultImage.jpg'} alt={playlistName} />
+                )}
+                <span>{playlistName}</span>
             </div>
             <div className={styles.musicData}>
                 {error ? (

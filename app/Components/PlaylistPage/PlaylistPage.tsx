@@ -7,19 +7,25 @@ import axios from 'axios';
 import { useRecoilState } from 'recoil';
 import { clickState } from '@/app/state';
 
-
 type Playlist = {
     id: number;
-    name: string;
     description?: string;
-    lastName: string;
+    musics?: {
+        id: number;
+        name: string;
+        artistName: string;
+        photo?: {
+            url: string;
+        };
+    }[];
+    name: string;
 };
 
 const PlaylistPage = () => {
     const [playlist, setPlaylist] = useState<Playlist[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
-    const [click] = useRecoilState(clickState)
+    const [click] = useRecoilState(clickState);
 
     const fetchPlaylists = async () => {
         try {
@@ -50,27 +56,36 @@ const PlaylistPage = () => {
 
     const addNewPlaylist = (newPlaylist: Playlist) => {
         setPlaylist((prevPlaylists) => [...prevPlaylists, newPlaylist]);
-      
     };
 
     useEffect(() => {
         fetchPlaylists();
-    }, [click]); 
+    }, [click]);
+
+    const getPlaylistImage = (item: Playlist) => {
+        const firstMusic = item.musics?.[0];
+        return firstMusic?.photo?.url || '/defaultImage.jpg';
+    };
 
     return (
         <div className={styles.playlistContainer}>
             <AddButton onPlaylistCreated={addNewPlaylist} />
             {loading && <div>Loading...</div>}
             {error && <div>{error}</div>}
-            {!loading && !error && playlist.map((item) => (
-                <ListItem
-                    id={item.id}
-                    key={item.id}
-                    name={item.name}
-                    isArtist={false}
-                    link={`/playlist/${item.id}`}
-                     showIcon={true}                />
-            ))}
+            {!loading && !error && playlist.map((item) => {
+                const firstMusic = item.musics?.[0];
+                return (
+                    <ListItem
+                        id={item.id}
+                        key={item.id}
+                        name={item.name}
+                        isArtist={false}
+                        link={`/playlist/${item.id}`}
+                        showIcon={true}
+                        imgSrc={getPlaylistImage(item)}
+                    />
+                );
+            })}
         </div>
     );
 };
