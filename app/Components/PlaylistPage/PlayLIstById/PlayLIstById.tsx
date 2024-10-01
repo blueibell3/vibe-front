@@ -1,5 +1,5 @@
-'use client';
-import { globalMusicState } from '@/app/state';
+'use client'
+import { clickState, globalMusicState } from '@/app/state';
 import { useRecoilState } from 'recoil';
 import MusicCard from '../../MusicCard/MusicCard';
 import styles from './PlayLIstById.module.scss';
@@ -13,6 +13,7 @@ const PlayLIstById = () => {
     const [playlistName, setPlaylistName] = useState<string>('');
     const [error, setError] = useState<string | null>(null);
     const params = useParams();
+    const [click] = useRecoilState(clickState)
 
     useEffect(() => {
         const fetchPlaylist = async () => {
@@ -43,7 +44,7 @@ const PlayLIstById = () => {
         };
 
         fetchPlaylist();
-    }, [params.id]);
+    }, [params.id, click]); 
 
     const handleCardClick = (id: number) => {
         setGlobalId(id);
