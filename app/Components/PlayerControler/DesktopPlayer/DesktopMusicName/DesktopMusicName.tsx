@@ -28,7 +28,7 @@ const DesktopMusicName = () => {
                 src={
                     image[index]
                         ? image[index]
-                        : '/allFolders/images/playerDefault.png'
+                        : '/playerDefault.png'
                 }
                 alt="Music Cover"
             />

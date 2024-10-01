@@ -3,7 +3,6 @@ import { useParams } from 'next/navigation';
 
 import styles from './MusicCard.module.scss';
 
-
 import { useRecoilState } from 'recoil';
 import {
     clickState,
@@ -14,7 +13,6 @@ import {
 } from '@/app/state';
 import { searchTermState } from '@/app/state';
 import axios from 'axios';
-
 
 interface Props {
     image: string;
@@ -130,13 +128,13 @@ const MusicCard = (props: Props) => {
                         globalId === props.id ? (
                             <img
                                 className={styles.image}
-                                src="/allFolders/PlayerControler/Play.svg"
+                                src="/icons/pause.svg"
                                 alt="Pause Button"
                             />
                         ) : (
                             <img
                                 className={styles.image}
-                                src="/allFolders/PlayerControler/Pause.svg"
+                                src="/icons/play.svg"
                                 alt="Play Button"
                             />
                         )}

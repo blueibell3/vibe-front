@@ -19,13 +19,13 @@ const DesktopMusicSwitch = () => {
             <div className={styles.playPaus} onClick={playPause}>
                 {isPlaying ? (
                     <img
-                        src="/allFolders/PlayerControler/Play.svg"
+                        src="/icons/play.svg"
                         alt="Play"
                         className={styles.play}
                     />
                 ) : (
                     <img
-                        src="/allFolders/PlayerControler/Pause.svg"
+                        src="/icons/pause.svg"
                         alt="Pause"
                         className={styles.pause}
                     />

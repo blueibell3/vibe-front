@@ -1,6 +1,5 @@
-'use client'
+'use client';
 import { useRecoilState } from 'recoil';
-import { globalMusicState } from '@/app/state';
 import styles from './TopHits.module.scss';
 import MusicCard from '../MusicCard/MusicCard';
 import { useEffect, useState } from 'react';
@@ -9,7 +8,7 @@ import axios from 'axios';
 type Props = {
     limit?: number;
     showLikeButton: boolean;
-}
+};
 
 interface TopHitsData {
     id: number;
@@ -27,21 +26,27 @@ const TopHits = (props: Props) => {
     useEffect(() => {
         const fetchTopHits = async () => {
             try {
-                const token = document.cookie.split('; ').find(row => row.startsWith('token='))?.split('=')[1];
+                const token = document.cookie
+                    .split('; ')
+                    .find((row) => row.startsWith('token='))
+                    ?.split('=')[1];
                 if (!token) throw new Error('No token found');
 
-                const response = await axios.get('https://vibetunes-backend.onrender.com/music/top', {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${token}`,
+                const response = await axios.get(
+                    'https://vibetunes-backend.onrender.com/music/top',
+                    {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            Authorization: `Bearer ${token}`,
+                        },
                     },
-                });
+                );
 
                 const formattedHits = response.data.map((hit: any) => ({
                     id: hit.id,
                     name: hit.name,
                     artistName: hit.artistName || 'Unknown Artist',
-                    photoUrl: hit.photo.url,  // Access the correct photo URL from response
+                    photoUrl: hit.photo.url,
                     url: hit.url,
                 }));
 
@@ -62,11 +67,40 @@ const TopHits = (props: Props) => {
         fetchTopHits();
     }, []);
 
-    const handleCardClick = (id: number) => {
-        setGlobalId(id);
-    };
+    // const handleClick = (
+    //     item: {
+    //         image?: string;
+    //         title?: string;
+    //         temeName?: string;
+    //         id: number;
+    //         src?: string;
+    //     },
+    //     index: number,
+    // ) => {
+    //     if (globalMusicId === item.id) {
+    //         setIsPlaying(!isPlaying);
+    //     } else {
+    //         const imageSrc = topHits.map((item) => item.coverImgUrl);
+    //         const allSrc = topHits.map((item) => ({
+    //             audioUrl: item.audioUrl,
+    //             id: item.id,
+    //         }));
 
-    const limitedTopHits = props.limit ? topHits.slice(0, props.limit) : topHits;
+    //         const musicName = topHits.map((item) => item.title);
+    //         const title = topHits.map((item) => item.title);
+
+    //         setIsPlaying(true);
+    //         setGlobalId(item.id);
+    //         setGlobalsrc(allSrc);
+    //         setActiveIdx(index);
+    //         setImage(imageSrc);
+    //         setTitle(musicName);
+    //         setArtist(title);
+    //     }
+    // };
+    const limitedTopHits = props.limit
+        ? topHits.slice(0, props.limit)
+        : topHits;
 
     return (
         <div className={styles.container}>
@@ -80,7 +114,7 @@ const TopHits = (props: Props) => {
                     artistName={hit.artistName}
                     trackIndex={index}
                     showLikeButton={props.showLikeButton}
-                    onClick={() => handleCardClick(hit.id)}
+                    onClick={() => handleClick(hit, index)}
                 />
             ))}
         </div>

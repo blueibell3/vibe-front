@@ -15,14 +15,14 @@ const Shuffle = () => {
                 <img
                     onClick={handleShuffleClick}
                     className={styles.shuffle}
-                    src="/allFolders/PlayerControler/pinkShuffle.svg"
+                    src="/icons/pinkShuffle.svg"
                     alt="shuffle"
                 />
             ) : (
                 <img
                     onClick={handleShuffleClick}
                     className={styles.shuffle}
-                    src="/allFolders/PlayerControler/shuffle.svg"
+                    src="/icons/shuffle.svg"
                     alt="Messy"
                 />
             )}
