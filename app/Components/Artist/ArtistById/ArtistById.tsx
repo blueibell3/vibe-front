@@ -9,6 +9,8 @@ import { useParams } from 'next/navigation';
 import AlbumCard from '../../AlbumCard/AlbumCard';
 
 type MusicResponse = {
+    firstName: string;
+    lastName: string;
     artistName: string;
     biography: string;
     musics: {
@@ -66,6 +68,9 @@ const ArtistById = () => {
     const [artistName, setArtistName] = useState<string | undefined>();
     const [albumCoverUrl, setAlbumCoverUrl] = useState<string | null>(null);
     const [biography, setBiography] = useState<string | undefined>();
+    const [firstName, setFirstName] = useState<string | undefined>();
+    const [lastName, setLastName] = useState<string | undefined>();
+
 
     useEffect(() => {
         const fetchAlbumMusic = async () => {
@@ -85,8 +90,9 @@ const ArtistById = () => {
                     },
                 });
 
-                setArtistName(response.data.artistName);
+                setFirstName(response.data.firstName);
                 setBiography(response.data.biography);
+                setLastName(response.data.lastName)
 
                 const artistData = response.data;
 
@@ -131,13 +137,16 @@ const ArtistById = () => {
 
     return (
         <div className={styles.container}>
-            <div className={styles.pageTitle}>{artistName}</div>
+            <div className={styles.pageTitle}>{firstName} {lastName}</div>
             <div className={styles.pageDescripton}>
                 <img
                     className={styles.img}
                     src={albumCoverUrl || '/default_album_image.svg'}
                 />
-                <span className={styles.pageTitle}>{artistName}</span>
+               <div>
+               <span className={styles.pageTitle}>{firstName}</span>
+               <span className={styles.pageTitle}>{lastName}</span>
+               </div>
                 <span className={styles.descriptonText}>{biography}</span>
             </div>
             <div className={styles.musicCards}>
