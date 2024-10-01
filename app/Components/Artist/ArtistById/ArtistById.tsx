@@ -43,6 +43,9 @@ type MusicData = {
     mp3: string;
     coverUrl: string;
     title: string;
+    file: {
+        url: string;
+    };
 };
 
 type AlbumData = {
@@ -56,7 +59,7 @@ type AlbumData = {
 const ArtistById = () => {
     const [globalId, setGlobalId] = useRecoilState(globalMusicState);
     const [artistMusic, setArtistMusic] = useState<MusicData[]>([]);
-    const [albums, setAlbums] = useState<AlbumData[]>([]); // Albums state
+    const [albums, setAlbums] = useState<AlbumData[]>([]);
     const [error, setError] = useState<string | null>(null);
     const [click] = useRecoilState(clickState);
     const params = useParams();
@@ -87,7 +90,6 @@ const ArtistById = () => {
 
                 const artistData = response.data;
 
-                // Map music data
                 const musicData = artistData.musics.map((music) => ({
                     id: music.id,
                     name: music.name,
@@ -96,10 +98,11 @@ const ArtistById = () => {
                     mp3: artistData.file.url,
                     coverUrl: artistData.file.url,
                     title: music.title,
+                    file: { url: artistData.file.url }
                 }));
+                
                 setArtistMusic(musicData);
 
-                // Map album data
                 const albumData = artistData.albums.map((album) => ({
                     id: album.id,
                     title: album.title,
@@ -109,7 +112,7 @@ const ArtistById = () => {
                 }));
                 setAlbums(albumData);
 
-                // Set album cover URL
+        
                 if (artistData.file.url) {
                     setAlbumCoverUrl(artistData.file.url);
                 }
@@ -133,7 +136,6 @@ const ArtistById = () => {
                 <img
                     className={styles.img}
                     src={albumCoverUrl || '/default_album_image.svg'}
-                    alt={`${artistName} cover`}
                 />
                 <span className={styles.pageTitle}>{artistName}</span>
                 <span className={styles.descriptonText}>{biography}</span>
@@ -141,7 +143,7 @@ const ArtistById = () => {
             <div className={styles.musicCards}>
                 {artistMusic.map((music) => (
                     <MusicCard
-                        imageUrl={music.coverUrl}
+                        imageUrl={music.file.url}
                         songName={music.name}
                         artistName={music.artistName}
                         trackIndex={music.id}
