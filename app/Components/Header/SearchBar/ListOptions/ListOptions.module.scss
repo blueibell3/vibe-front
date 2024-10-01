@@ -8,13 +8,20 @@
     border-bottom-right-radius: 8px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    gap: 12px;
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.listOptions::-webkit-scrollbar {
+    display: none;
 }
 
 .option {
     display: flex;
     align-items: center;
-    padding: 8px 16px;
+    padding: 13px 16px 0px 16px;
     cursor: pointer;
     color: $white;
 }

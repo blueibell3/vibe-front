@@ -6,7 +6,7 @@ import styles from './ArtistById.module.scss';
 import { useRecoilState } from 'recoil';
 import { clickState, globalMusicState } from '@/app/state';
 import { useParams } from 'next/navigation';
-import Albums from '../../Albums/Albums';
+import AlbumCard from '../../AlbumCard/AlbumCard';
 
 type MusicResponse = {
     artistName: string;
@@ -29,6 +29,9 @@ type MusicResponse = {
         title: string;
         releaseDate: string;
         artistName: string;
+        file: {
+            url: string;
+        };
     }[];
 };
 
@@ -42,9 +45,18 @@ type MusicData = {
     title: string;
 };
 
+type AlbumData = {
+    id: number;
+    title: string;
+    releaseDate: string;
+    artistName: string;
+    coverUrl: string;
+};
+
 const ArtistById = () => {
     const [globalId, setGlobalId] = useRecoilState(globalMusicState);
     const [artistMusic, setArtistMusic] = useState<MusicData[]>([]);
+    const [albums, setAlbums] = useState<AlbumData[]>([]); // Albums state
     const [error, setError] = useState<string | null>(null);
     const [click] = useRecoilState(clickState);
     const params = useParams();
@@ -75,6 +87,7 @@ const ArtistById = () => {
 
                 const artistData = response.data;
 
+                // Map music data
                 const musicData = artistData.musics.map((music) => ({
                     id: music.id,
                     name: music.name,
@@ -84,12 +97,21 @@ const ArtistById = () => {
                     coverUrl: artistData.file.url,
                     title: music.title,
                 }));
-
                 setArtistMusic(musicData);
 
-                // Dynamically set album cover URL
+                // Map album data
+                const albumData = artistData.albums.map((album) => ({
+                    id: album.id,
+                    title: album.title,
+                    releaseDate: album.releaseDate,
+                    artistName: album.artistName,
+                    coverUrl: album.file?.url || '/default_album_image.svg',
+                }));
+                setAlbums(albumData);
+
+                // Set album cover URL
                 if (artistData.file.url) {
-                    setAlbumCoverUrl(artistData.file.url); // Use the dynamic URL from the response
+                    setAlbumCoverUrl(artistData.file.url);
                 }
             } catch (error) {
                 console.error('Error fetching album music data:', error);
@@ -108,7 +130,6 @@ const ArtistById = () => {
         <div className={styles.container}>
             <div className={styles.pageTitle}>{artistName}</div>
             <div className={styles.pageDescripton}>
-                {/* Dynamically set the image source */}
                 <img
                     className={styles.img}
                     src={albumCoverUrl || '/default_album_image.svg'}
@@ -123,7 +144,7 @@ const ArtistById = () => {
                         imageUrl={music.coverUrl}
                         songName={music.name}
                         artistName={music.artistName}
-                        trackIndex={2}
+                        trackIndex={music.id}
                         showLikeButton={true}
                         key={music.id}
                         onClick={() => handleCardClick(music.id)}
@@ -133,7 +154,15 @@ const ArtistById = () => {
             </div>
             <div className={styles.albumsPage}>
                 <div className={styles.albumsText}>Albums</div>
-                <Albums limit={4} />
+                {albums.map((album) => (
+                    <AlbumCard
+                        key={album.id}
+                        id={album.id}
+                        imageUrl={album.coverUrl}
+                        releaseDate={album.releaseDate}
+                        songName={album.title}
+                    />
+                ))}
             </div>
         </div>
     );
