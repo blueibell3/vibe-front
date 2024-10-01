@@ -16,7 +16,7 @@ const useTrackControls = () => {
     const [tabletFullscreen, setTabletFullscreen] = useRecoilState(tabletFullscreenState);
     const [volume, setVolume] = useRecoilState(volumeState);
     const [isMuted, setIsMuted] = useRecoilState(isMutedState);
-    const playlist = useRecoilValue(playlistState);
+    const playlist = useRecoilState(playlistState);
 
     const handlePlayPause = () => {
         setIsPlaying((prev) => !prev);

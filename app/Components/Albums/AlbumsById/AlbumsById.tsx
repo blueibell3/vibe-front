@@ -4,8 +4,9 @@ import axios from 'axios';
 import MusicCard from "../../MusicCard/MusicCard";
 import styles from './AlbumsById.module.scss';
 import { useRecoilState } from 'recoil';
-import { clickState, globalMusicState } from '@/app/state';
+import { clickState, globalMusicState, playlistState, Track } from '@/app/state';
 import { useParams } from 'next/navigation';
+
 
 
 type MusicResponse = {
@@ -43,6 +44,7 @@ type MusicData = {
 const AlbumsById = () => {
     const [globalId, setGlobalId] = useRecoilState(globalMusicState);
     const [albomsmusic, setAlbomsmusic] = useState<MusicData[]>([]);
+    const [playlist, setPlaylist] = useRecoilState<Track[]>(playlistState);
     const [error, setError] = useState<string | null>(null);
     const [click] = useRecoilState(clickState);
     const params = useParams();
@@ -89,6 +91,7 @@ const AlbumsById = () => {
                 }));
 
                 setAlbomsmusic(musicData);
+                setPlaylist
 
 
                 if (musicData.length > 0) {
@@ -105,6 +108,7 @@ const AlbumsById = () => {
 
     const handleCardClick = (id: number) => {
         setGlobalId(id);
+
     };
     return (
         <>

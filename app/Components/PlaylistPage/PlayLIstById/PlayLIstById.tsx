@@ -61,7 +61,7 @@ const PlayLIstById = () => {
                         musicData.map((music: any) => (
                             <MusicCard
                                 key={music.id}
-                                imageUrl={music.photo?.url || '/defaultImage.jpg'} 
+                                imageUrl={music.photo?.url || '/defaultImage.jpg'}
                                 songName={music.name}
                                 artistName={music.artistName}
                                 trackIndex={music.id}
