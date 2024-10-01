@@ -4,6 +4,7 @@
     overflow: auto;
     height: calc(100vh - 72px);
     width: 100%;
+    padding: 20px;
 }
 
 .navMenuContainer {
