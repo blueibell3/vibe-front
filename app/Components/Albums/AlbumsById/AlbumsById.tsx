@@ -65,7 +65,7 @@ const AlbumsById = () => {
                     throw new Error('No token found');
                 }
 
-                const response = await axios.get<MusicResponse>(`https://vibetunes-backend.onrender.com/album/music/${params.id}`, {
+                const response = await axios.get<MusicResponse>(`https://vibetunes-backend.onrender.com/album/${params.id}`, {
 
                     headers: {
                         'Content-Type': 'application/json',

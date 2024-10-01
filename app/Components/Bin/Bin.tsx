@@ -1,32 +1,76 @@
+'use client';
 import { useState } from 'react';
-import styles from './Bin.module.scss';
+import styles from './Bin.module.scss'
+import axios from 'axios';
 import Button from '../Button/Button';
+import { useParams } from 'next/navigation';
+import { useRecoilState } from 'recoil';
+import { clickState } from '@/app/state';
 
-const Bin = () => {
-    const [isActive, setIsActive] = useState(false);
+type Props = {
+    musicId: number;
+};
 
-    const onClick = () => {
-        setIsActive(!isActive);
+const Bin = ({ musicId }: Props) => {
+    const [isOpen, setIsOpen] = useState(false);
+    const [click, setClick] = useRecoilState(clickState);
+    const params = useParams();
+
+    const handleOpenModal = () => setIsOpen(true);
+    const handleCloseModal = () => setIsOpen(false);
+
+    const handleDone = () => {
+        setIsOpen(false);
+        setClick(!click);
+    };
+
+    const handleDelete = async () => {
+        try {
+            const token = document.cookie
+                .split('; ')
+                .find((row) => row.startsWith('token='))
+                ?.split('=')[1];
+
+            await axios.patch(`https://vibetunes-backend.onrender.com/playlist/${params.id}/remove/${musicId}`,{}, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                }
+            });
+
+            handleDone();
+        } catch (error) {
+            console.error('Failed to delete the playlist:', error);
+        }
     };
 
     return (
-        <div className={styles.conteiner}>
-            <img src='/icons/bin.svg' alt='bin' onClick={onClick} className={styles.trash} />
-            {isActive && (
-                <div onClick={onClick} className={styles.wrap}>
-                    <div className={styles.delete}>
-                        <div className={styles.close}>
-                            <span>Are you sure to delete the song?</span>
-                            <img src="/icons/xxxx.svg" alt="close" width={24} height={24} />
+        <>
+            <div onClick={handleOpenModal}>
+                <img src='/icons/bin.svg' alt='bin' className={styles.trash} width={32} height={32} />
+            </div>
+            {isOpen && (
+                <div className={styles.wrap}>
+                    <div className={styles.reusableModalContainer}>
+                        <div className={styles.addPlaylist}>
+                            <span className={styles.addPlaylistText}>Are you sure?</span>
+                            <button onClick={handleCloseModal} className={styles.addPlaylistIcon}>
+                                <img src="/xicon.svg" alt="x" />
+                            </button>
                         </div>
-                        <div className={styles.buttons}>
-                            <Button title={'no'} type={'secondary'} />
-                            <Button title={'yes'} type={'primary'} />
+
+                        <div className={styles.modalButton}>
+                            <div className={styles.cancel} onClick={handleCloseModal}>
+                                <Button title={'Cancel'} type={'secondary'} />
+                            </div>
+                            <div className={styles.delete} onClick={handleDelete}>
+                                <Button title={'Delete'} type={'primary'} />
+                            </div>
                         </div>
                     </div>
                 </div>
             )}
-        </div>
+        </>
     );
 };
 

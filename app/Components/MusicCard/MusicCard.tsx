@@ -4,7 +4,7 @@ import React from 'react';
 import styles from '../MusicCard/MusicCard.module.scss';
 import LikeButton from '../LikeButton/LikeButton';
 import { useRecoilState } from 'recoil';
-import { currentTrackIndexState, isPlayingState, currentTimeState, globalMusicState } from '@/app/state';
+import { currentTrackIndexState, isPlayingState, currentTimeState } from '@/app/state';
 import Bin from '../Bin/Bin';
 
 type Props = {
@@ -20,11 +20,10 @@ type Props = {
 const MusicCard = (props: Props) => {
     const [currentTrackIndex, setCurrentTrackIndex] = useRecoilState(currentTrackIndexState);
     const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
-    const [globalId] = useRecoilState(globalMusicState)
     const [currentTime, setCurrentTime] = useRecoilState(currentTimeState);
 
     const handleClick = () => {
-        if (currentTrackIndex === props.trackIndex && props.id === globalId) {
+        if (currentTrackIndex === props.trackIndex) {
             setIsPlaying(!isPlaying);
         } else {
             setCurrentTrackIndex(props.trackIndex);
@@ -45,7 +44,7 @@ const MusicCard = (props: Props) => {
                     />
                     <img
                         onClick={handleClick}
-                        src={isPlaying && currentTrackIndex === props.trackIndex ? '/icons/pause.svg' : '/icons/pauselist.svg'} alt="ap"
+                        src={isPlaying && currentTrackIndex === props.trackIndex ? '/icons/pause.svg' : '/icons/pauselist.svg'} alt="play-pause"
                         className={styles.audioPlay}
 
                     />
@@ -55,7 +54,7 @@ const MusicCard = (props: Props) => {
                     </div>
                 </div>
                 <div className={styles.musicCardHeart} onClick={props.onClick}>
-                    {props.showLikeButton ? <LikeButton id={props.id} trackIndex={props.trackIndex} /> : <Bin />}
+                    {props.showLikeButton ? <LikeButton id={props.id} trackIndex={props.trackIndex} /> : <Bin musicId={props.id} />}
                 </div>
             </div>
         </div>

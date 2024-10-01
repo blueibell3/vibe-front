@@ -32,7 +32,7 @@ const FullscreenPlayer = (props: Props) => {
             <div className={styles.background} style={backgroundImg} />
             <div className={styles.fullscreenWrapper}>
                 <div className={styles.zoomOut}>
-                    <img src="./icons/zoomOut.svg" alt="zoomOut" onClick={props.onExitFullscreen} />
+                    <img src="/icons/zoomOut.svg" alt="zoomOut" onClick={props.onExitFullscreen} />
                 </div>
                 <div className={styles.trackInfo}>
                     <img src={props.currentTrack.photo.url} alt={props.currentTrack.name} className={styles.trackPhoto} />
