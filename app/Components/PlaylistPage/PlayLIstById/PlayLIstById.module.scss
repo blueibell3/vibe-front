@@ -13,12 +13,25 @@
     padding-bottom: 20px;
 }
 
-.myEveryday {
-    padding: 20px 12px;
+.headerNames{
     display: flex;
     align-items: center;
+    padding-bottom: 10px;
 }
 
+.paths{
+    color: hsla(0, 0%, 100%, .64);
+    font-size: 17px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.pageTitle{
+    color: white;
+    font-family: Inter;
+    font-size: 20px;
+    font-weight: 500;
+}
 .everyDay img {
     max-width: 200px;
     width: 100%;

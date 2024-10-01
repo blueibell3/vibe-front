@@ -33,7 +33,7 @@ const PlayLIstById = () => {
 
                 if (response.data) {
                     setMusicData(response.data.musics);
-                    setPlaylistName(response.data.name); 
+                    setPlaylistName(response.data.name);
                 } else {
                     setError('No music found in the playlist.');
                 }
@@ -44,7 +44,7 @@ const PlayLIstById = () => {
         };
 
         fetchPlaylist();
-    }, [params.id, click]); 
+    }, [params.id, click]);
 
     const handleCardClick = (id: number) => {
         setGlobalId(id);
@@ -52,9 +52,13 @@ const PlayLIstById = () => {
 
     return (
         <div className={styles.wrap}>
-            <div className={styles.myEveryday}>
-                <h3>{playlistName}</h3>
+
+            <div className={styles.headerNames}>
+                <a className={styles.paths} href="/playlist">Playlists</a>
+                <img src="/arrowp.svg" />
+                <div className={styles.pageTitle}>{playlistName}</div>
             </div>
+
             <div className={styles.everyDay}>
                 {musicData.length > 0 && (
                     <img src={musicData[0]?.photo?.url || '/defaultImage.jpg'} alt={playlistName} />
