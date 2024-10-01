@@ -51,7 +51,7 @@ const AlbumsById = () => {
     const params = useParams();
     const [artistName, setArtistName] = useState<string | undefined>()
     const [title, setTitle] = useState<string | undefined>();
-    console.log(albomsmusic, 'albumsmusic')
+    console.log(albomsmusic, '')
     const [albumCoverUrl, setAlbumCoverUrl] = useState<string | null>(null);
 
     useEffect(() => {
@@ -78,21 +78,20 @@ const AlbumsById = () => {
                 setTitle(response.data.title)
 
                 const albumData = response.data;
-                console.log(albumData,'luka');
 
 
                 const musicData = albumData.musics.map((music) => ({
                     id: music.id,
                     name: music.name,
-                    artistName: music.artistName || 'Unknown Artist',
-                    photo: {
-                        url: music.photo.url,
-                    },
-                    url: music.url.url,
+                    artistName: music.artistName,
+                    photo: music.photo?.url || '/default_music_image.svg',
+                    mp3: albumData.file.url,
+                    coverUrl: albumData.file.url,
+                    title: albumData.title,
                 }));
                 // const playlistdata = albumData.musics.map
                 setAlbomsmusic(musicData);
-                setPlaylist(musicData)
+                // setPlaylist()
 
 
                 if (musicData.length > 0) {
