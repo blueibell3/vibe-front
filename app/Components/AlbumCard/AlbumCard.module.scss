@@ -10,6 +10,7 @@
     background: $grayColor;
     flex-direction: column;
     gap: 12px;
+    padding: 20px;
 }
 
 .albumCard:hover {
@@ -62,4 +63,11 @@
     .albumCard:hover {
         background-color: initial;
     }
+}
+
+@media screen and (max-width:768px){
+    .image {
+        width: 200px;
+    }
+    
 }
