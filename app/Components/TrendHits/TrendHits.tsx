@@ -41,7 +41,7 @@ const TrendHits = (props: Props) => {
                     id: hit.id,
                     name: hit.name,
                     artistName: hit.artistName || 'Unknown Artist',
-                    photoUrl: hit.photo.url,  // Accessing the correct photo URL
+                    photoUrl: hit.photo.url,  
                     url: hit.url,
                 }));
 
