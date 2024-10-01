@@ -31,6 +31,8 @@ const MusicPlayer = () => {
     const { audioRef, duration, currentTime } = useAudioPlayer(playlist[currentTrackIndex]?.url, volume, isMuted);
 
     const currentTrack = playlist[currentTrackIndex];
+    console.log(currentTrack, 'eyvufwcd');
+    
 
     const handleTimeUpdate = (time: number) => {
         if (audioRef.current) {

@@ -2,7 +2,7 @@
 import React from 'react';
 import styles from "../MusicList/MusicList.module.scss";
 import { useRecoilState } from 'recoil';
-import { currentTrackIndexState, isPlayingState, currentTimeState } from '@/app/state';
+import { currentTrackIndexState, isPlayingState, currentTimeState, globalMusicState } from '@/app/state';
 
 type Props = {
     id: number;
@@ -16,10 +16,11 @@ type Props = {
 const MusicList = (props: Props) => {
     const [currentTrackIndex, setCurrentTrackIndex] = useRecoilState(currentTrackIndexState);
     const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
+    const [globalId] = useRecoilState(globalMusicState)
     const [currentTime, setCurrentTime] = useRecoilState(currentTimeState);
 
     const handleClick = () => {
-        if (currentTrackIndex === props.trackIndex) {
+        if (currentTrackIndex === props.trackIndex && props.id === globalId) {
             setIsPlaying(!isPlaying);
         } else {
             setCurrentTrackIndex(props.trackIndex);
