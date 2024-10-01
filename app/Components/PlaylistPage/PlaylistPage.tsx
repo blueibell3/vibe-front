@@ -64,7 +64,7 @@ const PlaylistPage = () => {
 
     const getPlaylistImage = (item: Playlist) => {
         const firstMusic = item.musics?.[0];
-        return firstMusic?.photo?.url || '/defaultImage.jpg';
+        return firstMusic?.photo?.url || '/whiteLogo.png' ;
     };
 
     return (

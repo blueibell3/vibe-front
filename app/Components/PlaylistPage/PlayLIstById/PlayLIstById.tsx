@@ -61,7 +61,7 @@ const PlayLIstById = () => {
 
             <div className={styles.everyDay}>
                 {musicData.length > 0 && (
-                    <img src={musicData[0]?.photo?.url || '/defaultImage.jpg'} alt={playlistName} />
+                    <img src={musicData[0]?.photo?.url || '/whiteLogo.png' } alt={playlistName} />
                 )}
                 <span>{playlistName}</span>
             </div>
@@ -73,7 +73,7 @@ const PlayLIstById = () => {
                         musicData.map((music: any) => (
                             <MusicCard
                                 key={music.id}
-                                imageUrl={music.photo?.url || '/defaultImage.jpg'}
+                                imageUrl={music.photo?.url || '/whiteLogo.png'}
                                 songName={music.name}
                                 artistName={music.artistName}
                                 trackIndex={music.id}
