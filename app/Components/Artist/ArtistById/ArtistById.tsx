@@ -138,7 +138,7 @@ const ArtistById = () => {
     return (
         <div className={styles.container}>
             <div className={styles.headerNames}>
-                <a className={styles.paths} href="/artist">Artists</a>
+                <a className={styles.paths} href="/artist">Artist</a>
                 <img src="/arrowp.svg" />
                 <div className={styles.pageTitle}>{firstName} {lastName}</div>
             </div>

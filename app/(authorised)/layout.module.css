@@ -120,9 +120,7 @@
     }
 
     .children {
-        padding-right: 9px;
         width: 100%;
-        padding-left: 0px;
         height: calc(100vh - 114px);
 
     }
