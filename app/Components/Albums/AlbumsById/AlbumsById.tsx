@@ -4,7 +4,7 @@ import axios from 'axios';
 import MusicCard from "../../MusicCard/MusicCard";
 import styles from './AlbumsById.module.scss';
 import { useRecoilState } from 'recoil';
-import { clickState, globalMusicState, playlistState, Track } from '@/app/state';
+import { clickState, currentTrackIndexState, globalMusicState, playlistState, Track } from '@/app/state';
 import { useParams } from 'next/navigation';
 
 
@@ -42,17 +42,17 @@ type MusicData = {
 };
 
 const AlbumsById = () => {
-    const [globalId, setGlobalId] = useRecoilState(globalMusicState);
+    const [, setGlobalId] = useRecoilState(globalMusicState);
     const [albomsmusic, setAlbomsmusic] = useState<MusicData[]>([]);
-    const [playlist, setPlaylist] = useRecoilState<Track[]>(playlistState);
-    const [error, setError] = useState<string | null>(null);
+    const [, setPlaylist] = useRecoilState<Track[]>(playlistState);
+    const [, setError] = useState<string | null>(null);
+    const [, setIndex] = useRecoilState(currentTrackIndexState)
     const [click] = useRecoilState(clickState);
     const params = useParams();
     const [artistName, setArtistName] = useState<string | undefined>()
     const [title, setTitle] = useState<string | undefined>();
-
+    console.log(albomsmusic, 'albumsmusic')
     const [albumCoverUrl, setAlbumCoverUrl] = useState<string | null>(null);
-
 
     useEffect(() => {
         const fetchAlbumMusic = async () => {
@@ -78,20 +78,21 @@ const AlbumsById = () => {
                 setTitle(response.data.title)
 
                 const albumData = response.data;
+                console.log(albumData,'luka');
 
 
                 const musicData = albumData.musics.map((music) => ({
                     id: music.id,
                     name: music.name,
-                    artistName: music.artistName,
-                    photo: music.photo?.url || '/default_music_image.svg',
-                    mp3: albumData.file.url,
-                    coverUrl: albumData.file.url,
-                    title: albumData.title,
+                    artistName: music.artistName || 'Unknown Artist',
+                    photo: {
+                        url: music.photo.url,
+                    },
+                    url: music.url.url,
                 }));
-
+                // const playlistdata = albumData.musics.map
                 setAlbomsmusic(musicData);
-                setPlaylist
+                setPlaylist(musicData)
 
 
                 if (musicData.length > 0) {
@@ -106,9 +107,9 @@ const AlbumsById = () => {
         fetchAlbumMusic();
     }, [click, params.id]);
 
-    const handleCardClick = (id: number) => {
+    const handleCardClick = (id: number, index: number) => {
         setGlobalId(id);
-
+        setIndex(index)
     };
     return (
         <>
@@ -129,7 +130,7 @@ const AlbumsById = () => {
                             artistName={music.artistName}
                             trackIndex={index}
                             showLikeButton={true}
-                            onClick={() => handleCardClick(music.id)}
+                            onClick={() => handleCardClick(music.id, index)}
                         />
                     ))}
                 </div>
