@@ -143,7 +143,7 @@ const ArtistById = () => {
             <div className={styles.musicCards}>
                 {artistMusic.map((music) => (
                     <MusicCard
-                        imageUrl={music.file.url}
+                        imageUrl={music.photo}
                         songName={music.name}
                         artistName={music.artistName}
                         trackIndex={music.id}
