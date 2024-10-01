@@ -1,4 +1,4 @@
-// @import '../../../../styles/colors.scss';
+@import '../../../../styles/stylesSecond/colors.scss';
 
 .tabletPlayer {
     width: 100%;
@@ -9,7 +9,7 @@
 }
 
 .tabletPlayerContainer {
-    // background-color: $PrimaryBlackTone1;
+    background-color: $PrimaryBlackTone1;
     width: 100%;
     padding: 16px 20px;
     display: flex;

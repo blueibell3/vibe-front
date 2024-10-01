@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import React, { useEffect, useState } from 'react';
 import styles from "./TrendHits.module.scss";
 import { useRecoilState } from 'recoil';
@@ -16,7 +16,7 @@ interface tophits {
     name: string;
     artistName: string;
     photoUrl: string;
-    url: string;
+    musicUrl: string;
 }
 
 const TrendHits = (props: Props) => {
@@ -41,8 +41,8 @@ const TrendHits = (props: Props) => {
                     id: hit.id,
                     name: hit.name,
                     artistName: hit.artistName || 'Unknown Artist',
-                    photoUrl: hit.photo.url,  // Accessing the correct photo URL
-                    url: hit.url,
+                    photoUrl: hit.photo?.url || '',  // Accessing the correct photo URL
+                    musicUrl: hit.url?.url || '',    // Accessing the correct music URL
                 }));
 
                 setTopHits(formattedHits);
@@ -73,14 +73,16 @@ const TrendHits = (props: Props) => {
             {error && <div className={styles.error}>{error}</div>}
             {trendHits.map((trendHit, index) => (
                 <MusicCard
-                    key={index}
-                    id={trendHit.id}
-                    imageUrl={trendHit.photoUrl}
-                    songName={trendHit.name}
-                    artistName={trendHit.artistName}
-                    trackIndex={index}
-                    showLikeButton={props.showLikeButton}
+                    key={trendHit.id}
                     onClick={() => handleCardClick(trendHit.id)}
+                    image={trendHit.photoUrl}          // Image of the song/album
+                    title={trendHit.name}              // Song name
+                    teamName={trendHit.artistName}     // Artist name
+                    deleteOrLike={props.showLikeButton} // Conditional render for like button
+                    id={trendHit.id}                  // Track ID
+                    isPlaying={false}                 // Placeholder for playing state (customize if needed)
+                    index={index}                     // Index of the track in the list
+                    menuOpen={false}                  // Placeholder for menu state (customize if needed)
                 />
             ))}
         </div>

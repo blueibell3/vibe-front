@@ -1,4 +1,4 @@
-// @import "../../../styles/colors.scss";
+@import "../../../styles/stylesSecond/colors.scss";
 
 .mobilePlayer {
     width: 100%;
@@ -8,7 +8,7 @@
 }
 
 .mobilePlayerContainer {
-    // background-color: $PrimaryBlackTone1;
+    background-color: $PrimaryBlackTone1;
     display: flex;
     justify-content: center;
     width: 100%;

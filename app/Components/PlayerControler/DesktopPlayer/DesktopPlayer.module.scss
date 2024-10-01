@@ -1,7 +1,7 @@
-// @import "../../../styles/colors.scss";
+@import '../../../styles/stylesSecond/colors.scss';
 
 .playerSmall {
-    // background-color: $PrimaryBlackTone1;
+    background-color: $PrimaryBlackTone1;
     width: 278px;
     display: flex;
     flex-direction: column;

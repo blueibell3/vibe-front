@@ -1,4 +1,4 @@
-// @import '../../../../styles/colors.scss';
+@import '../../../../styles/stylesSecond/colors.scss';
 
 .imageAndTitle {
     display: flex;
@@ -9,7 +9,7 @@
 }
 
 .title {
-    // color: $PrimaryWhite;
+    color: $PrimaryWhite;
     font-size: 14px;
     font-style: normal;
     font-weight: 500;
@@ -34,7 +34,7 @@
 }
 
 .fullScreentitle {
-    // color: $PrimaryWhite;
+    color: $PrimaryWhite;
     font-size: 20px;
     font-style: normal;
     font-weight: 500;

@@ -4,6 +4,7 @@ import styles from './TopHits.module.scss';
 import MusicCard from '../MusicCard/MusicCard';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { globalMusicState } from '@/app/state';  // Ensure you have the correct Recoil state imported
 
 type Props = {
     limit?: number;
@@ -15,7 +16,7 @@ interface TopHitsData {
     name: string;
     artistName: string;
     photoUrl: string;
-    url: string;
+    musicUrl: string;
 }
 
 const TopHits = (props: Props) => {
@@ -33,7 +34,7 @@ const TopHits = (props: Props) => {
                 if (!token) throw new Error('No token found');
 
                 const response = await axios.get(
-                    'https://vibetunes-backend.onrender.com/music/top',
+                    'https://vibetunes-backend.onrender.com/music',
                     {
                         headers: {
                             'Content-Type': 'application/json',
@@ -47,7 +48,7 @@ const TopHits = (props: Props) => {
                     name: hit.name,
                     artistName: hit.artistName || 'Unknown Artist',
                     photoUrl: hit.photo.url,
-                    url: hit.url,
+                    musicUrl: hit.url.url,  // Adjusted for the correct field
                 }));
 
                 setTopHits(formattedHits);
@@ -107,14 +108,16 @@ const TopHits = (props: Props) => {
             {error && <div className={styles.error}>{error}</div>}
             {limitedTopHits.map((hit, index) => (
                 <MusicCard
-                    key={index}
-                    id={hit.id}
-                    imageUrl={hit.photoUrl}
-                    songName={hit.name}
-                    artistName={hit.artistName}
-                    trackIndex={index}
-                    showLikeButton={props.showLikeButton}
+                    key={hit.id}
                     onClick={() => handleClick(hit, index)}
+                    image={hit.photoUrl}           // Image URL of the song/album
+                    title={hit.name}               // Song name
+                    teamName={hit.artistName}       // Artist name
+                    deleteOrLike={props.showLikeButton}  // Show like button if true
+                    id={hit.id}                    // Track ID
+                    isPlaying={false}              // You can manage play state with your logic
+                    index={index}                  // Index of the song in the list
+                    menuOpen={false}               // Manage menu open state if needed
                 />
             ))}
         </div>
