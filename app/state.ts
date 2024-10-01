@@ -1,85 +1,111 @@
-import exp from 'constants';
 import { atom } from 'recoil';
-import { musicSrc } from './interfaces/test';
+import { Musicsrc } from './interfaces/test';
 
-export type Track = {
-  artist: string;
-  id: number;
-  name: string;
-  artistName: string;
-  photo: {
-    url: string;
-  };
-  url: string;
-}
-
-export const playlistState = atom<Track[]>({
-  key: 'playlistState',
-  default: [],
+export const isPlayingState = atom({
+    key: 'isPlaying',
+    default: false,
 });
 
-
-
-export const currentTrackIndexState = atom<number>({
-  key: 'currentTrackIndexState',
-  default: 0,
+export const mutedState = atom({
+    key: 'muted',
+    default: false,
 });
 
-export const volumeState = atom<number>({
-  key: 'volumeState',
-  default: 50,
+export const searchTermState = atom({
+    key: 'searchterm',
+    default: '',
 });
 
-export const isPlayingState = atom<boolean>({
-  key: 'isPlayingState',
-  default: false,
+export const volumeState = atom({
+    key: 'volume',
+    default: 50,
 });
 
-export const isUpState = atom<boolean>({
-  key: 'isUpState',
-  default: false
-})
-
-export const globalMusicSrc = atom<musicSrc[]>({
-  key: 'globalSrc',
-  default: []
-})
-export const isShufflingState = atom<boolean>({
-  key: 'isShufflingState',
-  default: false,
+export const tabletMenuState = atom({
+    key: 'tabletMenu',
+    default: false,
 });
 
-export const currentTimeState = atom<number>({
-  key: 'currentTimeState',
-  default: 0,
+export const shuffleState = atom({
+    key: 'shuffle',
+    default: false,
 });
 
-export const isFullscreenState = atom<boolean>({
-  key: 'isFullscreenState',
-  default: false,
+export const currentTimeState = atom({
+    key: 'currentTime',
+    default: 0,
 });
 
-export const tabletFullscreenState = atom<boolean>({
-  key: 'tabletFullscreenState',
-  default: false,
+export const audioDurrationState = atom({
+    key: 'audioDurration',
+    default: 0,
 });
 
-export const isMutedState = atom<boolean>({
-  key: 'isMutedState',
-  default: false,
+export const tabletFullScrenState = atom({
+    key: 'tabletFullScreenState',
+    default: false,
 });
 
-export const globalMusicState = atom<number>({
-  key: 'globalmusic',
-  default: 0
+export const fullScreenState = atom({
+    key: 'fullscreen',
+    default: false,
 });
 
-export const shuffleState = atom<boolean>({
-  key: 'shuffle',
-  default: false
-})
+export const logOutState = atom({
+    key: 'logout',
+    default: false,
+});
 
-export const clickState = atom<boolean>({
-  key: 'click',
-  default: false
-})
+export const musicGlobalState = atom<Musicsrc[]>({
+    key: 'musicGlobalState',
+    default: [],
+});
+
+export const indexState = atom({
+    key: 'index',
+    default: 0,
+});
+
+export const musicId = atom({
+    key: 'musicId',
+    default: 0,
+});
+
+export const shouldAddTimeState = atom({
+    key: 'shouldAddTime',
+    default: false,
+});
+
+export const shouldRewindState = atom({
+    key: 'shouldRewindState',
+    default: false,
+});
+
+export const globalImageState = atom<string[]>({
+    key: 'globalImage',
+    default: [],
+});
+
+export const musicNameState = atom<string[]>({
+    key: 'musicName',
+    default: [],
+});
+export const authorNameState = atom<string[]>({
+    key: 'authorName',
+    default: [],
+});
+
+export const showNavMobileState = atom({
+    key: 'showNavMobileState',
+    default: true,
+});
+
+export const musicPhotoState = atom({
+    key: 'musicphoto',
+    default: '',
+});
+
+export const clickState = atom({
+    key: 'click',
+    default: false,
+});

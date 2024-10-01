@@ -1,0 +1,30 @@
+.musicSwitch {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.playPaus {
+    display: flex;
+}
+
+.play {
+    cursor: pointer;
+}
+
+.pause {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 599px) {
+    .musicSwitch {
+        gap: 8px;
+    }
+}
+@media screen and (min-width: 600px) and (max-width: 1023px) {
+    .musicSwitch {
+        gap: 32px;
+    }
+}

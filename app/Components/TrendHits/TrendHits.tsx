@@ -1,10 +1,10 @@
 'use client'
 import React, { useEffect, useState } from 'react';
 import styles from "./TrendHits.module.scss";
-import MusicCard from '../MusicCard/MusicCard';
 import { useRecoilState } from 'recoil';
-import { globalMusicState } from '@/app/state';
 import axios from 'axios';
+import { musicId } from '@/app/state';
+import MusicCard from '../MusicCard/MusicCard';
 
 type Props = {
     limit?: number;
@@ -20,7 +20,7 @@ interface tophits {
 }
 
 const TrendHits = (props: Props) => {
-    const [globalId, setGlobalId] = useRecoilState(globalMusicState);
+    const [globalId, setGlobalId] = useRecoilState(musicId);
     const [topHits, setTopHits] = useState<tophits[]>([]);
     const [error, setError] = useState<string | null>(null);
 

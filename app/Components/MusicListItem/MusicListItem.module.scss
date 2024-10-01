@@ -1,0 +1,163 @@
+// @import '../../styles/colors.scss';
+
+.itemImageWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 54px;
+    height: 56px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    background-repeat: no-repeat;
+}
+
+.songName {
+    max-width: 130px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    font-weight: 600;
+    line-height: 18px;
+}
+
+.artistName {
+    color: rgba(255, 255, 255, 0.64);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+}
+
+.listItem {
+    display: flex;
+    align-items: center;
+    border-radius: 12px;
+    // background-color: $PrimaryBlackTone3;
+    max-width: 246px;
+    width: 100%;
+    max-height: 56px;
+    max-height: 100%;
+    transition: 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+        background: #252525;
+    }
+
+    &:hover .itemHoverPhoto {
+        opacity: 1;
+    }
+}
+
+.none {
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.itemHoverPhoto {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.itemImage {
+    display: block;
+}
+
+.section {
+    width: 100%;
+    padding: 8px 12px 8px 8px;
+}
+.image {
+    width: 56px;
+    height: 54px;
+}
+
+.songDuration {
+    color: rgba(255, 255, 255, 0.64);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.sectionCenter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media screen and (min-width: 600px) and (max-width: 1024px) {
+    .listItem {
+        max-height: 56px;
+        max-width: 736px;
+        width: 100%;
+        transition: 0.3s ease;
+    }
+
+    .itemImageWrapper {
+        position: relative;
+    }
+
+    .itemImage {
+        display: block;
+    }
+
+    .section {
+        width: 100%;
+    }
+
+    .sectionCenter {
+        display: flex;
+        justify-content: space-between;
+    }
+    .itemHoverPhoto {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 599px) {
+    .listItem {
+        max-width: 599px;
+        max-height: 56px;
+        width: 100%;
+        transition: 0.3s ease;
+    }
+
+    .section {
+        width: 100%;
+    }
+
+    .sectionCenter {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .itemImageWrapper {
+        position: relative;
+    }
+
+    .itemImage {
+        display: block;
+    }
+    .itemHoverPhoto {
+        display: none;
+    }
+}

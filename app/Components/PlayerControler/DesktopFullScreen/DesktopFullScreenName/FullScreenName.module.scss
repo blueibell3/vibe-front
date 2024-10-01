@@ -1,0 +1,42 @@
+// @import '../../../../styles/colors.scss';
+
+.imageAndTitle {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    // color: $PrimaryWhite;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    max-width: 230px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.image {
+    width: 230px;
+    height: 136px;
+    cursor: pointer;
+    object-fit: contain;
+}
+
+.fullScreenImage {
+    border-radius: 50%;
+    width: 344px;
+    height: 344px;
+}
+
+.fullScreentitle {
+    // color: $PrimaryWhite;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
