@@ -106,7 +106,7 @@ const ArtistById = () => {
                     title: music.title,
                     file: { url: artistData.file.url }
                 }));
-                
+
                 setArtistMusic(musicData);
 
                 const albumData = artistData.albums.map((album) => ({
@@ -118,7 +118,7 @@ const ArtistById = () => {
                 }));
                 setAlbums(albumData);
 
-        
+
                 if (artistData.file.url) {
                     setAlbumCoverUrl(artistData.file.url);
                 }
@@ -137,16 +137,20 @@ const ArtistById = () => {
 
     return (
         <div className={styles.container}>
-            <div className={styles.pageTitle}>{firstName} {lastName}</div>
+            <div className={styles.headerNames}>
+                <a className={styles.paths} href="/artist">Artists</a>
+                <img src="/arrowp.svg" />
+                <div className={styles.pageTitle}>{firstName} {lastName}</div>
+            </div>
             <div className={styles.pageDescripton}>
                 <img
                     className={styles.img}
                     src={albumCoverUrl || '/default_album_image.svg'}
                 />
-               <div>
-               <span className={styles.pageTitle}>{firstName}</span>
-               <span className={styles.pageTitle}>{lastName}</span>
-               </div>
+                <div>
+                    <span className={styles.pageTitle}>{firstName}</span>
+                    <span className={styles.pageTitle}>{lastName}</span>
+                </div>
                 <span className={styles.descriptonText}>{biography}</span>
             </div>
             <div className={styles.musicCards}>
