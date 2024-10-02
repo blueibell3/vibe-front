@@ -31,8 +31,8 @@ const DesktopMusicSwitch = () => {
                     />
                 )}
             </div>
-            <DesktopRightTwist />
             <RightSwitch />
+            <DesktopRightTwist />
         </div>
     );
 };

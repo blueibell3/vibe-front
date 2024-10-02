@@ -22,7 +22,7 @@ const DesktopFullScreen = () => {
             <div className={styles.backgroundContainer}>
                 <img
                     className={styles.backIcon}
-                    src="/allFolders/PlayerControler/BackButton.svg"
+                    src="/icons/zoomOut.svg"
                     alt="Back"
                     onClick={() => setFullScreen(false)}
                 />
