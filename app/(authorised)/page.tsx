@@ -13,7 +13,7 @@ export default function Home() {
 
     <div className={styles.container}>
       <div className={styles.TrendHitsCard}>
-        <TrendHitsCard pathName={'playlist'} />
+        <TrendHitsCard pathName={'/tophits'} />
       </div>
       <div className={styles.seactionHeader}>
         <SectionHeader title={'Popular Artists'} pathName={'/topartists'} />
