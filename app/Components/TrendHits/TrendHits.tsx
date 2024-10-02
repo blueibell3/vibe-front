@@ -85,7 +85,6 @@ const TrendHits = (props: Props) => {
     }, []);
 
     const trendHits = props.limit ? topHits.slice(0, props.limit) : topHits;
-
     const handleClick = (
         item: {
             image?: string;

@@ -17,6 +17,7 @@ import {
 import { useParams } from 'next/navigation';
 import AlbumCard from '../../AlbumCard/AlbumCard';
 import useToggleMenu from '@/app/helpers/useToggleMenu';
+import Link from 'next/link';
 
 type MusicResponse = {
     firstName: string;
@@ -118,7 +119,6 @@ const ArtistById = () => {
                 setLastName(response.data.lastName);
 
                 const artistData = response.data;
-                
 
                 const musicData = artistData.musics.map((item) => ({
                     id: item.id,
@@ -129,7 +129,6 @@ const ArtistById = () => {
                 }));
                 setArtistMusic(musicData);
                 setTopHits(musicData);
-                
 
                 const albumData = artistData.albums.map((album) => ({
                     id: album.id,
@@ -187,9 +186,9 @@ const ArtistById = () => {
     return (
         <div className={styles.container}>
             <div className={styles.headerNames}>
-                <a className={styles.paths} href="/artist">
+                <Link className={styles.paths} href="/artist">
                     Artists
-                </a>
+                </Link>
                 <img src="/arrowp.svg" />
                 <div className={styles.pageTitle}>
                     {firstName} {lastName}
