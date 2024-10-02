@@ -1,6 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-
-import styles from './MusicCard.module.scss';
 import { BiDotsVerticalRounded } from 'react-icons/bi';
 import { useRecoilState } from 'recoil';
 import {
@@ -12,6 +10,8 @@ import {
 import { searchTermState } from '@/app/state';
 import Bin from '../Bin/Bin';
 import DropDownMenu from '../DropDownMenu/DropDownMenu';
+
+import styles from './MusicCard.module.scss';
 
 interface Props {
     image: string;
@@ -30,7 +30,7 @@ const MusicCard = (props: Props) => {
     const [menuStyles, setMenuStyles] = useState<React.CSSProperties>({
         position: 'absolute',
         top: '0',
-        left: '20px',
+        left: '20px', // Default left for larger screens
     });
     const [globalId] = useRecoilState(musicId);
     const musicCardRef = useRef<HTMLDivElement>(null);
@@ -39,16 +39,45 @@ const MusicCard = (props: Props) => {
     const [isOpen] = useRecoilState(tabletMenuState);
     const [isPlaying] = useRecoilState(isPlayingState);
     const [index] = useRecoilState(indexState);
-    useEffect(() => {
-        if (props.menuOpen && musicCardRef.current) {
-            const rect = musicCardRef.current.getBoundingClientRect();
 
-            if (rect.left >= window.innerWidth - rect.right) {
+    useEffect(() => {
+        // Dynamically check screen size and update menu style accordingly
+        const updateMenuPosition = () => {
+            if (window.matchMedia('(max-width: 768px)').matches) {
+                // For mobile screens
                 setMenuStyles({
                     position: 'absolute',
                     top: '0',
-                    left: '-250px',
+                    left: '-250px', // Mobile size left
                 });
+            } else {
+                // For larger screens
+                setMenuStyles({
+                    position: 'absolute',
+                    top: '0',
+                    left: '20px', // Default left for larger screens
+                });
+            }
+        };
+
+        // Call once on component mount and also when resizing window
+        updateMenuPosition();
+        window.addEventListener('resize', updateMenuPosition);
+
+        // Cleanup event listener on component unmount
+        return () => {
+            window.removeEventListener('resize', updateMenuPosition);
+        };
+    }, []);
+
+    useEffect(() => {
+        if (props.menuOpen && musicCardRef.current) {
+            const rect = musicCardRef.current.getBoundingClientRect();
+            if (rect.left >= window.innerWidth - rect.right) {
+                setMenuStyles((prevStyles) => ({
+                    ...prevStyles,
+                    left: '-250px', // Ensure proper alignment for small screens
+                }));
             }
         }
     }, [props.menuOpen]);
