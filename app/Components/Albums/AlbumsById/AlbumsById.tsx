@@ -16,6 +16,7 @@ import {
 } from '@/app/state';
 import { useParams } from 'next/navigation';
 import useToggleMenu from '@/app/helpers/useToggleMenu';
+import Link from 'next/link';
 
 type MusicResponse = {
     artistName: string;
@@ -165,9 +166,9 @@ const AlbumsById = () => {
     return (
         <div className={styles.container}>
             <div className={styles.headerNames}>
-                <a className={styles.paths} href="/albums">
+                <Link className={styles.paths} href="/albums">
                     Albums
-                </a>
+                </Link>
                 <img src="/arrowp.svg" alt="arrow" />
                 <div className={styles.pageTitle}>{artistName}</div>
             </div>

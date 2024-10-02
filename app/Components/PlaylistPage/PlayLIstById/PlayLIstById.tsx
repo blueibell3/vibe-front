@@ -6,6 +6,7 @@ import styles from './PlayLIstById.module.scss';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'next/navigation';
+import Link from 'next/link';
 
 const PlayLIstById = () => {
     const [, setGlobalId] = useRecoilState(globalMusicState);
@@ -54,7 +55,7 @@ const PlayLIstById = () => {
         <div className={styles.wrap}>
 
             <div className={styles.headerNames}>
-                <a className={styles.paths} href="/playlist">Playlists</a>
+                <Link className={styles.paths} href="/playlist">Playlists</Link>
                 <img src="/arrowp.svg" />
                 <div className={styles.pageTitle}>{playlistName}</div>
             </div>
