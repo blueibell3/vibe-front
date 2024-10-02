@@ -27,7 +27,7 @@ const RightSwitch = () => {
     return (
         <img
             className={styles.RightSwitch}
-            src="/icons/scrollForward.svg"
+            src="/icons/next.svg"
             alt="Right Twist"
             onClick={handleNextTrack}
         />
