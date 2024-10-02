@@ -36,7 +36,8 @@ const PlayerAndList = () => {
     const [, setAuthorName] = useRecoilState(authorNameState);
     const [musicList, setMusicList] = useState<MusicListItemProps[]>([]);
     const [error, setError] = useState<string | null>(null);
-
+    console.log(musicList,'wodcv');
+    
     useEffect(() => {
         const fetchTopHits = async () => {
             try {

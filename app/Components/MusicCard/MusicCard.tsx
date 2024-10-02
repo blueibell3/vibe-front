@@ -157,11 +157,7 @@ const MusicCard = (props: Props) => {
                         : styles.buttonsContainer
                 }
             >
-                {props.deleteOrLike && (
-                    <div>
-                        <Bin musicId={props.id} />
-                    </div>
-                )}
+                {props.deleteOrLike && <Bin musicId={props.id} />}
                 <div
                     onClick={handleEditClick}
                     className={searchTerm || isOpen ? '' : styles.dots}

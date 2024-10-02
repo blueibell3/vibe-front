@@ -22,9 +22,10 @@ interface TopHitsData {
     id: number;
     name: string;
     artistName: string;
-    photoUrl: string;
-    musicUrl: string;
+    photoUrl: string; // Updated to match the actual data structure
+    musicUrl: string; // Updated to match the actual data structure
 }
+
 const PlayLIstById = () => {
     const [globalId, setGlobalId] = useRecoilState(musicId);
     const [topHits, setTopHits] = useState<TopHitsData[]>([]);
@@ -40,6 +41,7 @@ const PlayLIstById = () => {
     const [error, setError] = useState<string | null>(null);
     const params = useParams();
     const [click] = useRecoilState(clickState);
+    console.log(musicData, 'data');
 
     useEffect(() => {
         const fetchPlaylist = async () => {
@@ -59,7 +61,6 @@ const PlayLIstById = () => {
                         },
                     },
                 );
-
                 if (response.data) {
                     setMusicData(response.data.musics);
                     setPlaylistName(response.data.name);
@@ -72,8 +73,17 @@ const PlayLIstById = () => {
             }
         };
 
+        const formattedHits = musicData.map((item) => ({
+            id: item.id,
+            name: item.name,
+            artistName: item.artistName || 'Unknown Artist',
+            photoUrl: item.photo.url,
+            musicUrl: item.url.url,
+        }));
+
+        setTopHits(formattedHits);
         fetchPlaylist();
-    }, [params.id, click]);
+    }, [params.id, click, musicData]);
 
     const handleClick = (
         item: {
@@ -130,14 +140,14 @@ const PlayLIstById = () => {
                 {error ? (
                     <p>{error}</p>
                 ) : musicData.length > 0 ? (
-                    musicData.map((item, index) => (
+                    topHits.map((item, index) => (
                         <MusicCard
                             key={item.id}
                             onClick={() => handleClick(item, index)}
                             image={item.photoUrl}
                             title={item.name}
                             teamName={item.artistName}
-                            deleteOrLike={false}
+                            deleteOrLike={true}
                             id={item.id}
                             isPlaying={isPlaying && globalId === index}
                             index={index}
