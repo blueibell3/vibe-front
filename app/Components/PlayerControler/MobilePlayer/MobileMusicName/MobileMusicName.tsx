@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { useRecoilState } from 'recoil';
 import styles from './MobileMusicName.module.scss';
 import Name from './Name/Name';
@@ -17,11 +17,7 @@ const MobileMusicName = () => {
         >
             <img
                 className={styles.image}
-                src={
-                    image[index]
-                        ? image[index]
-                        : '/allFolders/images/playerDefault.png'
-                }
+                src={image[index] ? image[index] : '/whiteLogo.png'}
                 alt="photo"
             />
             <Name />

@@ -16,7 +16,6 @@ interface Props {
 
 const DropDownMenu = (props: Props) => {
     const [playlists, setPlaylist] = useState<Playlists[]>([]);
-    const [, setId] = useState<number>();
     console.log(playlists);
 
     useEffect(() => {
@@ -39,18 +38,6 @@ const DropDownMenu = (props: Props) => {
                 console.error('Error fetching playlists:', error);
             });
     }, []);
-
-    useEffect(() => {
-        axios
-            .get('/musics')
-            .then((res) => {
-                setId(res.data.id);
-            })
-            .catch((error) => {
-                console.error('Error fetching music id:', error);
-            });
-    }, []);
-
     return (
         <div className={styles.container}>
             <Link className={styles.create} href="/playlist">

@@ -1,20 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
-import { useParams } from 'next/navigation';
 
 import styles from './MusicCard.module.scss';
 import { BiDotsVerticalRounded } from 'react-icons/bi';
 import { useRecoilState } from 'recoil';
 import {
-    clickState,
     indexState,
     isPlayingState,
     musicId,
     tabletMenuState,
 } from '@/app/state';
 import { searchTermState } from '@/app/state';
-import axios from 'axios';
 import Bin from '../Bin/Bin';
-import LikeButton from '../LikeButton/LikeButton';
 import DropDownMenu from '../DropDownMenu/DropDownMenu';
 
 interface Props {
