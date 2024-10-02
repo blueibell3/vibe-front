@@ -1,5 +1,14 @@
-'use client'
-import { clickState, globalMusicState } from '@/app/state';
+'use client';
+import {
+    authorNameState,
+    clickState,
+    globalImageState,
+    indexState,
+    isPlayingState,
+    musicGlobalState,
+    musicId,
+    musicNameState,
+} from '@/app/state';
 import { useRecoilState } from 'recoil';
 import MusicCard from '../../MusicCard/MusicCard';
 import styles from './PlayLIstById.module.scss';
@@ -7,30 +16,49 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
+import useToggleMenu from '@/app/helpers/useToggleMenu';
 
+interface TopHitsData {
+    id: number;
+    name: string;
+    artistName: string;
+    photoUrl: string;
+    musicUrl: string;
+}
 const PlayLIstById = () => {
-    const [, setGlobalId] = useRecoilState(globalMusicState);
+    const [globalId, setGlobalId] = useRecoilState(musicId);
+    const [topHits, setTopHits] = useState<TopHitsData[]>([]);
+    const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
+    const [, setGlobalsrc] = useRecoilState(musicGlobalState);
+    const [, setActiveIdx] = useRecoilState(indexState);
+    const [, setImage] = useRecoilState(globalImageState);
+    const [, setMusicName] = useRecoilState(musicNameState);
+    const [, setAuthorName] = useRecoilState(authorNameState);
+    const { currentCardId, toggleMenu } = useToggleMenu();
     const [musicData, setMusicData] = useState<any[]>([]);
     const [playlistName, setPlaylistName] = useState<string>('');
     const [error, setError] = useState<string | null>(null);
     const params = useParams();
-    const [click] = useRecoilState(clickState)
+    const [click] = useRecoilState(clickState);
 
     useEffect(() => {
         const fetchPlaylist = async () => {
             try {
                 const token = document.cookie
                     .split('; ')
-                    .find(row => row.startsWith('token='))
+                    .find((row) => row.startsWith('token='))
                     ?.split('=')[1];
                 if (!token) throw new Error('No token found');
 
-                const response = await axios.get(`https://vibetunes-backend.onrender.com/playlist/${params.id}`, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${token}`,
+                const response = await axios.get(
+                    `https://vibetunes-backend.onrender.com/playlist/${params.id}`,
+                    {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            Authorization: `Bearer ${token}`,
+                        },
                     },
-                });
+                );
 
                 if (response.data) {
                     setMusicData(response.data.musics);
@@ -47,45 +75,78 @@ const PlayLIstById = () => {
         fetchPlaylist();
     }, [params.id, click]);
 
-    const handleCardClick = (id: number) => {
-        setGlobalId(id);
+    const handleClick = (
+        item: {
+            image?: string;
+            title?: string;
+            temeName?: string;
+            id: number;
+            src?: string;
+        },
+        index: number,
+    ) => {
+        if (globalId === item.id) {
+            setIsPlaying(!isPlaying);
+        } else {
+            const imageSrc = topHits.map((item) => item.photoUrl);
+            const allSrc = topHits.map((item) => ({
+                audioUrl: item.musicUrl,
+                id: item.id,
+            }));
+
+            const musicName = topHits.map((item) => item.name);
+            const title = topHits.map((item) => item.artistName);
+
+            setIsPlaying(true);
+            setGlobalId(item.id);
+            setGlobalsrc(allSrc);
+            setActiveIdx(index);
+            setImage(imageSrc);
+            setMusicName(musicName);
+            setAuthorName(title);
+        }
     };
 
     return (
         <div className={styles.wrap}>
-
             <div className={styles.headerNames}>
-                <Link className={styles.paths} href="/playlist">Playlists</Link>
+                <Link className={styles.paths} href="/playlist">
+                    Playlists
+                </Link>
                 <img src="/arrowp.svg" />
                 <div className={styles.pageTitle}>{playlistName}</div>
             </div>
 
             <div className={styles.everyDay}>
                 {musicData.length > 0 && (
-                    <img src={musicData[0]?.photo?.url || '/whiteLogo.png' } alt={playlistName} />
+                    <img
+                        src={musicData[0]?.photo?.url || '/whiteLogo.png'}
+                        alt={playlistName}
+                    />
                 )}
                 <span>{playlistName}</span>
             </div>
             <div className={styles.musicData}>
                 {error ? (
                     <p>{error}</p>
+                ) : musicData.length > 0 ? (
+                    musicData.map((item, index) => (
+                        <MusicCard
+                            key={item.id}
+                            onClick={() => handleClick(item, index)}
+                            image={item.photoUrl}
+                            title={item.name}
+                            teamName={item.artistName}
+                            deleteOrLike={false}
+                            id={item.id}
+                            isPlaying={isPlaying && globalId === index}
+                            index={index}
+                            menuOpen={currentCardId === item.id}
+                            toggleMenu={() => toggleMenu(item.id)}
+                        />
+                    ))
                 ) : (
-                    musicData.length > 0 ? (
-                        musicData.map((music: any) => (
-                            <MusicCard
-                                key={music.id}
-                                imageUrl={music.photo?.url || '/whiteLogo.png'}
-                                songName={music.name}
-                                artistName={music.artistName}
-                                trackIndex={music.id}
-                                showLikeButton={false}
-                                onClick={() => handleCardClick(music.id)}
-                                id={music.id}
-                            />
-                        ))
-                    ) : (
-                        <p>No music available</p>
-                    )
+                    <p>No music available</p>
                 )}
             </div>
         </div>
