@@ -13,7 +13,7 @@ const TabletMusicName = () => {
                 src={
                     image[index]
                         ? image[index]
-                        : '/allFolders/images/playerDefault.png'
+                        : '/whiteLogo.png'
                 }
                 alt="photo"
             />
