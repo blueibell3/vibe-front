@@ -1,12 +1,22 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import MusicCard from "../../MusicCard/MusicCard";
+import MusicCard from '../../MusicCard/MusicCard';
 import styles from './ArtistById.module.scss';
 import { useRecoilState } from 'recoil';
-import { clickState, globalMusicState } from '@/app/state';
+import {
+    authorNameState,
+    clickState,
+    globalImageState,
+    indexState,
+    isPlayingState,
+    musicGlobalState,
+    musicId,
+    musicNameState,
+} from '@/app/state';
 import { useParams } from 'next/navigation';
 import AlbumCard from '../../AlbumCard/AlbumCard';
+import useToggleMenu from '@/app/helpers/useToggleMenu';
 
 type MusicResponse = {
     firstName: string;
@@ -14,6 +24,7 @@ type MusicResponse = {
     artistName: string;
     biography: string;
     musics: {
+        url: any;
         id: number;
         name: string;
         artistName: string;
@@ -41,13 +52,8 @@ type MusicData = {
     id: number;
     name: string;
     artistName: string;
-    photo: string;
-    mp3: string;
-    coverUrl: string;
-    title: string;
-    file: {
-        url: string;
-    };
+    photoUrl: string;
+    musicUrl: string;
 };
 
 type AlbumData = {
@@ -57,57 +63,73 @@ type AlbumData = {
     artistName: string;
     coverUrl: string;
 };
+interface TopHitsData {
+    id: number;
+    name: string;
+    artistName: string;
+    photoUrl: string;
+    musicUrl: string;
+}
 
 const ArtistById = () => {
-    const [globalId, setGlobalId] = useRecoilState(globalMusicState);
+    const [globalId, setGlobalId] = useRecoilState(musicId);
+    const [topHits, setTopHits] = useState<TopHitsData[]>([]);
+    const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
+    const [, setGlobalsrc] = useRecoilState(musicGlobalState);
+    const [, setActiveIdx] = useRecoilState(indexState);
+    const [, setImage] = useRecoilState(globalImageState);
+    const [, setMusicName] = useRecoilState(musicNameState);
+    const [, setAuthorName] = useRecoilState(authorNameState);
+    const { currentCardId, toggleMenu } = useToggleMenu();
     const [artistMusic, setArtistMusic] = useState<MusicData[]>([]);
     const [albums, setAlbums] = useState<AlbumData[]>([]);
     const [error, setError] = useState<string | null>(null);
     const [click] = useRecoilState(clickState);
     const params = useParams();
-    const [artistName, setArtistName] = useState<string | undefined>();
     const [albumCoverUrl, setAlbumCoverUrl] = useState<string | null>(null);
     const [biography, setBiography] = useState<string | undefined>();
     const [firstName, setFirstName] = useState<string | undefined>();
     const [lastName, setLastName] = useState<string | undefined>();
-
 
     useEffect(() => {
         const fetchAlbumMusic = async () => {
             try {
                 const token = document.cookie
                     .split('; ')
-                    .find((row) => row.startsWith('token='))?.split('=')[1];
+                    .find((row) => row.startsWith('token='))
+                    ?.split('=')[1];
 
                 if (!token) {
                     throw new Error('No token found');
                 }
 
-                const response = await axios.get<MusicResponse>(`https://vibetunes-backend.onrender.com/author/${params.id}`, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${token}`,
+                const response = await axios.get<MusicResponse>(
+                    `https://vibetunes-backend.onrender.com/author/${params.id}`,
+                    {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            Authorization: `Bearer ${token}`,
+                        },
                     },
-                });
+                );
 
                 setFirstName(response.data.firstName);
                 setBiography(response.data.biography);
-                setLastName(response.data.lastName)
+                setLastName(response.data.lastName);
 
                 const artistData = response.data;
+                
 
-                const musicData = artistData.musics.map((music) => ({
-                    id: music.id,
-                    name: music.name,
-                    artistName: music.artistName,
-                    photo: music.photo?.url || '/default_music_image.svg',
-                    mp3: artistData.file.url,
-                    coverUrl: artistData.file.url,
-                    title: music.title,
-                    file: { url: artistData.file.url }
+                const musicData = artistData.musics.map((item) => ({
+                    id: item.id,
+                    name: item.name,
+                    artistName: item.artistName || 'Unknown Artist',
+                    photoUrl: item.photo.url,
+                    musicUrl: item.url.url,
                 }));
-
                 setArtistMusic(musicData);
+                setTopHits(musicData);
+                
 
                 const albumData = artistData.albums.map((album) => ({
                     id: album.id,
@@ -117,7 +139,6 @@ const ArtistById = () => {
                     coverUrl: album.file?.url || '/default_album_image.svg',
                 }));
                 setAlbums(albumData);
-
 
                 if (artistData.file.url) {
                     setAlbumCoverUrl(artistData.file.url);
@@ -131,16 +152,48 @@ const ArtistById = () => {
         fetchAlbumMusic();
     }, [click, params.id]);
 
-    const handleCardClick = (id: number) => {
-        setGlobalId(id);
+    const handleClick = (
+        item: {
+            image?: string;
+            title?: string;
+            temeName?: string;
+            id: number;
+            src?: string;
+        },
+        index: number,
+    ) => {
+        if (globalId === item.id) {
+            setIsPlaying(!isPlaying);
+        } else {
+            const imageSrc = topHits.map((item) => item.photoUrl);
+            const allSrc = topHits.map((item) => ({
+                audioUrl: item.musicUrl,
+                id: item.id,
+            }));
+
+            const musicName = topHits.map((item) => item.name);
+            const title = topHits.map((item) => item.artistName);
+
+            setIsPlaying(true);
+            setGlobalId(item.id);
+            setGlobalsrc(allSrc);
+            setActiveIdx(index);
+            setImage(imageSrc);
+            setMusicName(musicName);
+            setAuthorName(title);
+        }
     };
 
     return (
         <div className={styles.container}>
             <div className={styles.headerNames}>
-                <a className={styles.paths} href="/artist">Artists</a>
+                <a className={styles.paths} href="/artist">
+                    Artists
+                </a>
                 <img src="/arrowp.svg" />
-                <div className={styles.pageTitle}>{firstName} {lastName}</div>
+                <div className={styles.pageTitle}>
+                    {firstName} {lastName}
+                </div>
             </div>
             <div className={styles.pageDescripton}>
                 <img
@@ -154,16 +207,19 @@ const ArtistById = () => {
                 <span className={styles.descriptonText}>{biography}</span>
             </div>
             <div className={styles.musicCards}>
-                {artistMusic.map((music) => (
+                {artistMusic.map((item, index) => (
                     <MusicCard
-                        imageUrl={music.photo}
-                        songName={music.name}
-                        artistName={music.artistName}
-                        trackIndex={music.id}
-                        showLikeButton={true}
-                        key={music.id}
-                        onClick={() => handleCardClick(music.id)}
-                        id={music.id}
+                        key={item.id}
+                        onClick={() => handleClick(item, index)}
+                        image={item.photoUrl}
+                        title={item.name}
+                        teamName={item.artistName}
+                        deleteOrLike={false}
+                        id={item.id}
+                        isPlaying={isPlaying && globalId === index}
+                        index={index}
+                        menuOpen={currentCardId === item.id}
+                        toggleMenu={() => toggleMenu(item.id)}
                     />
                 ))}
             </div>

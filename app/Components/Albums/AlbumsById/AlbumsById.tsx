@@ -20,6 +20,7 @@ import useToggleMenu from '@/app/helpers/useToggleMenu';
 type MusicResponse = {
     artistName: string;
     musics: {
+        url: any;
         id: number;
         name: string;
         artistName: string;
@@ -92,6 +93,7 @@ const AlbumsById = () => {
                 );
 
                 const albumData = response.data;
+                console.log(albumData, 'albu');
 
                 setArtistName(albumData.artistName);
                 setTitle(albumData.title);
@@ -101,10 +103,8 @@ const AlbumsById = () => {
                     name: music.name,
                     artistName: music.artistName,
                     photo: music.photo?.url || '/default_music_image.svg',
-                    musicUrl: albumData.file.url,
+                    musicUrl: music.url.url,
                 }));
-                console.log(musicData, 'musicdata');
-
                 setAlbomsmusic(musicData);
 
                 const topHitsData = musicData.map((music) => ({
