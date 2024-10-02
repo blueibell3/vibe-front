@@ -31,8 +31,6 @@ interface Props {
 }
 
 const MusicCard = (props: Props) => {
-    const [showModal, setShowModal] = useState(false);
-    const [, setIsDeleted] = useState(false);
     const [menuStyles, setMenuStyles] = useState<React.CSSProperties>({
         position: 'absolute',
         top: '0',
@@ -42,9 +40,7 @@ const MusicCard = (props: Props) => {
     const musicCardRef = useRef<HTMLDivElement>(null);
     const menuRef = useRef<HTMLDivElement>(null);
     const [searchTerm] = useRecoilState(searchTermState);
-    const [click, setClick] = useRecoilState(clickState);
     const [isOpen] = useRecoilState(tabletMenuState);
-    const params = useParams();
     const [isPlaying] = useRecoilState(isPlayingState);
     const [index] = useRecoilState(indexState);
     useEffect(() => {
@@ -82,36 +78,12 @@ const MusicCard = (props: Props) => {
         };
     }, [props.menuOpen, props.toggleMenu]);
 
-    const data = {
-        musicId: props.id,
-        playlistId: Number(params.id),
-    };
-
-    const handleDelete = async () => {
-        try {
-            await axios.delete('/playlists/musicId', {
-                data,
-            });
-            setClick(!click);
-            setIsDeleted(true);
-        } catch (error) {
-            alert(error);
-        } finally {
-            setShowModal(false);
-        }
-    };
-
     const handleEditClick = (event: React.MouseEvent) => {
         event.stopPropagation();
         event.preventDefault();
         if (props.toggleMenu) {
             props.toggleMenu();
         }
-    };
-    const deleteClick = (event: React.MouseEvent) => {
-        event.stopPropagation();
-        event.preventDefault();
-        setShowModal(!showModal);
     };
 
     return (
@@ -169,10 +141,6 @@ const MusicCard = (props: Props) => {
                             style={menuStyles}
                             className={styles.menu}
                         >
-                            {/* <LikeButton
-                                id={props.id}
-                                trackIndex={props.index}
-                            /> */}
                             <DropDownMenu id={props.id} />
                         </div>
                     )}

@@ -15,12 +15,12 @@ import {
 import axios from 'axios';
 import MusicListItem from '@/app/Components/MusicListItem/MusicListItem';
 
-interface musicListitem {
+interface MusicListItemType {
+    id: number;
     title: string;
     coverImgUrl: string;
     audioUrl: string;
     artistName: string;
-    id: number;
     songDuration: string;
 }
 
@@ -32,24 +32,53 @@ const MusicList = () => {
     const [, setImage] = useRecoilState(globalImageState);
     const [, setArtist] = useRecoilState(musicNameState);
     const [, setTitle] = useRecoilState(authorNameState);
-    const [musicList, setMusicList] = useState<musicListitem[]>([]);
+    const [musicList, setMusicList] = useState<MusicListItemType[]>([]);
+    const [musicData, setMusicData] = useState<MusicListItemType[]>([]);
+    const [musicUp, setMusicUp] = useState(false);
+
     useEffect(() => {
-        axios
-            .get('/musics/shuffle')
-            .then((res) => {
-                setMusicList(res.data);
-            })
-            .catch((err) => {
-                alert(err);
-            });
+        const fetchMusicList = async () => {
+            try {
+                const token = document.cookie
+                    .split('; ')
+                    .find((row) => row.startsWith('token='))
+                    ?.split('=')[1];
+                const response = await axios.get(
+                    'https://vibetunes-backend.onrender.com/music',
+                    {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            Authorization: `Bearer ${token}`,
+                        },
+                    },
+                );
+
+                const formattedHits = response.data.map((hit: any) => ({
+                    id: hit.id,
+                    title: hit.name, // Assuming the API returns name for title
+                    artistName: hit.artistName || 'Unknown Artist',
+                    coverImgUrl: hit.photo?.url || '/default-cover.jpg', // Default fallback image
+                    audioUrl: hit.url?.url || '', // Audio URL
+                    songDuration: hit.duration || '0:00', // Duration fallback
+                }));
+
+                setMusicList(formattedHits);
+                setMusicData(formattedHits); // Set both musicList and musicData
+            } catch (error) {
+                console.error('Error fetching music data:', error);
+                alert('Error fetching music data');
+            }
+        };
+
+        fetchMusicList();
     }, []);
+
     const handleClick = (
         item: {
-            image?: string;
-            title?: string;
-            temeName?: string;
             id: number;
-            src?: string;
+            coverImgUrl?: string;
+            title?: string;
+            artistName?: string;
         },
         index: number,
     ) => {
@@ -63,19 +92,17 @@ const MusicList = () => {
             }));
 
             const musicName = musicList.map((item) => item.title);
-            const title = musicList.map((item) => item.title);
+            const artistName = musicList.map((item) => item.artistName);
 
             setIsPlaying(true);
             setGlobalId(item.id);
             setGlobalsrc(allSrc);
             setActiveIdx(index);
             setImage(imageSrc);
+            setArtist(artistName);
             setTitle(musicName);
-            setArtist(title);
         }
     };
-
-    const [musicUp, setMusicUp] = useState(false);
 
     const musicUpFunc = () => {
         setMusicUp(!musicUp);
@@ -96,30 +123,23 @@ const MusicList = () => {
                     onClick={musicUpFunc}
                 >
                     {musicUp ? (
-                        <img
-                            src="/allFolders/PlayerControler/MusicDown.svg"
-                            alt="MusicDown"
-                        />
+                        <img src="/icons/downArrow.svg" alt="MusicDown" />
                     ) : (
-                        <img
-                            src="/allFolders/PlayerControler/MusicUp.svg"
-                            alt="MusicUp"
-                        />
+                        <img src="/icons/topArrow.svg" alt="MusicUp" />
                     )}
                 </div>
                 <div className={styles.nameAndMusic}>
                     <p className={styles.nextContainer}>For You</p>
                     <div className={styles.musicListItem}>
-                        {musicList
+                        {musicData
                             .slice(0, musicUp ? 6 : 0)
                             .map((item, index) => (
                                 <MusicListItem
-                                    id={index}
+                                    id={item.id}
                                     key={item.id}
                                     image={item.coverImgUrl}
                                     songTitle={item.title}
                                     artistName={item.artistName}
-                                    songDuration={item.songDuration}
                                     onClick={() => {
                                         handleClick(item, index);
                                     }}

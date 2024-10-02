@@ -126,15 +126,15 @@ const PlayerHandler = () => {
         }
     }, [volume, muted]);
 
-    useEffect(() => {
-        if (musicSrc[index]?.id) {
-            axios
-                .post('/listen-records', { musicId: musicSrc[index].id })
-                .catch((error) =>
-                    console.error('Failed to post listen record:', error),
-                );
-        }
-    }, [index, globalId, musicSrc]);
+    // useEffect(() => {
+    //     if (musicSrc[index]?.id) {
+    //         axios
+    //             .post('/listen-records', { musicId: musicSrc[index].id })
+    //             .catch((error) =>
+    //                 console.error('Failed to post listen record:', error),
+    //             );
+    //     }
+    // }, [index, globalId, musicSrc]);
 
     const playRandomTrack = () => {
         if (musicSrc.length > 0) {

@@ -39,7 +39,6 @@ const TopHits = (props: Props) => {
     const [, setAuthorName] = useRecoilState(authorNameState);
     const { currentCardId, toggleMenu } = useToggleMenu();
     const [error, setError] = useState<string | null>(null);
-    console.log(topHits, 'tophits');
 
     useEffect(() => {
         const fetchTopHits = async () => {
