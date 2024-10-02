@@ -18,18 +18,18 @@ const TrendHitsCard = (props: Props) => {
         {
             id: 1,
             backgroundImage: `url(/background/sabrina.svg)`,
-            title: 'TREND HITS',
+            title: 'WEEKLY HITS',
         },
         {
             id: 2,
             backgroundImage: `url(/background/second.svg)`,
-            title: ' MOST LIKED',
+            title: 'WEEKLY HITS',
 
         },
         {
             id: 3,
             backgroundImage: `url(/background/third.svg)`,
-            title: 'NEW ARRIVALS'
+            title: 'WEEKLY HITS'
         },
     ];
 
