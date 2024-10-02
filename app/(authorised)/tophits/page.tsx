@@ -7,8 +7,10 @@ const tophits = () => {
             <div className={styles.topHits}>
                 <h3>Top hits</h3>
             </div>
-        
-            <TopHits showLikeButton={true} />
+            <div className={styles.top}>
+                <TopHits showLikeButton={true} />
+            </div>
+
 
         </div>
     )
