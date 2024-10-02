@@ -22,8 +22,8 @@ interface TopHitsData {
     id: number;
     name: string;
     artistName: string;
-    photoUrl: string; // Updated to match the actual data structure
-    musicUrl: string; // Updated to match the actual data structure
+    photoUrl: string; 
+    musicUrl: string; 
 }
 
 const PlayLIstById = () => {
