@@ -29,8 +29,8 @@ type Chart = {
     createdAt: string;
     updatedAt: string;
     deletedAt: string | null;
-    listenCounter: ChartListenCounter[];
-    file: ChartFile; // Updated to use the correct field for the image
+    // listenCounter: ChartListenCounter[];
+    file: ChartFile; 
 };
 
 type Props = {
