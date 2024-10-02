@@ -19,7 +19,7 @@
 
 .image {
     border-radius: 12px;
-    max-width: 180px;
+    max-width: 200px;
     width: 100%;
     align-self: stretch;
 
@@ -46,18 +46,26 @@
     flex-wrap: wrap;
     text-overflow: ellipsis;
     overflow: hidden;
+    max-width: 70%;
+
 }
 
 .songName {
     color: var(--text-color, #FFF);
     font-size: 16px;
     font-weight: 500;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 70%;
+
 }
 
 .year {
     color: rgba(255, 255, 255, 0.64);
     font-size: 14px;
     font-weight: 500;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 @media screen and (max-width:1023px) and (min-width:0px) {
@@ -66,9 +74,9 @@
     }
 }
 
-@media screen and (max-width:768px){
+@media screen and (max-width:768px) {
     .image {
         width: 200px;
     }
-    
+
 }
