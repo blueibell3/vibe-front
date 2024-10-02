@@ -7,7 +7,7 @@ const DesktopRightTwist = () => {
     return (
         <img
             className={styles.RightTwist}
-            src="/icons/next.svg"
+            src="/icons/scrollForward.svg"
             alt="Right Twist"
             onClick={() => setShouldAddTime(true)}
         />
