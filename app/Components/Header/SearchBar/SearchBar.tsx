@@ -12,6 +12,7 @@ type Option = {
     type: 'albums' | 'author' | 'music';
     link?: string;
     musicSrc?: string;
+    artistName?: string;
 };
 
 interface Album {
@@ -31,12 +32,14 @@ interface Author {
     file: {
         url: string;
     };
+    biography: string;
 }
 
 interface Music {
+    [x: string]: any;
     id: number;
     name: string;
-    audioSrc?: string;
+    musicSrc?: string;
     artistName: string;
     photo: {
         url: string;
@@ -55,6 +58,8 @@ const SearchBar = () => {
 
     const fetchOptions = useCallback(async () => {
         if (query) {
+            console.log(`Searching for: ${query}`);
+
             try {
                 const token = document.cookie
                     .split('; ')
@@ -65,50 +70,60 @@ const SearchBar = () => {
                     throw new Error('No token found');
                 }
 
-                const response = await axios.get<ApiResponse>(`https://vibetunes-backend.onrender.com/search?searchField=${query}`, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${token}`,
+                const response = await axios.get<ApiResponse>(
+                    `https://vibetunes-backend.onrender.com/search?searchField=${query}`,
+                    {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            Authorization: `Bearer ${token}`,
+                        },
                     },
-                });
+                );
 
-                const { album: albumData, author: authorData, music: musicData } = response.data;
+                const authors = response.data.author;
+                console.log(authors, 'author');
 
-                if (!albumData || !authorData || !musicData) {
-                    console.error('Data missing in response:', response.data);
-                    setFilteredOptions([]);
-                    return;
-                }
+                const albumOptions: Option[] = response.data.album.map(
+                    (album: Album) => ({
+                        id: album.id,
+                        text: album.title,
+                        img: album.file.url,
+                        type: 'albums',
+                        link: `/albums/${album.id}`,
+                        artistName: album.artistName,
+                    }),
+                );
 
-                const albumOptions = albumData.map((album: Album) => ({
-                    id: album.id,
-                    text:  album.title,
-                    file: album.file.url,
-                    type: 'albums' as const,
-                    link: `/albums/${album.id}`,
-                    artistName: album.artistName,
-                }));
+                const authorOptions: Option[] = authors.map(
+                    (author: Author) => ({
+                        id: author.id,
+                        text: `${author.firstName} ${author.lastName}`,
+                        img: author.file.url,
+                        type: 'author',
+                        link: `/artist/${author.id}`,
+                    }),
+                );
 
-                const authorOptions = authorData.map((author: Author) => ({
-                    id: author.id,
-                    text: `${author.firstName} ${author.lastName}`,
-                    file: author.file.url,
-                    type: 'author' as const,
-                    link: `/artist/${author.id}`,
-                }));
+                const musicOptions: Option[] = response.data.music.map(
+                    (musicItem: Music) => ({
+                        id: musicItem.id,
+                        text: musicItem.name,
+                        img: musicItem.photo.url,
+                        type: 'music',
+                        musicSrc: musicItem.url.url,
+                        artistName: musicItem.artistName,
+                    }),
+                );
 
-                const musicOptions = musicData.map((music: Music) => ({
-                    id: music.id,
-                    text: music.name,
-                    photo: music.photo.url,
-                    type: 'music' as const,
-                    musicSrc: music.audioSrc,
-                    artistName: music.artistName,
-                }));
+                console.log(musicOptions, 'musicOptions');
 
-                const allOptions = [...albumOptions, ...authorOptions, ...musicOptions];
+                const allOptions: Option[] = [
+                    ...albumOptions,
+                    ...authorOptions,
+                    ...musicOptions,
+                ];
+
                 setFilteredOptions(allOptions);
-
             } catch (error) {
                 console.error('Error fetching search options:', error);
                 setFilteredOptions([]);
@@ -122,9 +137,10 @@ const SearchBar = () => {
         fetchOptions();
     }, [query, fetchOptions]);
 
-    const handleOptionClick = () => {
+    const handleOptionClick = (text: string) => {
         setQuery('');
-        setFilteredOptions([]); 
+        setFilteredOptions([]);
+        console.log(`Selected option: ${text}`);
     };
 
     return (
@@ -144,9 +160,12 @@ const SearchBar = () => {
                 className={styles.icon}
             />
             <div className={styles.border}>
-                {filteredOptions.length > 0 && (
-                    <ListOptions options={filteredOptions} onOptionClick={handleOptionClick} />
-                )}
+                {filteredOptions.length > 0 ? (
+                    <ListOptions
+                        options={filteredOptions}
+                        onOptionClick={handleOptionClick}
+                    />
+                ) : null}
             </div>
         </div>
     );
