@@ -1,0 +1,23 @@
+.fullScreenImage {
+    text-align: center;
+    padding-top: 20px;
+}
+
+.backButton {
+    position: absolute;
+    background: rgba(22, 22, 22, 0.27);
+    border-radius: 8px;
+}
+
+.image {
+    width: 360px;
+    height: 360px;
+    object-fit: cover;
+}
+
+@media screen and (min-width: 600px) and (max-width: 1023px) {
+    .image {
+        width: 600px;
+        height: 600px;
+    }
+}

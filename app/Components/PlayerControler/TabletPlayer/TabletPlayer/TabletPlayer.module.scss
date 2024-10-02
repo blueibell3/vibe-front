@@ -1,0 +1,39 @@
+@import '../../../../styles/stylesSecond/colors.scss';
+
+.tabletPlayer {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    bottom: 0;
+    position: relative;
+}
+
+.tabletPlayerContainer {
+    background-color: $PrimaryBlackTone1;
+    width: 100%;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 46px;
+}
+
+.inputAndSwitch {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+}
+
+
+
+.volumAndSwitch {
+    display: flex;
+    justify-content: space-between;
+}
+
+@media screen and (min-width:600px) and (max-width:640px) {
+    .tabletPlayerContainer {
+        gap: 30px;
+    }
+}

@@ -1,0 +1,49 @@
+// @import "../../styles/colors.scss";
+
+.playerAndListBox {
+    display: flex;
+    justify-content: flex-end;
+    height: 250px;
+    // background-color: $PrimaryBlackTone2;
+}
+
+.playerAndList {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0px 0px 12px 12px;
+  max-width: 278px;
+  width: 100%;
+}
+
+.playerAndListContainer {
+  padding: 16px 16px 8px 16px;
+  // background-color: $PrimaryBlackTone1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 310px;
+  overflow: scroll;
+}
+
+.listDataContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.playerAndListContainer::-webkit-scrollbar {
+  display: none;
+}
+
+@media screen and (min-width:600px) and (max-width:1023px) {
+    .playerAndListBox {
+        display: none;
+    }
+}
+
+@media screen and (max-width:599px) {
+    .playerAndListBox {
+        display: none;
+    }
+}

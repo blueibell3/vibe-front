@@ -30,7 +30,7 @@ type Chart = {
     updatedAt: string;
     deletedAt: string | null;
     listenCounter: ChartListenCounter[];
-    file: ChartPhoto;
+    photo: ChartPhoto;
     url: {
         id: number;
         url: string;
@@ -60,7 +60,7 @@ const TopCharts: React.FC<Props> = (props) => {
                     throw new Error('No token found');
                 }
 
-                const response = await axios.get('https://vibetunes-backend.onrender.com/genres', {
+                const response = await axios.get('https://vibetunes-backend.onrender.com/music/weekCharts', {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: `Bearer ${token}`,
@@ -86,7 +86,7 @@ const TopCharts: React.FC<Props> = (props) => {
                 <ChartCard
                     key={chart.id}
                     title={chart.name}
-                    imageUrl={chart.file.url}
+                    imageUrl={chart.photo.url}
                     id={chart.id}
                 />
             ))}

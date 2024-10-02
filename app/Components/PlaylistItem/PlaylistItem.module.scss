@@ -1,0 +1,19 @@
+@import '../../styles/stylesSecond/colors.scss';
+
+.item {
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-bottom: 0.5px rgba(233, 233, 233, 0.09);
+    cursor: pointer;
+}
+
+.title {
+    color: #fff;
+}
+
+.item:hover {
+    background-color: $PrimaryGreyHover;
+    border-radius: 8px;
+}

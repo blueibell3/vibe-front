@@ -1,92 +1,172 @@
+@import "../../styles/stylesSecond/colors.scss";
+
+.musicCard {
+    width: 100%;
+    background-color: $PrimaryBlackTone1;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 12px 8px 8px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.photo {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.itemImageWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 42px;
+    height: 42px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.itemHoverPhoto {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+}
+
+.image {
+    width: 42px;
+    height: 42px;
+}
+@media screen and (max-width: 599px) {
+    .listItem:hover .musicCardHoverPhoto {
+        visibility: hidden;
+    }
+    .itemHoverPhoto {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 1024px) {
+    .listItem:hover .musicCardHoverPhoto {
+        visibility: hidden;
+    }
+    .itemHoverPhoto {
+        display: none;
+    }
+}
 .musicCard {
     display: flex;
-    width: 100%;
-    height: 72px;
-    padding: 14px 10px 15px 16px;
-    align-items: center;
-    border-radius: 8px;
-    background: var(--background, #0F0F0F);
+    justify-content: space-between;
 }
 
-.musicCard:hover {
-    background: #252525;
+@media screen and (min-width: 1023px) {
+    .listItem {
+        display: flex;
+        align-items: center;
+        border-radius: 12px;
+        background-color: $PrimaryBlackTone3;
+        justify-content: space-between;
+        width: 100%;
+        padding: 12px 16px 12px 16px;
+        transition: 0.3s ease;
+        cursor: pointer;
+
+        &:hover {
+            background: #252525;
+        }
+
+        &:hover .itemHoverPhoto {
+            opacity: 1;
+        }
+    }
+}
+.musicCard:hover .musicCardHoverPhoto {
+    display: block;
 }
 
-.musicCardComp {
+.musicCardTitle {
     display: flex;
-    align-items: center;
-    width: 100%;
+    flex-direction: column;
+    gap: 4px;
 }
 
-.musiccardList {
+.musicCardName {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 195px;
+    color: #fff;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.musicCardTeam {
+    color: $PrimaryWhiteTone1;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.buttonsContainer {
     display: flex;
-    width: 100%;
-    height: 43px;
-    align-items: flex-start;
-    gap: 14px;
+    gap: 5px;
     position: relative;
 }
 
-.musicCardImage {
-    width: 43px;
-    height: 43px;
-    cursor: pointer;
+.dots {
+    position: relative;
 }
 
-.musicCardHeart {
+.buttons {
     display: flex;
-    width: 24px;
-    height: 24px;
-    justify-content: center;
-    align-items: center;
-
+    gap: 5px;
 }
 
-.musicCardInfo {
-    display: flex;
-    height: 43px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
-    cursor: pointer;
+.menu {
+    z-index: 999;
+    border-radius: 8px;
+    background-color: #000;
+    padding: 8px 16px;
+    width: 254px;
+    height: 120px;
+    overflow: auto;
 }
 
-.songName {
-    color: var(--text-color, #FFF);
-    font-size: 16px;
-    font-weight: 600;
-}
-
-.artistName {
-    color: rgba(255, 255, 255, 0.64);
-    font-size: 14px;
-    font-weight: 500;
-}
-
-.audioPlay {
+.menu::-webkit-scrollbar {
     display: none;
 }
 
-.musicCard:hover .audioPlay {
-    display: flex;
-    position: absolute;
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
+@media screen and (max-width: 599px) {
+    .listItem {
+        display: flex;
+        align-items: center;
+        border-radius: 12px;
+        background-color: $PrimaryBlackTone3;
+        justify-content: space-between;
+        width: 100%;
+        padding: 12px 16px 12px 16px;
+        transition: 0.3s ease;
+    }
 }
 
-
-@media screen and (max-width:1023px) and (min-width:0px) {
-    .musicCard:hover {
-        background-color: initial;
-    }
-
-    .musicCard .audioPlay {
+@media screen and (min-width: 600px) and (max-width: 1023px) {
+    .listItem {
         display: flex;
-        position: absolute;
-        cursor: pointer;
-        width: 40px;
-        height: 40px;
+        align-items: center;
+        border-radius: 12px;
+        background-color: $PrimaryBlackTone3;
+        justify-content: space-between;
+        width: 100%;
+        padding: 12px 16px 12px 16px;
+        transition: 0.3s ease;
     }
-
 }

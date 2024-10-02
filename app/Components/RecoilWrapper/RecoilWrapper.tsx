@@ -1,7 +1,6 @@
 'use client'
 import { RecoilRoot } from "recoil"
-import { Children, ReactNode } from "react"
-import MusicList from "../MusicList/MusicList"
+import { ReactNode } from "react"
 
 
 const RecoilWrapper = (props:{children:ReactNode}) => {
