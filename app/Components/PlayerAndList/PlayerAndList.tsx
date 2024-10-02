@@ -18,12 +18,12 @@ import {
 import axios from 'axios';
 
 interface MusicListItemProps {
+    id: number;
     title: string;
     coverImgUrl: string;
     audioUrl: string;
     artistName: string;
-    id: number;
-    songDuration: string;
+    songDuration?: string;
 }
 
 const PlayerAndList = () => {
@@ -36,8 +36,6 @@ const PlayerAndList = () => {
     const [, setAuthorName] = useRecoilState(authorNameState);
     const [musicList, setMusicList] = useState<MusicListItemProps[]>([]);
     const [error, setError] = useState<string | null>(null);
-
-
 
     useEffect(() => {
         const fetchTopHits = async () => {
@@ -55,15 +53,17 @@ const PlayerAndList = () => {
                             'Content-Type': 'application/json',
                             Authorization: `Bearer ${token}`,
                         },
-                    },
+                    }
                 );
 
+                // Formatting the data from your backend structure
                 const formattedHits = response.data.map((hit: any) => ({
                     id: hit.id,
-                    name: hit.name,
+                    title: hit.name,
                     artistName: hit.artistName || 'Unknown Artist',
-                    photoUrl: hit.photo.url,
-                    url: hit.url,
+                    coverImgUrl: hit.photo.url, // Using the photo URL for the album cover
+                    audioUrl: hit.url.url, // Using the song URL for audio
+                    songDuration: '3:45', // Placeholder if you don't have song duration
                 }));
 
                 setMusicList(formattedHits);
@@ -86,12 +86,12 @@ const PlayerAndList = () => {
     const handleClick = (
         item: {
             id: number;
-            image?: string;
-            title?: string;
-            artist?: string;
-            src?: string;
+            coverImgUrl: string;
+            title: string;
+            artistName: string;
+            audioUrl: string;
         },
-        index: number,
+        index: number
     ) => {
         if (globalMusicId === item.id) {
             setIsPlaying(!isPlaying);
@@ -126,10 +126,8 @@ const PlayerAndList = () => {
                                 image={item.coverImgUrl}
                                 songTitle={item.title}
                                 artistName={item.artistName}
-                                songDuration={item.songDuration}
-                                isPlaying={
-                                    isPlaying && globalMusicId === item.id
-                                }
+                                // songDuration={item.songDuration || 'Unknown'} // Handling ndefined song duration
+                                isPlaying={isPlaying && globalMusicId === item.id}
                                 onClick={() => handleClick(item, index)}
                                 id={item.id}
                             />

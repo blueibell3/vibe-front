@@ -7,7 +7,7 @@ interface Props {
     image: string;
     songTitle: string;
     artistName: string;
-    songDuration: string;
+    songDuration?: string;
     isPlaying?: boolean;
     onClick?: () => void;
     index: number;
@@ -31,13 +31,13 @@ const MusicListItem = (props: Props) => {
                     globalId === props.id ? (
                         <img
                             className={styles.image}
-                            src="/allFolders/PlayerControler/Play.svg"
+                            src="/icons/pause.svg"
                             alt="Pause Button"
                         />
                     ) : (
                         <img
                             className={styles.image}
-                            src="/allFolders/PlayerControler/Pause.svg"
+                            src="/icons/pauselist.svg"
                             alt="Play Button"
                         />
                     )}
