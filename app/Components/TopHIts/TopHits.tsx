@@ -4,7 +4,16 @@ import styles from './TopHits.module.scss';
 import MusicCard from '../MusicCard/MusicCard';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { globalMusicState } from '@/app/state';  // Ensure you have the correct Recoil state imported
+import {
+    authorNameState,
+    globalImageState,
+    indexState,
+    isPlayingState,
+    musicGlobalState,
+    musicId,
+    musicNameState,
+} from '@/app/state';
+import useToggleMenu from '@/app/helpers/useToggleMenu';
 
 type Props = {
     limit?: number;
@@ -20,9 +29,17 @@ interface TopHitsData {
 }
 
 const TopHits = (props: Props) => {
-    const [globalId, setGlobalId] = useRecoilState(globalMusicState);
+    const [globalId, setGlobalId] = useRecoilState(musicId);
     const [topHits, setTopHits] = useState<TopHitsData[]>([]);
+    const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
+    const [, setGlobalsrc] = useRecoilState(musicGlobalState);
+    const [, setActiveIdx] = useRecoilState(indexState);
+    const [, setImage] = useRecoilState(globalImageState);
+    const [, setMusicName] = useRecoilState(musicNameState);
+    const [, setAuthorName] = useRecoilState(authorNameState);
+    const { currentCardId, toggleMenu } = useToggleMenu();
     const [error, setError] = useState<string | null>(null);
+    console.log(topHits, 'tophits');
 
     useEffect(() => {
         const fetchTopHits = async () => {
@@ -48,7 +65,7 @@ const TopHits = (props: Props) => {
                     name: hit.name,
                     artistName: hit.artistName || 'Unknown Artist',
                     photoUrl: hit.photo.url,
-                    musicUrl: hit.url.url,  // Adjusted for the correct field
+                    musicUrl: hit.url.url,
                 }));
 
                 setTopHits(formattedHits);
@@ -68,37 +85,37 @@ const TopHits = (props: Props) => {
         fetchTopHits();
     }, []);
 
-    // const handleClick = (
-    //     item: {
-    //         image?: string;
-    //         title?: string;
-    //         temeName?: string;
-    //         id: number;
-    //         src?: string;
-    //     },
-    //     index: number,
-    // ) => {
-    //     if (globalMusicId === item.id) {
-    //         setIsPlaying(!isPlaying);
-    //     } else {
-    //         const imageSrc = topHits.map((item) => item.coverImgUrl);
-    //         const allSrc = topHits.map((item) => ({
-    //             audioUrl: item.audioUrl,
-    //             id: item.id,
-    //         }));
+    const handleClick = (
+        item: {
+            image?: string;
+            title?: string;
+            temeName?: string;
+            id: number;
+            src?: string;
+        },
+        index: number,
+    ) => {
+        if (globalId === item.id) {
+            setIsPlaying(!isPlaying);
+        } else {
+            const imageSrc = topHits.map((item) => item.photoUrl);
+            const allSrc = topHits.map((item) => ({
+                audioUrl: item.musicUrl,
+                id: item.id,
+            }));
 
-    //         const musicName = topHits.map((item) => item.title);
-    //         const title = topHits.map((item) => item.title);
+            const musicName = topHits.map((item) => item.name);
+            const title = topHits.map((item) => item.artistName);
 
-    //         setIsPlaying(true);
-    //         setGlobalId(item.id);
-    //         setGlobalsrc(allSrc);
-    //         setActiveIdx(index);
-    //         setImage(imageSrc);
-    //         setTitle(musicName);
-    //         setArtist(title);
-    //     }
-    // };
+            setIsPlaying(true);
+            setGlobalId(item.id);
+            setGlobalsrc(allSrc);
+            setActiveIdx(index);
+            setImage(imageSrc);
+            setMusicName(musicName);
+            setAuthorName(title);
+        }
+    };
     const limitedTopHits = props.limit
         ? topHits.slice(0, props.limit)
         : topHits;
@@ -110,14 +127,15 @@ const TopHits = (props: Props) => {
                 <MusicCard
                     key={hit.id}
                     onClick={() => handleClick(hit, index)}
-                    image={hit.photoUrl}           // Image URL of the song/album
-                    title={hit.name}               // Song name
-                    teamName={hit.artistName}       // Artist name
-                    deleteOrLike={props.showLikeButton}  // Show like button if true
-                    id={hit.id}                    // Track ID
-                    isPlaying={false}              // You can manage play state with your logic
-                    index={index}                  // Index of the song in the list
-                    menuOpen={false}               // Manage menu open state if needed
+                    image={hit.photoUrl}
+                    title={hit.name}
+                    teamName={hit.artistName}
+                    deleteOrLike={false}
+                    id={hit.id}
+                    isPlaying={isPlaying && globalId === index}
+                    index={index}
+                    menuOpen={currentCardId === hit.id}
+                    toggleMenu={() => toggleMenu(hit.id)}
                 />
             ))}
         </div>

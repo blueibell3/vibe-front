@@ -25,11 +25,7 @@ const DesktopMusicName = () => {
         >
             <img
                 className={styles.image}
-                src={
-                    image[index]
-                        ? image[index]
-                        : '/playerDefault.png'
-                }
+                src={image[index] ? image[index] : '/icons/playerDefault.png'}
                 alt="Music Cover"
             />
             <span

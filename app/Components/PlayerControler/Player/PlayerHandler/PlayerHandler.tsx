@@ -15,7 +15,7 @@ import {
     musicId,
     shuffleState,
 } from '@/app/state';
-import apiInstance from '@/app/ApiInstance';
+import axios from 'axios';
 
 const PlayerHandler = () => {
     const [musicSrc] = useRecoilState(musicGlobalState);
@@ -34,6 +34,7 @@ const PlayerHandler = () => {
     const audioRef = useRef<HTMLAudioElement>(null);
     const [currentTrackUrl, setCurrentTrackUrl] = useState<string | null>(null);
     const [lastCurrentTime] = useState<number>(0);
+    console.log(musicSrc);
 
     useEffect(() => {
         const audio = audioRef.current;
@@ -127,7 +128,7 @@ const PlayerHandler = () => {
 
     useEffect(() => {
         if (musicSrc[index]?.id) {
-            apiInstance
+            axios
                 .post('/listen-records', { musicId: musicSrc[index].id })
                 .catch((error) =>
                     console.error('Failed to post listen record:', error),

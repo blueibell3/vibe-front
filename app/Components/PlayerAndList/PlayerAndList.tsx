@@ -56,14 +56,14 @@ const PlayerAndList = () => {
                     }
                 );
 
-                // Formatting the data from your backend structure
+                
                 const formattedHits = response.data.map((hit: any) => ({
                     id: hit.id,
                     title: hit.name,
                     artistName: hit.artistName || 'Unknown Artist',
-                    coverImgUrl: hit.photo.url, // Using the photo URL for the album cover
-                    audioUrl: hit.url.url, // Using the song URL for audio
-                    songDuration: '3:45', // Placeholder if you don't have song duration
+                    coverImgUrl: hit.photo.url,
+                    audioUrl: hit.url.url, 
+                    songDuration: '3:45', 
                 }));
 
                 setMusicList(formattedHits);
@@ -126,7 +126,6 @@ const PlayerAndList = () => {
                                 image={item.coverImgUrl}
                                 songTitle={item.title}
                                 artistName={item.artistName}
-                                // songDuration={item.songDuration || 'Unknown'} // Handling ndefined song duration
                                 isPlaying={isPlaying && globalMusicId === item.id}
                                 onClick={() => handleClick(item, index)}
                                 id={item.id}

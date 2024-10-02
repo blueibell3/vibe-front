@@ -6,6 +6,7 @@ import styles from './layout.module.css';
 import { ReactNode } from 'react';
 import Player from '../Components/PlayerControler/Player/Player';
 import MusicListItem from '../Components/MusicListItem/MusicListItem';
+import PlayerHandler from '../Components/PlayerControler/Player/PlayerHandler/PlayerHandler';
 
 type Props = {
     children: ReactNode;
@@ -14,6 +15,7 @@ type Props = {
 const AuthLayout = (props: Props) => {
     return (
         <div className={styles.container}>
+            <PlayerHandler />
             <div className={styles.headerContainer}>
                 <Header />
             </div>
@@ -26,9 +28,7 @@ const AuthLayout = (props: Props) => {
                 </div>
                 <div className={styles.children}>{props.children}</div>
                 <div className={styles.musicList}>
-                    <div className={styles.test}>
-                      
-                    </div>
+                    <div className={styles.test}></div>
                     <div className={styles.musicContainer}>
                         <div className={styles.MusicPlayer}>
                             <Player />

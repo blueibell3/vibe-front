@@ -4,14 +4,14 @@ import { useEffect, useState } from 'react';
 import styles from './LikeButton.module.scss';
 import Link from 'next/link';
 import { useRecoilState } from 'recoil';
-import { currentTrackIndexState, globalMusicState } from '@/app/state';
 import axios from 'axios';
+import { indexState, musicId } from '@/app/state';
 
 type Playlist = {
     id: number;
     name: string;
     description?: string;
-    lastName: string,
+    lastName: string;
 };
 
 type Props = {
@@ -21,8 +21,8 @@ type Props = {
 
 const LikeButton = (props: Props) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [globalId] = useRecoilState(globalMusicState);
-    const [index] = useRecoilState(currentTrackIndexState);
+    const [globalId] = useRecoilState(musicId);
+    const [index] = useRecoilState(indexState);
     const [playlist, setPlaylist] = useState<Playlist[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -38,14 +38,19 @@ const LikeButton = (props: Props) => {
                 throw new Error('No token found');
             }
 
-            const response = await axios.get('https://vibetunes-backend.onrender.com/playlist', {
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`,
+            const response = await axios.get(
+                'https://vibetunes-backend.onrender.com/playlist',
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`,
+                    },
                 },
-            });
+            );
 
-            setPlaylist(Array.isArray(response.data) ? response.data : [response.data]);
+            setPlaylist(
+                Array.isArray(response.data) ? response.data : [response.data],
+            );
             setLoading(false);
         } catch (err) {
             console.error(err);
@@ -54,7 +59,10 @@ const LikeButton = (props: Props) => {
         }
     };
 
-    const addTrackToPlaylist = async (playlistId: number, trackIndex: number) => {
+    const addTrackToPlaylist = async (
+        playlistId: number,
+        trackIndex: number,
+    ) => {
         try {
             const token = document.cookie
                 .split('; ')
@@ -76,7 +84,7 @@ const LikeButton = (props: Props) => {
                         'Content-Type': 'application/json',
                         Authorization: `Bearer ${token}`,
                     },
-                }
+                },
             );
 
             alert('Track added to playlist!');
@@ -97,13 +105,20 @@ const LikeButton = (props: Props) => {
     return (
         <div className={styles.container}>
             <button onClick={handleClick} className={styles.button}>
-                <Image src="/icons/three dots.svg" alt="menu" width={24} height={24} />
+                <Image
+                    src="/icons/three dots.svg"
+                    alt="menu"
+                    width={24}
+                    height={24}
+                />
             </button>
             {isMenuOpen && globalId === props.id && (
                 <div className={styles.menu}>
                     <div className={styles.menuItem}>
                         <Link href="/playlist">
-                            <div className={styles.create}>+ Create playlist</div>
+                            <div className={styles.create}>
+                                + Create playlist
+                            </div>
                         </Link>
                         {loading && <div>Loading...</div>}
                         {error && <div>{error}</div>}
@@ -113,9 +128,16 @@ const LikeButton = (props: Props) => {
                                 <div
                                     key={item.id}
                                     className={styles.playlist}
-                                    onClick={() => addTrackToPlaylist(item.id, props.trackIndex)}
+                                    onClick={() =>
+                                        addTrackToPlaylist(
+                                            item.id,
+                                            props.trackIndex,
+                                        )
+                                    }
                                 >
-                                    <span className={styles.playlistItem}>{item.name}</span>
+                                    <span className={styles.playlistItem}>
+                                        {item.name}
+                                    </span>
                                 </div>
                             ))}
                     </div>

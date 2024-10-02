@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'next/navigation';
 
 import styles from './MusicCard.module.scss';
-
+import { BiDotsVerticalRounded } from 'react-icons/bi';
 import { useRecoilState } from 'recoil';
 import {
     clickState,
@@ -13,6 +13,9 @@ import {
 } from '@/app/state';
 import { searchTermState } from '@/app/state';
 import axios from 'axios';
+import Bin from '../Bin/Bin';
+import LikeButton from '../LikeButton/LikeButton';
+import DropDownMenu from '../DropDownMenu/DropDownMenu';
 
 interface Props {
     image: string;
@@ -155,27 +158,26 @@ const MusicCard = (props: Props) => {
                 }
             >
                 {props.deleteOrLike && (
-                    <div onClick={deleteClick}>
-                        {/* <DeleteBox
-                            id={props.id}
-                            setRemove={() => setShowModal(showModal)}
-                            remove={showModal}
-                            onConfirm={handleDelete}
-                        /> */}
+                    <div>
+                        <Bin musicId={props.id} />
                     </div>
                 )}
                 <div
                     onClick={handleEditClick}
                     className={searchTerm || isOpen ? '' : styles.dots}
                 >
-                    {/* <BiDotsVerticalRounded size={24} color="white" /> */}
+                    <BiDotsVerticalRounded size={24} color="white" />
                     {props.menuOpen && (
                         <div
                             ref={menuRef}
                             style={menuStyles}
                             className={styles.menu}
                         >
-                            {/* <DropDownMenu id={props.id} /> */}
+                            {/* <LikeButton
+                                id={props.id}
+                                trackIndex={props.index}
+                            /> */}
+                            <DropDownMenu id={props.id} />
                         </div>
                     )}
                 </div>

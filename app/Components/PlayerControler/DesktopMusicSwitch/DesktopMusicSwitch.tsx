@@ -19,15 +19,15 @@ const DesktopMusicSwitch = () => {
             <div className={styles.playPaus} onClick={playPause}>
                 {isPlaying ? (
                     <img
-                        src="/icons/play.svg"
-                        alt="Play"
-                        className={styles.play}
-                    />
-                ) : (
-                    <img
                         src="/icons/pause.svg"
                         alt="Pause"
                         className={styles.pause}
+                    />
+                ) : (
+                    <img
+                        src="/icons/play.svg"
+                        alt="Play"
+                        className={styles.play}
                     />
                 )}
             </div>

@@ -8,7 +8,7 @@
 }
 
 .navMenuContainer {
-    background: #0F0F0F;
+    background: #0f0f0f;
 }
 
 .children::-webkit-scrollbar {
@@ -19,9 +19,9 @@
     overflow-x: hidden;
 }
 
-.musicContainer {   
+.musicContainer {
     display: flex;
-    position: relative;
+    /* position: relative; */
 }
 
 .musicList {
@@ -29,14 +29,14 @@
     display: flex;
     flex-direction: column;
     gap: 26px;
-    background: var(--background, #0F0F0F);
+    background: var(--background, #0f0f0f);
     margin: 0xp 20px;
 }
 
 .test {
     display: flex;
     flex-direction: column;
-    padding:0px  10px;
+    padding: 0px 10px;
     overflow-y: scroll;
 }
 
@@ -44,25 +44,21 @@
     display: none;
 }
 
-
-@media screen and (min-width:1023px) {
+@media screen and (min-width: 1023px) {
     .mobileNavBarContainer {
         display: none;
     }
 }
 
-@media screen and (max-width:1023px) and (min-width:768px) {
+@media screen and (max-width: 1023px) and (min-width: 768px) {
     .navMenuContainer {
         display: none;
     }
 
-
     .musicList {
         padding: 0;
         margin-right: 7px;
-
     }
-
 
     .mobileNavBarContainer {
         display: none;
@@ -83,11 +79,9 @@
         width: 100%;
         height: calc(100vh - 161px);
     }
-
 }
 
-@media screen and (max-width:768px) {
-
+@media screen and (max-width: 768px) {
     .navBarContainer {
         display: none;
     }
@@ -124,7 +118,9 @@
         width: 100%;
         padding-left: 0px;
         height: calc(100vh - 114px);
-
+    }
+    .MusicPlayer {
+        display: none;
     }
 
     .musicList {

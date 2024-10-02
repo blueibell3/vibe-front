@@ -4,6 +4,7 @@ import styles from './NavBarMobile.module.scss';
 import { usePathname } from 'next/navigation';
 import { useRecoilState } from 'recoil';
 import { tabletFullScrenState } from '@/app/state';
+import Player from '../PlayerControler/Player/Player';
 
 const mobilelinkData = [
     {
@@ -42,6 +43,7 @@ const NavBarMobile = () => {
 
     return (
         <>
+            <Player />
             <div
                 className={
                     tabletscreenState ? styles.nones : styles.mobileNavBar
