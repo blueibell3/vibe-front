@@ -9,6 +9,13 @@
 
 }
 
+@media screen and (max-width: 1208px) and (min-width: 1024px) {
+    .albumsContainer {
+        grid-template-columns: 1fr 1fr 1fr;
+
+    }
+}
+
 @media screen and (max-width:768px) {
     .albumsContainer {
         grid-template-columns: 1fr 1fr;

@@ -9,8 +9,18 @@
     cursor: pointer;
 }
 
+
+
+
+@media screen and (max-width: 1208px) and (min-width: 1024px) {
+    .albumsContainer {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
 @media screen and (max-width:768px) {
-    
+
     .albumsContainer {
         width: 100%;
         overflow-x: auto;
