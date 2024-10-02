@@ -6,7 +6,7 @@ type Props = {
   id: number;
   songName: string;
   imageUrl: any;
-  artistName: string;
+  artistName?: string;
   releaseDate: string;
 }
 
