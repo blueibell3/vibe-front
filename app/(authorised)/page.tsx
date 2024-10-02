@@ -40,6 +40,6 @@ export default function Home() {
         <TopAlbums limit={4} />
       </div>
     </div>
-);
+  );
 }
 
