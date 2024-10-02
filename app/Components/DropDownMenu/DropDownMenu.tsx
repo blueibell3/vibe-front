@@ -16,7 +16,6 @@ interface Props {
 
 const DropDownMenu = (props: Props) => {
     const [playlists, setPlaylist] = useState<Playlists[]>([]);
-    console.log(playlists);
 
     useEffect(() => {
         const token = document.cookie

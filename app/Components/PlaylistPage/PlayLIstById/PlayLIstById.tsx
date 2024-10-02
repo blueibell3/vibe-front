@@ -41,7 +41,6 @@ const PlayLIstById = () => {
     const [error, setError] = useState<string | null>(null);
     const params = useParams();
     const [click] = useRecoilState(clickState);
-    console.log(musicData, 'data');
 
     useEffect(() => {
         const fetchPlaylist = async () => {

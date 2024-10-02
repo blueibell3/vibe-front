@@ -34,7 +34,6 @@ const PlayerHandler = () => {
     const audioRef = useRef<HTMLAudioElement>(null);
     const [currentTrackUrl, setCurrentTrackUrl] = useState<string | null>(null);
     const [lastCurrentTime] = useState<number>(0);
-    console.log(musicSrc);
 
     useEffect(() => {
         const audio = audioRef.current;

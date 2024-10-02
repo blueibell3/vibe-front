@@ -94,7 +94,6 @@ const AlbumsById = () => {
                 );
 
                 const albumData = response.data;
-                console.log(albumData, 'albu');
 
                 setArtistName(albumData.artistName);
                 setTitle(albumData.title);
@@ -115,7 +114,6 @@ const AlbumsById = () => {
                     photoUrl: music.photo,
                     musicUrl: music.musicUrl,
                 }));
-                console.log(topHitsData, 'topHitsData');
 
                 setTopHits(topHitsData);
 

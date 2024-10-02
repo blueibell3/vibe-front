@@ -30,7 +30,7 @@ const MusicCard = (props: Props) => {
     const [menuStyles, setMenuStyles] = useState<React.CSSProperties>({
         position: 'absolute',
         top: '0',
-        left: '20px', // Default left for larger screens
+        left: '20px', 
     });
     const [globalId] = useRecoilState(musicId);
     const musicCardRef = useRef<HTMLDivElement>(null);
@@ -41,30 +41,25 @@ const MusicCard = (props: Props) => {
     const [index] = useRecoilState(indexState);
 
     useEffect(() => {
-        // Dynamically check screen size and update menu style accordingly
         const updateMenuPosition = () => {
             if (window.matchMedia('(max-width: 768px)').matches) {
-                // For mobile screens
                 setMenuStyles({
                     position: 'absolute',
                     top: '0',
-                    left: '-250px', // Mobile size left
+                    left: '-250px', 
                 });
             } else {
-                // For larger screens
                 setMenuStyles({
                     position: 'absolute',
                     top: '0',
-                    left: '20px', // Default left for larger screens
+                    left: '20px', 
                 });
             }
         };
 
-        // Call once on component mount and also when resizing window
         updateMenuPosition();
         window.addEventListener('resize', updateMenuPosition);
 
-        // Cleanup event listener on component unmount
         return () => {
             window.removeEventListener('resize', updateMenuPosition);
         };
@@ -76,7 +71,7 @@ const MusicCard = (props: Props) => {
             if (rect.left >= window.innerWidth - rect.right) {
                 setMenuStyles((prevStyles) => ({
                     ...prevStyles,
-                    left: '-250px', // Ensure proper alignment for small screens
+                    left: '-250px', 
                 }));
             }
         }
