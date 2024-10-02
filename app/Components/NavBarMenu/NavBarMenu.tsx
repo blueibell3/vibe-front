@@ -14,7 +14,7 @@ const desktoplinkData = [
     {
         id: 1,
         href: '/',
-        text: 'home',
+        text: 'Home',
         src: '/home.svg',
         key: '/'
     },

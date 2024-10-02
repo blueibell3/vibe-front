@@ -21,7 +21,7 @@
 .option {
     display: flex;
     align-items: center;
-    padding: 13px 16px 0px 16px;
+    padding: 13px 16px 10px 16px;
     cursor: pointer;
     color: $white;
 }
@@ -55,6 +55,7 @@
 
 .artistAlbums {
     display: flex;
+    align-items: center;
 }
 
 .alm {
