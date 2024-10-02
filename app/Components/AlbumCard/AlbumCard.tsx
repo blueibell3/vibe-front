@@ -4,9 +4,9 @@ import Link from 'next/link';
 
 type Props = {
   id: number;
-  songName?: string;
+  songName: string;
   imageUrl: any;
-  artistName?: string;
+  artistName: string;
   releaseDate: string;
 }
 

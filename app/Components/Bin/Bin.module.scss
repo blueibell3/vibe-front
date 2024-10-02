@@ -19,6 +19,8 @@
 
 .trash {
     cursor: pointer;
+    width: 24px;
+    height: 24px;
 }
 
 .reusableModalContainer {
@@ -49,7 +51,7 @@
     gap: 10px;
     border-radius: 8px;
     border: 1px solid #232934;
-    background: #0E1117;
+    background: #0e1117;
     cursor: pointer;
 }
 
@@ -80,24 +82,23 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
-
 }
 
 .modalButton {
     display: flex;
     justify-content: center;
-    gap: 8px;}
+    gap: 8px;
+}
 
 .buttons {
     display: flex;
     gap: 10px;
 }
 
-.cancel{
+.cancel {
     width: 100%;
 }
 
-.delete{
+.delete {
     width: 100%;
 }

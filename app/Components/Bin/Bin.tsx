@@ -47,7 +47,7 @@ const Bin = ({ musicId }: Props) => {
     return (
         <>
             <div onClick={handleOpenModal}>
-                <img src='/icons/bin.svg' alt='bin' className={styles.trash} width={32} height={32} />
+                <img  src='/icons/bin.svg' alt='bin' className={styles.trash} width={32} height={32} />
             </div>
             {isOpen && (
                 <div className={styles.wrap}>

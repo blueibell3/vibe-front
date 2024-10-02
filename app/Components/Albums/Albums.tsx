@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import styles from "./Albums.module.scss";
+import styles from './Albums.module.scss';
 import AlbumCard from '../AlbumCard/AlbumCard';
 import axios from 'axios';
 
 type Album = {
+    artistName: string;
     id: number;
     title: string;
     releaseDate: string;
@@ -20,7 +21,8 @@ const Albums = (props: Props) => {
     const [albumsData, setAlbumsData] = useState<Album[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
-    
+    console.log(albumsData, 'aaadata');
+
     useEffect(() => {
         const fetchAlbums = async () => {
             try {
@@ -33,14 +35,21 @@ const Albums = (props: Props) => {
                     throw new Error('No token found');
                 }
 
-                const response = await axios.get(`https://vibetunes-backend.onrender.com/album`, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${token}`
-                    }
-                });
+                const response = await axios.get(
+                    `https://vibetunes-backend.onrender.com/album`,
+                    {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            Authorization: `Bearer ${token}`,
+                        },
+                    },
+                );
 
-                setAlbumsData(Array.isArray(response.data) ? response.data : [response.data]);
+                setAlbumsData(
+                    Array.isArray(response.data)
+                        ? response.data
+                        : [response.data],
+                );
                 setLoading(false);
             } catch (err) {
                 console.error(err);
@@ -50,9 +59,11 @@ const Albums = (props: Props) => {
         };
 
         fetchAlbums();
-    }, []); 
+    }, []);
 
-    const albumCard = props.limit ? albumsData.slice(0, props.limit) : albumsData;
+    const albumCard = props.limit
+        ? albumsData.slice(0, props.limit)
+        : albumsData;
 
     if (loading) {
         return <p>Loading...</p>;
@@ -63,15 +74,16 @@ const Albums = (props: Props) => {
     }
     return (
         <div className={styles.albumsContainer}>
-            {albumCard.map(album => {
+            {albumCard.map((album) => {
                 const imageUrl = album.file?.url;
 
                 return (
                     <AlbumCard
+                        songName={album.title}
                         key={album.id}
                         id={album.id}
                         imageUrl={imageUrl}
-                        artistName={album.title}
+                        artistName={album.artistName}
                         releaseDate={album.releaseDate}
                     />
                 );
