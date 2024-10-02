@@ -4,7 +4,7 @@ const Id = () => {
 
     return (
         <>
-            <TopChartsById />
+            <TopChartsById genreName={'rap'} />
         </>
     )
 }
