@@ -1,0 +1,39 @@
+@import "../../../../../styles/stylesSecond/colors.scss";
+
+.tabletAndMusicBox {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.musicName {
+    color: $PrimaryWhite;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.name {
+    color: $PrimaryWhiteTone1;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.musicFullScreen {
+    color: $PrimaryWhite;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.nameFullScreen {
+    color: $PrimaryWhiteTone1;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}

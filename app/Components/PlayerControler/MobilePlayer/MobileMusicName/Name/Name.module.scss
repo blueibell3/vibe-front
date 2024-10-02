@@ -1,0 +1,30 @@
+// @import '../../../../../styles/colors.scss';
+
+.autor {
+    width: 150px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    // color: $PrimaryWhite;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.name {
+    width: 150px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    // color: $PrimaryGreytone3;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.nameContainer {
+    display: flex;
+    flex-direction: column;
+}

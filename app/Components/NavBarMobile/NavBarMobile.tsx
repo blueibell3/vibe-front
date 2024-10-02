@@ -1,9 +1,10 @@
-'use client'
+'use client';
 import Link from 'next/link';
 import styles from './NavBarMobile.module.scss';
 import { usePathname } from 'next/navigation';
 import { useRecoilState } from 'recoil';
-import { tabletFullscreenState } from '@/app/state';
+import { tabletFullScrenState } from '@/app/state';
+import Player from '../PlayerControler/Player/Player';
 
 const mobilelinkData = [
     {
@@ -38,11 +39,16 @@ const mobilelinkData = [
 
 const NavBarMobile = () => {
     const pathname = usePathname();
-    const [tabletscreenState] = useRecoilState(tabletFullscreenState);
+    const [tabletscreenState] = useRecoilState(tabletFullScrenState);
 
     return (
         <>
-            <div className={tabletscreenState ? styles.nones : styles.mobileNavBar}>
+            <Player />
+            <div
+                className={
+                    tabletscreenState ? styles.nones : styles.mobileNavBar
+                }
+            >
                 {mobilelinkData.map((category) => (
                     <Link
                         key={category.id}
@@ -50,8 +56,17 @@ const NavBarMobile = () => {
                         className={styles.mobileNavLinks}
                         href={category.href}
                     >
-                        <img className={styles.mobileNavImg} src={pathname === category.href ? category.srcB : category.src} />
-                        <span className={`${pathname === category.href ? styles.activeClasses : styles.mobileNavText}`}>
+                        <img
+                            className={styles.mobileNavImg}
+                            src={
+                                pathname === category.href
+                                    ? category.srcB
+                                    : category.src
+                            }
+                        />
+                        <span
+                            className={`${pathname === category.href ? styles.activeClasses : styles.mobileNavText}`}
+                        >
                             {category.text}
                         </span>
                     </Link>

@@ -1,0 +1,44 @@
+.TabletFullScreen {
+    background: linear-gradient(180deg, #1f485f 0%, #121522 100%);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+.imageAndName {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+}
+
+.tabletFullscreenPadd {
+    padding: 0px 24px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.musicList {
+    width: 100%;
+}
+
+.musicListContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.inputRangeCont {
+    max-width: 535px;
+    width: 100%;
+    text-align: right;
+    padding-bottom: 12px;
+}

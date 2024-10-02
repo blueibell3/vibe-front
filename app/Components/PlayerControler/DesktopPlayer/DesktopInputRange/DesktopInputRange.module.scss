@@ -1,0 +1,80 @@
+.inputContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  height: 12px;
+}
+
+.musicTimeCont {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.inputRange {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.inputRange::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 2px;
+  background: transparent;
+}
+
+.inputRange::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 6px;
+  height: 6px;
+  background: #5e4be2;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  top: -1px;
+}
+
+.inputRange::-moz-range-track {
+  height: 4px;
+  border-radius: 2px;
+  background: transparent;
+}
+
+.inputRange::-moz-range-thumb {
+  width: 8px;
+  height: 8px;
+  background: #5e4be2;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.inputRange::-ms-track {
+  height: 4px;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+.inputRange::-ms-thumb {
+  width: 8px;
+  height: 8px;
+  background: #5e4be2;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.inputRange:focus {
+  outline: none;
+}
+
+.color {
+  color: rgba(255, 255, 255, 0.24);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 16px;
+}
