@@ -17,7 +17,7 @@ type PlaylistFormData = {
 };
 
 type AddButtonProps = {
-    onPlaylistCreated: (newPlaylist: Playlist) => void; // Use the correct type for Playlist
+    onPlaylistCreated: (newPlaylist: Playlist) => void;
 };
 
 const AddButton: React.FC<AddButtonProps> = ({ onPlaylistCreated }) => {
@@ -35,7 +35,7 @@ const AddButton: React.FC<AddButtonProps> = ({ onPlaylistCreated }) => {
         if (!data.name) {
             return;
         }
-        onPlaylistCreated(newPlaylist); // Pass new playlist to parent
+        onPlaylistCreated(newPlaylist); 
         setIsOpen(false);
         reset();
     };
