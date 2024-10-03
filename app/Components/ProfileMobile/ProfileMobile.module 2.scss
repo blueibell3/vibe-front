@@ -1,0 +1,52 @@
+.container {
+    background: var(--Color, #121212);
+    width: 100%;
+    padding-top: 32px;
+    padding-left: 16px;
+    padding-right: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.profileContainer{
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+}
+
+.profileText {
+    color: var(--text-color, #FFF);
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.userContainer {
+    display: flex;
+    width: 100%;
+    padding: 10px 77px 10px 5px;
+    align-items: center;
+    gap: 12px;
+    border-radius: 8px;
+    background: var(--background-2, #161616);
+    cursor: pointer;
+}
+
+.emailText {
+    color: var(--text-color, #FFF);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.logOut{
+    display: flex;
+    height: 100%;
+    align-items: flex-end;
+}
+
+.logOut button {
+    background-color: #F80C0C;
+}
+
+.logOut button:hover {
+    background-color: #F80C0C;
+}

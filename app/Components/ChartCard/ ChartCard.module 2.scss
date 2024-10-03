@@ -1,0 +1,58 @@
+@import '../../styles/colors.scss';
+
+.link{
+    text-decoration: none;
+}
+
+.chartCard {
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+    border-radius: 16px;
+    background: $darkColor;
+}
+
+.chartCard:hover {
+    background: #252525;
+}
+
+.chartCardImage {
+    align-self: stretch;
+    border-radius: 12px;
+    background: lightgray 50% / cover no-repeat;
+    width: 100%;
+}
+
+.chartCardtext {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.chartCardT {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    align-self: stretch;
+}
+
+.chartCardTitle {
+    color: $white;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+@media screen and (max-width:768px) {
+    .chartCardImage  {
+        width: fit-content;
+    }
+}
+
+
+@media screen and (max-width:1023px) and (min-width:0px) {
+    .chartCard:hover {
+        background-color: initial;
+    }
+}

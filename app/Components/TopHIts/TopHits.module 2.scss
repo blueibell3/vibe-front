@@ -1,0 +1,26 @@
+.container {
+    display: grid;
+    width: 100%;
+    grid-gap: 10px;
+    grid-template-columns: repeat(1, 1fr 1fr );
+}
+
+.playList {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+@media screen and (max-width:1023px) and (min-width:768px) {
+    .trendHitsContainer {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media screen and (max-width:768px) {
+    .trendHitsContainer {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+
