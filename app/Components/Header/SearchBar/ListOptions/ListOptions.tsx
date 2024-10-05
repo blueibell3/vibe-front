@@ -10,7 +10,6 @@ import {
     musicNameState,
     authorNameState,
 } from '@/app/state';
-import { useState } from 'react';
 
 type Option = {
     id: number;
