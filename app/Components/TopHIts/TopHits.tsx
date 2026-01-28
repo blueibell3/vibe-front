@@ -50,7 +50,7 @@ const TopHits = (props: Props) => {
                 if (!token) throw new Error('No token found');
 
                 const response = await axios.get(
-                    'https://vibetunes-backend.onrender.com/music',
+                    'http://localhost:3001/music',
                     {
                         headers: {
                             'Content-Type': 'application/json',

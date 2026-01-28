@@ -105,7 +105,7 @@ const ArtistById = () => {
                 }
 
                 const response = await axios.get<MusicResponse>(
-                    `https://vibetunes-backend.onrender.com/author/${params.id}`,
+                    `http://localhost:3001/author/${params.id}`,
                     {
                         headers: {
                             'Content-Type': 'application/json',

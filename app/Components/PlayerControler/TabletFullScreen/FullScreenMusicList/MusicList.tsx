@@ -44,7 +44,7 @@ const MusicList = () => {
                     .find((row) => row.startsWith('token='))
                     ?.split('=')[1];
                 const response = await axios.get(
-                    'https://vibetunes-backend.onrender.com/music',
+                    'http://localhost:3001/music',
                     {
                         headers: {
                             'Content-Type': 'application/json',

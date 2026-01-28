@@ -84,7 +84,7 @@ const AlbumsById = () => {
                 }
 
                 const response = await axios.get<MusicResponse>(
-                    `https://vibetunes-backend.onrender.com/album/${params.id}`,
+                    `http://localhost:3001/album/${params.id}`,
                     {
                         headers: {
                             'Content-Type': 'application/json',

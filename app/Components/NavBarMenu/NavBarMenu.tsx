@@ -48,7 +48,7 @@ const NavBarMenu = (props: Props) => {
             try {
                 const token = getToken();
 
-                const response = await axios.get('https://vibetunes-backend.onrender.com/users/me', {
+                const response = await axios.get('http://localhost:3001/users/me', {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     }

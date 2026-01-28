@@ -53,7 +53,7 @@ const TopCharts: React.FC<Props> = (props) => {
                     throw new Error('No token found');
                 }
 
-                const response = await axios.get('https://vibetunes-backend.onrender.com/genres', {
+                const response = await axios.get('http://localhost:3001/genres', {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: `Bearer ${token}`,

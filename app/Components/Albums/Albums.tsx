@@ -35,7 +35,7 @@ const Albums = (props: Props) => {
                 }
 
                 const response = await axios.get(
-                    `https://vibetunes-backend.onrender.com/album`,
+                    `http://localhost:3001/album`,
                     {
                         headers: {
                             'Content-Type': 'application/json',

@@ -52,7 +52,7 @@ const PlayLIstById = () => {
                 if (!token) throw new Error('No token found');
 
                 const response = await axios.get(
-                    `https://vibetunes-backend.onrender.com/playlist/${params.id}`,
+                    `http://localhost:3001/playlist/${params.id}`,
                     {
                         headers: {
                             'Content-Type': 'application/json',

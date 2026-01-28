@@ -71,7 +71,7 @@ const SearchBar = () => {
                 }
 
                 const response = await axios.get<ApiResponse>(
-                    `https://vibetunes-backend.onrender.com/search?searchField=${query}`,
+                    `http://localhost:3001/search?searchField=${query}`,
                     {
                         headers: {
                             'Content-Type': 'application/json',

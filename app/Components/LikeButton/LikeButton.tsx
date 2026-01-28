@@ -39,7 +39,7 @@ const LikeButton = (props: Props) => {
             }
 
             const response = await axios.get(
-                'https://vibetunes-backend.onrender.com/playlist',
+                'http://localhost:3001/playlist',
                 {
                     headers: {
                         'Content-Type': 'application/json',
@@ -74,7 +74,7 @@ const LikeButton = (props: Props) => {
             }
 
             await axios.patch(
-                `https://vibetunes-backend.onrender.com/playlist/${playlistId}/add/${props.id}`,
+                `http://localhost:3001/playlist/${playlistId}/add/${props.id}`,
                 {
                     playlist: playlistId,
                     musicId: props.id,

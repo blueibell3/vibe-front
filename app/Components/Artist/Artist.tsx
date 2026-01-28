@@ -36,7 +36,7 @@ const Artist = () => {
                     throw new Error('No token found');
                 }
 
-                const response = await axios.get(`https://vibetunes-backend.onrender.com/author`, {
+                const response = await axios.get(`http://localhost:3001/author`, {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: `Bearer ${token}`,

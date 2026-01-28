@@ -50,7 +50,7 @@ const AddButton: React.FC<AddButtonProps> = ({ onPlaylistCreated }) => {
                 .find((row) => row.startsWith('token='))
                 ?.split('=')[1];
 
-            const response = await axios.post('https://vibetunes-backend.onrender.com/playlist', data, {
+            const response = await axios.post('http://localhost:3001/playlist', data, {
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${token}`,

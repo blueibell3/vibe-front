@@ -49,7 +49,7 @@ const TrendHits = (props: Props) => {
                     ?.split('=')[1];
                 if (!token) throw new Error('No token found');
 
-                const response = await axios.get('https://vibetunes-backend.onrender.com/music/shuffle',
+                const response = await axios.get('http://localhost:3001/music/shuffle',
                     {
                         headers: {
                             'Content-Type': 'application/json',
